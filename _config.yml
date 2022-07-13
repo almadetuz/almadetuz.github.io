@@ -1,0 +1,44 @@
+collections:
+  singles:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "singles"
+    values:
+      layout: "single"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+
+title: Alma de Tüz
+lang: es_ES
+email: amanda@almadetuz.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Amor por musicar_me y danzar la vida
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
+logo: assets/images/icon.png
+
+twitter_username: almadetuz
+instagram_username: amanda_tuz
+youtube_username: amandinedreams
+github_username:  almadetuz
+
+twitter:
+  username: almadetuz
+  card: summary
+
+exclude:
+  - .jekyll-cache/
+  - Gemfile
+  - Gemfile.lock
+  - README.md
