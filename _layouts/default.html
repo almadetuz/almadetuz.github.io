@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    {% feed_meta %}
+    {% seo %}
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="apple-touch-icon" href="assets/images/icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- Normalize -->
+    <link rel="stylesheet" href="assets/css/normalize.css">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+Double+Pica&display=swap" >
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- Custom -->
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+{% include navigation.html %}
+{{ content }}
+{% include footer.html %}
+</body>
+</html>

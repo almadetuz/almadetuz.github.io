@@ -1,0 +1,9 @@
+<div>
+Creative Commons - Non-Commercial - ShareAlike
+(CC BY-NC-SA) Amanda Fdez. Bartolomé
+</div>
+<nav>
+    {% for item in site.data.legal %}
+      <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
+    {% endfor %}
+</nav>
