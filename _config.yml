@@ -23,7 +23,7 @@ title: Alma de Tüz
 lang: es_ES
 email: amanda@almadetuz.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Amor por musicar_me y danzar la vida
+  Amor por musicarme y danzar la vida
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
 logo: assets/images/icon.png
