@@ -1,5 +1,15 @@
 ---
 ---
+$bp-thin: 460px;
+$bp-mobile: 630px;
+$bp-tablet: 908px;
+$bp-screen: 1280px;
+$bp-wide: 1800px;
+
 @import "main";
 @import "video";
 @import "carousel";
+
+@import "fa/fontawesome";
+@import "fa/solid";
+@import "fa/brands";
