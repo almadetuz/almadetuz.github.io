@@ -1,29 +1,29 @@
-<!--
-<nav>
-    <a href="/" {% if page.url == "/" %}class="current"{% endif %}>Home</a>
-    {% for item in site.data.navigation %}
-      <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>{{ item.name }}</a>
-    {% endfor %}
-</nav>
--->
-<!--
-<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="assets/images/icon_white.png" style="height: 40px;"></a>
-    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="navbarCollapse">
-      <ul class="navbar-nav">
-        {% for item in site.data.navigation %}
-        <li class="nav-item">
-          <a class="nav-link {% if page.url == item.link %}active{% endif %}"
-             {% if page.url == item.link %}aria-current="page"{% endif %}
-             href="{{ item.link }}">{{ item.name }}</a>
-        </li>
-        {% endfor %}
-      </ul>
+<div class="container-fluid fixed-bottom bg-dark">
+  <div class="row">
+    <div class="col-md-8">
+      <nav class="navbar navbar-expand-sm navbar-dark">
+          <a class="navbar-brand" href="/"><img src="/assets/images/icon_white.png"></a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse" id="navbarCollapse">
+            <ul class="navbar-nav">
+              {% for item in site.data.navigation %}
+              <li class="nav-item">
+                <a class="nav-link {% if page.url == item.link %}active{% endif %}"
+                  {% if page.url == item.link %}aria-current="page"{% endif %}
+                  href="{{ item.link }}">{{ item.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+      </nav>
+    </div>
+    <div class="col-md-4 social">
+      {% for item in site.data.social %}
+      <a target="_blank" href="{{ item.link }}"><i class="{{ item.class }}" title="{{ item.name }}"></i></a>
+      {% endfor %}
     </div>
   </div>
-</nav>
--->
+</div>
+
