@@ -3,6 +3,11 @@
     <div class="col-md-8">
       <nav class="navbar navbar-expand-sm navbar-dark">
           <a class="navbar-brand" href="/"><img src="/assets/images/icon_white.png"></a>
+          <div class="mobile_social">
+            {% for item in site.data.social %}
+            <a target="_blank" href="{{ item.link }}"><i class="{{ item.class }}" title="{{ item.name }}"></i></a>
+            {% endfor %}
+          </div>
           <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
