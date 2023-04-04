@@ -1,0 +1,49 @@
+<div class="p-3">
+  <div class="container-fluid">
+  <div id="links" class="row">
+      <div class="col-md-8 p-3">
+          <div id="artwork" class="ratio ratio-1x1">
+              <img src="{{ include.artwork }}">
+          </div>
+      </div>
+      <div class="col-md-4 p-3">
+          <div class="row artist_name">{{ include.artist_name }}</div>
+          <div class="row album_name">{{ include.album_name }}</div>
+          {% if include.youtube %}
+          <div class="row row_play">
+              <div class="col logo_play"><img src="/assets/images/youtube_logo.png"></div>
+              <div class="col button_play">
+                <a id="youtube_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.youtube }}</a>
+              </div>
+              <a id="youtube_intent" href=""></a>
+          </div>
+          {% endif %}
+          {% if include.spotify %}
+          <div class="row row_play">
+              <div class="col logo_play"><img src="/assets/images/spotify_logo.png"></div>
+              <div class="col button_play">
+                  <a id="spotify_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.spotify }}</a>
+              </div>
+              <a id="spotify_intent" href=""></a>
+          </div>
+          {% endif %}
+          {% if include.ytmusic %}
+          <div class="row row_play">
+              <div class="col logo_play"><img src="/assets/images/youtubemusic_logo.png"></div>
+              <div class="col button_play">
+                <a id="ytmusic_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.ytmusic }}</a>
+              </div>
+              <a id="ytmusic_intent" href=""></a>
+          </div>
+          {% endif %}
+          {% if include.apple %}
+          <div class="row row_play">
+              <div class="col logo_play"><img src="/assets/images/applemusic_logo.png"></div>
+              <div class="col button_play">
+                <a href="{{ include.apple_link }}" target="_blank" class="btn btn-outline-secondary">{{ include.apple }}</a></div>
+          </div>
+          {% endif %}
+      </div>
+  </div>
+  </div>
+  </div>

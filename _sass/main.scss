@@ -226,3 +226,40 @@ p.listen-also i.fa-soundcloud:hover {
 p.listen-also i.fa-bandcamp:hover {
   color: #319BBF;
 }
+
+
+/* Link */
+#links {
+  color: rgba(33, 37, 41, 1);
+}
+.logo_play, .button_play {
+  min-width: 100px;
+}
+.logo_play img {
+  max-height: 30px;
+  margin-top: 5px;
+}
+.button_play a {
+  min-width: 100px;
+  width: 100%;
+  height: 30px;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.row_play {
+  padding: 1rem 0;
+}
+
+.artist_name, .album_name {
+  padding-left: 1rem;
+}
+.artist_name {
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 2em;
+  font-weight: bold;
+}
+.album_name {
+  padding-bottom: 1rem;
+  font-size: 1.4em;
+}
+
