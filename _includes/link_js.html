@@ -35,9 +35,6 @@
     youTubeLinkSet(canonical_url, query_params, youtube_video_id);
   {% endif %}
 
-    // Facebook event: PageView
-    if (typeof fbq !== 'undefined') fbq('track', 'PageView');
-
     if (failed == 0) {
       if (typeof amplitude !== 'undefined') amplitude.track('PageView', event_prop);
 
