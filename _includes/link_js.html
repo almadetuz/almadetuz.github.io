@@ -36,10 +36,10 @@
   {% endif %}
 
     // Facebook event: PageView
-    fbq('track', 'PageView');
+    if (typeof fbq !== 'undefined') fbq('track', 'PageView');
 
     if (failed == 0) {
-        amplitude.track('PageView', event_prop);
+      if (typeof amplitude !== 'undefined') amplitude.track('PageView', event_prop);
 
         if (isMobile.any()) {
             // --> Spotify app in mobile
@@ -56,12 +56,12 @@
             // 2. Track that the app was not opened on iOS devices
             if (isMobile.iOS()) {
                 setTimeout(() => {
-                    amplitude.track('AppNotInstalled', event_prop);
-                }, 500);
+                  if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
+                }, 5000);
             }
         }
     } else {
-        amplitude.track('AppNotInstalled', event_prop);
+        if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
     }
 
 
