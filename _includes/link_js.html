@@ -1,0 +1,68 @@
+{% include fb_js.html %}
+{% include amplitude_js.html %}
+
+<!-- Link JS -->
+<script  type="text/javascript" src="/assets/js/link.js"></script>
+
+<!-- Link actions -->
+<script>
+    const query_params = new URLSearchParams(window.location.search);
+    const source = query_params.get('s') || 'other';
+    const tag = query_params.get('t');
+    const failed = query_params.get('f') || 0;
+    const canonical_url = '{{ include.path }}',
+          spotify_track_id = '{{ include.spotify_track_id }}',
+          spotify_si = '{{ include.spotify_si }}',
+          ytmusic_track_id = '{{ include.ytmusic_track_id }}',
+          youtube_video_id = '{{ include.youtube_video_id }}';
+
+    var event_prop = {
+        source: source,
+        tag: tag,
+        campaign: '{{ include.campaign }}',
+        medium: '{{ include.medium }}',
+        device_kind: deviceKind(),
+        failed: failed
+    };
+
+  {% if include.spotify_track_id %}
+    spotifyLinkSet(canonical_url, query_params, spotify_track_id, spotify_si);
+  {% endif %}
+  {% if include.ytmusic_track_id %}
+    ytMusicLinkSet(canonical_url, query_params, ytmusic_track_id);
+  {% endif %}
+  {% if include.youtube_video_id %}
+    youTubeLinkSet(canonical_url, query_params, youtube_video_id);
+  {% endif %}
+
+    // Facebook event: PageView
+    fbq('track', 'PageView');
+
+    if (failed == 0) {
+        amplitude.track('PageView', event_prop);
+
+        if (isMobile.any()) {
+            // --> Spotify app in mobile
+          {% if include.medium == 'spotify' %}
+            openSpotifyTrack(spotify_track_id, spotify_si); // Universo
+          {% endif %}
+            // --> Youtube Music app in mobile
+            // openYouTubeMusic(ytmusic_track_id); // Universo (Album)
+            // --> Youtube app in mobile
+          {% if include.medium == 'youtube' %}
+            openYouTubeVideo(youtube_video_id); // Universo (Videoclip)
+          {% endif %}
+
+            // 2. Track that the app was not opened on iOS devices
+            if (isMobile.iOS()) {
+                setTimeout(() => {
+                    amplitude.track('AppNotInstalled', event_prop);
+                }, 500);
+            }
+        }
+    } else {
+        amplitude.track('AppNotInstalled', event_prop);
+    }
+
+
+</script>
