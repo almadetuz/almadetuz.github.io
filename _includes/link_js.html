@@ -11,6 +11,8 @@
     const tag = query_params.get('t');
     const failed = query_params.get('f') || 0;
     const canonical_url = '{{ include.path }}',
+          campaign = '{{ include.campaign }}',
+          medium = '{{ include.medium }}',
           spotify_track_id = '{{ include.spotify_track_id }}',
           spotify_si = '{{ include.spotify_si }}',
           ytmusic_track_id = '{{ include.ytmusic_track_id }}',
@@ -19,20 +21,20 @@
     var event_prop = {
         source: source,
         tag: tag,
-        campaign: '{{ include.campaign }}',
-        medium: '{{ include.medium }}',
+        campaign: campaign,
+        medium: medium,
         device_kind: deviceKind(),
         failed: failed
     };
 
   {% if include.spotify_track_id %}
-    spotifyLinkSet(canonical_url, query_params, spotify_track_id, spotify_si);
+    spotifyLinkSet(canonical_url, query_params, medium, spotify_track_id, spotify_si);
   {% endif %}
   {% if include.ytmusic_track_id %}
-    ytMusicLinkSet(canonical_url, query_params, ytmusic_track_id);
+    ytMusicLinkSet(canonical_url, query_params, medium, ytmusic_track_id);
   {% endif %}
   {% if include.youtube_video_id %}
-    youTubeLinkSet(canonical_url, query_params, youtube_video_id);
+    youTubeLinkSet(canonical_url, query_params, medium, youtube_video_id);
   {% endif %}
 
     if (failed == 0) {

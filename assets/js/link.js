@@ -1,15 +1,16 @@
 const spotify = {
     intent_id: 'spotify_intent',
     link_id: 'spotify_link'
-}
+};
 const ytmusic = {
     intent_id: 'ytmusic_intent',
     link_id: 'ytmusic_link'
-}
+};
 const youtube = {
     intent_id: 'youtube_intent',
     link_id: 'youtube_link'
-}
+};
+const artwork_link_id = 'artwork_link';
 
 var isMobile = {
     Android: function() {
@@ -51,7 +52,8 @@ function fallbackLink(base, qs, fallback) {
     return encodeURIComponent(base + '?' + params.toString());
 }
 
-function spotifyLinkSet(base, qs, track_id, si) {
+function spotifyLinkSet(base, qs, medium, track_id, si) {
+    var link = 'https://open.spotify.com/track/' + track_id + '?si=' + si;
     document.getElementById(spotify.intent_id).href = 'intent://' +
               'track/' + track_id + '?go=1&nd=1' +
               '#Intent;' +
@@ -59,7 +61,8 @@ function spotifyLinkSet(base, qs, track_id, si) {
               'package=com.spotify.music;' +
               'S.browser_fallback_url=' + fallbackLink(base, qs, 'spotify') + ';' +
               'end;';
-    document.getElementById(spotify.link_id).href = 'https://open.spotify.com/track/' + track_id + '?si=' + si;
+    document.getElementById(spotify.link_id).href = link;
+    if (medium == 'spotify') document.getElementById(artwork_link_id).href = link;
 }
 
 function openSpotifyTrack(track_id, si) {
@@ -71,7 +74,8 @@ function openSpotifyTrack(track_id, si) {
     }
 };
 
-function ytMusicLinkSet(base, qs, track_id) {
+function ytMusicLinkSet(base, qs, medium, track_id) {
+    var link = 'https://music.youtube.com/watch?v=' + track_id;
     document.getElementById(ytmusic.intent_id).href = 'intent://' +
               'music.youtube.com/watch?v=' + track_id +
               '#Intent;' +
@@ -79,7 +83,8 @@ function ytMusicLinkSet(base, qs, track_id) {
               'package=com.google.android.apps.youtube.music;' +
               'S.browser_fallback_url=' + fallbackLink(base, qs, 'ytmusic') + ';' +
               'end;';
-    document.getElementById(ytmusic.link_id).href = 'https://music.youtube.com/watch?v=' + track_id;
+    document.getElementById(ytmusic.link_id).href = link;
+    if (medium == 'ytmusic') document.getElementById(artwork_link_id).href = link;
 }
 
 function openYouTubeMusic(track_id) {
@@ -91,7 +96,8 @@ function openYouTubeMusic(track_id) {
     }
 };
 
-function youTubeLinkSet(base, qs, video_id) {
+function youTubeLinkSet(base, qs, medium, video_id) {
+    var link = 'https://www.youtube.com/watch?v=' + video_id;
     document.getElementById(youtube.intent_id).href = 'intent://' +
               'www.youtube.com/watch?v=' + video_id +
               '#Intent;' +
@@ -99,7 +105,8 @@ function youTubeLinkSet(base, qs, video_id) {
               'package=com.google.android.youtube;' +
               'S.browser_fallback_url=' + fallbackLink(base, qs, 'youtube') + ';' +
               'end;';
-    document.getElementById(youtube.link_id).href = 'https://www.youtube.com/watch?v=' + video_id;
+    document.getElementById(youtube.link_id).href = link;
+    if (medium == 'youtube') document.getElementById(artwork_link_id).href = link;
 }
 
 function openYouTubeVideo(video_id) {
