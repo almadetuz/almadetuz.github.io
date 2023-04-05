@@ -16,29 +16,27 @@ defaults:
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-seo-tag
 
 
-title: Alma de Tüz
-lang: es_ES
-email: amanda@almadetuz.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Amor por musicarme y danzar la vida
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
-logo: assets/images/icon.png
-
-twitter_username: almadetuz
-instagram_username: amanda_tuz
-youtube_username: amandinedreams
-github_username:  almadetuz
-
-twitter:
-  username: almadetuz
-  card: summary
+url: "https://www.almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
+logo: /assets/images/icon.png
 
 exclude:
   - .jekyll-cache/
   - Gemfile
   - Gemfile.lock
   - README.md
+
+# SEO and OG global variables
+title: Alma de Tüz
+lang: es_ES
+email: amanda@almadetuz.com
+description: >-
+  Arquitecturas sonoras para sanar
+twitter:
+  username: almadetuz
+  card: summary
+seo_image: /assets/images/alma_de_tuz_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
