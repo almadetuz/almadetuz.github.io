@@ -2,9 +2,11 @@
   <div class="container-fluid">
   <div id="links" class="row">
       <div class="col-md-8 p-3">
-          <a id="artwork_link" href="" target="_blank" class="ratio ratio-{{ include.artwork_ratio | default: '1x1' }}">
+        <a id="artwork_link" href="" target="_blank">
+          <div class="ratio ratio-{{ include.artwork_ratio | default: '1x1' }}">
               <img src="{{ include.artwork }}">
-          </a>
+          </div>
+        </a>
       </div>
       <div class="col-md-4 p-3">
           <div class="row artist_name">{{ include.artist_name }}</div>
