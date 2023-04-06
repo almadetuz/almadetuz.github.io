@@ -45,6 +45,23 @@
                 <a href="{{ include.apple_link }}" target="_blank" class="btn btn-outline-secondary">{{ include.apple }}</a></div>
           </div>
           {% endif %}
+          {% if include.bandcamp_url %}
+          <div class="row bandcamp_link">
+            <div class="col">
+              Puedes descargar esta canción en .mp3 en <a href="{{ include.bandcamp_url }}" target="_blank">Bandcamp</a>
+            </div>
+          </div>
+          {% endif %}
+          {% if include.cc_year %}
+          <div class="row copyleft">
+            <div class="col text-center">
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+                <img src="/assets/images/by-nc-sa.png" height="16px" style="margin: 0px 6px 0px 0px">
+              </a>
+              <span>Creative Commons - {{ include.cc_year }} - Alma de Tüz Records</span>
+            </div>
+          </div>
+          {% endif %}
       </div>
   </div>
   </div>
