@@ -18,7 +18,21 @@ title: Alma de Tüz
       <!-- Amanda Tüz -->
       <div class="carousel-item active">
         <div class="ratio ratio-16x9">
-          <img src="/assets/images/amanda_tuz_new.jpg" alt="Amanda Tüz">
+          <picture class="ratio ratio-16x9">
+            <source srcset="/assets/images/amanda_tuz_new.webp 1920w,
+                            /assets/images/amanda_tuz_new_1280.webp 1280w,
+                            /assets/images/amanda_tuz_new_640.webp 640w,
+                            /assets/images/amanda_tuz_new_480.webp 480w,
+                            /assets/images/amanda_tuz_new_320.webp 320w"
+                    type="image/webp" sizes="100vw"/>
+            <source srcset="/assets/images/amanda_tuz_new.jpg 1920w,
+                            /assets/images/amanda_tuz_new_1280.jpg 1280w,
+                            /assets/images/amanda_tuz_new_640.jpg 640w,
+                            /assets/images/amanda_tuz_new_480.jpg 480w,
+                            /assets/images/amanda_tuz_new_320.jpg 320w"
+                    type="image/jpeg" media="100vw"/>
+            <img src="/assets/images/amanda_tuz_new_320.jpg" alt="Amanda Tüz"/>
+          </picture>
         </div>
       </div>
       <!-- Raices -->
@@ -167,7 +181,7 @@ title: Alma de Tüz
   <a href="https://www.songkick.com/artists/10273061" class="songkick-widget" data-theme="dark" data-track-button="off" data-detect-style="off" data-background-color="#000000" data-font-color="#ffffff" data-locale="es" data-other-artists="off" data-share-button="on" data-country-filter="off">
     Próximos conciertos
   </a>
-  <script src='//widget-app.songkick.com/injector'></script>
+  <script src='/assets/js/songkick_injector_20230525.js'></script>
 </div>
 </div>
 </div>
@@ -178,7 +192,19 @@ title: Alma de Tüz
 <div class="row" id="luciernagas">
   <div class="col-xl-4 p-3">
     <div class="ratio ratio-1x1">
-      <img src="/assets/images/luciernagas_single.jpg" alt="Luciérnagas" loading="lazy">
+    <picture class="ratio ratio-1x1">
+      <source srcset="/assets/images/luciernagas_single.webp 1024w,
+                      /assets/images/luciernagas_single_640.webp 640w,
+                      /assets/images/luciernagas_single_480.webp 480w,
+                      /assets/images/luciernagas_single_320.webp 320w"
+              type="image/webp" sizes="(min-width: 1200px) 33vw, 100vw"/>
+      <source srcset="/assets/images/luciernagas_single.jpg 1024w,
+                      /assets/images/luciernagas_single_640.jpg 640w,
+                      /assets/images/luciernagas_single_480.jpg 480w,
+                      /assets/images/luciernagas_single_320.jpg 320w"
+              type="image/jpeg" media="(min-width: 1200px) 33vw, 100vw"/>
+      <img src="/assets/images/luciernagas_single_320.jpg" alt="Luciérnagas" loading="lazy" />
+    </picture>
     </div>
   </div>
   <div class="col-xl-4 p-3">
@@ -216,7 +242,19 @@ title: Alma de Tüz
 <div class="row" id="alas-en-mi">
   <div class="col-xl-4 p-3">
     <div class="ratio ratio-1x1">
-      <img src="/assets/images/alas_en_mi_single.jpg" alt="Alas en mi" loading="lazy">
+      <picture class="ratio ratio-1x1">
+        <source srcset="/assets/images/alas_en_mi_single.webp 1024w,
+                        /assets/images/alas_en_mi_single_640.webp 640w,
+                        /assets/images/alas_en_mi_single_480.webp 480w,
+                        /assets/images/alas_en_mi_single_320.webp 320w"
+                type="image/webp" sizes="(min-width: 1200px) 33vw, 100vw"/>
+        <source srcset="/assets/images/alas_en_mi_single.jpg 1024w,
+                        /assets/images/alas_en_mi_single_640.jpg 640w,
+                        /assets/images/alas_en_mi_single_480.jpg 480w,
+                        /assets/images/alas_en_mi_single_320.jpg 320w"
+                type="image/jpeg" media="(min-width: 1200px) 33vw, 100vw"/>
+        <img src="/assets/images/alas_en_mi_single_320.jpg" alt="Alas en mi" loading="lazy"/>
+      </picture>
     </div>
   </div>
   <div class="col-xl-4 p-3">
@@ -252,7 +290,19 @@ title: Alma de Tüz
 <div class="row" id="universo">
   <div class="col-xl-4 p-3">
     <div class="ratio ratio-1x1">
-      <img src="/assets/images/universo_single.jpg" alt="Universo" loading="lazy">
+      <picture class="ratio ratio-1x1">
+        <source srcset="/assets/images/universo_single.webp 1024w,
+                        /assets/images/universo_single_640.webp 640w,
+                        /assets/images/universo_single_480.webp 480w,
+                        /assets/images/universo_single_320.webp 320w"
+                type="image/webp" sizes="(min-width: 1200px) 33vw, 100vw"/>
+        <source srcset="/assets/images/universo_single.jpg 1024w,
+                        /assets/images/universo_single_640.jpg 640w,
+                        /assets/images/universo_single_480.jpg 480w,
+                        /assets/images/universo_single_320.jpg 320w"
+                type="image/jpeg" media="(min-width: 1200px) 33vw, 100vw"/>
+        <img src="/assets/images/universo_single_320.jpg" alt="Universo" loading="lazy"/>
+      </picture>
     </div>
   </div>
   <div class="col-xl-4 p-3">
@@ -292,7 +342,19 @@ title: Alma de Tüz
 <div class="row" id="a-witch-story">
     <div class="col-xl-4 p-3">
       <div class="ratio ratio-9x16">
-        <img src="/assets/images/a_witch_story_cartel_doc_nyc.jpg" alt="A Witch Story documentary film" loading="lazy">
+        <picture class="ratio ratio-9x16">
+          <source srcset="/assets/images/a_witch_story_cartel_doc_nyc.webp 720w,
+                          /assets/images/a_witch_story_cartel_doc_nyc_640.webp 360w,
+                          /assets/images/a_witch_story_cartel_doc_nyc_480.webp 270w,
+                          /assets/images/a_witch_story_cartel_doc_nyc_320.webp 180w"
+                  type="image/webp" sizes="(min-width: 1200px) 33vw, 100vw"/>
+          <source srcset="/assets/images/a_witch_story_cartel_doc_nyc.jpg 720w,
+                          /assets/images/a_witch_story_cartel_doc_nyc_640.jpg 360w,
+                          /assets/images/a_witch_story_cartel_doc_nyc_480.jpg 270w,
+                          /assets/images/a_witch_story_cartel_doc_nyc_320.jpg 180w"
+                  type="image/jpeg" media="(min-width: 1200px) 33vw, 100vw"/>
+          <img src="/assets/images/a_witch_story_cartel_doc_nyc_320.jpg" alt="A Witch Story documentary film" loading="lazy"/>
+        </picture>
       </div>
     </div>
     <div class="col-xl-4 p-3">
@@ -381,9 +443,18 @@ title: Alma de Tüz
     <h1 class="font-tuz" id="bio">Biografía</h1>
     <div class="row">
     <div class="col-xl-4 p-3">
-
       <div class="ratio ratio-1x1">
-        <img src="/assets/images/amanda_ukelele.jpg" alt="Amanda Tüz" loading="lazy">
+        <picture class="ratio ratio-1x1">
+          <source srcset="/assets/images/amanda_ukelele.webp 512w,
+                          /assets/images/amanda_ukelele_480.webp 480w,
+                          /assets/images/amanda_ukelele_320.webp 320w"
+                  type="image/webp" sizes="100vw"/>
+          <source srcset="/assets/images/amanda_ukelele.jpg 512w,
+                          /assets/images/amanda_ukelele_480.jpg 480w,
+                          /assets/images/amanda_ukelele_320.jpg 320w"
+                  type="image/jpeg" media="100vw"/>
+          <img src="/assets/images/amanda_ukelele_320.jpg" alt="Amanda Tüz" loading="lazy"/>
+        </picture>
       </div>
 
     </div>
@@ -415,7 +486,21 @@ title: Alma de Tüz
 <div class="container-fluid text-soft-white bg-dark">
   <div class="row">
       <div class="ratio ratio-16x9">
-        <img src="/assets/images/nacida_de_la_sombra.jpg" alt="Amanda Tüz cantando Raíces" loading="lazy">
+        <picture class="ratio ratio-16x9">
+          <source srcset="/assets/images/nacida_de_la_sombra.webp 1920w,
+                          /assets/images/nacida_de_la_sombra_1280.webp 1280w,
+                          /assets/images/nacida_de_la_sombra_640.webp 640w,
+                          /assets/images/nacida_de_la_sombra_480.webp 480w,
+                          /assets/images/nacida_de_la_sombra_320.webp 320w"
+                  type="image/webp" sizes="100vw"/>
+          <source srcset="/assets/images/nacida_de_la_sombra.jpg 1920w,
+                          /assets/images/nacida_de_la_sombra_1280.jpg 1280w,
+                          /assets/images/nacida_de_la_sombra_640.jpg 640w,
+                          /assets/images/nacida_de_la_sombra_480.jpg 480w,
+                          /assets/images/nacida_de_la_sombra_320.jpg 320w"
+                  type="image/jpeg" media="100vw"/>
+          <img src="/assets/images/nacida_de_la_sombra_320.jpg" alt="Amanda Tüz cantando Raíces" loading="lazy"/>
+        </picture>
       </div>
   </div>
 </div>
@@ -500,7 +585,21 @@ title: Alma de Tüz
 <div class="container-fluid text-soft-white bg-dark">
   <div class="row">
       <div class="ratio ratio-16x9">
-        <img src="/assets/images/amanda_piano_luciernagas.jpg" alt="Alma de Tüz en la Libre de Barrio" loading="lazy">
+        <picture class="ratio ratio-16x9">
+          <source srcset="/assets/images/amanda_piano_luciernagas.webp 1920w,
+                          /assets/images/amanda_piano_luciernagas_1280.webp 1280w,
+                          /assets/images/amanda_piano_luciernagas_640.webp 640w,
+                          /assets/images/amanda_piano_luciernagas_480.webp 480w,
+                          /assets/images/amanda_piano_luciernagas_320.webp 320w"
+                  type="image/webp" sizes="100vw"/>
+          <source srcset="/assets/images/amanda_piano_luciernagas.jpg 1920w,
+                          /assets/images/amanda_piano_luciernagas_1280.jpg 1280w,
+                          /assets/images/amanda_piano_luciernagas_640.jpg 640w,
+                          /assets/images/amanda_piano_luciernagas_480.jpg 480w,
+                          /assets/images/amanda_piano_luciernagas_320.jpg 320w"
+                  type="image/jpeg" media="100vw"/>
+          <img src="/assets/images/amanda_piano_luciernagas_320.jpg" alt="Alma de Tüz en la Libre de Barrio" loading="lazy"/>
+        </picture>
       </div>
   </div>
 </div>
@@ -512,7 +611,15 @@ title: Alma de Tüz
       <div class="col-xl-3 p-3">
         <a target="_blank" href="https://open.spotify.com/episode/4kmQ90MNtqeOsUwHhyk1bm?si=mjooBqFjQnKUdqencbYOBA">
           <div class="ratio ratio-1x1">
-            <img src="/assets/images/amanda_lo_que_nos_brote.jpg" alt="Lo que nos brote" loading="lazy">
+            <picture class="ratio ratio-1x1">
+              <source srcset="/assets/images/amanda_lo_que_nos_brote.webp 1024w,
+                              /assets/images/amanda_lo_que_nos_brote_480.webp 480w"
+                      type="image/webp" sizes="(min-width: 1200px) 25vw, 100vw"/>
+              <source srcset="/assets/images/amanda_lo_que_nos_brote.jpg 1024w,
+                              /assets/images/amanda_lo_que_nos_brote_480.jpg 480w"
+                      type="image/jpeg" media="(min-width: 1200px) 25vw, 100vw"/>
+              <img src="/assets/images/amanda_lo_que_nos_brote_480.jpg" alt="Lo que nos brote" loading="lazy" />
+            </picture>
           </div>
         </a>
         <p class="press-info">
@@ -525,7 +632,15 @@ title: Alma de Tüz
       <div class="col-xl-3 p-3">
         <a target="_blank" href="https://open.spotify.com/episode/7r4CbCtlVMUziejLGcQR6P?si=25cf13175b89446e">
           <div class="ratio ratio-1x1">
-            <img src="/assets/images/amanda_conversaciones_en_la_cocina.jpg" alt="Conversaciones en la cocina" loading="lazy">
+            <picture class="ratio ratio-1x1">
+              <source srcset="/assets/images/amanda_conversaciones_en_la_cocina.webp 1024w,
+                              /assets/images/amanda_conversaciones_en_la_cocina_480.webp 480w"
+                      type="image/webp" sizes="(min-width: 1200px) 25vw, 100vw"/>
+              <source srcset="/assets/images/amanda_conversaciones_en_la_cocina.jpg 1024w,
+                              /assets/images/amanda_conversaciones_en_la_cocina_480.jpg 480w"
+                      type="image/jpeg" media="(min-width: 1200px) 25vw, 100vw"/>
+              <img src="/assets/images/amanda_conversaciones_en_la_cocina_480.jpg" alt="Conversaciones en la cocina" loading="lazy" />
+            </picture>
           </div>
         </a>
         <p class="press-info">
@@ -537,7 +652,17 @@ title: Alma de Tüz
       <div class="col-xl-3 p-3">
         <a target="_blank" href="https://www.youtube.com/watch?v=PDmwsAlxqYw">
           <div class="ratio ratio-16x9">
-            <img src="/assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica.jpg" alt="Amanda Tüz Arquitecturas sonoras para sanar - Comunidad Holística" loading="lazy">
+            <picture class="ratio ratio-16x9">
+              <source srcset="/assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica.webp 1280w,
+                              /assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica_640.webp 640w,
+                              /assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica_320.webp 320w"
+                      type="image/webp" sizes="(min-width: 1200px) 25vw, 100vw"/>
+              <source srcset="/assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica.jpg 1280w,
+                              /assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica_640.jpg 640w,
+                              /assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica_320.jpg 3200w"
+                      type="image/jpeg" media="(min-width: 1200px) 25vw, 100vw"/>
+              <img src="/assets/images/amanda_arquitecturas_sonoras_para_sanar_comunidad_holistica_320.jpg" alt="Amanda Tüz Arquitecturas sonoras para sanar - Comunidad Holística" loading="lazy" />
+            </picture>
           </div>
         </a>
         <p class="press-info">
@@ -550,7 +675,15 @@ title: Alma de Tüz
       <div class="col-xl-3 p-3">
         <a target="_blank" href="https://www.rtve.es/play/audios/artesfera-en-radio-5/artesfera-radio-5-alma-tuz-presenta-universo/6813396/">
           <div class="ratio ratio-1x1">
-            <img src="/assets/images/alma_de_tuz_universo_radio_5.jpg" alt="Alma de Tüz presenta 'Universo' - Radio 5" loading="lazy">
+            <picture class="ratio ratio-1x1">
+              <source srcset="/assets/images/alma_de_tuz_universo_radio_5.webp 585w,
+                              /assets/images/alma_de_tuz_universo_radio_5_320.webp 320w"
+                      type="image/webp" sizes="(min-width: 1200px) 25vw, 100vw"/>
+              <source srcset="/assets/images/alma_de_tuz_universo_radio_5.jpg 585w,
+                              /assets/images/alma_de_tuz_universo_radio_5_320.jpg 320w"
+                      type="image/jpeg" media="(min-width: 1200px) 25vw, 100vw"/>
+              <img src="/assets/images/alma_de_tuz_universo_radio_5_320.jpg" alt="Alma de Tüz presenta 'Universo' - Radio 5" loading="lazy" />
+            </picture>
           </div>
         </a>
         <p class="press-info">
@@ -570,7 +703,15 @@ title: Alma de Tüz
     <div class="row">
       <div class="col-xl-4 p-3">
         <div class="ratio ratio-1x1">
-          <img src="/assets/images/medula.jpg" alt="Médula" loading="lazy">
+          <picture class="ratio ratio-1x1">
+            <source srcset="/assets/images/medula.webp 1024w,
+                            /assets/images/medula_480.webp 480w"
+                    type="image/webp" sizes="(min-width: 1200px) 33vw, 100vw"/>
+            <source srcset="/assets/images/medula.jpg 1024w,
+                            /assets/images/medula_480.jpg 480w"
+                    type="image/jpeg" media="(min-width: 1200px) 33vw, 100vw"/>
+            <img src="/assets/images/medula_480.jpg" alt="Médula" loading="lazy" />
+          </picture>
         </div>
       </div>
       <div class="col-xl-4 p-3">
