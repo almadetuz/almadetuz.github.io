@@ -36,4 +36,7 @@ gem "jekyll-feed"
 # gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 
 # Workaround: https://github.com/jekyll/jekyll/issues/8523
-gem "webrick"
+# gem "webrick"
+gem 'rack-jekyll'
+gem 'rake'
+gem "puma"
