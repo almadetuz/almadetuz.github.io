@@ -27,6 +27,8 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
+  - LICENSE
+  - procfile
 
 # SEO and OG global variables
 title: Alma de Tüz
