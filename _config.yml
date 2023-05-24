@@ -19,7 +19,8 @@ plugins:
 
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
+# url: "https://www.almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://almadetuz-antespi.koyeb.app"
 logo: /assets/images/icon.png
 
 exclude:
