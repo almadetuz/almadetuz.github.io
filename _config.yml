@@ -30,6 +30,8 @@ exclude:
   - LICENSE
   - Procfile
   - convert_img.sh
+  - config.ru
+  - Rakefile
 
 # SEO and OG global variables
 title: Alma de Tüz
