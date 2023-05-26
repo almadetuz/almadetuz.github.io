@@ -52,9 +52,9 @@
           {% if include.medium == 'spotify' %}
             openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
           {% endif %}
-            // --> Youtube Music app in mobile
-            // openYouTubeMusic(ytmusic_track_id);
-            // --> Youtube app in mobile
+          {% if include.medium == 'ytmusic' %}
+            openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
+          {% endif %}
           {% if include.medium == 'youtube' %}
             openYouTubeVideo(youtube_video_id, youtube_list_id);
           {% endif %}
