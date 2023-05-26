@@ -50,13 +50,13 @@
         if (isMobile.any()) {
             // --> Spotify app in mobile
           {% if include.medium == 'spotify' %}
-            openSpotifyTrack(spotify_track_id, spotify_si, spotify_context); // Universo
+            openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
           {% endif %}
             // --> Youtube Music app in mobile
-            // openYouTubeMusic(ytmusic_track_id); // Universo (Album)
+            // openYouTubeMusic(ytmusic_track_id);
             // --> Youtube app in mobile
           {% if include.medium == 'youtube' %}
-            openYouTubeVideo(youtube_video_id, youtube_list_id); // Universo (Videoclip)
+            openYouTubeVideo(youtube_video_id, youtube_list_id);
           {% endif %}
 
             // 2. Track that the app was not opened on iOS devices
