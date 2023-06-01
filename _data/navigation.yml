@@ -1,5 +1,7 @@
 - name: MUSICA
   link: /#music
+- name: TIENDA
+  link: /#shop
 - name: BIOGRAFIA
   link: /#bio
 - name: PRENSA
