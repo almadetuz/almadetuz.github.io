@@ -34,6 +34,8 @@ end
 
 # Workaround: https://github.com/jekyll/jekyll/issues/8523
 # gem "webrick"
+
+# Allow to run usin puma
 gem 'rack-jekyll'
 gem 'rake'
 gem "puma"
