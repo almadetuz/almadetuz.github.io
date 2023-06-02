@@ -270,3 +270,25 @@ p.listen-also i.fa-bandcamp:hover {
 .copyleft {
   color: #848484;
 }
+
+.telegram-button-widget .btn-primary {
+  background-color: #29a9ea;
+}
+
+@media screen and (min-width: $bp-bigtablet) {
+  .telegram-button-widget .btn {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .telegram-button-widget {
+    height: 320px;
+    display: grid;
+  }
+  .telegram-button-widget .btn {
+    margin: auto;
+  }
+
+}
+
