@@ -70,6 +70,30 @@ function linkSet(el_id, link, button) {
     el_link.onclick = function(){ amplitudeClick(button) };
 }
 
+function spotifyPlaylistLinkSet(base, qs, medium, playlist_id, si) {
+    var link = 'https://open.spotify.com/playlist/' + playlist_id + '?si=' + si;
+    var intent = 'playlist/' + playlist_id + '?go=1&nd=1';
+    document.getElementById(spotify.intent_id).href = 'intent://' +
+              intent +
+              '#Intent;' +
+              'scheme=spotify;' +
+              'package=com.spotify.music;' +
+              'S.browser_fallback_url=' + fallbackLink(base, qs, 'spotify') + ';' +
+              'end;';
+    linkSet(spotify.link_id, link, 'spotify');
+    if (medium == 'spotify') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openSpotifyPlaylist(playlist_id, si) {
+    // Try open by spotify mobile app
+    if (isMobile.iOS()) {
+        var link = 'spotify://playlist/' + playlist_id + '?si=' + si;
+        window.location = link;
+    } else {
+        document.getElementById(spotify.intent_id).click();
+    }
+};
+
 function spotifyLinkSet(base, qs, medium, track_id, si, context) {
     var link = 'https://open.spotify.com/track/' + track_id + '?si=' + si;
     var intent = 'track/' + track_id + '?go=1&nd=1';
