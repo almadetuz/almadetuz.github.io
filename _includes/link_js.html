@@ -14,6 +14,7 @@
           campaign = '{{ include.campaign }}',
           medium = '{{ include.medium }}',
           spotify_track_id = '{{ include.spotify_track_id }}',
+          spotify_playlist_id = '{{ include.spotify_playlist_id }}',
           spotify_si = '{{ include.spotify_si }}',
           spotify_context = '{{ include.spotify_context | default: "none" }}',
           ytmusic_track_id = '{{ include.ytmusic_track_id }}',
@@ -34,6 +35,9 @@
   {% if include.spotify_track_id %}
     spotifyLinkSet(canonical_url, query_params, medium, spotify_track_id, spotify_si, spotify_context);
   {% endif %}
+  {% if include.spotify_playlist_id %}
+    spotifyPlaylistLinkSet(canonical_url, query_params, medium, spotify_playlist_id, spotify_si);
+  {% endif %}
   {% if include.ytmusic_track_id %}
     ytMusicLinkSet(canonical_url, query_params, medium, ytmusic_track_id, ytmusic_list_id);
   {% endif %}
@@ -48,9 +52,12 @@
         if (typeof amplitude !== 'undefined') amplitude.track('PageView', event_prop);
 
         if (isMobile.any()) {
-            // --> Spotify app in mobile
-          {% if include.medium == 'spotify' %}
+          // --> Spotify app in mobile
+          {% if include.medium == 'spotify' && include.spotify_track_id %}
             openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
+          {% endif %}
+          {% if include.medium == 'spotify' && include.spotify_playlist_id %}
+            openSpotifyPlaylist(spotify_playlist_id, spotify_si);
           {% endif %}
           {% if include.medium == 'ytmusic' %}
             openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
