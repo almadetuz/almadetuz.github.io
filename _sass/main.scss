@@ -2,6 +2,10 @@
   --bs-aspect-ratio: calc(16 / 9 * 100%);
 }
 
+.ratio-64x91 {
+  --bs-aspect-ratio: calc(91 / 64 * 100%);
+}
+
 a {
     color: #BF3D45;
     text-decoration: none;
