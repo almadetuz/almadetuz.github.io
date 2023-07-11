@@ -15,12 +15,15 @@
           medium = '{{ include.medium }}',
           spotify_track_id = '{{ include.spotify_track_id }}',
           spotify_playlist_id = '{{ include.spotify_playlist_id }}',
+          spotify_artist_id = '{{ include.spotify_artist_id }}',
           spotify_si = '{{ include.spotify_si }}',
           spotify_context = '{{ include.spotify_context | default: "none" }}',
           ytmusic_track_id = '{{ include.ytmusic_track_id }}',
           ytmusic_list_id = '{{ include.ytmusic_list_id | default: "none" }}',
+          ytmusic_channel_id = '{{ include.ytmusic_channel_id }}',
           youtube_video_id = '{{ include.youtube_video_id }}',
           youtube_list_id = '{{ include.youtube_list_id | default: "none" }}',
+          youtube_channel_id = '{{ include.youtube_channel_id }}',
           apple_link = '{{ include.apple_link }}';
 
     event_prop = {
@@ -38,11 +41,20 @@
   {% if include.spotify_playlist_id %}
     spotifyPlaylistLinkSet(canonical_url, query_params, medium, spotify_playlist_id, spotify_si);
   {% endif %}
+  {% if include.spotify_artist_id %}
+    spotifyArtistLinkSet(canonical_url, query_params, medium, spotify_artist_id, spotify_si);
+  {% endif %}
   {% if include.ytmusic_track_id %}
     ytMusicLinkSet(canonical_url, query_params, medium, ytmusic_track_id, ytmusic_list_id);
   {% endif %}
+  {% if include.ytmusic_channel_id %}
+    ytMusicChannelSet(canonical_url, query_params, medium, ytmusic_channel_id);
+  {% endif %}
   {% if include.youtube_video_id %}
     youTubeLinkSet(canonical_url, query_params, medium, youtube_video_id, youtube_list_id);
+  {% endif %}
+  {% if include.youtube_channel_id %}
+    youTubeChannelSet(canonical_url, query_params, medium, youtube_channel_id);
   {% endif %}
   {% if include.apple_link %}
     appleLinkSet(apple_link);
@@ -59,11 +71,20 @@
           {% if include.medium == 'spotify' && include.spotify_playlist_id %}
             openSpotifyPlaylist(spotify_playlist_id, spotify_si);
           {% endif %}
-          {% if include.medium == 'ytmusic' %}
+          {% if include.medium == 'spotify' && include.spotify_artist_id %}
+            openSpotifyArtist(spotify_artist_id, spotify_si);
+          {% endif %}
+          {% if include.medium == 'ytmusic' && include.ytmusic_track_id %}
             openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
           {% endif %}
-          {% if include.medium == 'youtube' %}
+          {% if include.medium == 'ytmusic' && include.ytmusic_channel_id %}
+            openYouTubeMusicChannel(ytmusic_channel_id);
+          {% endif %}
+          {% if include.medium == 'youtube' && include.youtube_video_id %}
             openYouTubeVideo(youtube_video_id, youtube_list_id);
+          {% endif %}
+          {% if include.medium == 'youtube' && include.youtube_channel_id %}
+            openYouTubeChannel(youtube_channel_id);
           {% endif %}
 
             // 2. Track that the app was not opened on iOS devices

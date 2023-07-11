@@ -94,6 +94,30 @@ function openSpotifyPlaylist(playlist_id, si) {
     }
 };
 
+function spotifyArtistLinkSet(base, qs, medium, artist_id, si) {
+    var link = 'https://open.spotify.com/artist/' + artist_id + '?si=' + si;
+    var intent = 'artist/' + artist_id + '?go=1&nd=1';
+    document.getElementById(spotify.intent_id).href = 'intent://' +
+              intent +
+              '#Intent;' +
+              'scheme=spotify;' +
+              'package=com.spotify.music;' +
+              'S.browser_fallback_url=' + fallbackLink(base, qs, 'spotify') + ';' +
+              'end;';
+    linkSet(spotify.link_id, link, 'spotify');
+    if (medium == 'spotify') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openSpotifyArtist(artist_id, si) {
+    // Try open by spotify mobile app
+    if (isMobile.iOS()) {
+        var link = 'spotify://artist/' + artist_id + '?si=' + si;
+        window.location = link;
+    } else {
+        document.getElementById(spotify.intent_id).click();
+    }
+};
+
 function spotifyLinkSet(base, qs, medium, track_id, si, context) {
     var link = 'https://open.spotify.com/track/' + track_id + '?si=' + si;
     var intent = 'track/' + track_id + '?go=1&nd=1';
@@ -125,6 +149,30 @@ function openSpotifyTrack(track_id, si, context) {
     }
 };
 
+function ytMusicChannelSet(base, qs, medium, channel_id) {
+    var link = 'https://music.youtube.com/channel/' + channel_id;
+    var intent = 'music.youtube.com/channel/' + channel_id;
+    document.getElementById(ytmusic.intent_id).href = 'intent://' +
+              intent +
+              '#Intent;' +
+              'scheme=http;' +
+              'package=com.google.android.apps.youtube.music;' +
+              'S.browser_fallback_url=' + fallbackLink(base, qs, 'ytmusic') + ';' +
+              'end;';
+    linkSet(ytmusic.link_id, link, 'ytmusic');
+    if (medium == 'ytmusic') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openYouTubeMusicChannel(channel_id) {
+    // Try open by YouTube Music mobile app
+    if (isMobile.iOS()) {
+        var link = 'youtubemusic://channel/' + channel_id;
+        window.location = link;
+    } else {
+        document.getElementById(ytmusic.intent_id).click();
+    }
+};
+
 function ytMusicLinkSet(base, qs, medium, track_id, list_id) {
     var link = 'https://music.youtube.com/watch?v=' + track_id;
     var intent = 'music.youtube.com/watch?v=' + track_id;
@@ -153,6 +201,30 @@ function openYouTubeMusic(track_id, list_id) {
         window.location = link;
     } else {
         document.getElementById(ytmusic.intent_id).click();
+    }
+};
+
+function youTubeChannelSet(base, qs, medium, channel_id) {
+    var link = 'https://www.youtube.com/channel/' + channel_id;
+    var intent = 'www.youtube.com/channel/' + channel_id;
+    document.getElementById(youtube.intent_id).href = 'intent://' +
+              intent +
+              '#Intent;' +
+              'scheme=https;' +
+              'package=com.google.android.youtube;' +
+              'S.browser_fallback_url=' + fallbackLink(base, qs, 'youtube') + ';' +
+              'end;';
+    linkSet(youtube.link_id, link, 'youtube');
+    if (medium == 'youtube') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openYouTubeChannel(channel_id) {
+    // Try open by YouTube mobile app
+    if (isMobile.iOS()) {
+        var link = 'vnd.youtube://www.youtube.com/channel/' + channel_id;
+        window.location = link;
+    } else {
+        document.getElementById(youtube.intent_id).click();
     }
 };
 
