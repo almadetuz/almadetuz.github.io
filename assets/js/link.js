@@ -35,6 +35,7 @@ var isMobile = {
 };
 
 var event_prop;
+var environment = 'devel';
 
 function deviceKind() {
     if (isMobile.Android()) { return 'android'; }
@@ -62,7 +63,9 @@ function amplitudeClick(button) {
     var click_prop = {
         button: button
     };
-    if (typeof amplitude !== 'undefined') amplitude.track('Click', {...event_prop, ...click_prop});
+    if (environment == 'production' && typeof amplitude !== 'undefined') {
+        amplitude.track('Click', {...event_prop, ...click_prop});
+    }
 }
 
 function linkSet(el_id, link, button) {

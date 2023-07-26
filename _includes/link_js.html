@@ -34,6 +34,7 @@
         device_kind: deviceKind(),
         failed: failed
     };
+    environment = document.location.host.includes("{{ site.host }}") ? "production" : "devel";
 
   {% if include.spotify_track_id %}
     spotifyLinkSet(canonical_url, query_params, medium, spotify_track_id, spotify_si, spotify_context);
@@ -60,32 +61,33 @@
     appleLinkSet(apple_link);
   {% endif %}
 
+  if (environment == 'production') {
     if (failed == 0) {
         if (typeof amplitude !== 'undefined') amplitude.track('PageView', event_prop);
 
-        if (isMobile.any()) {
-          // --> Spotify app in mobile
-          {% if include.medium == 'spotify' && include.spotify_track_id %}
-            openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
-          {% endif %}
-          {% if include.medium == 'spotify' && include.spotify_playlist_id %}
-            openSpotifyPlaylist(spotify_playlist_id, spotify_si);
-          {% endif %}
-          {% if include.medium == 'spotify' && include.spotify_artist_id %}
-            openSpotifyArtist(spotify_artist_id, spotify_si);
-          {% endif %}
-          {% if include.medium == 'ytmusic' && include.ytmusic_track_id %}
-            openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
-          {% endif %}
-          {% if include.medium == 'ytmusic' && include.ytmusic_channel_id %}
-            openYouTubeMusicChannel(ytmusic_channel_id);
-          {% endif %}
-          {% if include.medium == 'youtube' && include.youtube_video_id %}
-            openYouTubeVideo(youtube_video_id, youtube_list_id);
-          {% endif %}
-          {% if include.medium == 'youtube' && include.youtube_channel_id %}
-            openYouTubeChannel(youtube_channel_id);
-          {% endif %}
+        {% if include.deep_link == 'yes' %}
+          if (isMobile.any()) {
+            {% if include.medium == 'spotify' && include.spotify_track_id %}
+              openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
+            {% endif %}
+            {% if include.medium == 'spotify' && include.spotify_playlist_id %}
+              openSpotifyPlaylist(spotify_playlist_id, spotify_si);
+            {% endif %}
+            {% if include.medium == 'spotify' && include.spotify_artist_id %}
+              openSpotifyArtist(spotify_artist_id, spotify_si);
+            {% endif %}
+            {% if include.medium == 'ytmusic' && include.ytmusic_track_id %}
+              openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
+            {% endif %}
+            {% if include.medium == 'ytmusic' && include.ytmusic_channel_id %}
+              openYouTubeMusicChannel(ytmusic_channel_id);
+            {% endif %}
+            {% if include.medium == 'youtube' && include.youtube_video_id %}
+              openYouTubeVideo(youtube_video_id, youtube_list_id);
+            {% endif %}
+            {% if include.medium == 'youtube' && include.youtube_channel_id %}
+              openYouTubeChannel(youtube_channel_id);
+            {% endif %}
 
             // 2. Track that the app was not opened on iOS devices
             if (isMobile.iOS()) {
@@ -93,10 +95,12 @@
                   if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
                 }, 5000);
             }
-        }
+          }
+        {% endif %}
     } else {
         if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
     }
+  }
 
 
 </script>
