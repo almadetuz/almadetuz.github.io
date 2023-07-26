@@ -68,11 +68,24 @@ function amplitudeClick(button) {
     }
 }
 
+function facebookClick(button) {
+    var click_prop = {
+        content_category: 'streaming',
+        content_name: button
+    };
+    if (environment == 'production' && typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', click_prop);
+    }
+}
+
 function linkSet(el_id, link, button) {
     var el_link = document.getElementById(el_id);
     if (el_link) {
         el_link.href = link;
-        el_link.onclick = function(){ amplitudeClick(button) };
+        el_link.onclick = function(){
+            amplitudeClick(button);
+            facebookClick(button);
+        };
     }
 }
 
