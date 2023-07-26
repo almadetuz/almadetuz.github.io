@@ -63,6 +63,16 @@
             </div>
           </div>
           {% endif %}
+          {% if include.spotify_artist %}
+          <div class="row row_play">
+            <hr/>
+            <h3>Más de {{ include.artist_name }}</h3>
+            <div class="col logo_play"><img src="/assets/images/spotify_logo.png"></div>
+            <div class="col button_play">
+              <a id="spotify_artist_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.spotify_artist }}</a>
+            </div>
+          </div>
+          {% endif %}
       </div>
   </div>
   </div>
