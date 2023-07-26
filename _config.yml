@@ -19,6 +19,7 @@ plugins:
 
 
 baseurl: "" # the subpath of your site, e.g. /blog
+host: "www.almadetuz.com"
 url: "https://www.almadetuz.com" # the base hostname & protocol for your site, e.g. http://example.com
 logo: /assets/images/icon.png
 
