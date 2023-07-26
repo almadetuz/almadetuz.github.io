@@ -90,11 +90,11 @@
             {% endif %}
 
             // 2. Track that the app was not opened on iOS devices
-            if (isMobile.iOS()) {
-                setTimeout(() => {
-                  if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
-                }, 5000);
-            }
+            // if (isMobile.iOS()) {
+            //     setTimeout(() => {
+            //       if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
+            //     }, 5000);
+            // }
           }
         {% endif %}
     } else {
