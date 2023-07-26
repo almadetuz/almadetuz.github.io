@@ -1,6 +1,7 @@
 const spotify = {
     intent_id: 'spotify_intent',
-    link_id: 'spotify_link'
+    link_id: 'spotify_link',
+    artist_id: 'spotify_artist_link'
 };
 const ytmusic = {
     intent_id: 'ytmusic_intent',
@@ -66,8 +67,10 @@ function amplitudeClick(button) {
 
 function linkSet(el_id, link, button) {
     var el_link = document.getElementById(el_id);
-    el_link.href = link;
-    el_link.onclick = function(){ amplitudeClick(button) };
+    if (el_link) {
+        el_link.href = link;
+        el_link.onclick = function(){ amplitudeClick(button) };
+    }
 }
 
 function spotifyPlaylistLinkSet(base, qs, medium, playlist_id, si) {
@@ -97,14 +100,18 @@ function openSpotifyPlaylist(playlist_id, si) {
 function spotifyArtistLinkSet(base, qs, medium, artist_id, si) {
     var link = 'https://open.spotify.com/artist/' + artist_id + '?si=' + si;
     var intent = 'artist/' + artist_id + '?go=1&nd=1';
-    document.getElementById(spotify.intent_id).href = 'intent://' +
-              intent +
-              '#Intent;' +
-              'scheme=spotify;' +
-              'package=com.spotify.music;' +
-              'S.browser_fallback_url=' + fallbackLink(base, qs, 'spotify') + ';' +
-              'end;';
+    var el_intent = document.getElementById(spotify.intent_id);
+    if (el_intent) {
+        el_intent.href = 'intent://' +
+                intent +
+                '#Intent;' +
+                'scheme=spotify;' +
+                'package=com.spotify.music;' +
+                'S.browser_fallback_url=' + fallbackLink(base, qs, 'spotify') + ';' +
+                'end;';
+    }
     linkSet(spotify.link_id, link, 'spotify');
+    linkSet(spotify.artist_id, link, 'spotify_artist');
     if (medium == 'spotify') { linkSet(artwork_link_id, link, 'artwork') };
 }
 
