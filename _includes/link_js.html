@@ -10,9 +10,7 @@
     const source = query_params.get('s') || 'other';
     const tag = query_params.get('t');
     const failed = query_params.get('f') || 0;
-    const canonical_url = '{{ include.path }}',
-          campaign = '{{ include.campaign }}',
-          medium = '{{ include.medium }}',
+    const campaign = '{{ include.campaign }}',
           spotify_track_id = '{{ include.spotify_track_id }}',
           spotify_playlist_id = '{{ include.spotify_playlist_id }}',
           spotify_artist_id = '{{ include.spotify_artist_id }}',
@@ -26,8 +24,10 @@
           youtube_channel_id = '{{ include.youtube_channel_id }}',
           apple_link = '{{ include.apple_link }}',
           soundcloud_track_id = '{{ include.soundcloud_track_id }}',
-          soundcloud_channel_id = '{{ include.soundcloud_channel_id }}';
+          soundcloud_artist_id = '{{ include.soundcloud_artist_id }}';
 
+    base = '{{ page.url | absolute_url }}';
+    medium = '{{ include.medium }}';
     event_prop = {
         source: source,
         tag: tag,
@@ -39,68 +39,73 @@
     environment = document.location.host.includes("{{ site.host }}") ? "production" : "devel";
 
   {% if include.spotify_track_id %}
-    spotifyLinkSet(canonical_url, query_params, medium, spotify_track_id, spotify_si, spotify_context);
+    spotifyLinkSet(spotify_track_id, spotify_si, spotify_context);
   {% endif %}
   {% if include.spotify_playlist_id %}
-    spotifyPlaylistLinkSet(canonical_url, query_params, medium, spotify_playlist_id, spotify_si);
+    spotifyPlaylistLinkSet(spotify_playlist_id, spotify_si);
   {% endif %}
   {% if include.spotify_artist_id %}
-    spotifyArtistLinkSet(canonical_url, query_params, medium, spotify_artist_id, spotify_si);
+    spotifyArtistLinkSet(spotify_artist_id, spotify_si);
   {% endif %}
   {% if include.ytmusic_track_id %}
-    ytMusicLinkSet(canonical_url, query_params, medium, ytmusic_track_id, ytmusic_list_id);
+    ytMusicLinkSet(ytmusic_track_id, ytmusic_list_id);
   {% endif %}
   {% if include.ytmusic_channel_id %}
-    ytMusicChannelSet(canonical_url, query_params, medium, ytmusic_channel_id);
+    ytMusicChannelSet(ytmusic_channel_id);
   {% endif %}
   {% if include.youtube_video_id %}
-    youTubeLinkSet(canonical_url, query_params, medium, youtube_video_id, youtube_list_id);
+    youTubeLinkSet(youtube_video_id, youtube_list_id);
   {% endif %}
   {% if include.youtube_channel_id %}
-    youTubeChannelSet(canonical_url, query_params, medium, youtube_channel_id);
+    youTubeChannelSet(youtube_channel_id);
   {% endif %}
   {% if include.apple_link %}
     appleLinkSet(apple_link);
   {% endif %}
   {% if include.soundcloud_track_id %}
-    soundcloudLinkSet(canonical_url, query_params, medium, soundcloud_track_id);
+    soundcloudLinkSet(soundcloud_track_id);
   {% endif %}
-  {% if include.soundcloud_channel_id %}
-    soundcloudChannelSet(canonical_url, query_params, medium, soundcloud_channel_id);
+  {% if include.soundcloud_artist_id %}
+    soundcloudArtistSet(soundcloud_artist_id);
   {% endif %}
 
-  if (environment == 'production') {
     if (failed == 0) {
-        if (typeof amplitude !== 'undefined') amplitude.track('PageView', event_prop);
+        amplitudeEvent('PageView', event_prop);
 
         {% if include.deep_link == 'yes' %}
           if (isMobile.any()) {
-            {% if include.medium == 'spotify' && include.spotify_track_id %}
-              openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
+            {% if include.medium == 'spotify' %}
+              {% if include.spotify_track_id %}
+                openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
+              {% elsif include.spotify_playlist_id %}
+                openSpotifyPlaylist(spotify_playlist_id, spotify_si);
+              {% elsif include.spotify_artist_id %}
+                openSpotifyArtist(spotify_artist_id, spotify_si);
+              {% endif %}
             {% endif %}
-            {% if include.medium == 'spotify' && include.spotify_playlist_id %}
-              openSpotifyPlaylist(spotify_playlist_id, spotify_si);
+
+            {% if include.medium == 'ytmusic' %}
+              {% if include.ytmusic_track_id %}
+                openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
+              {% elsif include.ytmusic_channel_id %}
+                openYouTubeMusicChannel(ytmusic_channel_id);
+              {% endif %}
             {% endif %}
-            {% if include.medium == 'spotify' && include.spotify_artist_id %}
-              openSpotifyArtist(spotify_artist_id, spotify_si);
+
+            {% if include.medium == 'youtube' %}
+              {% if include.youtube_video_id %}
+                openYouTubeVideo(youtube_video_id, youtube_list_id);
+              {% elsif include.youtube_channel_id %}
+                openYouTubeChannel(youtube_channel_id);
+              {% endif %}
             {% endif %}
-            {% if include.medium == 'ytmusic' && include.ytmusic_track_id %}
-              openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
-            {% endif %}
-            {% if include.medium == 'ytmusic' && include.ytmusic_channel_id %}
-              openYouTubeMusicChannel(ytmusic_channel_id);
-            {% endif %}
-            {% if include.medium == 'youtube' && include.youtube_video_id %}
-              openYouTubeVideo(youtube_video_id, youtube_list_id);
-            {% endif %}
-            {% if include.medium == 'youtube' && include.youtube_channel_id %}
-              openYouTubeChannel(youtube_channel_id);
-            {% endif %}
-            {% if include.medium == 'soundcloud' && include.soundcloud_track_id %}
-              openSoundcloudTrack(soundcloud_track_id);
-            {% endif %}
-            {% if include.medium == 'soundcloud' && include.soundcloud_channel_id %}
-              openSoundcloudChannel(soundcloud_channel_id);
+
+            {% if include.medium == 'soundcloud' %}
+              {% if include.soundcloud_track_id %}
+                openSoundcloudTrack(soundcloud_track_id);
+              {% else if include.soundcloud_artist_id %}
+                openSoundcloudArtist(soundcloud_artist_id);
+              {% endif %}
             {% endif %}
 
             // 2. Track that the app was not opened on iOS devices
@@ -112,9 +117,7 @@
           }
         {% endif %}
     } else {
-        if (typeof amplitude !== 'undefined') amplitude.track('AppNotInstalled', event_prop);
+        amplitudeEvent('AppNotInstalled', event_prop);
     }
-  }
-
 
 </script>
