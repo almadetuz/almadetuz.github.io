@@ -24,7 +24,9 @@
           youtube_video_id = '{{ include.youtube_video_id }}',
           youtube_list_id = '{{ include.youtube_list_id | default: "none" }}',
           youtube_channel_id = '{{ include.youtube_channel_id }}',
-          apple_link = '{{ include.apple_link }}';
+          apple_link = '{{ include.apple_link }}',
+          soundcloud_track_id = '{{ include.soundcloud_track_id }}',
+          soundcloud_channel_id = '{{ include.soundcloud_channel_id }}';
 
     event_prop = {
         source: source,
@@ -60,6 +62,12 @@
   {% if include.apple_link %}
     appleLinkSet(apple_link);
   {% endif %}
+  {% if include.soundcloud_track_id %}
+    soundcloudLinkSet(canonical_url, query_params, medium, soundcloud_track_id);
+  {% endif %}
+  {% if include.soundcloud_channel_id %}
+    soundcloudChannelSet(canonical_url, query_params, medium, soundcloud_channel_id);
+  {% endif %}
 
   if (environment == 'production') {
     if (failed == 0) {
@@ -87,6 +95,12 @@
             {% endif %}
             {% if include.medium == 'youtube' && include.youtube_channel_id %}
               openYouTubeChannel(youtube_channel_id);
+            {% endif %}
+            {% if include.medium == 'soundcloud' && include.soundcloud_track_id %}
+              openSoundcloudTrack(soundcloud_track_id);
+            {% endif %}
+            {% if include.medium == 'soundcloud' && include.soundcloud_channel_id %}
+              openSoundcloudChannel(soundcloud_channel_id);
             {% endif %}
 
             // 2. Track that the app was not opened on iOS devices

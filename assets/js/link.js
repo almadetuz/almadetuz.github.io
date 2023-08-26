@@ -14,6 +14,10 @@ const youtube = {
 const apple = {
     link_id: 'apple_link'
 };
+const soundcloud = {
+    intent_id: 'soundcloud_intent',
+    link_id: 'soundcloud_link'
+};
 const artwork_link_id = 'artwork_link';
 
 var isMobile = {
@@ -285,3 +289,51 @@ function openYouTubeVideo(video_id, list_id) {
 function appleLinkSet(link) {
     linkSet(apple.link_id, link, 'apple');
 }
+
+function soundcloudChannelSet(base, qs, medium, channel_id) {
+    var link = 'https://soundcloud.com/' + channel_id;
+    var intent = 'soundcloud.com/' + channel_id;
+    document.getElementById(soundcloud.intent_id).href = 'intent://' +
+              intent +
+              '#Intent;' +
+              'scheme=https;' +
+              'package=com.soundcloud.android;' +
+              'S.browser_fallback_url=' + fallbackLink(base, qs, 'soundcloud') + ';' +
+              'end;';
+    linkSet(soundcloud.link_id, link, 'soundcloud');
+    if (medium == 'soundcloud') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openSoundcloudChannel(channel_id) {
+    // Try open by Soundcloud mobile app
+    if (isMobile.iOS()) {
+        var link = 'soundcloud://' + channel_id;
+        window.location = link;
+    } else {
+        document.getElementById(soundcloud.intent_id).click();
+    }
+};
+
+function soundcloudLinkSet(base, qs, medium, track_id) {
+    var link = 'https://soundcloud.com/' + track_id;
+    var intent = 'soundcloud.com/' + track_id;
+    document.getElementById(soundcloud.intent_id).href = 'intent://' +
+              intent +
+              '#Intent;' +
+              'scheme=https;' +
+              'package=com.soundcloud.android;' +
+              'S.browser_fallback_url=' + fallbackLink(base, qs, 'soundcloud') + ';' +
+              'end;';
+    linkSet(soundcloud.link_id, link, 'soundcloud');
+    if (medium == 'soundcloud') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openSoundcloudTrack(track_id) {
+    // Try open by Soundcloud mobile app
+    if (isMobile.iOS()) {
+        var link = 'soundcloud://' + track_id;
+        window.location = link;
+    } else {
+        document.getElementById(soundcloud.intent_id).click();
+    }
+};
