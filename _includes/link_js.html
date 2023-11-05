@@ -10,6 +10,7 @@
     const source = query_params.get('s') || 'other';
     const tag = query_params.get('t');
     const failed = query_params.get('f') || 0;
+    const deep_link = query_params.get('dl') || 'none';
     const campaign = '{{ include.campaign }}',
           spotify_track_id = '{{ include.spotify_track_id }}',
           spotify_playlist_id = '{{ include.spotify_playlist_id }}',
@@ -37,6 +38,7 @@
         failed: failed
     };
     environment = document.location.host.includes("{{ site.host }}") ? "production" : "devel";
+
 
   {% if include.spotify_track_id %}
     spotifyLinkSet(spotify_track_id, spotify_si, spotify_context);
@@ -74,7 +76,7 @@
 
         {% if include.deep_link == 'yes' %}
           if (isMobile.any()) {
-            {% if include.medium == 'spotify' %}
+            {% if deep_link == 'spotify' %}
               {% if include.spotify_track_id %}
                 openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
               {% elsif include.spotify_playlist_id %}
@@ -84,7 +86,7 @@
               {% endif %}
             {% endif %}
 
-            {% if include.medium == 'ytmusic' %}
+            {% if deep_link == 'ytmusic' %}
               {% if include.ytmusic_track_id %}
                 openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
               {% elsif include.ytmusic_channel_id %}
@@ -92,7 +94,7 @@
               {% endif %}
             {% endif %}
 
-            {% if include.medium == 'youtube' %}
+            {% if deep_link == 'youtube' %}
               {% if include.youtube_video_id %}
                 openYouTubeVideo(youtube_video_id, youtube_list_id);
               {% elsif include.youtube_channel_id %}
@@ -100,7 +102,7 @@
               {% endif %}
             {% endif %}
 
-            {% if include.medium == 'soundcloud' %}
+            {% if deep_link == 'soundcloud' %}
               {% if include.soundcloud_track_id %}
                 openSoundcloudTrack(soundcloud_track_id);
               {% else if include.soundcloud_artist_id %}
