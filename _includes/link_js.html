@@ -76,7 +76,7 @@
 
         {% if include.deep_link == 'yes' %}
           if (isMobile.any()) {
-            {% if deep_link == 'spotify' %}
+            if (deep_link == 'spotify') {
               {% if include.spotify_track_id %}
                 openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
               {% elsif include.spotify_playlist_id %}
@@ -84,31 +84,31 @@
               {% elsif include.spotify_artist_id %}
                 openSpotifyArtist(spotify_artist_id, spotify_si);
               {% endif %}
-            {% endif %}
+            }
 
-            {% if deep_link == 'ytmusic' %}
+            if (deep_link == 'ytmusic') {
               {% if include.ytmusic_track_id %}
                 openYouTubeMusic(ytmusic_track_id, ytmusic_list_id);
               {% elsif include.ytmusic_channel_id %}
                 openYouTubeMusicChannel(ytmusic_channel_id);
               {% endif %}
-            {% endif %}
+            }
 
-            {% if deep_link == 'youtube' %}
+            if (deep_link == 'youtube') {
               {% if include.youtube_video_id %}
                 openYouTubeVideo(youtube_video_id, youtube_list_id);
               {% elsif include.youtube_channel_id %}
                 openYouTubeChannel(youtube_channel_id);
               {% endif %}
-            {% endif %}
+            }
 
-            {% if deep_link == 'soundcloud' %}
+            if (deep_link == 'soundcloud') {
               {% if include.soundcloud_track_id %}
                 openSoundcloudTrack(soundcloud_track_id);
               {% else if include.soundcloud_artist_id %}
                 openSoundcloudArtist(soundcloud_artist_id);
               {% endif %}
-            {% endif %}
+            }
 
             // 2. Track that the app was not opened on iOS devices
             // if (isMobile.iOS()) {
