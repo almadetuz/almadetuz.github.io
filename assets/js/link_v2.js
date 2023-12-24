@@ -247,8 +247,8 @@ function youTubeChannelSet(channel_id) {
         'S.browser_fallback_url=' + link + ';' +
         'end;';
     linkSet(youtube.intent_id, intent, 'youtube');
-    if (isMobile.iOS()) { linkSet(youtube.link_id, link, 'youtube'); }
-                   else { linkSet(youtube.link_id, intent, 'youtube'); }
+    if (isMobile.Android()) { linkSet(youtube.link_id, intent, 'youtube'); }
+                       else { linkSet(youtube.link_id, link, 'youtube'); }
     if (medium == 'youtube') { linkSet(artwork_link_id, link, 'artwork') };
 }
 
