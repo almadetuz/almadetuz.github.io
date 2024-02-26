@@ -66,7 +66,7 @@ function fallbackLink(fallback) {
 }
 
 function amplitudeEvent(event, prop) {
-    if (environment == 'production' && typeof amplitude !== 'undefined') {
+    if (environment == 'production' && typeof(amplitude) !== 'undefined') {
         amplitude.track(event, prop);
     }
 }
@@ -83,15 +83,36 @@ function facebookClick(button) {
         content_category: 'streaming',
         content_name: button
     };
-    if (environment == 'production' && typeof fbq !== 'undefined') {
+    if (environment == 'production' && typeof(fbq) !== 'undefined') {
         fbq('track', 'ViewContent', click_prop);
     }
+}
+
+function googleAdsClick(button, link) {
+    send_to = gtag_send_to[button];
+    var callback = function () {
+        if (typeof(link) != 'undefined') {
+          window.location = link;
+        }
+      };
+    if (environment == 'production' &&
+        typeof(send_to) !== 'undefined' &&
+        typeof(gtag) !== 'undefined') {
+        gtag('event', 'conversion', {
+            'send_to': send_to,
+            'event_callback': callback
+        });
+        return false;
+    }
+    return true;
 }
 
 function iOSClick(link, button) {
     amplitudeClick(button);
     facebookClick(button);
-    window.location = link;
+    if (googleAdsClick(button, link)) {
+        window.location = link;
+    }
 }
 
 function androidClick(el_id) {
@@ -113,6 +134,7 @@ function linkSet(el_id, link, button) {
         el_link.onclick = function(){
             amplitudeClick(button);
             facebookClick(button);
+            return googleAdsClick(button, link);
         };
     }
 }
