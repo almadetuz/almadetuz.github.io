@@ -90,29 +90,20 @@ function facebookClick(button) {
 
 function googleAdsClick(button, link) {
     send_to = gtag_send_to[button];
-    var callback = function () {
-        if (typeof(link) != 'undefined') {
-          window.location = link;
-        }
-      };
     if (environment == 'production' &&
         typeof(send_to) !== 'undefined' &&
         typeof(gtag) !== 'undefined') {
         gtag('event', 'conversion', {
-            'send_to': send_to,
-            'event_callback': callback
+            'send_to': send_to
         });
-        return false;
     }
-    return true;
 }
 
 function iOSClick(link, button) {
     amplitudeClick(button);
     facebookClick(button);
-    if (googleAdsClick(button, link)) {
-        window.location = link;
-    }
+    googleAdsClick(button);
+    window.location = link;
 }
 
 function androidClick(el_id) {
@@ -134,7 +125,7 @@ function linkSet(el_id, link, button) {
         el_link.onclick = function(){
             amplitudeClick(button);
             facebookClick(button);
-            return googleAdsClick(button, link);
+            googleAdsClick(button);
         };
     }
 }
