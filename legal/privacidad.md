@@ -15,6 +15,7 @@ Amanda Tüz, como propietaria del dominio almadetuz.com informa a los usuarios d
 Recogemos sus datos personales en distintas ocasiones:
 
 - Al apuntarte alguno de las actividades culturales que organizamos
+- Al suscribirte a nuestra newsletter
 
 ### 2. ¿Qué información podemos obtener sobre usted? (Derecho de información)
 
@@ -24,11 +25,15 @@ Se le solicitarán los siguientes datos de carácter personal:
 - Nombre
 - Apellidos
 
-con la finalidad de enviar información por correo electrónico de las actividades y eventos organizados por Alma de Tüz
+con la finalidad de:
+
+- Enviar información por correo electrónico de las actividades y eventos organizados por Alma de Tüz
+- Enviar comunicaciones comerciales relacionadas con los servicios de Alma de Tüz.
+- Atender la petición de información y prestación de los servicios ofrecidos.
 
 ### 3. ¿Cómo nos otorgas tu consentimiento para el tratamiento de los datos?
 
-Se entenderá que el usuario acepta las condiciones establecidas en la presente <i>política de privacidad</i> y otorga su consentimiento expreso, inequívoco e informado al tratamiento de sus datos personales por parte del titular de la web de conformidad con lo establecido en el RGPD, si pulsa el botón <strong>ENVIAR</strong> y/o <strong>PUBLICAR COMENTARIO</strong> que se encuentra en los formularios de aportación de datos. Todos los datos personales detallados en el apartado 2, así como cualquier otro dato suministrado por los usuarios que se puedan obtener con ocasión de la cumplimentación de los formularios alojados en la web de Alma de Tüz, serán objeto de tratamiento e incorporados a un fichero automatizado de datos personales titularidad de Amanda Tüz, el cual consta en su registro de actividades correspondiente, quien será el responsable y destinatario de la información.
+Se entenderá que el usuario acepta las condiciones establecidas en la presente <i>política de privacidad</i> y otorga su consentimiento expreso, inequívoco e informado al tratamiento de sus datos personales por parte del titular de la web de conformidad con lo establecido en el RGPD, si pulsa el botón <strong>ENVIAR</strong> que se encuentra en los formularios de aportación de datos. Todos los datos personales detallados en el apartado 2, así como cualquier otro dato suministrado por los usuarios que se puedan obtener con ocasión de la cumplimentación de los formularios alojados en la web de Alma de Tüz, serán objeto de tratamiento e incorporados a un fichero automatizado de datos personales titularidad de Amanda Tüz, el cual consta en su registro de actividades correspondiente, quien será el responsable y destinatario de la información.
 
 Los datos personales recogidos de nuestros usuarios son almacenados por Amanda Tüz, quien garantiza las medidas oportunas de índole técnica y organizativa para prevenir la integridad y seguridad de la información personal aportada. Los datos recabados son los adecuados, pertinentes y no excesivos en relación con el ámbito, las finalidades y servicios determinados, explícitos y legítimos detallados en la presente política de privacidad y recogidos en www.almadetuz.com.
 

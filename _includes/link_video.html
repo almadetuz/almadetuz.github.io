@@ -53,16 +53,6 @@
             </div>
           </div>
           {% endif %}
-          {% if include.cc_year %}
-          <div class="row copyleft">
-            <div class="col text-center">
-              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
-                <img src="/assets/images/by-nc-sa.png" height="16px" style="margin: 0px 6px 0px 0px">
-              </a>
-              <span>Creative Commons - {{ include.cc_year }} - Alma de Tüz Records</span>
-            </div>
-          </div>
-          {% endif %}
           {% if include.spotify_artist %}
           <div class="row row_play">
             <hr/>
@@ -73,6 +63,17 @@
             </div>
           </div>
           {% endif %}
+          <div class="row copyleft">
+            <div class="col text-center">
+              {% if include.cc_year %}
+              <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+                <img src="/assets/images/by-nc-sa.png" height="16px" style="margin: 0px 6px 0px 0px">
+              </a>
+              <span>Creative Commons - {{ include.cc_year }} - Alma de Tüz Records</span><br/>
+              {% endif %}
+              <a href="" data-cc="show-preferencesModal">Preferencias sobre cookies</a>
+            </div>
+          </div>
       </div>
   </div>
   </div>
