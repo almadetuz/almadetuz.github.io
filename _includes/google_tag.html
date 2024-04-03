@@ -1,10 +1,14 @@
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EDCJ0JYP51"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied'
+});
 gtag('js', new Date());
-
 gtag('config', 'G-EDCJ0JYP51');
 gtag('config', 'AW-11456512712');
 const gtag_send_to = {
@@ -12,4 +16,70 @@ const gtag_send_to = {
   'youtube': 'AW-11456512712/Yu-DCN7bnJYZEMiF8tYq',
   'artwork': 'AW-11456512712/8YK2CNLtrJYZEMiF8tYq'
 };
+function gtag_analytics_granted() {
+  gtag('consent', 'update', {
+         'analytics_storage': 'granted'
+  });
+}
+function gtag_analytics_denied() {
+  gtag('consent', 'update', {
+         'analytics_storage': 'denied'
+  });
+}
+function gtag_advertisement_granted() {
+  gtag('consent', 'update', {
+         'ad_user_data': 'granted',
+         'ad_personalization': 'granted',
+         'ad_storage': 'granted'
+  });
+}
+function gtag_advertisement_denied() {
+  gtag('consent', 'update', {
+         'ad_user_data': 'denied',
+         'ad_personalization': 'denied',
+         'ad_storage': 'denied'
+  });
+}
+var gtag_script_added = false;
+function gtag_script_add(){
+  if (gtag_script_added) return;
+  var gtagScript = document.createElement('script');
+  gtagScript.async = true;
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-EDCJ0JYP51';
+
+  var firstScript = document.getElementsByTagName('script')[0];
+  firstScript.parentNode.insertBefore(gtagScript, firstScript);
+  gtag_script_added = true;
+}
+window.addEventListener('cc:onConsent', ({detail}) => {
+  const data = detail.cookie;
+  // console.log('gtag:cc:onConsent: ' + data.categories)
+  if (data.categories.includes("analytics")) {
+    gtag_analytics_granted();
+  }
+  if (data.categories.includes("advertisement")) {
+    gtag_advertisement_granted();
+  }
+  if (data.categories.includes("analytics") || data.categories.includes("advertisement")) {
+    gtag_script_add();
+  }
+});
+window.addEventListener('cc:onChange', ({detail}) => {
+    const data = detail.cookie;
+    // console.log('gtag:cc:onChange: ' + data.categories)
+    if (data.categories.includes("analytics")) {
+      gtag_analytics_granted();
+    } else {
+      gtag_analytics_denied();
+    }
+    if (data.categories.includes("advertisement")) {
+      gtag_advertisement_granted();
+    } else {
+      gtag_advertisement_denied();
+    }
+    if (data.categories.includes("analytics") || data.categories.includes("advertisement")) {
+      gtag_script_add();
+    }
+});
+
 </script>

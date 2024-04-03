@@ -1,0 +1,109 @@
+<!-- Cookie notice
+<script src="/assets/js/cookie.notice.min.js"></script>
+<script src="/assets/js/cookie.notice.config.js"></script>
+-->
+<script src="/assets/js/cookieconsent_v3.js"></script>
+<script>
+/**
+ * All config. options available here:
+ * https://cookieconsent.orestbida.com/reference/configuration-reference.html
+ */
+// console.log('cc:init')
+CookieConsent.run({
+  revision: 1,
+
+  categories: {
+      necessary: {
+          enabled: true,  // this category is enabled by default
+          readOnly: true  // this category cannot be disabled
+      },
+      analytics: {
+        autoClear: {
+          cookies: [
+            { name: /^(_ga)/ },
+            { name: '_gid' },
+            { name: '_gcl_au' },
+            { name: /^(AMP_)/ },
+            { name: /^(AMP_MKTG_)/ }
+          ]
+        }
+      },
+      advertisement: {
+        autoClear: {
+          cookies: [
+            { name: '_fbp' },
+            { name: '_fbc' }
+          ]
+        }
+      }
+  },
+
+  language: {
+      default: 'es',
+      translations: {
+          es: {
+              consentModal: {
+                  title: 'Consentimiento de cookies',
+                  description: 'Uso cookies para saber cuántas personas visitan esta página web y porque puede que hayas llegado hasta aquí por un anuncio de Google, Facebook o Instagram. ' +
+                               'Si las aceptas, me ayudas a entender si los anuncios funcionan y a encontrar más gente como tú. ' +
+                               'Si las rechazas, no pasa nada.',
+                  acceptAllBtn: 'Aceptar',
+                  acceptNecessaryBtn: 'Rechazar',
+                  showPreferencesBtn: 'Preferencias'
+              },
+              preferencesModal: {
+                  title: 'Preferencias sobre cookies',
+                  acceptAllBtn: 'Aceptar todas',
+                  acceptNecessaryBtn: 'Rechazar todas',
+                  savePreferencesBtn: 'Aceptar lo seleccionado',
+                  closeIconLabel: 'Cerrar',
+                  sections: [
+                      {
+                          title: 'Si, uso cookies',
+                          description: 'Internet es un lugar enorme y es dificil que me encuentren, por eso a veces uso anuncios en Google, Facebook o Instagram. ' +
+                                       'No quiero poner anuncios para todo el mundo, sólo a las personas que creo que les puede interesar lo que hago. ' +
+                                       'Si aceptas las cookies, me ayudas a entender si funcionan los anuncios y saber cuánta gente ha llegado al lugar que esperaba llegar, ' +
+                                       'y, lo más importante, encontrar a más personas como tú. ' +
+                                       'Si las rechazas, no te pasará nada malo, todo funcionará igual que si las aceptas.'
+                      },
+                      {
+                          title: 'Cookies necesarias',
+                          description: 'Son las necesarias para guardar qué cookies has seleccionado.',
+                          linkedCategory: 'necessary'
+                      },
+                      {
+                          title: 'Cookies Analíticas',
+                          description: 'Son las que usamos para saber cuántas personas nos visitan y desde dónde. Usamos Amplitude y Google Analytics.',
+                          linkedCategory: 'analytics'
+                      },
+                      {
+                          title: 'Cookies Publicitarias',
+                          description: 'Son las que usamos para informar a Facebook de que has visitado nuestra web y que nos encuentre personas similares a ti.',
+                          linkedCategory: 'advertisement'
+                      },
+                      {
+                          title: 'Política de cookies',
+                          description: 'Para más detalles puedes leer nuestra <a href="/legal/cookies.html">política de cookies</a>'
+                      }
+                  ]
+              }
+          }
+      }
+  },
+
+  guiOptions: {
+    consentModal: {
+        layout: 'box',
+        position: 'top center',
+        flipButtons: false,
+        equalWeightButtons: true
+    },
+    preferencesModal: {
+        layout: 'box',
+        // position: 'left right',
+        flipButtons: false,
+        equalWeightButtons: true
+    }
+  }
+});
+</script>
