@@ -68,9 +68,8 @@
     soundcloudArtistSet(soundcloud_artist_id);
   {% endif %}
 
+    event_to_trigger = 'PageView';
     if (failed == 0) {
-        amplitudeEvent('PageView', event_prop);
-
         {% if include.deep_link == 'yes' %}
           if (isMobile.any()) {
             if (deep_link == 'spotify') {
@@ -116,7 +115,10 @@
           }
         {% endif %}
     } else {
-        amplitudeEvent('AppNotInstalled', event_prop);
+        event_to_trigger = 'AppNotInstalled';
     }
 
+    document.addEventListener("DOMContentLoaded", (event) => {
+        amplitudeEvent(event_to_trigger, event_prop);
+    });
 </script>
