@@ -20,6 +20,7 @@ CookieConsent.run({
       analytics: {
         autoClear: {
           cookies: [
+            { name: /^(_pk)/ },
             { name: /^(_ga)/ },
             { name: '_gid' },
             { name: '_gcl_au' },
