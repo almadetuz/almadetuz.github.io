@@ -1,21 +1,23 @@
 <!-- Amplitude JS -->
 <script type="text/javascript" src="/assets/js/amplitude_v261.js"></script>
 <script type="text/javascript">
+/*
 function amp_analytics_granted() {
   amplitude.setOptOut(false);
 }
 function amp_analytics_denied() {
   amplitude.setOptOut(true);
 }
+*/
 var amp_initialized = false;
 function amp_init(){
   if (amp_initialized) return;
   amplitude.init('7618654ab2f48781a9dc160e6bed4965', undefined, {
     defaultTracking: {
-      sessions: true,
-      pageViews: true,
-      formInteractions: true,
-      fileDownloads: true
+      sessions: false,
+      pageViews: false,
+      formInteractions: false,
+      fileDownloads: false
     },
     trackingOptions: {
       ipAddress: false,
@@ -23,10 +25,13 @@ function amp_init(){
       platform: true
     },
     flushIntervalMillis: 10,
-    flushQueueSize: 1
+    flushQueueSize: 1,
+    disableCookie: true
   });
   amp_initialized = true;
 }
+amp_init();
+/*
 window.addEventListener('cc:onConsent', ({detail}) => {
     const data = detail.cookie;
     // console.log('amp:cc:onConsent: ' + data.categories)
@@ -44,6 +49,7 @@ window.addEventListener('cc:onChange', ({detail}) => {
       amp_analytics_denied();
     }
 });
+*/
 window.addEventListener('pagehide', () => {
   // Set https transport to use sendBeacon API
   amplitude.setTransport('beacon')

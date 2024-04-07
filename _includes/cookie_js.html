@@ -21,11 +21,11 @@ CookieConsent.run({
         autoClear: {
           cookies: [
             { name: /^(_pk)/ },
+            //{ name: /^(AMP_)/ },
+            //{ name: /^(AMP_MKTG_)/ },
             { name: /^(_ga)/ },
             { name: '_gid' },
-            { name: '_gcl_au' },
-            { name: /^(AMP_)/ },
-            { name: /^(AMP_MKTG_)/ }
+            { name: '_gcl_au' }
           ]
         }
       },
@@ -74,12 +74,12 @@ CookieConsent.run({
                       },
                       {
                           title: 'Cookies Analíticas',
-                          description: 'Son las que usamos para saber cuántas personas nos visitan y desde dónde. Usamos Amplitude y Google Analytics.',
+                          description: 'Son las que usamos para saber cuántas personas nos visitan y desde dónde. Usamos Google Analytics.',
                           linkedCategory: 'analytics'
                       },
                       {
                           title: 'Cookies Publicitarias',
-                          description: 'Son las que usamos para informar a Facebook de que has visitado nuestra web y que nos encuentre personas similares a ti.',
+                          description: 'Son las que usamos para informar a Facebook y Google de que has visitado nuestra web y que nos encuentre personas similares a ti.',
                           linkedCategory: 'advertisement'
                       },
                       {
