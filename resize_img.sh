@@ -19,7 +19,8 @@ if [ ! -f $IMG_PATH/$filename ]; then
   exit 2
 fi
 
-base_name=$(basename -- "$filename")
+# base_name=$(basename -- "$filename")
+base_name="$filename"
 extension="${base_name##*.}"
 image="${base_name%.*}"
 
@@ -32,7 +33,7 @@ while (( "$#" )); do
 
 width=$1
 echo "convert -resize ${width}x $IMG_PATH/$filename -quality 90 $IMG_PATH/${image}_${width}.jpg"
-convert -resize ${width}x $IMG_PATH/$filename -quality 90 $IMG_PATH/${image}_${width}.jpg
+convert -resize ${width}x "$IMG_PATH/$filename" -quality 90 "$IMG_PATH/${image}_${width}.jpg"
 
 shift
 
