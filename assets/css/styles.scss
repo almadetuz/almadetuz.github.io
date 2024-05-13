@@ -1,16 +1,35 @@
 ---
 ---
-$bp-thin: 460px;
+$bp-thin: 360px;
 $bp-mobile: 576px; // 630px;
 $bp-tablet: 768px; // 908px;
 $bp-bigtablet: 908px;
 $bp-screen: 1280px;
 $bp-wide: 1800px;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 
+$color-almond: #E6D7C7;
+$color-isabelline: #F9F5F1;
+$color-jasmine: #FADE89;
+$color-auburn-claro: #BA3F3B;
+$color-auburn-semi: #AB3A36;
+$color-auburn: #9A3531;
+$color-auburn-oscuro: #8C2F2C;
+$color-tea-rose: #E7B3B1;
+$color-eerie-black: #212529;
+
+$font-h1-titular: 'Caprasimo';
+$font-h2-subtitular: 'Sorts Mill Goudy';
+$font-title: 'DayDream';
+$font-button-image-title: 'Caprasimo';
+$font-normal: 'Montserrat';
+
+@import "fonts";
+@import "logo";
+@import "form";
 @import "main";
 @import "video";
 @import "carousel";

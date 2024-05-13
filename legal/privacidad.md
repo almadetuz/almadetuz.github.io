@@ -19,7 +19,7 @@ Recogemos sus datos personales en distintas ocasiones:
 
 ### 2. ¿Qué información podemos obtener sobre usted? (Derecho de información)
 
-Se le solicitarán los siguientes datos de carácter personal: 
+Se le solicitarán los siguientes datos de carácter personal:
 
 - Email
 - Nombre
@@ -43,7 +43,7 @@ Para garantizar la protección y mantener la seguridad, integridad y disponibili
 
 Aunque en las transmisiones de datos a través de internet o desde una web no es posible garantizar una protección absoluta contra intrusiones, tanto nosotros como nuestros subcontratistas dedicamos los máximos esfuerzos para mantener las medidas de protección física, electrónica y procedimental con las cuales garantizar la protección de sus datos de acuerdo con las exigencias legales aplicables en esta materia.
 
-Entre las medidas que utilizamos se incluyen las siguientes: 
+Entre las medidas que utilizamos se incluyen las siguientes:
 
 - Limitar el acceso a sus datos únicamente a aquellas personas que deban conocerlos en atención a las tareas que realizan.
 - Transferir en formato cifrado los datos recogidos.
@@ -71,7 +71,7 @@ Una vez finalizada la relación con Alma de Tüz, es decir, cuando el usuario se
 
 ### 8. ¿Cómo puede ejercer los derechos de acceso, rectificación, supresión, limitación, portabilidad de los datos y oposición al tratamiento de Datos de Carácter Personal?
 
-Los usuarios de la web de Alma de Tüz podrán ejercitar los derechos antes detallados reconocidos por el RGPD en cualquier momento y de forma gratuita, mediante  comunicación al correo electrónico: <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a>, Referencia: Protección de Datos de Carácter Personal. 
+Los usuarios de la web de Alma de Tüz podrán ejercitar los derechos antes detallados reconocidos por el RGPD en cualquier momento y de forma gratuita, mediante  comunicación al correo electrónico: <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a>, Referencia: Protección de Datos de Carácter Personal.
 
 Igualmente, le recordamos la posibilidad de dirigir una reclamación ante la Agencia Española de Protección de Datos de Carácter Personal por el tratamiento de sus datos personales realizado por parte de Amanda Tüz.
 
@@ -104,7 +104,7 @@ Puede haber finalidades que estén permitidas en virtud de otras bases jurídica
 
 ## Uso de Cookies
 
-Una cookie es un archivo de texto que un servidor web puede guardar en el disco duro de un equipo para almacenar información sobre el usuario, y sólo puede ser leída por el sitio web que lo envió al equipo. Así como también, cualquier dispositivo de almacenamiento y recuperación de datos en equipos terminales de los destinatarios. 
+Una cookie es un archivo de texto que un servidor web puede guardar en el disco duro de un equipo para almacenar información sobre el usuario, y sólo puede ser leída por el sitio web que lo envió al equipo. Así como también, cualquier dispositivo de almacenamiento y recuperación de datos en equipos terminales de los destinatarios.
 
 El portal <a href="/">www.almadetuz.com</a> utiliza cookies para acceder a información relativa a los usuarios del sitio web, cuyo detalle e información sobre la utilización de las cookies, de forma clara y completa, se encuentran desarrolladas en nuestra <a href="/legal/cookies.html" target="_blank">Política de Cookies</a>, en cumplimiento de lo previsto en el artículo 22.2 de la LSSICE, modificada por el Real Decreto-Ley 13/2012, de 30 de marzo, que traspone al ordenamiento jurídico español la Directiva 2002/58/CE, relativa al tratamiento de los datos personales y a la protección de la intimidad en el sector de las comunicaciones electrónicas.
 

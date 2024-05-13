@@ -48,7 +48,7 @@
             c.integrity = "sha384-K72JbnYMHEqH91wgS6N4hKoziVDD1NnZTRq4Di+VDkZIzCdgkJjxAgNVusP5lZ1E",
             c.crossOrigin = "anonymous",
             c.async = !0,
-            c.src = "https://cdn.amplitude.com/libs/analytics-browser-2.6.1-min.js.gz",
+            c.src = "/assets/js/analytics-browser-2.6.1-min.js",
             c.onload = function() {
                 e.amplitude.runQueuedFunctions || console.log("[Amplitude] Error: could not load SDK")
             };

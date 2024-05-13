@@ -1,0 +1,12 @@
+<div class="col-sm-6 button-image text-center mt-3 mb-3">
+  <a class="url ms-3 me-3" href="{{ include.url | default: '#' }}">
+    <div class="bg-image rounded-4" style="background-image: url('{{ include.image }}')">
+      <div class="title text-start {{ include.title_class }}">
+        {{ include.title }}
+      </div>
+      <div class="icon text-end">
+        <i class="fas {{ include.icon | default: 'fa-chevron-circle-right'}} {{ include.icon_class | default: 'text-soft-white'}}"></i>
+      </div>
+    </div>
+  </a>
+</div>

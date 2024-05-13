@@ -1,5 +1,6 @@
 ---
 title: Dentro (en invierno)
+layout: page
 year: 2021
 ---
 
