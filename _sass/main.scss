@@ -24,11 +24,20 @@ a:hover {
     color: rgba(33, 37, 41, 1);
 }
 
-body {
+body.home {
     font-size: 0.8em;
     color: rgba(221, 221, 221, 1);
     background-color: rgba(33, 37, 41, 1);
     font-family: Montserrat, sans-serif;
+}
+
+body.page {
+  font-size: 0.8em;
+  color: rgba(33, 37, 41, 1);;
+  background-color: white;
+  font-family: Montserrat, sans-serif;
+  max-width: 768px;
+  margin: auto;
 }
 
 body.link {
@@ -40,6 +49,18 @@ body.link {
         font-size: 1em;
     }
 
+}
+
+.bg-dark {
+  background-color: rgba(33, 37, 41, 1);
+}
+
+.bg-blue {
+  background-color: rgba(155, 205, 255, 1);
+}
+
+.bg-yellow {
+  background-color: rgba(253, 255, 162, 1);
 }
 
 .font-tuz {
@@ -91,7 +112,59 @@ p.font-quote {
   }
 }
 
+header {
+  .logo {
+    display: block;
+    padding: 5px;
+  }
+  .logo img {
+      height: 40px;
+  }
 
+  div.title {
+    display: block;
+    padding: 5px;
+    height: 40px;
+  }
+  div.title {
+    h1 {
+      vertical-align: middle;
+    }
+  }
+}
+
+@media screen and (min-width: $bp-bigtablet) {
+  header {
+    .logo img {
+      height: 50px;
+    }
+
+    div.title {
+      height: 50px;
+    }
+  }
+}
+@media screen and (min-width: $bp-screen) {
+  header {
+    .logo img {
+      height: 60px;
+    }
+
+    div.title {
+      height: 60px;
+    }
+  }
+}
+
+
+form.mc-form {
+  .title {
+    font-weight: bold;
+  }
+  .btn {
+    margin: 12px 0px;
+  }
+}
 
 .carousel-indicators [data-bs-target] {
     background-color: #222;

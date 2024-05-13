@@ -1,0 +1,56 @@
+<div class="container {{ include.class }} mb-5 mt-5">
+<div class="row">
+<div class="col">
+
+<form
+action="/u/confirmar.html"
+id="api-signup-form-{{ include.form_id }}"
+class="api_signup"
+novalidate>
+
+<div class="title">
+  {{ include.title }}
+</div>
+
+<div class="mb-3 form-check">
+  <label for="api-signup-email-{{ include.form_id }}" class="form-label">Email</label>
+  <input type="email" name="email" class="form-control" id="api-signup-email-{{ include.form_id }}" required value="">
+  <div class="invalid-feedback">
+    Tienes que poner un email válido, te mandaremos un email de confirmación.
+  </div>
+</div>
+
+<div class="form-check">
+  <input type="checkbox" id="api-signup-privacy-{{ include.form_id }}" name="privacy" class="form-check-input" value="accepted" required>
+  <label class="form-check-label" for="api-signup-privacy-{{ include.form_id }}">
+    He leído y acepto la <a href="/legal/privacidad.md" target="_blank">política de protección de datos</a>.
+  </label>
+  <div class="invalid-feedback mb-3">
+    Tienes que aceptar nuestra política de protección de datos, en cualquier momento te puedes dar de baja con un sólo clic.
+  </div>
+</div>
+
+<button class="btn btn-primary disabled" type="submit" id="api-signup-sumbit-{{ include.form_id }}">
+  <span class="spinner-border spinner-border-sm d-none" id="api-signup-spinner-{{ include.form_id }}" role="status" aria-hidden="true"></span>
+  {{ include.button }}
+</button>
+<div class="invalid-feedback mt-3 mb-3" id="api-signup-error-message-{{ include.form_id }}">
+  {{ include.generic_error_message }}
+</div>
+
+</form>
+
+<div class="legal">
+  Para cumplir con el RGPD (Reglamento General de Protección de Datos) es necesario que leas y aceptes la
+  <a href="/legal/privacidad.md" target="_blank">política de protección de datos</a> de la web.
+  Tus datos serán almacenados en Mailchimp, un proveedor de email marketing que también cumple con el RGPD.
+</div>
+
+
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+FormSignup.add("api-signup", "{{ include.form_id }}", "{{ include.form_activity_code }}");
+</script>

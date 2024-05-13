@@ -1,5 +1,6 @@
 ---
 title: Brillamos por igual
+layout: page
 year: 2022
 ---
 
