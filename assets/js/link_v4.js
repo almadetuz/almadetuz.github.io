@@ -38,10 +38,8 @@ var isMobile = {
     }
 };
 
-var base;
 var medium;
 var event_prop;
-var environment = 'devel';
 
 function deviceKind() {
     if (isMobile.Android()) { return 'android'; }

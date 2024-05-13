@@ -1,8 +1,9 @@
 <!-- Link JS -->
-<script  type="text/javascript" src="/assets/js/link_v4.js"></script>
+<script type="text/javascript" src="/assets/js/link_v4.js"></script>
 
 <!-- Link actions -->
-<script>
+<script type="text/javascript">
+(()=>{
     const query_params = new URLSearchParams(window.location.search);
     const source = query_params.get('s') || 'other';
     const tag = query_params.get('t');
@@ -24,7 +25,6 @@
           soundcloud_track_id = '{{ include.soundcloud_track_id }}',
           soundcloud_artist_id = '{{ include.soundcloud_artist_id }}';
 
-    base = '{{ page.url | absolute_url }}';
     medium = '{{ include.medium }}';
     event_prop = {
         source: source,
@@ -34,8 +34,6 @@
         device_kind: deviceKind(),
         failed: failed
     };
-    environment = document.location.host.includes("{{ site.host }}") ? "production" : "devel";
-
 
   {% if include.spotify_track_id %}
     spotifyLinkSet(spotify_track_id, spotify_si, spotify_context);
@@ -121,4 +119,5 @@
     document.addEventListener("DOMContentLoaded", (event) => {
         amplitudeEvent(event_to_trigger, event_prop);
     });
+})();
 </script>

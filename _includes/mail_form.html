@@ -1,0 +1,51 @@
+<div class="container {{ include.class }} mb-5 mt-5">
+<div class="row">
+<div class="col">
+
+<form
+action="https://almadetuz.us21.list-manage.com/subscribe/post?u=755a8ee1763ec4fdac3272bec&amp;id=e3966d2aab&amp;v_id=275&amp;f_id=0005f4e6f0"
+method="post"
+id="subscribe-form-{{ include.form_id }}"
+name="subscribe-form"
+class="mc-form needs-validation mb-3 mt-3"
+target="_self"
+novalidate>
+
+<div class="title">
+  {{ include.title }}
+</div>
+
+<div class="mb-3">
+  <label for="subscribe-form-email-{{ include.form_id }}" class="form-label">Email</label>
+  <input type="email" name="EMAIL" class="form-control" id="subscribe-form-email-{{ include.form_id }}" required value="">
+  <div class="invalid-feedback">
+    Tienes que poner un email válido, te mandaremos un email de confirmación.
+  </div>
+</div>
+
+<div class="form-check">
+  <input type="checkbox" id="subscribe-form-gdpr-97974-{{ include.form_id }}" name="gdpr[97974]" class="form-check-input" value="Y" required>
+  <label class="form-check-label" for="subscribe-form-gdpr-97974-{{ include.form_id }}">
+    He leído y acepto la <a href="/legal/privacidad.md" target="_blank">política de protección de datos</a>.
+  </label>
+  <div class="invalid-feedback">
+    Tienes que aceptar nuestra política de protección de datos, en cualquier momento te puedes dar de baja con un sólo clic.
+  </div>
+</div>
+
+<div aria-hidden="true" style="position: absolute; left: -5000px;">
+<input type="text" name="b_755a8ee1763ec4fdac3272bec_e3966d2aab" tabindex="-1" value="">
+</div>
+
+<input class="btn btn-primary" type="submit" name="subscribe" id="subscribe-form-sumbit-{{ include.form_id }}" value="{{ include.button }}">
+
+<div class="legal">
+  Para cumplir con el RGPD (Reglamento General de Protección de Datos) es necesario que leas y aceptes la
+  <a href="/legal/privacidad.md" target="_blank">política de protección de datos</a> de la web.
+  Tus datos serán almacenados en Mailchimp, un proveedor de email marketing que también cumple con el RGPD.
+</div>
+
+</form>
+</div>
+</div>
+</div>
