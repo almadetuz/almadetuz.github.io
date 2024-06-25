@@ -6,39 +6,74 @@ layout: page
 {% include block_container_start.html %}
 
 # La música me salvó la vida
-{: .titular .text-center}
+{: .titular .text-start}
 
-## ... y cómo puede ayudarte a ti a sanarte emocionalmente
+## y he encontrado el modo de compartir contigo algo que te puede ayudar
 {: .subtitular .text-end}
 
 {% include block_container_end.html %}
 {% include block_container_start.html %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget interdum orci. Donec congue eget tortor quis porta. Ut malesuada libero sit amet auctor faucibus. Nullam placerat nulla nec risus facilisis auctor. Donec accumsan est finibus nisl sodales, a cursus nisi dapibus. Donec interdum nisl odio, id condimentum turpis maximus vitae. Proin accumsan sem vitae libero pretium suscipit.
+![Amanda](/assets/images/amanda_foto_home.jpg){: .img-left }
+Me llamo Amanda. 
 
-{% include block_container_next.html %}
+Soy musicóloga, arteterapeuta, docente y cantora.
 
-Suspendisse et mollis ex, eu cursus nulla. Nullam felis lorem, finibus quis nunc id, tristique pharetra felis. Sed non odio mattis, tempor odio sit amet, fermentum nibh. Sed auctor, dolor et varius venenatis, purus orci ultricies ipsum, vel rhoncus metus turpis nec ex. Aenean pharetra finibus magna, fermentum vestibulum ex euismod vel. Vestibulum vestibulum orci in lectus tincidunt pellentesque sed non ex. Cras dui mauris, sollicitudin non pellentesque nec, rutrum eu metus. Sed porta tempor justo ut malesuada.
+Ayudo a las personas a **encontrar su propia voz** a través de la **música**, el **cuerpo** y el **arte**.
+
+Llevo muchos años cantándome y viviendo experiencias en mi propio cuerpo que me ayudan a sentirme más **segura**, más **consciente** y más **creativa** y desde hace un tiempo lo quiero compartir con el mundo.
+
+Me gusta trabajar desde la cercanía, la presencia, lo íntimo. \\
+Para mí es importante que las **experiencias** sean **vivenciales** para poderlas integrar.
 
 {% include block_container_end.html %}
-{% include mail_form.html
-   title="Darse de alta es un clic y darse de baja también"
-   button="Suscribirme"
-   class="bg-blue"
-   form_id=1
-%}
 {% include block_container_start.html %}
 
-Vivamus laoreet non quam nec posuere. Pellentesque cursus non nibh sit amet euismod. Aenean euismod nisi at orci volutpat scelerisque. Donec vitae faucibus leo, ac pellentesque sapien. Vestibulum eget ipsum velit. Phasellus erat tellus, efficitur non scelerisque at, condimentum sed dui. Aenean non placerat quam. Sed consequat ante vitae erat pretium molestie.
+**Esto no le sirve a todo el mundo**, obvio, hay quien prefiere la comodidad del online, que yo también he probado, claro, pero no he sentido que me ayudaran igual, porque no se crea la misma atmósfera, esa que es tan necesaria para mover la emoción.
 
-{% include block_container_next.html %}
+Empecé compartiendo mis canciones al mundo en 2018 con **Magara** (aunque llevaba escribiendo desde mucho antes, yo también sentía bloqueos y miedos) y después con mi actual proyecto **Alma de Tüz**, pero déjame,
 
-Nunc sed lacus libero. Sed malesuada eleifend interdum. Phasellus consectetur tempus mauris quis condimentum. Maecenas sit amet sapien a odio pellentesque fringilla vel non dolor. Etiam sed nisl ipsum. Vestibulum porttitor vulputate sodales. Curabitur blandit eget diam vitae malesuada. Nulla laoreet venenatis quam, sit amet cursus tellus commodo sit amet.
+déjame que te cuente un cuento…
+
+La primera vez que leí la palabra **Tüz** yo estaba pasando por uno de los momentos más complejos y duros de mi vida.
+
+En esos días, paseando con una amiga por la ciudad por donde vivía entonces, nos paramos en una librería, ella entró y me hizo esperar fuera. Me había comprado un libro que, según ella, era uno de los de “tener de cabecera”, una “biblia” para el trabajo interior femenino.
+
+Yo no tenía mucha esperanza de nada en aquel momento tan gris, la verdad… la vida me había golpeado durante varias veces seguidas y pese a mi tenacidad y resistencias innatas, sentía que mi embarcación zozobraba con insistencia y que poco se podía hacer.
+
+Pero también es cierto que siempre he sido “bien mandada” y que si mi amiga, que me quería bien, me recomendaba la lectura de aquel grueso libro, no iba a ser yo una desagradecida.
+
+Así que al llegar a casa, abrí al azar una de las más de 700 páginas y apareció ante mí un poemita...
+
+“Eso es lo que tengo...\\
+Poemas\\
+Grandes muslos\\
+Pequeñas tetas\\
+y\\
+Muchísimo amor”
+{: .text-center}
+
+[Ntozake Shange]
+{: .nomargin .text-end}
+
+Me quedé atónita y comencé a llorar desconsolada. Era una descripción perfecta de lo que yo sentía que era en aquel preciso momento.\\
+Así que abrí mi cuaderno, y apunté:
+
+Abril de 2006.\\
+Mujeres que corren con los Lobos.\\
+Clarissa Pinkola Estés.
+{: .text-end}
+
+Cada día me sentaba a devorar las páginas de este libro que me hacía llorar y reír, asombrarme y asustarme, deseaba dejar de leerlo y sin embargo seguía subrayando y apuntando en mi cuaderno fragmentos enteros de los cuentos que me hacían tanto bien. 
+
+Estaba **abriendo los ojos a mi interior** por primera vez en mi vida. 
 
 {% include block_container_end.html %}
+
 {% include mail_form.html
-   title="Es un email a la semana con historias personales sobre cómo la música puede ayudarte a sanar y actividades que organizo con amor"
-   button="Suscribirme"
-   class="bg-yellow"
-   form_id=2
+   title="Infusiones de Tüz"
+   subtitle="Si quieres saber lo que significa Tüz y descubrir el final de la historia, deja tu email y te lo cuento"
+   button="Descubrir el Tüz"
+   class="bg-blue"
+   form_id=1
 %}
