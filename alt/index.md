@@ -23,7 +23,7 @@ Ayudo a las personas a **encontrar su propia voz** a través de la **música**, 
 
 Llevo muchos años cantándome y viviendo experiencias en mi propio cuerpo que me ayudan a sentirme más **segura**, más **consciente** y más **creativa** y desde hace un tiempo lo quiero compartir con el mundo.
 
-Me gusta trabajar desde la cercanía, la presencia, lo íntimo. \\
+Me gusta trabajar desde la cercanía, la presencia y lo íntimo. \\
 Para mí es importante que las **experiencias** sean **vivenciales** para poderlas integrar.
 
 {% include block_container_end.html %}
