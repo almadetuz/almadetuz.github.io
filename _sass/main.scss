@@ -6,6 +6,23 @@
   --bs-aspect-ratio: calc(91 / 64 * 100%);
 }
 
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #{$color-auburn-claro}; // claro
+  --bs-btn-border-color: #{$color-auburn-claro}; // claro
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #{$color-auburn-semi}; // semi
+  --bs-btn-hover-border-color: #{$color-auburn}; // normal
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #{$color-auburn}; // normal
+  --bs-btn-active-border-color: #{$color-auburn-oscuro}; // oscuro
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #{$color-auburn-claro}; // claro
+  --bs-btn-disabled-border-color: #{$color-auburn-claro}; // claro
+}
+
 a {
     color: #BF3D45;
     text-decoration: none;
@@ -24,15 +41,20 @@ a:hover {
     color: rgba(33, 37, 41, 1);
 }
 
+body {
+    color: $color-eerie-black;
+    background-color: $color-isabelline;
+}
+
 body.home {
-    color: rgba(221, 221, 221, 1);
-    background-color: rgba(33, 37, 41, 1);
+    // color: rgba(221, 221, 221, 1);
+    // background-color: rgba(33, 37, 41, 1);
     font-family: Montserrat, sans-serif;
 }
 
 body.page {
-  color: rgba(33, 37, 41, 1);;
-  background-color: white;
+  //color: rgba(33, 37, 41, 1);;
+  //background-color: white;
   font-family: Montserrat, sans-serif;
   max-width: 920px;
   margin: auto;
@@ -50,7 +72,23 @@ body.link {
 }
 
 h1 {
+  font-size: 32px;
   margin-top: 10px;
+}
+@media screen and (min-width: $bp-tablet) {
+  h1 {
+    font-size: 40px;
+  }
+}
+
+h2 {
+  font-size: 26px;
+  margin-top: 10px;
+}
+@media screen and (min-width: $bp-tablet) {
+  h2 {
+    font-size: 32px;
+  }
 }
 
 p {
@@ -59,26 +97,64 @@ p {
 
 }
 
-img.img-left {
+h1.titular {
+  font-family: $font-h1-titular;
+}
+
+.titular {
+  // margin-top: 30px;
+}
+
+.subtitular{
+  margin-bottom: 30px;
+}
+
+h2.subtitular {
+  font-family: $font-h2-subtitular;
+}
+
+img.img-left, img.img-right,
+img.img-center, img.img-center-320, img.img-center-480, img.img-center-640 {
   display: block;
-  padding: 10px 0px;
+  width: 100%;
   margin: auto;
+  border-radius: var(--bs-border-radius);
+  // padding: 10px 0px;
 }
 
 @media screen and (min-width: $bp-thin) {
-  img.img-left {
-    float: left;
-    padding: 0px 20px 0px 0px;
-    width: 155px;
+  img.img-left, img.img-right,
+  img.img-center, img.img-center-320, img.img-center-480, img.img-center-640 {
+      // width: 155px;
   }
 }
 @media screen and (min-width: $bp-mobile) {
   img.img-left {
     width: 216px;
+    float: left;
+    margin: 10px 20px 10px 0px;
+  }
+}
+@media screen and (min-width: $bp-mobile) {
+  img.img-right {
+    width: 216px;
+    float: right;
+    margin: 10px 0px 10px 20px;
+  }
+}
+@media screen and (min-width: $bp-mobile) {
+  img.img-center-320 {
+    width: 320px;
+  }
+  img.img-center-480 {
+    width: 480px;
+  }
+  img.img-center-640 {
+    width: 640px;
   }
 }
 @media screen and (min-width: $bp-tablet) {
-  img.img-left {
+  img.img-left, img.img-right {
     width: 300px;
   }
 }
@@ -88,13 +164,18 @@ img.img-left {
   background-color: rgba(33, 37, 41, 1);
 }
 
-.bg-blue {
-  background-color: rgba(155, 205, 255, 1);
+.bg-rose {
+  background-color: $color-tea-rose;
 }
 
 .bg-yellow {
   background-color: rgba(253, 255, 162, 1);
 }
+
+.bg-white {
+  background-color: rgba(255, 255, 255, 1);
+}
+
 
 .font-tuz {
     font-family: 'Walter Turncoat', cursive;
@@ -142,100 +223,6 @@ p.font-quote {
   }
   #contact .social-networks-icons i {
     padding: 0px 10px;
-  }
-}
-
-header {
-  .logo {
-    display: block;
-    padding: 2px;
-    margin: auto;
-    text-align: center;
-  }
-  .logo img {
-      height: 40px;
-  }
-
-  div.title {
-    display: block;
-    padding: 2px;
-    text-align: center;
-    line-height: 40px;
-    height: 40px;
-  }
-  div.title {
-    span {
-      vertical-align: middle;
-      font-size: 1.5em;
-      font-weight: 500;
-      margin: 0px;
-    }
-  }
-}
-
-@media screen and (min-width: $bp-thin) {
-  header {
-    .logo {
-      padding: 10px;
-      float: left;
-    }
-    .logo img {
-      height: 50px;
-    }
-
-    div.title {
-      padding: 10px;
-      text-align: left;
-      line-height: 50px;
-      height: 50px;
-    }
-
-    div.title {
-      span {
-        margin: 0px 0px 0px 10px;
-      }
-    }
-  }
-}
-@media screen and (min-width: $bp-bigtablet) {
-  header {
-    .logo img {
-      height: 60px;
-    }
-
-    div.title {
-      line-height: 60px;
-      height: 60px;
-    }
-
-    div.title {
-      span {
-        font-size: 2em;
-      }
-    }
-  }
-}
-
-.titular {
-  margin-top: 30px;
-}
-
-.subtitular{
-  margin-bottom: 30px;
-}
-
-form.mc-form {
-  .title {
-    font-weight: bold;
-  }
-  .subtitle {
-    margin-bottom: 20px;
-  }
-  .btn {
-    margin: 12px 0px 12px auto;
-  }
-  .legal {
-    font-size: 0.8em;
   }
 }
 
@@ -446,3 +433,34 @@ p.listen-also i.fa-bandcamp:hover {
 
 }
 
+.button-image {
+//  display: block;
+//  float: left;
+}
+
+.button-image .bg-image {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  height: 180px;
+}
+
+.button-image .title {
+  font-family: $font-title;
+  font-size: 2em;
+  padding: 15px 5px 10px 15px;
+}
+
+.button-image .icon {
+  position: absolute;
+  bottom: 0px;
+  right: 12px;
+  font-size: 3em;
+}
+
+@media screen and (min-width: $bp-mobile) {
+  .button-image .bg-image {
+//    height: 180px;
+  }
+}

@@ -1,4 +1,4 @@
-<div class="container {{ include.class }} mb-5 mt-5">
+<div class="container-fluid {{ include.class }} mb-4 mt-4 rounded-2">
 <div class="row">
 <div class="col">
 
@@ -41,7 +41,13 @@ novalidate>
 <input type="text" name="b_755a8ee1763ec4fdac3272bec_e3966d2aab" tabindex="-1" value="">
 </div>
 
+<div class="text-center">
 <input class="btn btn-primary" type="submit" name="subscribe" id="subscribe-form-sumbit-{{ include.form_id }}" value="{{ include.button }}">
+</div>
+
+<div class="line-bottom">
+  {{ include.line_bottom }}
+</div>
 
 <div class="legal">
   Para cumplir con el RGPD (Reglamento General de Protección de Datos) es necesario que leas y aceptes la

@@ -11,7 +11,24 @@ $bp-wide: 1800px;
 // @import url('https://fonts.googleapis.com/css2?family=Walter+Turncoat&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 
+$color-almond: #E6D7C7;
+$color-isabelline: #F9F5F1;
+$color-jasmine: #FADE89;
+$color-auburn-claro: #BA3F3B;
+$color-auburn-semi: #AB3A36;
+$color-auburn: #9A3531;
+$color-auburn-oscuro: #8C2F2C;
+$color-tea-rose: #E7B3B1;
+$color-eerie-black: #212529;
+
+$font-h1-titular: 'Caprasimo';
+$font-h2-subtitular: 'Sorts Mill Goudy';
+$font-title: 'DayDream';
+$font-normal: 'Montserrat';
+
 @import "fonts";
+@import "logo";
+@import "form";
 @import "main";
 @import "video";
 @import "carousel";
