@@ -1,6 +1,7 @@
 ---
 title: Confirmar
 layout: page
+sitemap: false
 ---
 
 {% include block_container_start.html %}
