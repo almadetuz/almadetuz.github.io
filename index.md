@@ -135,7 +135,7 @@ Cada día me sentaba a devorar las páginas de este libro que me hacía llorar y
 
 asombrarme y asustarme,
 
-deseaba dejar de leerlo y sin embargo seguía subrayando y apuntando en mi cuaderno fragmentos enteros de los cuentos que me hacían tanto bien. 
+deseaba dejar de leerlo y sin embargo seguía subrayando y apuntando en mi cuaderno fragmentos enteros de los cuentos que me hacían tanto bien.
 
 Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
 
@@ -154,7 +154,7 @@ Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
 
 {% include block_buttons_start.html %}
 {% include button_image.html
-   title="Coser y cantar"
+   title="Coser y Cantar"
    url="/coser-y-cantar/madrid-16-nov"
    image="/assets/images/coser_y_cantar_btn_320.jpg"
    title_class="text-soft-white"

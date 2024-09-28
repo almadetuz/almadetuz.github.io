@@ -446,8 +446,8 @@ Estrenada en el festival _DOC NYC 2022_, el 12 de Noviembre -
 
 {% include block_buttons_start.html %}
 {% include button_image.html
-   title="Coser y cantar"
-   url="/coser-y-cantar-madrid-16-nov"
+   title="Coser y Cantar"
+   url="/coser-y-cantar/madrid-16-nov"
    image="/assets/images/coser_y_cantar_btn_320.jpg"
    title_class="text-soft-white"
 %}

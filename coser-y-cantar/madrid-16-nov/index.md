@@ -65,11 +65,76 @@ y sorprendentemente,\\
 
 {% include block_container_end.html %}
 
+{% include block_container_start.html %}
+
+## Existe un lugar donde<br>tomarse el tiempo para estar<br>conmigo misma
+{: .text-end}
+
+Llevamos días pensando cómo contarte qué significa para nosotras ofrecer un lugar de costura, arteterapia y canto.
+
+Y nos cuesta porque quizás es como querer explicar una canción, un poema o una danza.
+
+Como querer explicar la sonrisa de un bebé,\\
+la belleza no buscada de un atardecer,\\
+el oleaje del mar.
+
+Llevamos días pensando cómo contarte que la costura y el canto son dos de las cosas que más nos gusta hacer
+
+En las que las horas se comprimen y pareciera que el tiempo se detiene,\\
+se encoge,\\
+o quizás se dilata,\\
+quién sabe...
+
+## Ese lugar se llama<br>_“Coser y Cantar”_
+{: .text-start}
+
+_"Coser y Cantar"_ se refiere a algo fácil
+
+Porque aunque, cantar o coser, pueda parecer complejo y que es necesario conocer múltiples técnicas que hay que interiorizar y practicar para poder hacerlo con belleza y eficacia…
+
+Nada más lejos de la realidad
+
+Ambas se rigen por el mismo principio, la unión de lo que un día fue separado
+
+### La creatividad y el amor
+{: .fw-bold .text-center }
+
+El canto requiere tan solo de un cuerpo,\\
+un cuerpo puesto al servicio de la vibración y no hace falta "saber cantar",\\
+no es necesario nada más que la imperiosa necesidad de poner el cuerpo en sonido,\\
+hacer sonar los músculos,\\
+el latido del corazón,\\
+la linfa,\\
+los huesos
+
+No es nuestra pretensión "enseñarte" nada\\
+sino acompañarte a que recuperes esa parte de ti que has dejado relegada.
+
+Estamos seguras de que tú ya sabes cantar,\\
+ya sabes vibrar y no necesitas "aprender" nada
+
+### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla.
+{: .fw-bold .text-center }
+
+Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos un pequeño recordatorio de por dónde era para recuperar aquello que nos pertenece
+
+{% include block_container_end.html %}
+
+{% include mail_form.html
+   title="Coser y Cantar: Hilando vida"
+   subtitle="Sábado 19 Octubre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
+   button="Quiero estar"
+   class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
+   form_id=1
+%}
+
 {% include block_container_start.html
    class_bg="bg-white"
 %}
 
-![Isabel](/assets/images/amanda_foto_alas_en_mi_480.jpg){: .img-right }
+![Isabel](/assets/images/isabel_foto_carro_madera_480.jpg){: .img-right }
 
 ## _Isabel_
 
@@ -149,72 +214,6 @@ En 2002 fue mi propio sistema inmune el que se vio afectado. Se me quedó hecho 
 
 {% include block_container_start.html %}
 
-## Existe un lugar donde<br>tomarse el tiempo para estar<br>conmigo misma
-{: .text-end}
-
-Llevamos días pensando cómo contarte qué significa para nosotras ofrecer un lugar de costura, arteterapia y canto.
-
-Y nos cuesta porque quizás es como querer explicar una canción, un poema o una danza.
-
-Como querer explicar la sonrisa de un bebé,\\
-la belleza no buscada de un atardecer,\\
-el oleaje del mar.
-
-Llevamos días pensando cómo contarte que la costura y el canto son dos de las cosas que más nos gusta hacer
-
-En las que las horas se comprimen y pareciera que el tiempo se detiene,\\
-se encoge,\\
-o quizás se dilata,\\
-quién sabe...
-
-## Ese lugar se llama<br>_“Coser y cantar”_
-{: .text-start}
-
-Coser y cantar se refiere a algo fácil
-
-Porque aunque, cantar o coser, pueda parecer complejo y que es necesario conocer múltiples técnicas que hay que interiorizar y practicar para poder hacerlo con belleza y eficacia…
-
-Nada más lejos de la realidad
-
-Ambas se rigen por el mismo principio, la unión de lo que un día fue separado
-
-### La creatividad y el amor
-{: .fw-bold .text-center }
-
-El canto requiere tan solo de un cuerpo,\\
-un cuerpo puesto al servicio de la vibración y no hace falta "saber cantar",\\
-no es necesario nada más que la imperiosa necesidad de poner el cuerpo en sonido,\\
-hacer sonar los músculos,\\
-el latido del corazón,\\
-la linfa,\\
-los huesos
-
-No es nuestra pretensión "enseñarte" nada\\
-sino acompañarte a que recuperes esa parte de ti que has dejado relegada.
-
-Estamos seguras de que tú ya sabes cantar,\\
-ya sabes vibrar y no necesitas "aprender" nada
-
-### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla.
-{: .fw-bold .text-center }
-
-Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos un pequeño recordatorio de por dónde era para recuperar aquello que nos pertenece
-
-{% include block_container_end.html %}
-
-{% include mail_form.html
-   title="Coser y cantar: Hilando vida"
-   subtitle="Sábado 19 Octubre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
-   button="Quiero estar"
-   class="bg-rose"
-   audience_id="3a937e7b10"
-   gdpr_id="98105"
-   form_id=1
-%}
-
-
-{% include block_container_start.html %}
-
 Coser es mirar el presente y reconocer cada puntada, cada nudo, cada remate, cada decisión.
 
 Es tener la certeza de que la vida es un entramado de memorias,\\
@@ -261,7 +260,7 @@ risas y llantos.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y cantar: Hilando vida<br>es en Madrid, el Sábado 19 de Octubre de 2024"
+   title="Coser y Cantar: Hilando vida<br>es en Madrid, el Sábado 19 de Octubre de 2024"
    subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas como máximo.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos enviarte la ficha de inscripción."
    button="Quiero ir"
    class="bg-rose"
@@ -311,7 +310,7 @@ que sea un _“Coser y Cantar”_.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y cantar: Hilando vida<br>es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión"
+   title="Coser y Cantar: Hilando vida<br>es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión"
    subtitle="Si has leído hasta aquí seguramente es porque algo te ha resonado.<br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para recibir la ficha de inscripción o para avisarte de otra edición que organicemos si ya está llena."
    button="Voy a tener suerte"
    class="bg-rose"
@@ -325,8 +324,6 @@ que sea un _“Coser y Cantar”_.
 Bueno,\\
 ahora vamos con los detalles para las que necesitan tenerlo todo controlado,\\
 un poco como nosotras.
-
-TODO: Más descripción de que va a pasar en el espacio
 
 {% include block_container_end.html %}
 
@@ -403,7 +400,7 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y cantar: Hilando vida<br>Sólo necesitas poner tu email para empezar el viaje"
+   title="Coser y Cantar: Hilando vida<br>Sólo necesitas poner tu email para empezar el viaje"
    subtitle="Si todo te encaja, y el Sábado 19 de Octubre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
    button="Todo me encaja"
    class="bg-rose"
@@ -515,7 +512,7 @@ _“A mis padres, valientes, que emigraron en busca de algo nuevo, les agradezco
 
 {% include mail_form.html
    title="Y esto es todo"
-   subtitle="Déjanos tu email y nosotras te mandaremos la ficha de inscripción a “Coser y cantar: Hilando vida”"
+   subtitle="Déjanos tu email y nosotras te mandaremos la ficha de inscripción a “Coser y Cantar: Hilando vida”"
    button="Quiero apuntarme"
    class="bg-rose"
    audience_id="3a937e7b10"
