@@ -1,9 +1,9 @@
 ---
-title: Coser y cantar
+title: Coser y Cantar
 layout: page
 ---
 
-{% include block_container_start.html 
+{% include block_container_start.html
   class_container="container-fluid"
   class_row="row"
 %}
@@ -21,7 +21,7 @@ Tenemos muchos ejemplos, pero vamos a empezar por contar los nuestros.
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-white"
 %}
 
@@ -51,21 +51,21 @@ fueron palabras y versos de otros que antes ya habían pasado por allí,\\
 fueron pinceladas e imágenes de la oscuridad del alma de otras,\\
 fueron canciones y armonías de otros seres que me hacían **sentir viva de nuevo**.
 
-Mi proceso era respiratorio y cantar era todo un reto, y sin embargo, 
+Mi proceso era respiratorio y cantar era todo un reto, y sin embargo,
 
 ### jamás me dio una crisis de asma cantando
 {: .fw-bold .text-center }
 
-así que empecé a sentir una confianza inaudita en el acto de cantar como un recurso de rescate de mis propios pulmones, 
+así que empecé a sentir una confianza inaudita en el acto de cantar como un recurso de rescate de mis propios pulmones,
 
-cantar me sanaba 
+cantar me sanaba
 
 y sorprendentemente,\\
 **sanaba a quien me escuchaba de cerca**.
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-white"
 %}
 
@@ -106,7 +106,7 @@ Durante unas anginas podía llegar a tejer tres cuartas partes de un jersey para
 
 — Eres un culo inquieto
 
-me decía con cariño la abuela María. La misma que cuando alguna labor no le salía a la primera, pronunciaba su refrán 
+me decía con cariño la abuela María. La misma que cuando alguna labor no le salía a la primera, pronunciaba su refrán
 
 ### _“Hacer y deshacer, todo es quehacer”_
 {: .fw-bold .text-center }
@@ -122,14 +122,14 @@ Como una sabuesa olfateando una pista.
 ### Las fibras están por todos lados
 {: .fw-bold .text-center }
 
-Abrigan, acarician, protegen, sostienen, alegran y decoran nuestras casas, nos distinguen de los demás y nos invitan a crear. 
+Abrigan, acarician, protegen, sostienen, alegran y decoran nuestras casas, nos distinguen de los demás y nos invitan a crear.
 
 La costura y el tapizado son dos artes que vi en casa desde siempre.
 
 Ahora me doy cuenta de cuánto me maravillaba seguir ese proceso en que un paño se podía transformar en una falda o en el revestimiento de un mueble.\\
-¡Me parecía mágico y emocionante! 
+¡Me parecía mágico y emocionante!
 
-La creación textil me sirve para 
+La creación textil me sirve para
 
 ### Reconectar con la materia, con lo natural, con el presente
 {: .fw-bold .text-center }
@@ -154,7 +154,7 @@ En 2002 fue mi propio sistema inmune el que se vio afectado. Se me quedó hecho 
 
 Llevamos días pensando cómo contarte qué significa para nosotras ofrecer un lugar de costura, arteterapia y canto.
 
-Y nos cuesta porque quizás es como querer explicar una canción, un poema o una danza. 
+Y nos cuesta porque quizás es como querer explicar una canción, un poema o una danza.
 
 Como querer explicar la sonrisa de un bebé,\\
 la belleza no buscada de un atardecer,\\
@@ -195,7 +195,7 @@ sino acompañarte a que recuperes esa parte de ti que has dejado relegada.
 Estamos seguras de que tú ya sabes cantar,\\
 ya sabes vibrar y no necesitas "aprender" nada
 
-### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla. 
+### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla.
 {: .fw-bold .text-center }
 
 Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos un pequeño recordatorio de por dónde era para recuperar aquello que nos pertenece
@@ -207,6 +207,8 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
    subtitle="Sábado 19 Octubre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
    button="Quiero estar"
    class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
    form_id=1
 %}
 
@@ -260,9 +262,11 @@ risas y llantos.
 
 {% include mail_form.html
    title="Coser y cantar: Hilando vida<br>es en Madrid, el Sábado 19 de Octubre de 2024"
-   subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas como máximo porque es un lugar íntimo y cuidado.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos enviarte la ficha de inscripción."
+   subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas como máximo.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos enviarte la ficha de inscripción."
    button="Quiero ir"
    class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
    form_id=2
 %}
 
@@ -311,6 +315,8 @@ que sea un _“Coser y Cantar”_.
    subtitle="Si has leído hasta aquí seguramente es porque algo te ha resonado.<br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para recibir la ficha de inscripción o para avisarte de otra edición que organicemos si ya está llena."
    button="Voy a tener suerte"
    class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
    form_id=3
 %}
 
@@ -320,12 +326,24 @@ Bueno,\\
 ahora vamos con los detalles para las que necesitan tenerlo todo controlado,\\
 un poco como nosotras.
 
+TODO: Más descripción de que va a pasar en el espacio
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html
+   class_bg="bg-white"
+%}
+
 Este espacio es para ti si quieres:
 - Honrar las **manos sabias** de esas creadoras que nos precedieron
 - Hacer **vibrar tu cuerpo** y descubrir dónde te lleva su sonido
 - Urdir nuestros relatos con **puntadas del ahora**, del ayer y del infinito
-- Respirar este **presente único** que nos regalamos 
+- Respirar este **presente único** que nos regalamos
 - Celebrar con alegría nuestros **dones personales**
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html %}
 
 **¿Cuánto vale?**\\
 100 euros\\
@@ -340,7 +358,7 @@ En cada sesión habrá un descanso y ofreceremos infusiones y aperitivos.
 **¿Está incluida la comida en el precio?**\\
 No\\
 Puedes traer tu comida de casa, en el lugar hay un espacio para que puedas calentarla y comerla con el resto de personas que hagan lo mismo\\
-Cerca del espacio hay varios restaurantes para comer con las personas que no traigan comida de casa. Vosotras os auto-organizáis para comer por grupos o todas juntas. 
+Cerca del espacio hay varios restaurantes para comer con las personas que no traigan comida de casa. Vosotras os auto-organizáis para comer por grupos o todas juntas.
 
 **¿Es necesario saber cantar?**\\
 Para nada\\
@@ -369,8 +387,7 @@ En una sala iluminada con luz natural y con un jardín al aire libre que podremo
 
 **¿Tengo que comprar algo de material?**\\
 Puedes traer material de costura de casa o retales de ropa vieja, si tienes.\\
-Si no tienes, no es necesario que lo compres, nosotras tenemos material para poder prestarte. Es una de las razones por las que no hay más de 15 plazas disponibles.\\
-Nosotras llevamos retales suficientes para todas las que quieran.
+Si no tienes, no es necesario que lo compres, nosotras tenemos material para poder prestarte.
 
 **¿Tengo que llevar algo de casa?**\\
 Lo que tengas que traer te lo indicamos en detalle cuando te hayamos confirmado la reserva de tu plaza.\\
@@ -383,7 +400,6 @@ Puedes encontrar a otra persona que quiera venir o te ponemos en contacto con al
 Que te apuntamos a la lista de espera, por si hay alguien que haya reservado que al final no puede venir por algún motivo.\\
 Con las personas que se queden fuera nos pondremos en contacto para ver otras fechas en el futuro y repetir la experiencia
 
-
 {% include block_container_end.html %}
 
 {% include mail_form.html
@@ -391,6 +407,8 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
    subtitle="Si todo te encaja, y el Sábado 19 de Octubre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
    button="Todo me encaja"
    class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
    form_id=4
 %}
 
@@ -426,7 +444,7 @@ Lo importante es lo que somos capaces de hacer en el presente y eso sólo lo pod
 {% include block_container_end.html %}
 
 
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-white"
 %}
 **Amanda Fdez. Bartolomé**<br>Valladolid, 1975
@@ -436,7 +454,7 @@ Me recuerdo “ser en la música” desde mi más tierna infancia, abrazada al t
 
 Cantaba, pero sólo para hacer reír a mi hermana pequeña y como salvación inconsciente.
 
-Estudié mucho y me enfoqué rápido hacia la música dentro del sistema oficial, pero el Conservatorio era un lugar hostil que fue cercenando mi creatividad y al llegar a la Universidad para estudiar Historia del Arte y Musicología abandoné el piano y me enfadé con el sistema educativo musical. 
+Estudié mucho y me enfoqué rápido hacia la música dentro del sistema oficial, pero el Conservatorio era un lugar hostil que fue cercenando mi creatividad y al llegar a la Universidad para estudiar Historia del Arte y Musicología abandoné el piano y me enfadé con el sistema educativo musical.
 
 Entonces descubrí que el canto y la voz me brindaban las alas en libertad creativa que necesitaba. Siento que la música es un lugar privilegiado en el que me he sentido siempre a salvo y que además puedo decir sin pudor que me ha salvado la vida varias veces.
 
@@ -458,24 +476,24 @@ Lo que me sigue fascinando es observar el brillo en la mirada cuando nos descubr
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-white"
 %}
 
 **Isabel Llamas Fuentes**<br>Bruselas, 1967
 {: .text-end }
 
-Nací en Bruselas en 1967 donde mis padres emigraron en busca de una vida mejor. 
+Nací en Bruselas en 1967 donde mis padres emigraron en busca de una vida mejor.
 
-Con 12 años me mudo con mi familia a Santander. 
+Con 12 años me mudo con mi familia a Santander.
 
-En 1990 llego a Granada para hacer la carrera de Traducción e Interpretación que termino en 1995. Y salvo breves períodos me quedo en el sur. 
+En 1990 llego a Granada para hacer la carrera de Traducción e Interpretación que termino en 1995. Y salvo breves períodos me quedo en el sur.
 
-Durante 24 años enseño Francés en institutos públicos de educación secundaria. Allí aprendo que la creatividad y la comunicación son herramientas básicas para fortalecer las relaciones y favorecer el desarrollo integral de las personas.  
+Durante 24 años enseño Francés en institutos públicos de educación secundaria. Allí aprendo que la creatividad y la comunicación son herramientas básicas para fortalecer las relaciones y favorecer el desarrollo integral de las personas.
 
 En el 2002 mi salud física empieza a darme señales de que no estoy bien.
 
-Mis necesidades materiales y afectivas están bien cubiertas pero siento que en lo profundo de mí y con las relaciones de pareja me hago daño. Entonces, empiezo a interesarme por las Psicoterapias Humanistas. 
+Mis necesidades materiales y afectivas están bien cubiertas pero siento que en lo profundo de mí y con las relaciones de pareja me hago daño. Entonces, empiezo a interesarme por las Psicoterapias Humanistas.
 
 Inicio un camino de desarrollo personal y de redescubrimiento del potencial creativo que todo niñ@ traemos al nacer. Realizo la formación en la Escuela de Arteterapia El Caminante de Málaga.
 
@@ -500,6 +518,8 @@ _“A mis padres, valientes, que emigraron en busca de algo nuevo, les agradezco
    subtitle="Déjanos tu email y nosotras te mandaremos la ficha de inscripción a “Coser y cantar: Hilando vida”"
    button="Quiero apuntarme"
    class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
    form_id=5
 %}
 

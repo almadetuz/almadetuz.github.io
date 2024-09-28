@@ -356,11 +356,12 @@ p.listen-also,
 p.more-info,
 p.press-info {
   padding-top: 10px;
+  font-size: 1em;
 }
 
 p.listen-also a,
 p.more-info a {
-  font-size: 2em;
+  font-size: 1.6em;
   color: #212529;
   padding-left: 8px;
 }
@@ -453,8 +454,8 @@ p.listen-also i.fa-bandcamp:hover {
 }
 
 .button-image .title {
-  font-family: $font-title;
-  font-size: 2em;
+  font-family: $font-button-image-title;
+  font-size: 1.5em;
   padding: 15px 5px 10px 15px;
 }
 

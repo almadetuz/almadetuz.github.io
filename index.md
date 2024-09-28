@@ -3,7 +3,7 @@ title: Alma de Tüz
 layout: page
 ---
 
-{% include block_container_start.html 
+{% include block_container_start.html
   class_container="container-fluid"
   class_row="row"
 %}
@@ -20,18 +20,20 @@ layout: page
 
 {% include mail_form.html
    title="Infusiones de Tüz"
-   subtitle="De vez en cuando escribo y comparto lo que a mí me ha funcionado<br><br>¿Quieres recibirlo?"
-   button="Descubrir el Tüz"
+   subtitle="De vez en cuando escribo y comparto lo que a mí me ha funcionado<br><br>¿Quieres recibirlas?"
+   button="Sí, quiero recibirlas"
    line_bottom="En los emails que recibirás además te cuento las actividades, conciertos y talleres que organizo.<br>Serás la primera en enterarte.<br>Si esto es un problema para ti, puedes darte de baja cuando quieras."
    class="bg-rose"
    form_id=1
+   context_group_id=2225
+   context_id=4
 %}
 
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-white"
 %}
 
-Me llamo Amanda. 
+Me llamo Amanda.
 
 Soy arteterapeuta, docente, musicóloga y cantora.
 
@@ -41,7 +43,7 @@ Llevo muchos años cantándome y viviendo experiencias en mi propio cuerpo que m
 más **segura**, \\
 más **consciente** y \\
 más **creativa**
- 
+
 Desde hace un tiempo lo quiero compartir con el mundo.
 
 ![Amanda](/assets/images/amanda_foto_desenchufadas_480.jpg){: .img-center-480 }
@@ -90,16 +92,16 @@ me recomendaba la lectura de aquel grueso libro, no iba a ser yo una desagradeci
 Así que al llegar a casa, abrí al azar una de las más de 700 páginas y apareció ante mí un poemita...
 
 {% include block_container_end.html %}
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-rose"
 %}
 
-“Eso es lo que tengo...\\
-Poemas\\
-Grandes muslos\\
-Pequeñas tetas\\
-y\\
-Muchísimo amor”
+_“Eso es lo que tengo..._\\
+_Poemas_\\
+_Grandes muslos_\\
+_Pequeñas tetas_\\
+_y_\\
+_Muchísimo amor_”
 {: .text-center}
 
 [Ntozake Shange]
@@ -117,13 +119,13 @@ Era una descripción perfecta de lo que yo sentía en aquel preciso momento.
 Así que abrí mi cuaderno, y apunté:
 
 {% include block_container_end.html %}
-{% include block_container_start.html 
+{% include block_container_start.html
    class_bg="bg-white"
 %}
 
-Abril de 2006.\\
-Mujeres que corren con los Lobos.\\
-Clarissa Pinkola Estés.
+_Abril de 2006._\\
+_Mujeres que corren con los Lobos._\\
+_Clarissa Pinkola Estés._
 {: .text-end}
 
 {% include block_container_end.html %}
@@ -135,7 +137,7 @@ asombrarme y asustarme,
 
 deseaba dejar de leerlo y sin embargo seguía subrayando y apuntando en mi cuaderno fragmentos enteros de los cuentos que me hacían tanto bien. 
 
-Estaba **abriendo los ojos a mi interior** por primera vez en mi vida. 
+Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
 
 {% include block_container_end.html %}
 
@@ -143,21 +145,23 @@ Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
    title="Infusiones de Tüz"
    subtitle="Si quieres saber lo que significa Tüz y descubrir el final de la historia, deja tu email y te lo cuento"
    button="Descubrir el Tüz"
-   line_bottom="Darse de alta es gratis, darse de baja también"
+   line_bottom="Darse de alta es gratis, darse de baja también."
    class="bg-rose"
    form_id=2
+   context_group_id=2225
+   context_id=2
 %}
 
 {% include block_buttons_start.html %}
 {% include button_image.html
    title="Coser y cantar"
-   url="/coser-y-cantar-madrid-16-nov"
+   url="/coser-y-cantar/madrid-16-nov"
    image="/assets/images/coser_y_cantar_btn_320.jpg"
    title_class="text-soft-white"
 %}
 {% include button_image.html
    title="Mis canciones"
-   url="/musica"
+   url="/mis-canciones"
    image="/assets/images/amanda_btn_la_montana_320.jpg"
    title_class="text-soft-black"
 %}
