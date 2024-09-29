@@ -121,7 +121,7 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Hilando vida"
+   title="Coser y Cantar: Mi vida a puntadas"
    subtitle="Sábado 19 Octubre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
    button="Quiero estar"
    class="bg-rose"
@@ -261,7 +261,7 @@ risas y llantos.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Hilando vida<br>es en Madrid, el Sábado 19 de Octubre de 2024"
+   title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, el Sábado 19 de Octubre de 2024"
    subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas como máximo.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos enviarte la ficha de inscripción."
    button="Quiero ir"
    class="bg-rose"
@@ -311,7 +311,7 @@ que sea un _“Coser y Cantar”_.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Hilando vida<br>es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión"
+   title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión"
    subtitle="Si has leído hasta aquí seguramente es porque algo te ha resonado.<br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para recibir la ficha de inscripción o para avisarte de otra edición que organicemos si ya está llena."
    button="Voy a tener suerte"
    class="bg-rose"
@@ -401,7 +401,7 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Hilando vida<br>Sólo necesitas poner tu email para empezar el viaje"
+   title="Coser y Cantar: Mi vida a puntadas<br>Sólo necesitas poner tu email para empezar el viaje"
    subtitle="Si todo te encaja, y el Sábado 19 de Octubre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
    button="Todo me encaja"
    class="bg-rose"
@@ -513,7 +513,7 @@ _“A mis padres, valientes, que emigraron en busca de algo nuevo, les agradezco
 
 {% include mail_form.html
    title="Y esto es todo"
-   subtitle="Déjanos tu email y nosotras te mandaremos la ficha de inscripción a “Coser y Cantar: Hilando vida”"
+   subtitle="Déjanos tu email y nosotras te mandaremos la ficha de inscripción a Coser y Cantar: Mi vida a puntadas"
    button="Quiero apuntarme"
    class="bg-rose"
    audience_id="3a937e7b10"
