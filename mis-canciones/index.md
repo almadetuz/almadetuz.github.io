@@ -1,6 +1,10 @@
 ---
 title: Mis canciones
 layout: page
+seo_description: Las canciones de Alma de Tüz. Es sencillo, es sólo amor
+seo_image: /assets/images/alma_de_tuz_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
 ---
 
 {% include block_container_start.html
@@ -451,7 +455,7 @@ Estrenada en el festival _DOC NYC 2022_, el 12 de Noviembre -
 {% include button_image.html
    title="Coser y Cantar"
    url="/coser-y-cantar/madrid-16-nov"
-   image="/assets/images/coser_y_cantar_btn_320.jpg"
+   image="/assets/images/coser_y_cantar_320.jpg"
    title_class="text-soft-white"
 %}
 

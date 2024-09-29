@@ -1,6 +1,10 @@
 ---
 title: Coser y Cantar
 layout: page
+seo_description: Mucha gente cree que sólo algunas personas tienen talento para el arte
+seo_image: /assets/images/coser_y_cantar_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
 ---
 
 {% include block_container_start.html

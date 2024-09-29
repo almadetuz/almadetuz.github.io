@@ -19,7 +19,7 @@ sitemap: false
    class_bg="bg-white"
 %}
 
-Necesitamos que confirmes que la dirección de correo electrónico es tuya.
+Necesito que confirmes que la dirección de correo electrónico es tuya.
 
 Para confirmarlo tienes que hacer clic en el enlace del mensaje que acabamos de enviarte.
 

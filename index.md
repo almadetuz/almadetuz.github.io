@@ -1,6 +1,10 @@
 ---
 title: Alma de Tüz
 layout: page
+seo_description: La música me salvó la vida
+seo_image: /assets/images/infusiones_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
 ---
 
 {% include block_container_start.html
@@ -156,7 +160,7 @@ Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
 {% include button_image.html
    title="Coser y Cantar"
    url="/coser-y-cantar/madrid-16-nov"
-   image="/assets/images/coser_y_cantar_btn_320.jpg"
+   image="/assets/images/coser_y_cantar_320.jpg"
    title_class="text-soft-white"
 %}
 {% include button_image.html

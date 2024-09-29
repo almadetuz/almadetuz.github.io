@@ -10,7 +10,7 @@ sitemap: false
   class_row="row"
 %}
 
-# ¡Bienvenida!
+# ¡Hemos recibido tu inscripción!
 {: .titular .text-start}
 
 {% include block_container_end.html %}
@@ -19,15 +19,15 @@ sitemap: false
    class_bg="bg-white"
 %}
 
-Ya estás apuntada a _Coser y Cantar_
+Hemos recibido tu ficha de inscripción, te contestaremos por email lo antes posible
 
 {% include block_container_end.html %}
 
 {% include block_container_start.html %}
 
-Te llegará un email dentro de unos minutos (puede que tarde 30 min) con un enlace para poder enviar la ficha de inscripción.
+En los próximos dias leeremos tu ficha de inscripción.
 
-Si pasados 30 min no te ha llegado nada, comprueba que no lo tienes en la carpeta de Spam.
+Cuando revisemos que todo es correcto, te enviaremos un email con las instrucciones para realizar la reserva de plaza.
 
 Para cualquier pregunta, no dudes en escribirnos a <a href="mailto:coserycantar@almadetuz.com">coserycantar@almadetuz.com</a>, te ayudaremos encantadas.
 
