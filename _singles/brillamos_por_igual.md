@@ -2,6 +2,7 @@
 title: Brillamos por igual
 layout: page
 year: 2022
+sitemap: false
 ---
 
 Descubrí contigo
