@@ -35,7 +35,7 @@ Yo vivía atada a una máquina de oxígeno y tenía un diagnóstico de enfermeda
 
 Esto lo recuerdo de manera casi diaria, quizás porque soy más consciente de que si estoy viva es por mi propia fuerza vital y porque me agarré profundamente al arte, la poesía y la música.
 
-### Crear me cura cuando lo hago desde lo más profundo de mi ser.
+### Crear me cura cuando lo hago desde lo más profundo de mi ser
 {: .fw-bold .text-center }
 
 Es cierto que yo compongo música,
@@ -113,7 +113,7 @@ sino acompañarte a que recuperes esa parte de ti que has dejado relegada.
 Estamos seguras de que tú ya sabes cantar,\\
 ya sabes vibrar y no necesitas "aprender" nada
 
-### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla.
+### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla
 {: .fw-bold .text-center }
 
 Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos un pequeño recordatorio de por dónde era para recuperar aquello que nos pertenece
