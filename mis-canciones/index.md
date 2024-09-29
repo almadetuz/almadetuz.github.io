@@ -14,7 +14,7 @@ layout: page
 ## Y, llegado el momento, publicaré mi primer vinilo
 {: .subtitular .text-end}
 
-Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán parte.
+Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán parte de él.
 
 {% include block_container_end.html %}
 
@@ -169,13 +169,13 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
 
 {% include block_container_start.html %}
 
-Hay voz que requiere de tiempo y espacio para brotar y expresar,\\
-que requiere de la calma y la escucha necesaria para nacer y quizás decir, nombrar, susurrar, gritar o cantar lo que se mueve por dentro.
+La voz requiere de tiempo y espacio para brotar y expresar,\\
+requiere de la calma y la escucha necesaria para nacer y quizás decir, nombrar, susurrar, gritar o cantar lo que se mueve por dentro.
 
-El canto es mi modo para darle voz al cuerpo,\\
+El canto es mi modo de darle voz al cuerpo,\\
 con todas las voces posibles,\\
 como un coro gigante de todas esas partes de mí que tanto tienen que decir,\\
-a las que tanto tengo que dar voz y airear con aliento y vida lo que sienten.
+a las que tanto tengo que dar voz y airear con aliento y vida.
 
 {% include block_container_end.html %}
 
@@ -286,7 +286,8 @@ _"Busco ternura, al florecer"_
 
 ## Luciérnagas
 
-Esta canción es un canto al amor, la lactancia,\\
+Esta canción es un canto al amor,\\
+la lactancia,\\
 el colecho,\\
 el calor humano durante la maternidad consciente,\\
 al abrazo dulce con sabor a almendras,\\
@@ -302,7 +303,7 @@ en un estado de plenitud auténtica.
 En esos momentos nacían dulces melodías que nos arrullaban mutuamente y fueron la inspiración para esta canción.
 
 La lactancia y la maternidad también tienen sombras que muchas veces no se nombran y que queríamos que quedaran presentes
-musicalmente fusionando sonidos más oscuros (didjeridoo) con otros más luminosos (moog) haciendo un colchón sonoro a la voz.
+musicalmente fusionando sonidos más oscuros con otros más luminosos haciendo un colchón sonoro a la voz.
 
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Amanda Fdez. Bartolomé
