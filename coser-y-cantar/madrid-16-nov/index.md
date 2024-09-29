@@ -122,7 +122,7 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas"
-   subtitle="Sábado 19 Octubre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
+   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
    button="Quiero estar"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -261,7 +261,7 @@ risas y llantos.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, el Sábado 19 de Octubre de 2024"
+   title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, el Sábado 16 de Noviembre de 2024"
    subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas como máximo.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos enviarte la ficha de inscripción."
    button="Quiero ir"
    class="bg-rose"
@@ -402,7 +402,7 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas<br>Sólo necesitas poner tu email para empezar el viaje"
-   subtitle="Si todo te encaja, y el Sábado 19 de Octubre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
+   subtitle="Si todo te encaja, y el Sábado 16 de Noviembre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
    button="Todo me encaja"
    class="bg-rose"
    audience_id="3a937e7b10"
