@@ -1,7 +1,7 @@
 ---
 title: Coser y Cantar
 layout: page
-seo_description: Mucha gente cree que sólo algunas personas tienen talento para el arte
+seo_description: Mucha gente cree que solo algunas personas tienen talento para el arte
 seo_image: /assets/images/coser_y_cantar_seo.jpg
 seo_image_width: 1280
 seo_image_height: 720
@@ -12,7 +12,7 @@ seo_image_height: 720
   class_row="row"
 %}
 
-# Mucha gente cree que sólo algunas personas tienen talento para el arte
+# Mucha gente cree que solo algunas personas tienen talento para el arte
 {: .titular .text-start}
 
 ## pero no es así
