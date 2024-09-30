@@ -4,8 +4,14 @@ layout: default
 {% include fb_js.html %}
 {% include google_tag.html %}
 {% include amplitude_js.html %}
-{% include matomo_js.html %}
+{% include scroll_js.html %}
 
 {{ content }}
 
 {% include cookie_js.html %}
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", (event) => {
+    amp_event('PageView', web_event_prop);
+  });
+</script>

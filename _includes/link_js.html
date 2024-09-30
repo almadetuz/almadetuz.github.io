@@ -117,7 +117,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", (event) => {
-        amplitudeEvent(event_to_trigger, event_prop);
+        amplitudeEvent(event_to_trigger, {...web_event_prop,...event_prop});
     });
 })();
 </script>

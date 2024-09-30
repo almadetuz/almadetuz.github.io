@@ -32,6 +32,15 @@ function amp_init(){
   amp_initialized = true;
 }
 amp_init();
+function amp_event(event, prop) {
+  if (environment == 'production' && typeof(amplitude) !== 'undefined') {
+      amplitude.track(event, prop);
+  }
+  if (environment == 'devel') {
+      console.log('amplitude.track: ' + event);
+      console.log(prop);
+  }
+}
 /*
 window.addEventListener('cc:onConsent', ({detail}) => {
     const data = detail.cookie;

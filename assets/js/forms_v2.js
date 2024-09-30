@@ -1,13 +1,14 @@
 class Form {
     static _instances = [];
 
-    constructor(prefix, id, activity_code) {
+    constructor(prefix, id, cb_submit_ok=null, cb_submit_error=null) {
         this.id = id;
-        this.activity_code = activity_code;
         this.form = document.getElementById(prefix + "-form-" + this.id);
         this.btn = document.getElementById(prefix + "-submit-" + this.id);
         this.msg = document.getElementById(prefix + "-error-message-" + this.id);
         this.spinner = document.getElementById(prefix + "-spinner-" + this.id);
+        this.cb_submit_ok = cb_submit_ok;
+        this.cb_submit_error = cb_submit_error;
         this.init();
     }
 
@@ -18,11 +19,15 @@ class Form {
     }
 
     async on_submit_ok(e) {
-        // TO BE DEFINED
+        if (typeof this.cb_submit_ok == 'function') {
+            this.cb_submit_ok(e);
+        }
     }
 
     async on_submit_error(e) {
-        // TO BE DEFINED
+        if (typeof this.cb_submit_error == 'function') {
+            this.cb_submit_error(e);
+        }
     }
 
     async onSubmit(e) {
@@ -56,6 +61,11 @@ class Form {
 
 
 class FormSignup extends Form {
+
+    constructor(prefix, id, activity_code, cb_submit_ok=null, cb_submit_error=null) {
+        super(prefix, id, cb_submit_ok, cb_submit_error);
+        this.activity_code = activity_code;
+    }
 
     async api_call(data) {
         return await api_user_activity_access(this.activity_code, data);
