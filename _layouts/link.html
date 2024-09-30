@@ -1,8 +1,14 @@
 ---
-layout: tracking
+layout: default
 body_class: link
 preference_modal: true
 ---
+{% include fb_js.html %}
+{% include google_tag.html %}
+{% include amplitude_js.html %}
+
 <main>
 {{ content }}
 </main>
+
+{% include cookie_js.html %}

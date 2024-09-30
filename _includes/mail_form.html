@@ -75,5 +75,11 @@ novalidate>
 </div>
 
 <script type="text/javascript">
-  Form.add("subscribe", "{{ include.form_id }}", "{{ include.form_activity_code }}");
+  var form_prop = {form: "subscribe-{{ include.form_id }}"};
+  Form.add("subscribe", "{{ include.form_id }}",
+    (e) => {amp_event('FormSubmit', {...web_event_prop, ...form_prop});},
+    (e) => {amp_event('FormError', {...web_event_prop, ...form_prop});});
+  ScrollEvent.add("subscribe-form-{{ include.form_id }}",
+    (e) => {var scroll_prop = {view_time: e.time / 1000};
+      amp_event('FormView', {...web_event_prop, ...form_prop, ...scroll_prop});})
 </script>
