@@ -271,6 +271,7 @@ risas y llantos.
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
+   status_value="NEW"
    form_id=2
 %}
 
@@ -321,6 +322,7 @@ que sea un _“Coser y Cantar”_.
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
+   status_value="NEW"
    form_id=3
 %}
 
@@ -411,6 +413,7 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
+   status_value="NEW"
    form_id=4
 %}
 
@@ -522,6 +525,7 @@ _“A mis padres, valientes, que emigraron en busca de algo nuevo, les agradezco
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
+   status_value="NEW"
    form_id=5
 %}
 
