@@ -21,7 +21,32 @@ seo_image_height: 720
 ## TODAS tenemos<br>una capacidad innata para <ins>crear</ins>
 {: .subtitular .text-end}
 
-Tenemos muchos ejemplos, pero vamos a empezar por contar los nuestros.
+Si quieres tomarte un tiempo contigo misma y regalarte este espacio por dentro,
+
+abre tu agenda y no lo dudes más,
+
+apúntate aquí.
+
+{% include block_container_end.html %}
+
+{% include mail_form.html
+   title="Coser y Cantar: Mi vida a puntadas"
+   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona."
+   button="Quiero estar"
+   class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
+   status_value="NEW"
+   form_id=1
+%}
+
+{% include block_container_start.html %}
+
+Y si no sabes bien a lo que nos referimos,
+
+déjanos contarte un par de historias reales,
+
+las nuestras.
 
 {% include block_container_end.html %}
 
@@ -127,12 +152,12 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas"
    subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
-   button="Quiero estar"
+   button="Me apunto"
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
    status_value="NEW"
-   form_id=1
+   form_id=2
 %}
 
 {% include block_container_start.html
@@ -272,7 +297,7 @@ risas y llantos.
    audience_id="3a937e7b10"
    gdpr_id="98105"
    status_value="NEW"
-   form_id=2
+   form_id=3
 %}
 
 
@@ -323,7 +348,7 @@ que sea un _“Coser y Cantar”_.
    audience_id="3a937e7b10"
    gdpr_id="98105"
    status_value="NEW"
-   form_id=3
+   form_id=4
 %}
 
 {% include block_container_start.html %}
@@ -331,6 +356,18 @@ que sea un _“Coser y Cantar”_.
 Bueno,\\
 ahora vamos con los detalles para las que necesitan tenerlo todo controlado,\\
 un poco como nosotras.
+
+"Mi vida a puntadas" es un monográfico donde, a través de las herramientas que la creatividad nos ofrece,
+hemos unido nuestras grandes pasiones y aquello que a nosotras nos ayudó a sanar
+
+la arteterapia textil,
+
+la música en vivo,
+
+el canto y la vibración sonora,
+
+y lo sensorial a través del movimiento.
+
 
 {% include block_container_end.html %}
 
@@ -414,7 +451,7 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
    audience_id="3a937e7b10"
    gdpr_id="98105"
    status_value="NEW"
-   form_id=4
+   form_id=5
 %}
 
 {% include block_container_start.html %}
@@ -526,7 +563,7 @@ _“A mis padres, valientes, que emigraron en busca de algo nuevo, les agradezco
    audience_id="3a937e7b10"
    gdpr_id="98105"
    status_value="NEW"
-   form_id=5
+   form_id=6
 %}
 
 
