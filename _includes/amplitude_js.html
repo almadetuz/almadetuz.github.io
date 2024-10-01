@@ -1,37 +1,65 @@
 <!-- Amplitude JS -->
 <script type="text/javascript" src="/assets/js/amplitude_v261.js"></script>
 <script type="text/javascript">
-// We are not collecting personal data with Amplitude, so we don't need cookie and ask for consent
-/*
-function amp_analytics_granted() {
-  amplitude.setOptOut(false);
-}
-function amp_analytics_denied() {
-  amplitude.setOptOut(true);
-}
-*/
-var amp_initialized = false;
-function amp_init(){
-  if (amp_initialized) return;
-  amplitude.init('7618654ab2f48781a9dc160e6bed4965', undefined, {
-    defaultTracking: {
-      sessions: false,
-      pageViews: false,
-      formInteractions: false,
-      fileDownloads: false
-    },
-    trackingOptions: {
-      ipAddress: false,
-      language: true,
-      platform: true
-    },
-    flushIntervalMillis: 10,
-    flushQueueSize: 1,
-    identityStorage: 'none'
+(function () {
+  // We are not collecting personal data with Amplitude, so we don't need cookie and ask for consent
+  /*
+  function amp_analytics_granted() {
+    amplitude.setOptOut(false);
+  }
+  function amp_analytics_denied() {
+    amplitude.setOptOut(true);
+  }
+  */
+  var amp_initialized = false;
+  function amp_init(){
+    if (amp_initialized) return;
+    amplitude.init('7618654ab2f48781a9dc160e6bed4965', undefined, {
+      defaultTracking: {
+        sessions: false,
+        pageViews: false,
+        formInteractions: false,
+        fileDownloads: false
+      },
+      trackingOptions: {
+        ipAddress: false,
+        language: true,
+        platform: true
+      },
+      flushIntervalMillis: 10,
+      flushQueueSize: 1,
+      identityStorage: 'none'
+    });
+    amp_initialized = true;
+  }
+  amp_init();
+  /*
+  window.addEventListener('cc:onConsent', ({detail}) => {
+      const data = detail.cookie;
+      // console.log('amp:cc:onConsent: ' + data.categories)
+      if (data.categories.includes("analytics")) {
+        amp_init();
+      }
   });
-  amp_initialized = true;
-}
-amp_init();
+  window.addEventListener('cc:onChange', ({detail}) => {
+      const data = detail.cookie;
+      // console.log('amp:cc:onChange: ' + data.categories)
+      if (data.categories.includes("analytics")) {
+        amp_init();
+        amp_analytics_granted();
+      } else {
+        amp_analytics_denied();
+      }
+  });
+  */
+  window.addEventListener('pagehide', () => {
+    // Set https transport to use sendBeacon API
+    amplitude.setTransport('beacon')
+    // Send all pending events to server
+    amplitude.flush()
+  });
+})();
+
 function amp_event(event, prop) {
   if (environment == 'production' && typeof(amplitude) !== 'undefined') {
       amplitude.track(event, prop);
@@ -41,29 +69,4 @@ function amp_event(event, prop) {
       console.log(prop);
   }
 }
-/*
-window.addEventListener('cc:onConsent', ({detail}) => {
-    const data = detail.cookie;
-    // console.log('amp:cc:onConsent: ' + data.categories)
-    if (data.categories.includes("analytics")) {
-      amp_init();
-    }
-});
-window.addEventListener('cc:onChange', ({detail}) => {
-    const data = detail.cookie;
-    // console.log('amp:cc:onChange: ' + data.categories)
-    if (data.categories.includes("analytics")) {
-      amp_init();
-      amp_analytics_granted();
-    } else {
-      amp_analytics_denied();
-    }
-});
-*/
-window.addEventListener('pagehide', () => {
-  // Set https transport to use sendBeacon API
-  amplitude.setTransport('beacon')
-  // Send all pending events to server
-  amplitude.flush()
-});
 </script>

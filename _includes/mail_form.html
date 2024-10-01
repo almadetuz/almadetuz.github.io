@@ -81,7 +81,7 @@ novalidate>
     (e) => {amp_event('FormSubmit', {...web_event_prop, ...form_prop});},
     (e) => {amp_event('FormError', {...web_event_prop, ...form_prop});});
   ScrollEvent.add("subscribe-form-{{ include.form_id }}",
-    (e) => {var scroll_prop = {view_time: e.time / 1000};
+    (e) => {var scroll_prop = {view_time: Math.trunc(e.time / 1000)};
       amp_event('FormView', {...web_event_prop, ...form_prop, ...scroll_prop});});
 })();
 </script>
