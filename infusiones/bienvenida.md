@@ -32,3 +32,18 @@ Si pasados 30 min no te ha llegado nada, comprueba que no lo tienes en la carpet
 Para cualquier pregunta, no dudes en escribirme a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a>, te ayudaré encantada.
 
 {% include block_container_end.html %}
+
+{% include block_buttons_start.html %}
+{% include button_image.html
+   title="Coser y Cantar"
+   url="/coser-y-cantar/madrid-16-nov"
+   image="/assets/images/coser_y_cantar_320.jpg"
+   title_class="text-soft-white"
+%}
+{% include button_image.html
+   title="Mis canciones"
+   url="/mis-canciones"
+   image="/assets/images/amanda_btn_la_montana_320.jpg"
+   title_class="text-soft-black"
+%}
+{% include block_buttons_end.html %}
