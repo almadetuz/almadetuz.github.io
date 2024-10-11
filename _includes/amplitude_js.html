@@ -11,10 +11,12 @@
     amplitude.setOptOut(true);
   }
   */
+  const onExitPage = amplitude.getInstance().sendEvents();
   var amp_initialized = false;
   function amp_init(){
     if (amp_initialized) return;
     amplitude.init('7618654ab2f48781a9dc160e6bed4965', undefined, {
+      onExitPage: onExitPage,
       defaultTracking: {
         sessions: false,
         pageViews: false,
@@ -59,7 +61,6 @@
     amplitude.flush()
   });
 })();
-
 function amp_event(event, prop) {
   if (environment == 'production' && typeof(amplitude) !== 'undefined') {
       amplitude.track(event, prop);
