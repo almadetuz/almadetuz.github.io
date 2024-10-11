@@ -1,6 +1,5 @@
 class Form {
     static _instances = [];
-    sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
     constructor(prefix, id, cb_submit_ok=null, cb_submit_error=null) {
         this.id = id;
@@ -35,7 +34,6 @@ class Form {
         this.loading_start();
         if (this.form.checkValidity()) {
             this.on_submit_ok(e);
-            this.sleep(1000);
         } else {
             e.preventDefault();
             this.on_submit_error(e);
