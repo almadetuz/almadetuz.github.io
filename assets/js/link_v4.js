@@ -77,24 +77,11 @@ function amplitudeClick(button) {
 }
 
 function facebookClick(button) {
-    var click_prop = {
-        content_category: 'streaming',
-        content_name: button
-    };
-    if (environment == 'production' && typeof(fbq) !== 'undefined') {
-        fbq('track', 'ViewContent', click_prop);
-    }
+    fb_event('ViewContent', 'streaming', button);
 }
 
 function googleAdsClick(button, link) {
-    send_to = gtag_send_to[button];
-    if (environment == 'production' &&
-        typeof(send_to) !== 'undefined' &&
-        typeof(gtag) !== 'undefined') {
-        gtag('event', 'conversion', {
-            'send_to': send_to
-        });
-    }
+    gads_event('conversion', button);
 }
 
 function iOSClick(link, button) {
