@@ -230,7 +230,7 @@ Este canto nació en una luna llena, tras la performance _"Vosotras, Raíces"_ e
 **Carátula**: Esther Musgo
 
 <iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/66CfIcroDx3IC7BpJI9HSO?utm_source=generator&theme=0"
+        src="https://open.spotify.com/embed/album/6oQMFASEVJXNWMp6xhFhEk?utm_source=generator&theme=0"
         width="100%" height="160" frameBorder="0" allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy">
