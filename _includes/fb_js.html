@@ -1,5 +1,10 @@
 <!-- Facebook Pixel -->
 <script>
+  var fb_consent = false;
+  var fb_queue = [];
+  function fb_log(log){
+    if (environment == 'devel') console.log(log);
+  }
   !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () {
       n.callMethod ?
@@ -11,37 +16,58 @@
     s.parentNode.insertBefore(t, s)
   }(window, document, 'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('consent', 'revoke');
   fbq('init', '1185027625444517');
-  fbq('track', 'PageView');
-  // console.log('fb:init')
+  fb_track('track', 'PageView');
+  fb_log('fb:init');
+  function fb_track() {
+    if (fb_consent) {
+      if (environment == 'production') fbq(...arguments);
+      fb_log('send: ' + [...arguments].join(', '));
+    }
+    else fb_queue.push(arguments);
+  }
+  function fb_flush() {
+    while (fb_queue.length > 0) {
+      var params = fb_queue.shift();
+      if (environment == 'production') fbq(...params);
+      fb_log('flush: ' + [...params].join(', '));
+    }
+  }
+  function fb_grant() {
+    fbq('consent', 'grant');
+    fb_consent = true;
+  }
+  function fb_revoke() {
+    fbq('consent', 'revoke');
+    fb_consent = false;
+  }
   window.addEventListener('cc:onConsent', ({ detail }) => {
     const data = detail.cookie;
-    // console.log('fb:cc:onConsent: ' + data.categories)
+    fb_log('fb:cc:onConsent: ' + data.categories);
     if (data.categories.includes("advertisement")) {
-      fbq('consent', 'grant');
+      fb_grant();
+      fb_flush();
+    } else {
+      fb_revoke();
     }
   });
   window.addEventListener('cc:onChange', ({ detail }) => {
     const data = detail.cookie;
-    // console.log('fb:cc:onChange: ' + data.categories)
+    fb_log('fb:cc:onChange: ' + data.categories);
     if (data.categories.includes("advertisement")) {
-      fbq('consent', 'grant');
+      fb_grant();
+      fb_flush();
     } else {
-      fbq('consent', 'revoke');
+      fb_revoke();
     }
   });
   function fb_event(event, category, name) {
     var event_prop = {};
     if (typeof (category) !== 'undefined') event_prop['content_category'] = category;
     if (typeof (name) !== 'undefined') event_prop['content_name'] = name;
-    if (environment == 'production' && typeof (fbq) !== 'undefined') {
-      fbq('track', event, event_prop);
-    }
-    if (environment == 'devel') {
-      console.log('fb.track: ' + event);
-      if (Object.keys(event_prop).length > 0) console.log(event_prop);
-    }
+    fb_track('track', event, event_prop);
+    fb_log('fb.track: ' + event);
+    if (Object.keys(event_prop).length > 0) fb_log(event_prop);
   }
 </script>
 <!--noscript>
