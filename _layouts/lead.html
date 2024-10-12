@@ -4,20 +4,19 @@ body_class: page
 preference_modal: true
 ---
 <header>
-  {% include header.html %}
+{% include header.html %}
 </header>
 <main>
-  {{ content }}
+{{ content }}
 </main>
 <footer>
-  {% include footer.html %}
+{% include footer.html %}
 </footer>
-
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", (event) => {
-    amp_event('PageView', web_event_prop);
-    fb_event('ViewContent');
-    gads_event('conversion', 'pageview');
+    amp_event('Lead', web_event_prop);
+    fb_event('Lead');
+    gads_event('conversion', 'lead');
   });
 </script>

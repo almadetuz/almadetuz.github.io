@@ -1,13 +1,21 @@
 <!-- Facebook Pixel -->
 <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+  !function(f,b,e,v,n,t,s){
+    if (f.fbq) return;
+    n = f.fbq = function(){
+      n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push=n;
+    n.loaded=!0;
+    n.version='2.0';
+    n.queue=[];
+    t=b.createElement(e);
+    t.async=!0;
+    t.src=v;
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)
+  }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
   fbq('consent', 'revoke');
   fbq('init', '1185027625444517');
   fbq('track', 'PageView');
@@ -28,6 +36,18 @@
       fbq('consent', 'revoke');
     }
   });
+  function fb_event(event, category, name) {
+    var event_prop = {};
+    if (typeof(category) !== 'undefined') event_prop['content_category'] = category;
+    if (typeof(name) !== 'undefined') event_prop['content_name'] = name;
+    if (environment == 'production' && typeof(fbq) !== 'undefined') {
+        fbq('track', event, event_prop);
+    }
+    if (environment == 'devel') {
+        console.log('fb.track: ' + event);
+        if (Object.keys(event_prop).length > 0) console.log(event_prop);
+    }
+  }
 </script>
 <!--noscript>
   With new GDPR regulation we can not add Facebook pixel when no JS is available because we can't get consent from the user without JS

@@ -14,7 +14,11 @@ gtag('config', 'AW-11456512712');
 const gtag_send_to = {
   'spotify': 'AW-11456512712/r0YzCOTRq5YZEMiF8tYq',
   'youtube': 'AW-11456512712/Yu-DCN7bnJYZEMiF8tYq',
-  'artwork': 'AW-11456512712/8YK2CNLtrJYZEMiF8tYq'
+  'artwork': 'AW-11456512712/8YK2CNLtrJYZEMiF8tYq',
+  'suscribe': 'AW-11456512712/vICZCMfp0NwZEMiF8tYq',
+  'pageview': 'AW-11456512712/kB15CKjzyNwZEMiF8tYq',
+  'lead': 'AW-11456512712/aBziCPKU0twZEMiF8tYq',
+  'checkout': 'AW-11456512712/80-wCM2Z1NwZEMiF8tYq'
 };
 function gtag_analytics_granted() {
   gtag('consent', 'update', {
@@ -81,5 +85,18 @@ window.addEventListener('cc:onChange', ({detail}) => {
       gtag_script_add();
     }
 });
+function gads_event(event, conversion) {
+  var send_to = gtag_send_to[conversion];
+  if (environment == 'production' &&
+      typeof(send_to) !== 'undefined' &&
+      typeof(gtag) !== 'undefined') {
+      gtag('event', event, {
+          'send_to': send_to
+      });
+  }
+  if (environment == 'devel') {
+      console.log('gads.track: ' + event + ', conversion: ' + conversion);
+  }
+}
 
 </script>

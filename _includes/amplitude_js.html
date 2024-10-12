@@ -53,11 +53,11 @@
       }
   });
   */
-  window.addEventListener('pagehide', () => {
+  window.addEventListener('pagehide', (e) => {
     // Set https transport to use sendBeacon API
-    amplitude.setTransport('beacon')
+    amplitude.setTransport('beacon');
     // Send all pending events to server
-    amplitude.flush()
+    amplitude.flush();
   });
 })();
 function amp_event(event, prop) {
