@@ -77,11 +77,20 @@ novalidate>
 <script type="text/javascript">
 (function () {
   var form_prop = {form: "subscribe-{{ include.form_id }}"};
+  function FormSubmit(e) {
+    amp_event('FormSubmit', {...web_event_prop, ...form_prop});
+  }
+  function FormView(e) {
+    var scroll_prop = {view_time: Math.trunc(e.time / 1000)};
+    amp_event('FormView', {...web_event_prop, ...form_prop, ...scroll_prop});
+  }
+  function FormError(e) {
+    amp_event('FormError', {...web_event_prop, ...form_prop});
+  }
   Form.add("subscribe", "{{ include.form_id }}",
-    (e) => {amp_event('FormSubmit', {...web_event_prop, ...form_prop});},
-    (e) => {amp_event('FormError', {...web_event_prop, ...form_prop});});
+    (e) => {FormSubmit(e);},
+    (e) => {FormError(e);});
   ScrollEvent.add("subscribe-form-{{ include.form_id }}",
-    (e) => {var scroll_prop = {view_time: Math.trunc(e.time / 1000)};
-      amp_event('FormView', {...web_event_prop, ...form_prop, ...scroll_prop});});
+    (e) => {FormView(e);});
 })();
 </script>

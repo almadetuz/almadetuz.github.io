@@ -1,6 +1,6 @@
 ---
 title: Infusiones de Tüz
-layout: page
+layout: suscribed
 sitemap: false
 ---
 
