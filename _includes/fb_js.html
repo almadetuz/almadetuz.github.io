@@ -36,10 +36,12 @@
   function fb_grant() {
     fbq('consent', 'grant');
     fb_consent = true;
+    amp_event('FbGrant', web_event_prop);
   }
   function fb_revoke() {
     fbq('consent', 'revoke');
     fb_consent = false;
+    amp_event('FbRevoke', web_event_prop);
   }
   window.addEventListener('cc:onConsent', ({ detail }) => {
     const data = detail.cookie;

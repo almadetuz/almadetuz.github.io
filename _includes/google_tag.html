@@ -24,11 +24,13 @@ function gtag_analytics_granted() {
   gtag('consent', 'update', {
          'analytics_storage': 'granted'
   });
+  amp_event('GaGrant', web_event_prop);
 }
 function gtag_analytics_denied() {
   gtag('consent', 'update', {
          'analytics_storage': 'denied'
   });
+  amp_event('GaRevoke', web_event_prop);
 }
 function gtag_advertisement_granted() {
   gtag('consent', 'update', {
