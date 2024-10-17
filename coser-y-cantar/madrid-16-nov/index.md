@@ -21,7 +21,22 @@ seo_image_height: 720
 ## TODAS tenemos<br>una capacidad innata para <ins>crear</ins>
 {: .subtitular .text-end}
 
-Si quieres tomarte un tiempo contigo misma y regalarte este espacio por dentro,
+{% include block_container_end.html %}
+
+{% include block_container_start.html
+   class_bg="bg-white"
+%}
+
+Hemos creado para ti un espacio de arteterapia para la **creatividad**\\
+a través de la escucha del **cuerpo**,\\
+la vibración amable de la **voz**,\\
+el arte de la **costura** y la **música** en vivo
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html %}
+
+Si quieres tomarte un tiempo contigo misma,
 
 abre tu agenda y no lo dudes más,
 
@@ -508,7 +523,7 @@ La docencia no es siempre fácil y por eso necesitaba nutrirme de otras herramie
 
 En el año 2009 tuve a mi primera hija y el encuentro con la maternidad dió un nuevo giro a mi modo de concebir la educación y la vida en general. Comencé a buscar pedagogías alternativas que me acercaran a un modo más holístico de educar, sobre todo para poder entender en qué momento el sistema educativo arrasa la natural pasión por aprender con la que la infancia viene al mundo.
 
-Realicé varias formaciones de pedagogías alternativas enfocadas en la primera infancia, y colaboré durante un año como Madre de Día en una escuela alternativa de Murcia con criaturas de 0-3 años.
+Realicé varias formaciones de pedagogías alternativas enfocadas en la primera infancia, y colaboré durante un año como acompañante en una escuela alternativa de Murcia con criaturas de 0-3 años.
 
 En 2017 creé junto a Kateleine van der Maas, el grupo musical Magara, en el que pude cantar por primera vez mis propias composiciones. Siempre había escrito poemas, como un modo de acercar el cotidiano a la lírica, pero nunca me había atrevido a componer.
 
