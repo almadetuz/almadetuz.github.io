@@ -129,7 +129,7 @@ se encoge,\\
 o quizás se dilata,\\
 quién sabe...
 
-## Ese lugar se llama<br>_“Coser y Cantar”_
+## Ese lugar se llama _“Coser y Cantar”_
 {: .text-start}
 
 _"Coser y Cantar"_ se refiere a algo fácil
