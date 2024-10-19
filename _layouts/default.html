@@ -28,20 +28,31 @@ var environment = document.location.host.includes("{{ site.host }}") ? "producti
 var base = '{{ page.url | absolute_url }}';
 var title = '{{ page.title }}';
 const query_params = new URLSearchParams(window.location.search);
+var last_utm;
+try { last_utm = JSON.parse(localStorage.getItem('adt_last_utms')); }
+catch (error) { last_utm = {}; }
+last_utm = {
+  utm_source: query_params.get('utm_source') || last_utm['utm_source'],
+  utm_medium: query_params.get('utm_medium') || last_utm['utm_medium'],
+  utm_campaign: query_params.get('utm_campaign') || last_utm['utm_campaign'],
+  utm_term: query_params.get('utm_term') || last_utm['utm_term'],
+  utm_content: query_params.get('utm_content') || last_utm['utm_content']
+};
 const web_event_prop = {
   page_title: title,
   page_domain: document.location.hostname,
   page_location: document.location.href,
   page_path: document.location.pathname,
   page_url: base,
-  utm_source: query_params.get('utm_source'),
-  utm_medium: query_params.get('utm_medium'),
-  utm_campaign: query_params.get('utm_campaign'),
-  utm_term: query_params.get('utm_term'),
-  utm_content: query_params.get('utm_content'),
+  utm_source: last_utm['utm_source'],
+  utm_medium: last_utm['utm_medium'],
+  utm_campaign: last_utm['utm_campaign'],
+  utm_term: last_utm['utm_term'],
+  utm_content: last_utm['utm_content'],
   referrer: document.referrer,
   referring_domain: URL.parse(document.referrer)?.hostname || null,
 };
+localStorage.setItem('adt_last_utms', JSON.stringify(last_utm));
 </script>
 
 {% include form_js.html %}
