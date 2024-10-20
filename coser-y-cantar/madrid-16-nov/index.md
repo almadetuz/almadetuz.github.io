@@ -1,7 +1,7 @@
 ---
 title: Coser y Cantar
 layout: page
-seo_description: Mucha gente cree que solo algunas personas tienen talento para el arte
+seo_description: "Espacio de arteterapia creativa: costura, voz, cuerpo y música en vivo"
 seo_image: /assets/images/coser_y_cantar_seo.jpg
 seo_image_width: 1280
 seo_image_height: 720
