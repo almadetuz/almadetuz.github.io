@@ -28,8 +28,8 @@ var environment = document.location.host.includes("{{ site.host }}") ? "producti
 var base = '{{ page.url | absolute_url }}';
 var title = '{{ page.title }}';
 const query_params = new URLSearchParams(window.location.search);
-var last_utm;
-try { last_utm = JSON.parse(localStorage.getItem('adt_last_utms')); }
+var last_utm = {};
+try { last_utm = JSON.parse(localStorage.getItem('adt_last_utms')) || {}; }
 catch (error) { last_utm = {}; }
 last_utm = {
   utm_source: query_params.get('utm_source') || last_utm['utm_source'],
