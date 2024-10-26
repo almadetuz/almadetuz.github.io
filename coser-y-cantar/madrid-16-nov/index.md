@@ -12,14 +12,28 @@ seo_image_height: 720
   class_row="row"
 %}
 
-# Mucha gente cree que solo algunas personas tienen talento para el arte
+# ¿Y si la mejor manera de desconectar fuera redescubrir lo que nuestras abuelas ya sabían?
 {: .titular .text-start}
 
-## pero no es así
-{: .subtitular .text-center}
+{% include block_container_end.html %}
 
-## TODAS tenemos<br>una capacidad innata para <ins>crear</ins>
-{: .subtitular .text-end}
+{% include block_container_start.html %}
+
+Nuestras abuelas encontraban consuelo y compañía en algo tan simple como reunirse a coser y cantar.
+
+Sin **agenda**, sin **prisa**, sin necesidad de _“ser productivas”_.
+
+Solo ellas, una prenda entre las manos y la libertad de dejar que las emociones fluyeran en forma de canciones, palabras compartidas y puntadas que conectaban mucho más que telas: **conectaban corazones y almas**.
+
+Hoy, en una época donde todo parece avanzar a un ritmo frenético, hemos olvidado esos espacios de **calma** y **conexión**. Buscamos soluciones para desconectar, para sanar, para sentirnos más plenos...
+
+pero,
+
+## ¿y si la respuesta estuviera en volver a algo tan sencillo como lo que nuestras abuelas ya practicaban?
+
+Te proponemos redescubrir ese ritual de **conexión** y **autocuidado** en _“Coser y Cantar: Mi vida a puntadas,”_ un espacio de **arteterapia creativa** que no solo te invita a desconectar de la rutina, sino a reconectar con una tradición antigua y profunda.
+
+En un ambiente **íntimo**, a través del movimiento, la costura y la voz, podrás experimentar el poder de expresar tus emociones **sin juicios**, dejar fluir tu creatividad y sentirte parte de una comunidad, al igual que ellas lo hicieron hace cien años.
 
 {% include block_container_end.html %}
 
@@ -27,26 +41,14 @@ seo_image_height: 720
    class_bg="bg-white"
 %}
 
-Hemos creado para ti un espacio de arteterapia para la **creatividad**\\
-a través de la escucha del **cuerpo**,\\
-la vibración amable de la **voz**,\\
-el arte de la **costura** y la **música** en vivo
+¿Te atreves a explorar lo que ocurre cuando te tomas **un día solo para ti** en compañia de otras personas que también quieren redescubrir el arte de **estar presentes**, aquí y ahora?
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html %}
-
-Si quieres tomarte un tiempo contigo misma,
-
-abre tu agenda y no lo dudes más,
-
-apúntate aquí.
-
-{% include block_container_end.html %}
 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas"
-   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona."
+   subtitle="Nuestro próximo encuentro es el Sábado 16 de Noviembre 2024 en Aravaca, Madrid.<br>Es todo el día, seremos un grupo de 15 personas y el precio es 100€.<br><br>Déjanos tu email y te contamos lo que hay que hacer para entrar en el grupo."
    button="Quiero estar"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -57,11 +59,14 @@ apúntate aquí.
 
 {% include block_container_start.html %}
 
-Y si no sabes bien a lo que nos referimos,
+Hemos creado para ti un espacio de arteterapia para la **creatividad**\\
+a través de la escucha del **cuerpo**,\\
+la vibración amable de la **voz**,\\
+el arte de la **costura** y la **música** en vivo
 
-déjanos contarte un par de historias reales,
+Si no sabes bien a lo que nos referimos, déjanos contarte una historia real,
 
-las nuestras.
+la historia de Amanda:
 
 {% include block_container_end.html %}
 
@@ -77,7 +82,7 @@ Hace casi 20 años mi vida era otra.
 
 Yo vivía atada a una máquina de oxígeno y tenía un diagnóstico de enfermedad crónica pulmonar que me condicionaba absolutamente la vida.
 
-Esto lo recuerdo de manera casi diaria, quizás porque soy más consciente de que si estoy viva es por mi propia fuerza vital y porque me agarré profundamente al arte, la poesía y la música.
+Esto lo recuerdo casi todos los días, quizás porque soy más consciente de que si estoy viva es por mi propia fuerza vital y porque me agarré profundamente al arte, la poesía y la música.
 
 ### Crear me cura cuando lo hago desde lo más profundo de mi ser
 {: .fw-bold .text-center }
@@ -90,8 +95,7 @@ como quién desconoce el camino,\\
 como quien viaja por primera vez a un lugar y se deja llevar por senderos desconocidos.
 
 Cuando todo estaba perdido,\\
-mi ancla, **mi cable a tierra**,\\
-fueron palabras y versos de otros que antes ya habían pasado por allí,\\
+**mi cable a tierra** fueron palabras y versos de otros que antes ya habían pasado por allí,\\
 fueron pinceladas e imágenes de la oscuridad del alma de otras,\\
 fueron canciones y armonías de otros seres que me hacían **sentir viva de nuevo**.
 
@@ -111,51 +115,41 @@ y sorprendentemente,\\
 
 {% include block_container_start.html %}
 
-## Existe un lugar donde<br>tomarse el tiempo para estar<br>conmigo misma
+## ¿Te imaginas dedicarte un día solo a ti, para escucharte y expresar todo lo que llevas dentro?
 {: .text-end}
 
 Llevamos días pensando cómo contarte qué significa para nosotras ofrecer un lugar de costura, arteterapia y canto.
 
 Y nos cuesta porque quizás es como querer explicar una canción, un poema o una danza.
 
-Como querer explicar la sonrisa de un bebé,\\
-la belleza no buscada de un atardecer,\\
-el oleaje del mar.
+Como querer explicar la sonrisa de un bebé.
 
 Llevamos días pensando cómo contarte que la costura y el canto son dos de las cosas que más nos gusta hacer
 
-En las que las horas se comprimen y pareciera que el tiempo se detiene,\\
-se encoge,\\
-o quizás se dilata,\\
-quién sabe...
+En las que las horas se comprimen y pareciera que el tiempo se detiene
 
 ## Ese lugar se llama _“Coser y Cantar”_
-{: .text-start}
+{: .fw-bold .text-center}
 
-_"Coser y Cantar"_ se refiere a algo fácil
+Le hemos puesto ese nombre porque, sobre todo, se refiere a algo fácil.
 
-Porque aunque, cantar o coser, pueda parecer complejo y que es necesario conocer múltiples técnicas que hay que interiorizar y practicar para poder hacerlo con belleza y eficacia…
+Porque aunque, cantar o coser, pueda parecer complejo.
 
-Nada más lejos de la realidad
+### Nada más lejos de la realidad.
 
-Ambas se rigen por el mismo principio, la unión de lo que un día fue separado
-
-### La creatividad y el amor
-{: .fw-bold .text-center }
-
-El canto requiere tan solo de un cuerpo,\\
-un cuerpo puesto al servicio de la vibración y no hace falta "saber cantar",\\
-no es necesario nada más que la imperiosa necesidad de poner el cuerpo en sonido,\\
+El canto requiere tan solo de un **cuerpo**,\\
+un cuerpo puesto al servicio de la vibración y no hace falta _"saber cantar"_,\\
+no es necesario nada más que poner el cuerpo en sonido,\\
 hacer sonar los músculos,\\
 el latido del corazón,\\
 la linfa,\\
 los huesos
 
-No es nuestra pretensión "enseñarte" nada\\
+No es nuestra pretensión _"enseñarte"_ nada\\
 sino acompañarte a que recuperes esa parte de ti que has dejado relegada.
 
 Estamos seguras de que tú ya sabes cantar,\\
-ya sabes vibrar y no necesitas "aprender" nada
+ya sabes vibrar y no necesitas _"aprender"_ nada
 
 ### tan solo recordar la senda que has dejado tiempo sin transitar<br>y la maleza aprovechó para cubrirla
 {: .fw-bold .text-center }
@@ -166,7 +160,7 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas"
-   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 14:00 y<br>de 16:00 a 20:00 en Aravaca, Madrid<br>Máximo 15 personas<br>100€ por persona<br><br>Si quieres recibir la ficha de inscripción, déjanos tu email y te la enviamos."
+   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 20:00 en Aravaca, Madrid<br>Grupo reducido de 15 personas<br>100€<br><br>Si quieres saber qué tienes que hacer para venir, déjanos tu email y te lo contamos."
    button="Me apunto"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -174,6 +168,22 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
    status_value="NEW"
    form_id=2
 %}
+
+{% include block_container_start.html %}
+
+## ¿Cuánto tiempo ha pasado desde que dedicaste un día a escucharte a ti misma de verdad?
+
+Para **sentirse bien** hay que escucharse,\\
+para **escucharse** hay que parar el ruido exterior,\\
+para **parar el ruido** hay que mirarse a dentro.
+
+Crear con las manos nos ayuda a viajar a nuestro hogar interior.
+
+Expresar lo que escuchamos dentro nuestra es un modo de sacarlo y empezar a **sentirse mejor**.
+
+Y ésto tiene mucho que ver con la historia de Isabel:
+
+{% include block_container_end.html %}
 
 {% include block_container_start.html
    class_bg="bg-white"
@@ -186,12 +196,11 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
 Recuerdo ser una niña inquieta, charlatana y curiosa.\\
 En clase debía de ser un poco molesta y me regañaban.
 
-— A callar!
+— _A callar!_
 
 Éste ha sido un mandato profundamente interiorizado entre las mujeres de la familia.
 
 ### Callar a la fuerza produce mucha frustración
-{: .fw-bold .text-center }
 
 Y esta frustración se convirtió en tristeza porque no lograba sacar esa rabia que me quemaba.
 
@@ -199,58 +208,50 @@ Siendo niña acabé sintiéndome **perdida**,\\
 empecé a **perder la confianza** en mí,\\
 acabé creyéndome alguien **defectuosa** e inadecuada.
 
-Luego llegaron los síntomas del cuerpo físico que gritaban lo no verbalizado. En mi caso era la garganta, que se inflamaba, se cerraba y no me dejaba tragar más.
+Luego llegaron los síntomas del cuerpo físico que gritaban lo no no podía expresar de otro modo.
 
-Esas recurrentes infecciones eran incómodas y dolorosas al principio.\\
-Pero pasados los primeros días, y sin haberlo planeado conscientemente, mis anginas me regalaban un tiempo para los libros y para crear.
+### En mi caso era la garganta.
+
+Se inflamaba, se cerraba y no me dejaba tragar más.\\
+Eran infecciones incómodas y dolorosas al principio.
+
+Pasados los primeros días, y sin haberlo planeado conscientemente, mis anginas me regalaban un tiempo para los libros y para crear.
 
 Con once años cayeron en mis manos lanas para tejer y los retales que le sobraban a mi mamá.
 
 ### Jugaba a construir algo bonito
 {: .fw-bold .text-center }
 
-Algo que desde una fantasía se acababa transformando en una presencia real,\\
+Algo que nacía como una fantasía se acababa transformando en una presencia real,\\
 algo que me hacía compañía durante la recuperación.
 
 Durante unas anginas podía llegar a tejer tres cuartas partes de un jersey para alguien de la familia.
 
-— Eres un culo inquieto
+— _Eres un culo inquieto_
 
-me decía con cariño la abuela María. La misma que cuando alguna labor no le salía a la primera, pronunciaba su refrán
+me decía con cariño la abuela María. La misma que cuando alguna labor no le salía a la primera, decía su refrán
 
 ### _“Hacer y deshacer, todo es quehacer”_
-{: .fw-bold .text-center }
 
-Y tirando de la hebra iba soltando filas del punto tejido.
+Mis abuelas, como la mayoría de mujeres de su tiempo, tejían, cosían, zurcían y daban **amor** con sus manos.
 
-Mis abuelas, como la mayoría de mujeres de su tiempo, tejían, cosían, zurcían y daban amor con sus manos. Coser y zurcir lo hacían por necesidad, mientras que tejer o hacer croché tenía que ver con un regalo. Pequeñas prendas para celebrar un nacimiento, un bautizo, una comunión o cualquier momento en la vida.
+Coser y zurcir lo hacían por necesidad.\\
+Tejer o hacer croché tenía que ver con un regalo.\\
+Pequeñas prendas para celebrar un nacimiento, un bautizo, una comunión o cualquier momento en la vida.
 
-Es increíble cómo los tejidos y las fibras me hablan y me hacen sentir. Cuántas veces me he sorprendido palpando y oliendo, incluso mordisqueando, un trozo de tela que caía en mis manos.
-
-Como una sabuesa olfateando una pista.
-
-### Las fibras están por todos lados
-{: .fw-bold .text-center }
-
-Abrigan, acarician, protegen, sostienen, alegran y decoran nuestras casas, nos distinguen de los demás y nos invitan a crear.
-
-La costura y el tapizado son dos artes que vi en casa desde siempre.
-
-Ahora me doy cuenta de cuánto me maravillaba seguir ese proceso en que un paño se podía transformar en una falda o en el revestimiento de un mueble.\\
-¡Me parecía mágico y emocionante!
+Es increíble cómo los tejidos y las fibras me hablan y me hacen sentir.
 
 La creación textil me sirve para
 
 ### Reconectar con la materia, con lo natural, con el presente
-{: .fw-bold .text-center }
 
 Y con el poder de transformación que tenemos los seres humanos.
 
-El jugar a modificar prendas, a crear algo con hilos, telas y pequeños objetos me sirve para homenajear el legado de las mujeres que me precedieron.
+El jugar a modificar prendas, a crear algo con hilos, telas y pequeños objetos también es una manera de homenajear el legado de las mujeres que me precedieron.
 
-Mi cuerpo ha sido siempre el que ha puesto voz a aquello que internamente callaba.
+Durante años, mi cuerpo ha sido el que ha puesto voz a aquello que internamente callaba.
 
-En 2002 fue mi propio sistema inmune el que se vio afectado. Se me quedó hecho un trapillo. Y después de tantos años
+En 2002 fue mi propio sistema inmune el que se vio afectado. Se me quedó hecho un trapillo. Y después de tanto tiempo
 
 ### La creatividad fue la que me volvió a poner en mi camino de sanación
 {: .fw-bold .text-center }
@@ -259,9 +260,9 @@ En 2002 fue mi propio sistema inmune el que se vio afectado. Se me quedó hecho 
 
 {% include block_container_start.html %}
 
-Coser es mirar el presente y reconocer cada puntada, cada nudo, cada remate, cada decisión.
+Coser es mirar el **presente** y reconocer cada puntada, cada nudo, cada remate, cada decisión.
 
-Es tener la certeza de que la vida es un entramado de memorias,\\
+Es tener la certeza de que la vida es un **entramado de memorias**,\\
 hilos que se entretejen,\\
 encuentros,\\
 silencio...
@@ -269,14 +270,15 @@ silencio...
 ### Es tiempo sin tiempo
 {: .fw-bold .text-center }
 
-Es remendar desde un lugar hermoso,\\
+Es remendar desde un **lugar hermoso**,\\
 dándonos la oportunidad de unir, con aguja e hilo,\\
-a veces sin más técnica que la propia necesidad de dejar registro de lo que el alma siente.
+a veces sin más técnica que la propia necesidad de dejar registro de lo que el **alma siente**.
 
 Tejer es para nosotras un canal más para expresarnos,\\
-para conectar con nuestro interior,\\
-es un momento de introspección,\\
-de jugar entre hilos,\\
+para **conectar con nuestro interior**.
+
+Es un momento de introspección,\\
+de **jugar entre hilos**,\\
 entre retazos de telas,\\
 palabras,\\
 canciones\\
@@ -285,15 +287,20 @@ y así plasmar un pedacito de todo lo que somos.
 Nos gusta tomar los hilos entre las manos,\\
 darles nuevas formas,\\
 combinarlos con otros materiales,\\
-crear un propio collage, como la misma vida,\\
-y hacerlo de un modo placentero y terapéutico
+crear un propio collage, como la vida misma,\\
+y hacerlo de un modo **placentero** y gozoso.
 
 Y mientras, el ruido de la mente se disuelve entre puntada y puntada,\\
-los pensamientos se ordenan,\\
+**los pensamientos se ordenan**,\\
 se clarifican.
 
-### Es un modo de “volver a casa”
-{: .fw-bold .text-center }
+### Es un modo de _“volver a casa”_
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html
+   class_bg="bg-white"
+%}
 
 Pensamos hoy en todas esas mujeres que durante siglos y en todas las culturas del mundo, se juntaban para tejer,\\
 encontrándose y compartiendo recuerdos y emociones,\\
@@ -306,7 +313,7 @@ risas y llantos.
 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, el Sábado 16 de Noviembre de 2024"
-   subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas como máximo.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos enviarte la ficha de inscripción."
+   subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos contarte lo que tienes que hacer para poder venir."
    button="Quiero ir"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -318,8 +325,8 @@ risas y llantos.
 
 {% include block_container_start.html %}
 
-## **A veces no estás bien en ningún sitio ni con nadie, en esos días hubieras necesitado tener un hogar interior donde refugiarte**
-{: .titular .text-start}
+## A veces no estás bien en ningún sitio ni con nadie, en esos días hubieras necesitado tener un hogar interior donde refugiarte
+{: .titular .text-start .fw-bold}
 
 ## también nos ha pasado a nosotras
 {: .subtitular .text-center}
@@ -328,16 +335,16 @@ risas y llantos.
 {: .subtitular .text-end}
 
 Esto que hacemos **no es terapia**\\
-sin embargo, es hermosamente terapéutico
+sin embargo, es _hermosamente terapéutico_
 
-Lo terapéutico viene de ese bienestar que genera conectar con el presente a través de lo que van haciendo las manos, entrar en el ritmo del hilo y de la aguja, como un mantra que ayuda a bajar la intensidad y abre a un espacio de paz.
+Lo terapéutico viene de ese bienestar que genera conectar con el presente a través de lo que van haciendo las manos, entrar en el ritmo del hilo y de la aguja, como un **mantra** que ayuda a bajar la intensidad y abre a un **espacio de paz**.
 
-Este espacio es un homenaje a las mujeres tejedoras de vida que nos rodean,\\
+Este espacio es un **homenaje** a las mujeres tejedoras de vida que nos rodean,\\
 que con sus mágicas manos han tejido parte de nuestras vidas,\\
-hilvanando historias para espantar los miedos,\\
+hilvanando historias para **espantar los miedos**,\\
 no dando puntada sin hilo,\\
-enhebrando aguja tras aguja para remendar entuertos,\\
-cosiendo descosidos para darnos ese calor, amor y ternura necesarios en nuestro crecimiento.
+enhebrando aguja tras aguja para **remendar entuertos**,\\
+cosiendo descosidos para darnos ese **calor**, **amor** y **ternura** necesarios en nuestro crecimiento.
 
 Mujeres que bordaban cada paño, cada tela e incluso cada solución a los problemas que caían en sus manos.
 
@@ -357,7 +364,7 @@ que sea un _“Coser y Cantar”_.
 
 {% include mail_form.html
    title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión"
-   subtitle="Si has leído hasta aquí seguramente es porque algo te ha resonado.<br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para recibir la ficha de inscripción o para avisarte de otra edición que organicemos si ya está llena."
+   subtitle="Si has leído hasta aquí seguramente es porque algo te ha resonado.<br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para contarte cómo apuntarte o para avisarte de otro encuentro que organicemos si ya está lleno."
    button="Voy a tener suerte"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -372,16 +379,13 @@ Bueno,\\
 ahora vamos con los detalles para las que necesitan tenerlo todo controlado,\\
 un poco como nosotras.
 
-"Mi vida a puntadas" es un monográfico donde, a través de las herramientas que la creatividad nos ofrece,
+_"Coser y Cantar: Mi vida a puntadas"_ es un monográfico donde, a través de las herramientas que la creatividad nos ofrece,
 hemos unido nuestras grandes pasiones y aquello que a nosotras nos ayudó a sanar
 
-la arteterapia textil,
-
-la música en vivo,
-
-el canto y la vibración sonora,
-
-y lo sensorial a través del movimiento.
+* La arteterapia textil
+* La música en vivo
+* El canto y la vibración sonora
+* Lo sensorial a través del movimiento
 
 
 {% include block_container_end.html %}
@@ -473,7 +477,7 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
 
 Llegadas a este punto, es posible que te preguntes cómo de preparadas estamos para poder ofrecerte un espacio que te pueda ayudar, incluso que te pueda sanar.
 
-(un poco más abajo te ponemos nuestro currículum, por si necesitas saberlo)
+_(un poco más abajo te ponemos nuestro currículum, por si necesitas saberlo)_
 
 Pero deja que te digamos algo,\\
 no estaremos nunca suficientemente preparadas
