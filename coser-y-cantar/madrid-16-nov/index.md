@@ -7,49 +7,47 @@ seo_image_width: 1280
 seo_image_height: 720
 ---
 
-{% include block_container_start.html
-  class_container="container-fluid"
-  class_row="row"
+{% include block_title_image.html
+   image='/assets/images/foto_amanda_faro_ukelele_480.jpg'
+   title='¿Y si la mejor manera de desconectar fuera redescubrir lo que nuestras abuelas ya sabían?'
 %}
 
-# ¿Y si la mejor manera de desconectar fuera redescubrir lo que nuestras abuelas ya sabían?
-{: .titular .text-start}
+{% include block_container_start.html %}
+
+Ellas encontraban consuelo y compañía en algo tan simple como reunirse a coser y cantar.
+
+## Sin agenda, sin prisa,<br>sin necesidad de _“ser productivas”_.
+{: .fw-bold .text-center }
+
+El grupo, una prenda entre las manos y la libertad de dejar que las emociones fluyeran en forma de canciones, palabras compartidas y puntadas que conectaban mucho más que telas: **conectaban corazones y almas**.
+
+Hoy, en una época donde todo parece avanzar a un ritmo frenético, hemos olvidado esos espacios de **calma** y **conexión**.
+
+Buscamos soluciones para desconectar, para sanar, para sentirnos más plenos...
 
 {% include block_container_end.html %}
 
 {% include block_container_start.html %}
 
-Nuestras abuelas encontraban consuelo y compañía en algo tan simple como reunirse a coser y cantar.
+## Coser y Cantar:<br>Mi vida a puntadas
+{: .fw-bold .text-center }
 
-Sin **agenda**, sin **prisa**, sin necesidad de _“ser productivas”_.
+Te proponemos redescubrir ese ritual de **conexión** y **autocuidado** en un espacio de **arteterapia creativa** que no solo te invita a desconectar de la rutina, sino a reconectar con una tradición antigua y profunda.
 
-Solo ellas, una prenda entre las manos y la libertad de dejar que las emociones fluyeran en forma de canciones, palabras compartidas y puntadas que conectaban mucho más que telas: **conectaban corazones y almas**.
-
-Hoy, en una época donde todo parece avanzar a un ritmo frenético, hemos olvidado esos espacios de **calma** y **conexión**. Buscamos soluciones para desconectar, para sanar, para sentirnos más plenos...
-
-pero,
-
-## ¿y si la respuesta estuviera en volver a algo tan sencillo como lo que nuestras abuelas ya practicaban?
-
-Te proponemos redescubrir ese ritual de **conexión** y **autocuidado** en _“Coser y Cantar: Mi vida a puntadas,”_ un espacio de **arteterapia creativa** que no solo te invita a desconectar de la rutina, sino a reconectar con una tradición antigua y profunda.
-
-En un ambiente **íntimo**, a través del movimiento, la costura y la voz, podrás experimentar el poder de expresar tus emociones **sin juicios**, dejar fluir tu creatividad y sentirte parte de una comunidad, al igual que ellas lo hicieron hace cien años.
+En un ambiente **íntimo**, a través del **movimiento**, la **costura** y la **voz**, podrás experimentar el poder de expresar tus emociones **sin juicios**, dejar fluir tu creatividad y sentirte parte de una comunidad, al igual que ellas lo hicieron hace cien años.
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html
-   class_bg="bg-white"
+{% include block_title_image.html
+   image='/assets/images/foto_isa_amanda_cosiendo_cenital_480.jpg'
+   title='¿Te atreves a explorar lo que ocurre cuando te tomas un día solo para ti y redescubres el arte de estar presente, aquí y ahora?'
+   tag='h2'
 %}
 
-¿Te atreves a explorar lo que ocurre cuando te tomas **un día solo para ti** en compañia de otras personas que también quieren redescubrir el arte de **estar presentes**, aquí y ahora?
-
-{% include block_container_end.html %}
-
-
 {% include mail_form.html
-   title="Coser y Cantar: Mi vida a puntadas"
-   subtitle="Nuestro próximo encuentro es el Sábado 16 de Noviembre 2024 en Aravaca, Madrid.<br>Es todo el día, seremos un grupo de 15 personas y el precio es 100€.<br><br>Déjanos tu email y te contamos lo que hay que hacer para entrar en el grupo."
-   button="Quiero estar"
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="<strong>Cuándo</strong>: Sábado 16 Nov 2024<br><strong>Dónde</strong>: Aravaca, Madrid.<br><strong>Duración</strong>: Es todo el día<br><strong>Grupo</strong>: 15 personas<br><strong>Precio</strong>: 100€.<br><br>Déjanos tu email y te contamos lo que hay que hacer para venir al próximo encuentro."
+   button="Quiero apuntarme"
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
@@ -59,14 +57,9 @@ En un ambiente **íntimo**, a través del movimiento, la costura y la voz, podr�
 
 {% include block_container_start.html %}
 
-Hemos creado para ti un espacio de arteterapia para la **creatividad**\\
-a través de la escucha del **cuerpo**,\\
-la vibración amable de la **voz**,\\
-el arte de la **costura** y la **música** en vivo
-
 Si no sabes bien a lo que nos referimos, déjanos contarte una historia real,
 
-la historia de Amanda:
+la historia de Amanda
 
 {% include block_container_end.html %}
 
@@ -82,7 +75,7 @@ Hace casi 20 años mi vida era otra.
 
 Yo vivía atada a una máquina de oxígeno y tenía un diagnóstico de enfermedad crónica pulmonar que me condicionaba absolutamente la vida.
 
-Esto lo recuerdo casi todos los días, quizás porque soy más consciente de que si estoy viva es por mi propia fuerza vital y porque me agarré profundamente al arte, la poesía y la música.
+Esto lo recuerdo casi todos los días, quizás porque soy más consciente de que si estoy viva es por mi propia fuerza vital y porque me agarré profundamente al **arte**, la **poesía** y la **música**.
 
 ### Crear me cura cuando lo hago desde lo más profundo de mi ser
 {: .fw-bold .text-center }
@@ -95,8 +88,9 @@ como quién desconoce el camino,\\
 como quien viaja por primera vez a un lugar y se deja llevar por senderos desconocidos.
 
 Cuando todo estaba perdido,\\
-**mi cable a tierra** fueron palabras y versos de otros que antes ya habían pasado por allí,\\
-fueron pinceladas e imágenes de la oscuridad del alma de otras,\\
+**mi cable a tierra** fueron palabras y versos de otros que antes ya habían pasado por allí.
+
+Fueron pinceladas e imágenes de la oscuridad del alma de otras,\\
 fueron canciones y armonías de otros seres que me hacían **sentir viva de nuevo**.
 
 Mi proceso era respiratorio y cantar era todo un reto, y sin embargo,
@@ -113,10 +107,13 @@ y sorprendentemente,\\
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html %}
+{% include block_title_image.html
+   image='/assets/images/foto_isa_ukelele_480.jpg'
+   title='¿Sabías que puedes liberar lo que llevas dentro sin decir una palabra?'
+   tag='h2'
+%}
 
-## ¿Te imaginas dedicarte un día solo a ti, para escucharte y expresar todo lo que llevas dentro?
-{: .text-end}
+{% include block_container_start.html %}
 
 Llevamos días pensando cómo contarte qué significa para nosotras ofrecer un lugar de costura, arteterapia y canto.
 
@@ -128,10 +125,10 @@ Llevamos días pensando cómo contarte que la costura y el canto son dos de las 
 
 En las que las horas se comprimen y pareciera que el tiempo se detiene
 
-## Ese lugar se llama _“Coser y Cantar”_
+## Ese lugar se llama<br>_“Coser y Cantar”_
 {: .fw-bold .text-center}
 
-Le hemos puesto ese nombre porque, sobre todo, se refiere a algo fácil.
+Le hemos puesto ese nombre porque, sobre todo, se refiere a algo **fácil**.
 
 Porque aunque, cantar o coser, pueda parecer complejo.
 
@@ -159,8 +156,8 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Mi vida a puntadas"
-   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 20:00 en Aravaca, Madrid<br>Grupo reducido de 15 personas<br>100€<br><br>Si quieres saber qué tienes que hacer para venir, déjanos tu email y te lo contamos."
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="Sábado 16 Noviembre 2024<br>De 10:00 a 20:00 en Aravaca, Madrid<br><br>Grupo reducido de 15 personas<br>100€<br><br>Si quieres saber qué tienes que hacer para venir, déjanos tu email y te lo contamos."
    button="Me apunto"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -169,19 +166,23 @@ Los humanos somos seres creativos por naturaleza y a veces tan solo necesitamos 
    form_id=2
 %}
 
-{% include block_container_start.html %}
+{% include block_title_image.html
+   image='/assets/images/foto_amanda_hilo_ukelele_480.jpg'
+   title='¿Cuánto tiempo ha pasado desde que te dedicaste un día a escucharte a ti misma de verdad?'
+   tag='h2'
+%}
 
-## ¿Cuánto tiempo ha pasado desde que dedicaste un día a escucharte a ti misma de verdad?
+{% include block_container_start.html %}
 
 Para **sentirse bien** hay que escucharse,\\
 para **escucharse** hay que parar el ruido exterior,\\
-para **parar el ruido** hay que mirarse a dentro.
+para **parar el ruido** hay que mirar hacia dentro.
 
-Crear con las manos nos ayuda a viajar a nuestro hogar interior.
+Crear con las manos nos ayuda a viajar a nuestro **hogar interior**.
 
 Expresar lo que escuchamos dentro nuestra es un modo de sacarlo y empezar a **sentirse mejor**.
 
-Y ésto tiene mucho que ver con la historia de Isabel:
+Y ésto tiene mucho que ver con la historia de Isabel
 
 {% include block_container_end.html %}
 
@@ -287,7 +288,10 @@ y así plasmar un pedacito de todo lo que somos.
 Nos gusta tomar los hilos entre las manos,\\
 darles nuevas formas,\\
 combinarlos con otros materiales,\\
-crear un propio collage, como la vida misma,\\
+crear un propio collage
+
+como la vida misma
+
 y hacerlo de un modo **placentero** y gozoso.
 
 Y mientras, el ruido de la mente se disuelve entre puntada y puntada,\\
@@ -302,8 +306,13 @@ se clarifican.
    class_bg="bg-white"
 %}
 
-Pensamos hoy en todas esas mujeres que durante siglos y en todas las culturas del mundo, se juntaban para tejer,\\
-encontrándose y compartiendo recuerdos y emociones,\\
+Pensamos hoy en todas esas mujeres que,
+
+durante siglos y en todas las culturas del mundo,
+
+se juntaban para tejer,\\
+encontrándose y compartiendo\\
+recuerdos y emociones,\\
 anécdotas y cánticos,\\
 historias y relatos,\\
 canciones y desamores,\\
@@ -312,8 +321,8 @@ risas y llantos.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, el Sábado 16 de Noviembre de 2024"
-   subtitle="Cuesta 100€ y es todo el día.<br>Es sólo para 15 personas.<br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos contarte lo que tienes que hacer para poder venir."
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="Es en Madrid, el Sábado 16 de Noviembre de 2024, cuesta 100€ y es todo el día.<br>Es sólo para 15 personas.<br><br>Es un día en el que te olvidas del resto del mundo y haces algo diferente<br><br>Pon aquí tu email para que podamos contarte lo que tienes que hacer para poder venir."
    button="Quiero ir"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -322,11 +331,13 @@ risas y llantos.
    form_id=3
 %}
 
+{% include block_title_image.html
+   image='/assets/images/foto_sol_480.jpg'
+   title='A veces no estás bien en ningún sitio ni con nadie, en esos días hubieras necesitado tener un hogar interior donde refugiarte'
+   tag='h2'
+%}
 
 {% include block_container_start.html %}
-
-## A veces no estás bien en ningún sitio ni con nadie, en esos días hubieras necesitado tener un hogar interior donde refugiarte
-{: .titular .text-start .fw-bold}
 
 ## también nos ha pasado a nosotras
 {: .subtitular .text-center}
@@ -363,8 +374,8 @@ que sea un _“Coser y Cantar”_.
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Mi vida a puntadas<br>es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión"
-   subtitle="Si has leído hasta aquí seguramente es porque algo te ha resonado.<br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para contarte cómo apuntarte o para avisarte de otro encuentro que organicemos si ya está lleno."
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="Es en Madrid, que está muy bien comunicada por coche, tren, autobús y avión.<br><br>Si has leído hasta aquí seguramente es porque algo te ha resonado.<br><br>Igual ya se ha llenado, porque sólo cuesta 100€ y es para las primeras 15 personas.<br><br>Déjanos tu email para contarte cómo apuntarte o para avisarte de otro encuentro que organicemos si ya está lleno."
    button="Voy a tener suerte"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -463,8 +474,8 @@ Con las personas que se queden fuera nos pondremos en contacto para ver otras fe
 {% include block_container_end.html %}
 
 {% include mail_form.html
-   title="Coser y Cantar: Mi vida a puntadas<br>Sólo necesitas poner tu email para empezar el viaje"
-   subtitle="Si todo te encaja, y el Sábado 16 de Noviembre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="Sólo necesitas poner tu email para empezar el viaje a tu hogar interior<br><br>Si todo te encaja, y el Sábado 16 de Noviembre no tienes nada más creativo que hacer, el siguiente paso es rellenar la ficha de inscripción que te mandaremos al email que nos pongas aquí"
    button="Todo me encaja"
    class="bg-rose"
    audience_id="3a937e7b10"
@@ -491,12 +502,28 @@ Nosotras llevamos años yendo a talleres que organizan personas a las que admira
 
 Nos unen muchas experiencias, talleres y formaciones en las que nos hemos desnudado por dentro, nos hemos roto y nos hemos vuelto a reconstruir. Hemos llorado, reído, cantado, bailado, pintado y disfrazado juntas.
 
-Y ha llegado un momento en el que nos hemos mirado y nos hemos dicho que si no lo hacemos ahora, quizás no lo podamos hacer nunca. Que es necesario compartir con el mundo lo que hemos aprendido.
+Y ha llegado un momento en el que nos hemos mirado y hemos dicho que si no lo hacemos ahora, quizás no lo podamos hacer nunca. Que es necesario compartir con el mundo lo que hemos aprendido.
 
 Preparar un espacio así es una tarea ardua. Tenemos preparadas dinámicas para 3 días completos. Ni siquiera nosotras sabemos exactamente qué va a pasar. Es muy importante para nosotras escuchar lo que el grupo necesita, porque cada grupo es diferente. Y, en función de lo que vamos sintiendo, darnos el permiso de cambiar el guión que teníamos previsto.
 
 ### Esto se parece mucho a la alquimia, es difícil de explicar<br>y es imposible de repetir
 {: .fw-bold .text-center }
+
+{% include block_container_end.html %}
+
+{% include mail_form.html
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="Es un grupo de gente bonita.<br><br>Déjanos tu email y te contaremos cómo formar parte de él."
+   button="Quiero ser parte"
+   class="bg-rose"
+   audience_id="3a937e7b10"
+   gdpr_id="98105"
+   status_value="NEW"
+   form_id=6
+%}
+
+
+{% include block_container_start.html %}
 
 Y, por último, nuestros curriculum. Que lo único que pueden decirte es lo que ya hemos hecho.
 
@@ -575,14 +602,14 @@ _“A mis padres, valientes, que emigraron en busca de algo nuevo, les agradezco
 
 
 {% include mail_form.html
-   title="Y esto es todo"
-   subtitle="Déjanos tu email y nosotras te mandaremos la ficha de inscripción a Coser y Cantar: Mi vida a puntadas"
-   button="Quiero apuntarme"
+   title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
+   subtitle="Y esto es todo.<br><br>Déjanos tu email y nosotras te mandaremos la ficha de inscripción a Coser y Cantar: Mi vida a puntadas"
+   button="Quiero estar"
    class="bg-rose"
    audience_id="3a937e7b10"
    gdpr_id="98105"
    status_value="NEW"
-   form_id=6
+   form_id=7
 %}
 
 

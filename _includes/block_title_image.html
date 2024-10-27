@@ -1,0 +1,18 @@
+<div class="block-title-image-bg" style="background-image: url('{{ include.image }}'); height: {{ include.height | default: '400px' }};">
+<div class="block-title-image-overlay">
+
+<div class="{{ include.class_container | default: 'container-fluid mt-3 mb-3 rounded-2' }} {{ include.class_bg | default: '' }}">
+<div class="{{ include.class_row | default: 'row pt-2' }}">
+<div class="{{ include.class_col | default: 'col' }}" markdown="1">
+
+
+<{{ include.tag | default: 'h1' }} class="{{ include.tag_class | default: 'titular text-start' }}">
+<span class="{{ include.text_class | default: 'text-white' }}">{{ include.title }}</span>
+</{{ include.tag | default: 'h1' }}>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
