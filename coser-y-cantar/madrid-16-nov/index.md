@@ -44,6 +44,41 @@ En un ambiente **íntimo**, a través del **movimiento**, la **costura** y la **
    tag='h2'
 %}
 
+{% include block_container_start.html %}
+
+_"Coser y Cantar: Mi vida a puntadas"_ es un monográfico donde, a través de las herramientas que la creatividad nos ofrece,
+hemos unido nuestras grandes pasiones y aquello que a nosotras nos ayudó a sanar
+
+* La arteterapia textil
+* La música en vivo
+* El canto y la vibración sonora
+* Lo sensorial a través del movimiento
+
+**¿Es necesario saber cantar?**\\
+Para nada\\
+Te proponemos usar diferentes técnicas manuales y textiles, combinando todo lo que está a nuestra disposición, invocando el profundo potencial de las artes manuales y el canto como medio de expresión.\\
+El foco no está puesto en “aprender técnicas”, ni de “saber hacer” nada, sino en darnos la posibilidad y el tiempo de descubrir lo que la creatividad nos brinda.
+
+**¿Es necesario saber coser?**\\
+No, son técnicas muy fáciles que seguramente ya conozcas\\
+Y si no las conoces mejor, te dejarás guiar por tu corazón.\\
+Este espacio no es un curso de costura y tampoco vamos a hacer una exposición de fin de curso con lo que creemos.
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html
+   class_bg="bg-white"
+%}
+
+Este espacio es para ti si quieres:
+- Honrar las **manos sabias** de esas creadoras que nos precedieron
+- Hacer **vibrar tu cuerpo** y descubrir dónde te lleva su sonido
+- Urdir nuestros relatos con **puntadas del ahora**, del ayer y del infinito
+- Respirar este **presente único** que nos regalamos
+- Celebrar con alegría nuestros **dones personales**
+
+{% include block_container_end.html %}
+
 {% include mail_form.html
    title="<i>Coser y Cantar:<br>Mi vida a puntadas</i>"
    subtitle="<strong>Cuándo</strong>: Sábado 16 Nov 2024<br><strong>Dónde</strong>: Aravaca, Madrid.<br><strong>Duración</strong>: Es todo el día<br><strong>Grupo</strong>: 15 personas<br><strong>Precio</strong>: 100€.<br><br>Déjanos tu email y te contamos lo que hay que hacer para venir al próximo encuentro."
@@ -57,9 +92,7 @@ En un ambiente **íntimo**, a través del **movimiento**, la **costura** y la **
 
 {% include block_container_start.html %}
 
-Si no sabes bien a lo que nos referimos, déjanos contarte una historia real,
-
-la historia de Amanda
+Déjanos contarte una historia real, la historia de Amanda
 
 {% include block_container_end.html %}
 
@@ -390,32 +423,6 @@ Bueno,\\
 ahora vamos con los detalles para las que necesitan tenerlo todo controlado,\\
 un poco como nosotras.
 
-_"Coser y Cantar: Mi vida a puntadas"_ es un monográfico donde, a través de las herramientas que la creatividad nos ofrece,
-hemos unido nuestras grandes pasiones y aquello que a nosotras nos ayudó a sanar
-
-* La arteterapia textil
-* La música en vivo
-* El canto y la vibración sonora
-* Lo sensorial a través del movimiento
-
-
-{% include block_container_end.html %}
-
-{% include block_container_start.html
-   class_bg="bg-white"
-%}
-
-Este espacio es para ti si quieres:
-- Honrar las **manos sabias** de esas creadoras que nos precedieron
-- Hacer **vibrar tu cuerpo** y descubrir dónde te lleva su sonido
-- Urdir nuestros relatos con **puntadas del ahora**, del ayer y del infinito
-- Respirar este **presente único** que nos regalamos
-- Celebrar con alegría nuestros **dones personales**
-
-{% include block_container_end.html %}
-
-{% include block_container_start.html %}
-
 **¿Cuánto vale?**\\
 100 euros\\
 Reservas tu plaza con una transferencia de 50 euros, al llegar al espacio pagas el resto.
@@ -430,16 +437,6 @@ En cada sesión habrá un descanso y ofreceremos infusiones y aperitivos.
 No\\
 Puedes traer tu comida de casa, en el lugar hay un espacio para que puedas calentarla y comerla con el resto de personas que hagan lo mismo\\
 Cerca del espacio hay varios restaurantes para comer con las personas que no traigan comida de casa. Vosotras os auto-organizáis para comer por grupos o todas juntas.
-
-**¿Es necesario saber cantar?**\\
-Para nada\\
-Te proponemos usar diferentes técnicas manuales y textiles, combinando todo lo que está a nuestra disposición, invocando el profundo potencial de las artes manuales y el canto como medio de expresión.\\
-El foco no está puesto en “aprender técnicas”, ni de “saber hacer” nada, sino en darnos la posibilidad y el tiempo de descubrir lo que la creatividad nos brinda.
-
-**¿Es necesario saber coser?**\\
-No, son técnicas muy fáciles que seguramente ya conozcas\\
-Y si no las conoces mejor, te dejarás guiar por tu corazón.\\
-Este espacio no es un curso de costura y tampoco vamos a hacer una exposición de fin de curso con lo que creemos.
 
 **¿Me puedo llevar la tarea para casa?**\\
 Claro que sí, cada una se lleva consigo lo que haya creado\\
