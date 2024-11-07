@@ -209,7 +209,7 @@ Siendo niña acabé sintiéndome **perdida**,\\
 empecé a **perder la confianza** en mí,\\
 acabé creyéndome alguien **defectuosa** e inadecuada.
 
-Luego llegaron los síntomas del cuerpo físico que gritaban lo no no podía expresar de otro modo.
+Luego llegaron los síntomas del cuerpo físico que gritaban lo no podía expresar de otro modo.
 
 ### En mi caso era la garganta.
 
@@ -442,7 +442,7 @@ Y si no las conoces mejor, te dejarás guiar por tu corazón.\\
 Este espacio no es un curso de costura y tampoco vamos a hacer una exposición de fin de curso con lo que creemos.
 
 **¿Me puedo llevar la tarea para casa?**\\
-Claro que si, cada una se lleva consigo lo que haya creado\\
+Claro que sí, cada una se lleva consigo lo que haya creado\\
 Será algo íntimo y único que puedes seguir construyendo en tu casa si quieres.
 
 **¿Cuántas plazas hay?**\\
