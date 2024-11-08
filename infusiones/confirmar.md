@@ -27,6 +27,6 @@ El mensaje puede tardar unos 5 minutos en llegarte. Asegúrate de que no lo tien
 
 Si no recibes el mensaje, prueba a darte de alta de nuevo.
 
-En caso de que nada de lo anterior te funcione puedes escribirnos a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a> y te ayudaremos.
+En caso de que nada de lo anterior te funcione puedes escribirme a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a> y te ayudaré.
 
 {% include block_container_end.html %}
