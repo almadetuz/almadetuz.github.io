@@ -1,0 +1,69 @@
+<div class="col-md-4 p-3">
+    <div class="row artist_name">{{ include.artist_name }}</div>
+    <div class="row album_name">{{ include.album_name }}</div>
+    {% if include.spotify %}
+    <div class="row row_play">
+        <div class="col logo_play"><img src="/assets/images/spotify_logo.png"></div>
+        <div class="col button_play">
+            <a id="spotify_link" href="" target="_blank" class="btn btn-success">{{ include.spotify }}</a>
+        </div>
+        <a id="spotify_intent" href=""></a>
+    </div>
+    {% endif %}
+    {% if include.ytmusic %}
+    <div class="row row_play">
+        <div class="col logo_play"><img src="/assets/images/youtubemusic_logo.png"></div>
+        <div class="col button_play">
+          <a id="ytmusic_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.ytmusic }}</a>
+        </div>
+        <a id="ytmusic_intent" href=""></a>
+    </div>
+    {% endif %}
+    {% if include.youtube %}
+    <div class="row row_play">
+        <div class="col logo_play"><img src="/assets/images/youtube_logo.png"></div>
+        <div class="col button_play">
+          <a id="youtube_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.youtube }}</a>
+        </div>
+        <a id="youtube_intent" href=""></a>
+    </div>
+    {% endif %}
+    {% if include.apple %}
+    <div class="row row_play">
+        <div class="col logo_play"><img src="/assets/images/applemusic_logo.png"></div>
+        <div class="col button_play">
+          <a id="apple_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.apple }}</a>
+        </div>
+    </div>
+    {% endif %}
+    {% if include.soundcloud %}
+    <div class="row row_play">
+        <div class="col logo_play"><img src="/assets/images/soundcloud_logo.png"></div>
+        <div class="col button_play">
+          <a id="soundcloud_link" href="" target="_blank" class="btn btn-outline-secondary">{{ include.soundcloud }}</a>
+        </div>
+        <a id="soundcloud_intent" href=""></a>
+    </div>
+    {% endif %}
+    {% if include.bandcamp_url %}
+    <div class="row bandcamp_link">
+      <div class="col">
+        Puedes descargar esta canción en .mp3 en <a href="{{ include.bandcamp_url }}" target="_blank">Bandcamp</a>
+      </div>
+    </div>
+    {% endif %}
+    <div class="row copyleft">
+      <div class="col text-center">
+        {% if include.cc_year %}
+        <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+          <img src="/assets/images/by-nc-sa.png" height="16px" style="margin: 0px 6px 0px 0px">
+        </a>
+        <span>Creative Commons - {{ include.cc_year }} - Alma de Tüz Records</span><br/>
+        {% endif %}
+        {% if layout.preference_modal %}
+        <a href="" data-cc="show-preferencesModal">Preferencias sobre cookies</a>
+        {% endif %}
+      </div>
+    </div>
+</div>
+
