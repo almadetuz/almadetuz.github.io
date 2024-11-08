@@ -1,0 +1,18 @@
+<div class="col-md-8 p-3">
+  <a id="artwork_link" href="" target="_blank">
+    <div class="ratio ratio-{{ include.artwork_ratio | default: '1x1' }}">
+      <picture class="ratio ratio-{{ include.artwork_ratio | default: '1x1' }}">
+        {% if include.artwork_webp_sizes %}
+        <source srcset="{{ include.artwork_webp_sizes }}"
+                type="image/webp" sizes="100vw"/>
+        {% endif %}
+        {% if include.artwork_jpg_sizes %}
+        <source srcset="{{ include.artwork_jpg_sizes }}"
+                type="image/jpeg" sizes="100vw"/>
+        {% endif %}
+        <img src="{{ include.artwork }}" alt="{{ include.album_name }}" loading="lazy">
+      </picture>
+    </div>
+  </a>
+</div>
+
