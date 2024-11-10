@@ -24,37 +24,16 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
 
 <div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-label="Amanda Tüz" aria-current="true"></button>
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Raíces" class=""></button>
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Sin el cuerpo no hay voz" class=""></button>
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="3" aria-label="Universo" class=""></button>
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="4" aria-label="Si duele no es amor" class=""></button>
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="5" aria-label="Luciérnagas" class=""></button>
-    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="6" aria-label="Volver con Voarte" class=""></button>
+    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-label="Raíces" aria-current="true"></button>
+    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Sin el cuerpo no hay voz" class=""></button>
+    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="2" aria-label="Universo" class=""></button>
+    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="3" aria-label="Si duele no es amor" class=""></button>
+    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="4" aria-label="Luciérnagas" class=""></button>
+    <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="5" aria-label="Volver con Voarte" class=""></button>
   </div>
   <div class="carousel-inner">
-    <!-- Amanda Tüz -->
-    <div class="carousel-item active">
-      <div class="ratio ratio-16x9">
-        <picture class="ratio ratio-16x9">
-          <source srcset="/assets/images/amanda_tuz_new.webp 1920w,
-                          /assets/images/amanda_tuz_new_1280.webp 1280w,
-                          /assets/images/amanda_tuz_new_640.webp 640w,
-                          /assets/images/amanda_tuz_new_480.webp 480w,
-                          /assets/images/amanda_tuz_new_320.webp 320w"
-                  type="image/webp" sizes="100vw"/>
-          <source srcset="/assets/images/amanda_tuz_new.jpg 1920w,
-                          /assets/images/amanda_tuz_new_1280.jpg 1280w,
-                          /assets/images/amanda_tuz_new_640.jpg 640w,
-                          /assets/images/amanda_tuz_new_480.jpg 480w,
-                          /assets/images/amanda_tuz_new_320.jpg 320w"
-                  type="image/jpeg" media="100vw"/>
-          <img src="/assets/images/amanda_tuz_new_320.jpg" alt="Amanda Tüz"/>
-        </picture>
-      </div>
-    </div>
     <!-- Raices -->
-    <div class="carousel-item">
+    <div class="carousel-item active">
       <div class="ratio ratio-16x9">
         <video autoplay muted loop
                  poster="/assets/images/raices_teaser.jpg"
