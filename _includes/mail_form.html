@@ -79,10 +79,14 @@ novalidate>
   var form_prop = {form: "subscribe-{{ include.form_id }}"};
   function FormSubmit(e) {
     amp_event('FormSubmit', {...web_event_prop, ...form_prop});
+    fb_event('SubmitApplication');
+    gads_event('conversion', 'form_submit');
   }
   function FormView(e) {
     var scroll_prop = {view_time: Math.trunc(e.time / 1000)};
     amp_event('FormView', {...web_event_prop, ...form_prop, ...scroll_prop});
+    fb_event('ViewContent', 'Form', 'View');
+    gads_event('conversion', 'form_view');
   }
   function FormError(e) {
     amp_event('FormError', {...web_event_prop, ...form_prop});

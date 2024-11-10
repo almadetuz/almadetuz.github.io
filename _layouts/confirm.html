@@ -1,0 +1,22 @@
+---
+layout: tracking
+body_class: page
+preference_modal: true
+---
+<header>
+{% include header.html %}
+</header>
+<main>
+{{ content }}
+</main>
+<footer>
+{% include footer.html %}
+</footer>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", (event) => {
+    amp_event('FormSubmitted', web_event_prop);
+    fb_event('ViewContent', 'Form', 'Confirmation');
+    gads_event('conversion', 'form_submitted');
+  });
+</script>

@@ -1,6 +1,6 @@
 ---
 title: Coser y Cantar
-layout: page
+layout: confirm
 sitemap: false
 ---
 
