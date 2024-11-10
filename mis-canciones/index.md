@@ -185,6 +185,67 @@ a las que tanto tengo que dar voz y airear con aliento y vida.
 
 {% include block_container_start.html %}
 
+![La Montaña](/assets/images/la_montana_single_640.jpg){: .img-right }
+
+## La Montaña
+
+_"Arigato Zaishö"_
+
+Gracias montaña,\\
+por dejarme subir sobre tu cuerpo.
+
+Gracias árboles\\
+por levantar vuestros cabellos para dejarme pasar.
+
+Gracias vientos\\
+por soplar hacia lugares favorables.
+
+Estas fueron las frases que inspiraron esta canción compuesta tras leer el cuento "El oso de la Luna Creciente" perteneciente a _"Mujeres que corren con los lobos"_ de Clarissa Pinkola Estés y con el que trabajo hace años.
+
+El camino hacia mí.
+
+Llevo esta montaña tan dentro que ya me pertenece...\\
+para siempre.
+
+Miro mi cuerpo,\\
+despacio,\\
+y encuentro en cada rincón de mi piel el testimonio de que la Montaña habita en mis manos,\\
+mi cabello,\\
+mis caderas,\\
+mis pies,\\
+sabias raíces,\\
+que dirigen sus pasos en silencio hacia el camino que sube al origen de lo que en esencia soy.
+
+Hace años que retorno a ella, por amor y necesidad...
+
+Y volveré para habitarla y ser,\\
+permanecer y crecer,\\
+nutrirme y sentir\\
+que todo lo que allí soy porque simplemente refleja mi ser en plenitud.
+
+Gracias, por dejarme ver claramente
+
+_"Es bueno subir a la montaña cuando no sabemos que otra cosa podemos hacer."_
+
+**Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
+**Carátula**: Esther Musgo
+
+<iframe style="border-radius:12px"
+        src="https://open.spotify.com/embed/album/5jC2aoKT3PZrS0FdqDUsxD?utm_source=generator&theme=0"
+        width="100%" height="160" frameBorder="0" allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+</iframe>
+<p class="listen-also">Escúchalo también en:
+  <a target="_blank" href="https://www.youtube.com/watch?v=z1vGFncH184&list=PLeNBLdOfTIZK6Rjnkdx0M3_8LhPbo08eu"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://soundcloud.com/almadetuz/la-montana?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
+  <a target="_blank" href="https://almadetuz.bandcamp.com/album/la-monta-a"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
+</p>
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html %}
+
 ![El hilo de la memoria](/assets/images/hilo_de_la_memoria_single_640.jpg){: .img-right }
 
 ## El hilo de la memoria
@@ -209,7 +270,7 @@ El ritmo de esta canción es como la máquina de coser, como el tiktak del reloj
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://www.youtube.com/watch?v=-7sPF7Lr8dc"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://www.youtube.com/watch?v=-7sPF7Lr8dc&list=PLeNBLdOfTIZKzlVwohREWvKpJzsAvyM6c"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/el-hilo-de-la-memoria?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/el-hilo-de-la-memoria"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -236,7 +297,7 @@ Este canto nació en una luna llena, tras la performance _"Vosotras, Raíces"_ e
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://www.youtube.com/watch?v=hAtpp_zh9d4"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://www.youtube.com/watch?v=hAtpp_zh9d4&list=PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/raices?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/raices"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -319,7 +380,7 @@ musicalmente fusionando sonidos más oscuros con otros más luminosos haciendo u
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=cS1YKbCz1T4"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=cS1YKbCz1T4&list=PLeNBLdOfTIZLNdAG1KO4Eur0LpTBlnwAF"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/luciernagas?si=d07e64cef3644d789d6589e7cf400a61"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/luciernagas"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -353,7 +414,7 @@ territorios sonoros.
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=vwDkTOcnIYQ"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=vwDkTOcnIYQ&list=PLeNBLdOfTIZL6oXll9M9f9SOmJNE3Rbqk"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/alas-en-mi?si=dd48cd33a2bf47899c565ab3851ac88f"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/alas-en-mi"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -382,7 +443,7 @@ Fractales que nos invitan a imaginarnos como individuos que inevitablemente form
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=4TB72Na1fFw"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=4TB72Na1fFw&list=PLeNBLdOfTIZKYJHpQsf-Dm-S-HsVTDnI3"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/universo?si=d471000525a8447f8c33e0c636b8da4a"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/universo"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
