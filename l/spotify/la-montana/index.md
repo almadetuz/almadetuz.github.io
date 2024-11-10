@@ -29,24 +29,26 @@ seo_mobile_spotify_url: spotify://track/0euT1aBOH3ztlJnKqMGyNE/?si=643516d0f3eb4
 
 %}
 
-<div class="col-md-4 p-3 d-none d-md-none" markdown="1">
+{% include link_track_buttons.html
 
-Un momento,
+  artist_name="Alma de Tüz"
+  album_name="La Montaña"
 
-antes de ir a los botones para que elijas donde prefieres escuchar la canción, te voy a contar algo.
+  spotify="PLAY"
+  youtube="PLAY"
+  apple="PLAY"
 
-_Los botones están abajo,<br>pero leer tiene premio_.
-{: .text-center }
+%}
 
-Yo no compongo canciones comerciales. No las hago para ser "mainstream" ni hacerme rica con ellas.
+{% include link_track_next.html %}
+
+<div class="col p-3" markdown="1">
+
+Si ya has escuchado la canción te habrás dado cuenta de que no compongo canciones comerciales. No las hago para ser "mainstream" ni hacerme rica con ellas.
 
 Las escribo para mí.
 
-La Montaña es parte de un disco que se titulará _"Canto para mí"_ y si te soy sincera, nada cambia para mí si escuchas mis canciones en Spotify, Youtube y demás...
-
-Por eso, si quieres, te regalo esta canción.
-
-Déjame aquí tu mail y te la mando en formato .mp3 con mucho cariño.
+Si la quieres para ti, para siempre, déjame aquí tu mail y te la mando en formato .mp3 con mucho cariño.
 
 {% include mail_form.html
 
@@ -60,20 +62,14 @@ Déjame aquí tu mail y te la mando en formato .mp3 con mucho cariño.
 
 </div>
 
-{% include link_track_buttons.html
+{% include link_track_next.html %}
 
-  artist_name="Alma de Tüz"
-  album_name="La Montaña"
-
-  spotify="PLAY"
-  youtube="PLAY"
-  apple="PLAY"
-
+{% include link_track_footer.html
   cc_year="2024"
-
 %}
 
 {% include link_track_end.html %}
+
 
 {% include link_js.html
 
@@ -91,3 +87,4 @@ Déjame aquí tu mail y te la mando en formato .mp3 con mucho cariño.
   medium="spotify"
 
 %}
+

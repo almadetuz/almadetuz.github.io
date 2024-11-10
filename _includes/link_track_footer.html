@@ -1,0 +1,11 @@
+<div class="col text-center copyleft">
+    {% if include.cc_year %}
+    <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es">
+      <img src="/assets/images/by-nc-sa.png" height="16px" style="margin: 0px 6px 0px 0px">
+    </a>
+    <span>Creative Commons - {{ include.cc_year }} - Alma de Tüz Records</span><br/>
+    {% endif %}
+    {% if layout.preference_modal %}
+    <a href="" data-cc="show-preferencesModal">Preferencias sobre cookies</a>
+    {% endif %}
+</div>
