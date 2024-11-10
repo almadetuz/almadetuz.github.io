@@ -237,7 +237,7 @@ _"Es bueno subir a la montaña cuando no sabemos que otra cosa podemos hacer."_
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://www.youtube.com/watch?v=z1vGFncH184&list=PLeNBLdOfTIZK6Rjnkdx0M3_8LhPbo08eu"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=z1vGFncH184&list=PLeNBLdOfTIZK6Rjnkdx0M3_8LhPbo08eu"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/la-montana?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/la-monta-a"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -270,7 +270,7 @@ El ritmo de esta canción es como la máquina de coser, como el tiktak del reloj
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://www.youtube.com/watch?v=-7sPF7Lr8dc&list=PLeNBLdOfTIZKzlVwohREWvKpJzsAvyM6c"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=-7sPF7Lr8dc&list=PLeNBLdOfTIZKzlVwohREWvKpJzsAvyM6c"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/el-hilo-de-la-memoria?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/el-hilo-de-la-memoria"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -297,7 +297,7 @@ Este canto nació en una luna llena, tras la performance _"Vosotras, Raíces"_ e
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://www.youtube.com/watch?v=hAtpp_zh9d4&list=PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=hAtpp_zh9d4&list=PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/raices?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/raices"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
@@ -338,7 +338,7 @@ _"Busco ternura, al florecer"_
         loading="lazy">
 </iframe>
 <p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://www.youtube.com/watch?v=_c7cMrVcQ_c&list=OLAK5uy_nON6IKPosZvqU_gO_QVTGQZhLkMnGSjak"><i class="fab fa-youtube" title="Youtube"></i></a>
+  <a target="_blank" href="https://music.youtube.com/watch?v=_c7cMrVcQ_c&list=OLAK5uy_nON6IKPosZvqU_gO_QVTGQZhLkMnGSjak"><i class="fab fa-youtube" title="Youtube"></i></a>
   <a target="_blank" href="https://soundcloud.com/almadetuz/canto-para-mi?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/canto-para-mi"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 </p>
