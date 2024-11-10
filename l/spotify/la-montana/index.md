@@ -29,7 +29,7 @@ seo_mobile_spotify_url: spotify://track/0euT1aBOH3ztlJnKqMGyNE/?si=643516d0f3eb4
 
 %}
 
-<div class="col-md-4 p-3 d-block d-md-none" markdown="1">
+<div class="col-md-4 p-3 d-none d-md-none" markdown="1">
 
 Un momento,
 
