@@ -1,4 +1,5 @@
 #!/bin/bash
+# Dependencies: sudo apt install webp
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 IMG_PATH="assets/images"
