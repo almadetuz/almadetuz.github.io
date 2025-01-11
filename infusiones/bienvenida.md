@@ -19,26 +19,26 @@ sitemap: false
    class_bg="bg-white"
 %}
 
-El pasado 8 de Noviembre publiqué mi última canción:
+El pasado 10 de Enero publiqué mi última canción:
 
-_La Montaña_
+_Dentro_
 {:.text-center}
 
 Puedes escucharla aquí (si aún no lo has hecho):
 
 <div class="pt-3 pb-5 ps-0 pe-0 container d-flex justify-content-center align-items-center mx-auto" style="max-width: 720px">
-<iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=1852528765/size=small/bgcol=ffffff/linkcol=de270f/track=2953892532/transparent=true/" seamless><a href="https://almadetuz.bandcamp.com/album/la-monta-a">La Montaña</a></iframe>
+<iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=708834592/size=small/bgcol=ffffff/linkcol=de270f/transparent=true/" seamless><a href="https://almadetuz.bandcamp.com/album/dentro">Dentro</a></iframe>
 </div>
 
 Y puedes descargartela en .mp3 aquí, para que la tengas para siempre.
 
 <div class="pt-3 pb-3 text-center">
 <p>
-<a href="/assets/audio/la_montana_infusiones.mp3" download="la_montana_infusiones.mp3">Descargar La Montaña <i class="fa fa-download"></i></a>
+<a href="/assets/audio/dentro_infusiones.mp3" download="dentro_infusiones.mp3">Descargar Dentro <i class="fa fa-download"></i></a>
 </p>
 </div>
 
-La Montaña formará parte de un vinilo que se titulará _"Canto para mí"_
+Esta canción nace en el invierno, cuando el frío más intenso cubre senderos y valles. Es una canción para la búsqueda del calor interno cuando hace frío fuera.
 
 Si te soy sincera, nada cambia para mí si escuchas mis canciones en Spotify, Youtube y demás ...
 
