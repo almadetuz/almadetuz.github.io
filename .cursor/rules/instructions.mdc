@@ -1,0 +1,10 @@
+---
+alwaysApply: true
+---
+When working on this project, ALWAYS:
+1. **Read the rules first**: Check `.cursor/rules.md` for development standards
+2. **Understand the context**: Review `.cursor/context.md` for project background
+3. **Follow mobile-first**: Start with mobile design, scale up
+4. **Use existing patterns**: Check similar components before creating new ones
+5. **Test thoroughly**: Verify responsive design and functionality
+6. **Update documentation**: Update docs files when a significant change is made
