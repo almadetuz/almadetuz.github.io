@@ -209,17 +209,19 @@ _"Es bueno subir a la montaña cuando no sabemos que otra cosa podemos hacer."_
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Esther Musgo
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/5jC2aoKT3PZrS0FdqDUsxD?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=z1vGFncH184&list=PLeNBLdOfTIZK6Rjnkdx0M3_8LhPbo08eu"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/la-montana?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/la-monta-a"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="La Montaña"
+   album_type="single"
+   bandcamp_album_slug="la-monta-a"
+   bandcamp_album_id="1852528765"
+   tidal_album_id="424219942"
+   deezer_album_id="728098401"
+   apple_album_id="1775947727"
+   youtube_track_id="M0WEa-eSIm4"
+   youtube_list_id="PLeNBLdOfTIZK6Rjnkdx0M3_8LhPbo08eu"
+   soundcloud_album_slug="la-montana"
+   spotify_track_id="0euT1aBOH3ztlJnKqMGyNE"
+%}
 
 {% include block_container_end.html %}
 
@@ -242,17 +244,19 @@ El ritmo de esta canción es como la máquina de coser, como el tiktak del reloj
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Amanda Fdez. Bartolomé
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/6aRHgsem246P6H2BiT5H4C?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=-7sPF7Lr8dc&list=PLeNBLdOfTIZKzlVwohREWvKpJzsAvyM6c"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/el-hilo-de-la-memoria?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/el-hilo-de-la-memoria"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="El Hilo de la Memoria"
+   album_type="single"
+   bandcamp_album_slug="el-hilo-de-la-memoria"
+   bandcamp_album_id="977130829"
+   tidal_album_id="367137346"
+   deezer_album_id="596411432"
+   apple_album_id="1750029810"
+   youtube_track_id="-7sPF7Lr8dc"
+   youtube_list_id="PLeNBLdOfTIZKzlVwohREWvKpJzsAvyM6c"
+   soundcloud_album_slug="el-hilo-de-la-memoria"
+   spotify_track_id="5maPCo3EJ2V0tEYOvgkVIJ"
+%}
 
 {% include block_container_end.html %}
 
@@ -269,17 +273,19 @@ Este canto nació en una luna llena, tras la performance _"Vosotras, Raíces"_ e
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Esther Musgo
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/6oQMFASEVJXNWMp6xhFhEk?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=hAtpp_zh9d4&list=PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/raices?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/raices"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="Raíces"
+   album_type="single"
+   bandcamp_album_slug="raices"
+   bandcamp_album_id="3018956702"
+   tidal_album_id="424541924"
+   deezer_album_id="728779491"
+   apple_album_id="1769247974"
+   youtube_track_id="hAtpp_zh9d4"
+   youtube_list_id="PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp"
+   soundcloud_album_slug="raices"
+   spotify_track_id="5ZGwQgmgUOZjqy0FPjC710"
+%}
 
 {% include block_container_end.html %}
 
@@ -310,17 +316,20 @@ _"Busco ternura, al florecer"_
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Esther Musgo
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/3PQs7K5hGW3CA9NgxDJPEf?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=_c7cMrVcQ_c&list=OLAK5uy_nON6IKPosZvqU_gO_QVTGQZhLkMnGSjak"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/canto-para-mi?si=ee2fd6a668ce4258819a95628cf8fbaa"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/canto-para-mi"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+
+{% include song_links.html
+   title="Canto para mí"
+   album_type="single"
+   bandcamp_album_slug="canto-para-mi"
+   bandcamp_album_id="3810163160"
+   tidal_album_id="342142777"
+   deezer_album_id="540172852"
+   apple_album_id="1727749674"
+   youtube_track_id="_c7cMrVcQ_c"
+   youtube_list_id="OLAK5uy_nON6IKPosZvqU_gO_QVTGQZhLkMnGSjak"
+   soundcloud_album_slug="canto-para-mi"
+   spotify_track_id="2GWvq4Aga07jKFjl643iji"
+%}
 
 {% include block_container_end.html %}
 
@@ -352,17 +361,19 @@ musicalmente fusionando sonidos más oscuros con otros más luminosos haciendo u
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Amanda Fdez. Bartolomé
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/4M2Xi70zAyjjvrKwBfKxL3?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=cS1YKbCz1T4&list=PLeNBLdOfTIZLNdAG1KO4Eur0LpTBlnwAF"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/luciernagas?si=d07e64cef3644d789d6589e7cf400a61"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/luciernagas"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="Luciérnagas"
+   album_type="single"
+   bandcamp_album_slug="luciernagas"
+   bandcamp_album_id="3480333"
+   tidal_album_id="418104413"
+   deezer_album_id="713489901"
+   apple_album_id="1794808630"
+   youtube_track_id="yPugSSbA-Vw"
+   youtube_list_id="PLeNBLdOfTIZLNdAG1KO4Eur0LpTBlnwAF"
+   soundcloud_album_slug="luciernagas"
+   spotify_track_id="3FMqKdjQPRG3XjPGR9G9FI"
+%}
 
 {% include block_container_end.html %}
 
@@ -386,17 +397,19 @@ territorios sonoros.
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Pinceladas Conscientes - <a target="_blank" href="https://www.pinceladasconscientes.com/">pinceladasconscientes.com</a>
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/37tcbRJbrs2QMIaC7nrTnA?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=vwDkTOcnIYQ&list=PLeNBLdOfTIZL6oXll9M9f9SOmJNE3Rbqk"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/alas-en-mi?si=dd48cd33a2bf47899c565ab3851ac88f"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/alas-en-mi"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="Alas en mí"
+   album_type="single"
+   bandcamp_album_slug="alas-en-mi"
+   bandcamp_album_id="3519428533"
+   tidal_album_id="418103945"
+   deezer_album_id="713489231"
+   apple_album_id="1794825806"
+   youtube_track_id="_jHLJnotqcI"
+   youtube_list_id="PLeNBLdOfTIZL6oXll9M9f9SOmJNE3Rbqk"
+   soundcloud_album_slug="alas-en-mi"
+   spotify_track_id="6iekPoRl3S1MHeLraSliTp"
+%}
 
 {% include block_container_end.html %}
 
@@ -415,17 +428,19 @@ Fractales que nos invitan a imaginarnos como individuos que inevitablemente form
 **Producción**: Paul Castejón (Sinestesia Estudios) - <a target="_blank" href="https://paulcastejon.com/">paulcastejon.com</a>\\
 **Carátula**: Helix Nebula - ESO/VISTA/J. Emerson
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/14QGgllJuBE23BvSWLMJGQ?utm_source=generator&theme=0"
-        width="100%" height="160" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=4TB72Na1fFw&list=PLeNBLdOfTIZKYJHpQsf-Dm-S-HsVTDnI3"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/universo?si=d471000525a8447f8c33e0c636b8da4a"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/universo"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="Universo"
+   album_type="single"
+   bandcamp_album_slug="universo"
+   bandcamp_album_id="447966212"
+   tidal_album_id="418103885"
+   deezer_album_id="713491781"
+   apple_album_id="1794808693"
+   youtube_track_id="BJ0aPpj7MFo"
+   youtube_list_id="PLeNBLdOfTIZKYJHpQsf-Dm-S-HsVTDnI3"
+   soundcloud_album_slug="universo"
+   spotify_track_id="5zRWkP4GQx4kEOYQkwEw0L"
+%}
 
 {% include block_container_end.html %}
 
@@ -465,17 +480,20 @@ Estrenada en el festival _DOC NYC 2022_, el 12 de Noviembre -
 <a href="https://www.docnyc.net/film/a-witch-story" target="_blank">docnyc.net/film/a-witch-story</a><br>
 <a href="https://awitchstory.com" target="_blank">awitchstory.com</a>
 
-<iframe style="border-radius:12px"
-        src="https://open.spotify.com/embed/album/0fz9pP5CatzJiwUgX1z2wU?utm_source=generator&theme=0"
-        width="100%" height="530" frameBorder="0" allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-</iframe>
-<p class="listen-also">Escúchalo también en:
-  <a target="_blank" href="https://music.youtube.com/watch?v=g92_azJRRdw&list=OLAK5uy_kEd0EgtZskp0XJm3MhalKFBW6cGUKOpTg"><i class="fab fa-youtube" title="Youtube"></i></a>
-  <a target="_blank" href="https://soundcloud.com/almadetuz/sets/a-witch-story?si=3d8a9d65325a4333a1c0365b6b912fbd"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-  <a target="_blank" href="https://almadetuz.bandcamp.com/album/a-witch-story"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
-</p>
+{% include song_links.html
+   title="A Witch Story"
+   album_type="album"
+   album_height="340px"
+   bandcamp_album_slug="a-witch-story"
+   bandcamp_album_id="4039654508"
+   tidal_album_id="418104308"
+   deezer_album_id="713488041"
+   apple_album_id="1794914054"
+   youtube_track_id="x49J1G4pZxo"
+   youtube_list_id="OLAK5uy_lsNTp9z_dZyxuxflMwtIWONcljdKtzNzU"
+   soundcloud_album_slug="sets/a-witch-story"
+   spotify_album_id="1XS7TEd4jq0g8Zptmk1Izx"
+%}
 
 {% include block_container_end.html %}
 

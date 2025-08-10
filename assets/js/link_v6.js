@@ -161,6 +161,25 @@ function openSpotifyArtist(artist_id, si) {
     mobileClick(link, 'spotify', spotify.intent_id);
 };
 
+function spotifyAlbumLinkSet(album_id, si) {
+    var link = 'https://open.spotify.com/album/' + album_id + '?si=' + si;
+    var intent = 'intent://' +
+        'album/' + album_id + '?go=1&nd=1' +
+        '#Intent;' +
+        'scheme=spotify;' +
+        'package=com.spotify.music;' +
+        'S.browser_fallback_url=' + fallbackLink('spotify') + ';' +
+        'end;';
+    linkSet(spotify.intent_id, intent, 'spotify');
+    linkSet(spotify.link_id, link, 'spotify');
+    if (medium == 'spotify') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openSpotifyAlbum(album_id, si) {
+    var link = 'spotify://album/' + album_id + '?si=' + si;
+    mobileClick(link, 'spotify', spotify.intent_id);
+};
+
 function spotifyLinkSet(track_id, si, context) {
     var link = 'https://open.spotify.com/track/' + track_id + '?si=' + si;
     var intent = 'track/' + track_id + '?go=1&nd=1';

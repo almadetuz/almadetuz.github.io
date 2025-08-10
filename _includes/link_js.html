@@ -1,5 +1,5 @@
 <!-- Link JS -->
-<script type="text/javascript" src="/assets/js/link_v5.js"></script>
+<script type="text/javascript" src="/assets/js/link_v6.js"></script>
 
 <!-- Link actions -->
 <script type="text/javascript">
@@ -12,6 +12,7 @@
     const campaign = '{{ include.campaign }}',
           spotify_track_id = '{{ include.spotify_track_id }}',
           spotify_playlist_id = '{{ include.spotify_playlist_id }}',
+          spotify_album_id = '{{ include.spotify_album_id }}',
           spotify_artist_id = '{{ include.spotify_artist_id }}',
           spotify_si = '{{ include.spotify_si }}',
           spotify_context = '{{ include.spotify_context | default: "none" }}',
@@ -41,6 +42,9 @@
   {% endif %}
   {% if include.spotify_playlist_id %}
     spotifyPlaylistLinkSet(spotify_playlist_id, spotify_si);
+  {% endif %}
+  {% if include.spotify_album_id %}
+    spotifyAlbumLinkSet(spotify_album_id, spotify_si);
   {% endif %}
   {% if include.spotify_artist_id %}
     spotifyArtistLinkSet(spotify_artist_id, spotify_si);
@@ -79,6 +83,8 @@
                 openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
               {% elsif include.spotify_playlist_id %}
                 openSpotifyPlaylist(spotify_playlist_id, spotify_si);
+              {% elsif include.spotify_album_id %}
+                openSpotifyAlbum(spotify_album_id, spotify_si);
               {% elsif include.spotify_artist_id %}
                 openSpotifyArtist(spotify_artist_id, spotify_si);
               {% endif %}

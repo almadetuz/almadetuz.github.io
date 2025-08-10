@@ -373,16 +373,46 @@ p.more-info a {
   color: #212529;
   padding-left: 8px;
 }
+
+p.listen-also i.fa-youtube,
+p.listen-also i.fa-soundcloud,
+p.listen-also i.fa-apple,
+p.listen-also i.fa-bandcamp,
+p.listen-also i.fa-spotify {
+  transition: color .15s ease;
+}
 p.listen-also i.fa-youtube:hover {
   color: #E74529;
 }
 p.listen-also i.fa-soundcloud:hover {
   color: #E85029;
 }
+p.listen-also i.fa-apple:hover {
+  color: #D60017;
+}
+
 p.listen-also i.fa-bandcamp:hover {
   color: #319BBF;
 }
-
+p.listen-also i.fa-spotify:hover {
+  color: #3AE176;
+}
+p.listen-also .icon-tidal .tidal-icon {
+  height: 28px;
+  vertical-align: middle;
+  transition: color .15s ease;
+}
+.icon-tidal:hover .tidal-icon {
+  color: rgb(51, 255, 238);
+}
+.deezer-icon {
+  height: 22px;
+  vertical-align: middle;
+  transition: color .15s ease;
+}
+.icon-deezer:hover .deezer-icon {
+  color: #9E33F7;
+}
 
 /* Link */
 #links {
