@@ -36,6 +36,11 @@ exclude:
   - .gitignore
   - .git/
   - .gitattributes
+  - vendor/
+  - vendor/**/*
+  - node_modules/
+  - package.json
+  - package-lock.json
 
 
 # SEO and OG global variables
