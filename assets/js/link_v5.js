@@ -18,6 +18,10 @@ const soundcloud = {
     intent_id: 'soundcloud_intent',
     link_id: 'soundcloud_link'
 };
+const bandcamp = {
+    intent_id: 'bandcamp_intent',
+    link_id: 'bandcamp_link'
+};
 const artwork_link_id = 'artwork_link';
 
 var isMobile = {
@@ -327,4 +331,23 @@ function soundcloudLinkSet(track_id) {
 function openSoundcloudTrack(track_id) {
     var link = 'soundcloud://' + track_id;
     mobileClick(link, 'soundcloud', soundcloud.intent_id);
+};
+
+// ----------------------- BANDCAMP -------------------------
+
+function bandcampLinkSet(link) {
+    var intent = 'intent://' +
+        link.replace('https://', '') +
+        '#Intent;' +
+        'scheme=https;' +
+        'package=com.bandcamp.android;' +
+        'S.browser_fallback_url=' + fallbackLink('bandcamp') + ';' +
+        'end;';
+    linkSet(bandcamp.intent_id, intent, 'bandcamp');
+    linkSet(bandcamp.link_id, link, 'bandcamp');
+    if (medium == 'bandcamp') { linkSet(artwork_link_id, link, 'artwork') };
+}
+
+function openBandcamp(link) {
+    mobileClick(link, 'bandcamp', bandcamp.intent_id);
 };

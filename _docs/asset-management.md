@@ -258,7 +258,7 @@ assets/js/
 ├── bootstrap.bundle.v5.3.3.min.js    # Bootstrap JS
 ├── cookieconsent_v3.js               # Cookie consent
 ├── forms_v2.js                       # Form handling
-├── link_v4.js                        # Link management
+├── link_v5.js                        # Link management
 ├── scroll_v1.js                      # Scroll tracking
 └── Third-party utilities
 ```
