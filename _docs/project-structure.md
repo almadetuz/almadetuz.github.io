@@ -118,9 +118,9 @@ Jekyll collection for single content pieces:
 JavaScript libraries and custom scripts:
 - `amplitude_v261.js` - Analytics
 - `bootstrap.bundle.v5.3.3.min.js` - Bootstrap JavaScript
-- `api_v1.js` - API integration
-- `forms_v2.js` - Form handling
-- `link_v6.js` - Link management
+- `api.js` - API integration
+- `forms.js` - Form handling
+- `link.js` - Link management
 - `scroll_v1.js` - Scroll tracking
 - Third-party libraries (Axios, intersection observer, etc.)
 

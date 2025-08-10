@@ -253,12 +253,12 @@ Fonts are optimized for performance with proper `font-display` properties and su
 assets/js/
 ├── analytics-browser-2.6.1-min.js    # Analytics
 ├── amplitude_v261.js                  # Amplitude tracking
-├── api_v1.js                         # API integration
+├── api.js                            # API integration
 ├── axios.v1.6.8.min.js               # HTTP client
 ├── bootstrap.bundle.v5.3.3.min.js    # Bootstrap JS
 ├── cookieconsent_v3.js               # Cookie consent
-├── forms_v2.js                       # Form handling
-├── link_v6.js                        # Link management
+├── forms.js                          # Form handling
+├── link.js                           # Link management
 ├── scroll_v1.js                      # Scroll tracking
 └── Third-party utilities
 ```

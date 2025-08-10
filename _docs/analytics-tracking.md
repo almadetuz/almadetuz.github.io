@@ -36,10 +36,10 @@ const query_params = new URLSearchParams(window.location.search);
 
 // UTM Parameter Persistence
 var last_utm = {};
-try { 
-  last_utm = JSON.parse(localStorage.getItem('adt_last_utms')) || {}; 
-} catch (error) { 
-  last_utm = {}; 
+try {
+  last_utm = JSON.parse(localStorage.getItem('adt_last_utms')) || {};
+} catch (error) {
+  last_utm = {};
 }
 
 last_utm = {
@@ -198,7 +198,7 @@ Music platform link tracking in `link_js.html`:
 ### Form Analytics System
 
 **Components**:
-- `forms_v2.js`: Core form handling
+- `forms.js`: Core form handling
 - Form event bindings in components
 - Validation state tracking
 - Submission success/error tracking
