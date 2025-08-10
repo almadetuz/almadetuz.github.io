@@ -71,13 +71,13 @@ When working on this project, ALWAYS:
 
 ```liquid
 <!-- Template structure to follow -->
-<!-- 
+<!--
   Component: component-name.html
   Purpose: What this component does
-  
+
   Required Parameters:
   - param_name (type): Description
-  
+
   Usage Example:
   {% include component-name.html param_name="value" %}
 -->
@@ -117,21 +117,21 @@ Page content here using existing components:
   // Mobile styles first
   display: block;
   padding: 1rem;
-  
+
   // Use existing variables
   color: $color-eerie-black;
   background: $color-isabelline;
-  
+
   // Responsive enhancements
   @media screen and (min-width: $bp-tablet) {
     padding: 2rem;
   }
-  
+
   // BEM naming for variants
   &--variant {
     background: $color-tea-rose;
   }
-  
+
   &__element {
     margin-bottom: 1rem;
   }
@@ -143,26 +143,26 @@ Page content here using existing components:
 ```javascript
 (function() {
   'use strict';
-  
+
   // Module pattern with error handling
   function initializeFeature() {
     try {
       // Feature implementation
       const elements = document.querySelectorAll('.feature-element');
-      
+
       // Event delegation
       document.addEventListener('click', function(event) {
         if (event.target.matches('.feature-trigger')) {
           handleFeatureClick(event);
         }
       });
-      
+
     } catch (error) {
       console.error('Feature initialization error:', error);
       // Graceful fallback
     }
   }
-  
+
   // Auto-initialize
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeFeature);
@@ -185,10 +185,10 @@ if (environment === 'production') {
     action: 'click',
     ...web_event_prop
   });
-  
+
   // Facebook Pixel
   fb_event('CustomEvent');
-  
+
   // Google Ads
   gads_event('conversion', 'component_interaction');
 }
@@ -203,12 +203,8 @@ For music-related content:
 seo_type: music.song
 seo_audio: /assets/audio/song_preview.mp3
 seo_music_duration: 217
-seo_music_album: spotify_album_url
-seo_mobile_spotify_url: spotify://track/id?si=session
-
-# Platform deep linking
-seo_mobile_youtube_url: youtube://video_id
-seo_web_youtube_url: https://youtube.com/watch?v=video_id
+seo_music_album: https://artist.bandcamp.com/album/album-title
+seo_mobile_bandcamp_url: https://artist.bandcamp.com/album/album-title
 ```
 
 ## 📱 RESPONSIVE DESIGN CHECKLIST

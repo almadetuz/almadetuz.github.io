@@ -1,7 +1,7 @@
 ---
 title: Dentro
 layout: link
-seo_description: Escucha Dentro en Spotify - Alma de Tüz - Song - 2025
+seo_description: Escucha Dentro en Bandcamp - Alma de Tüz - Song - 2025
 seo_image: /assets/images/dentro_single_seo.jpg
 seo_image_width: 1280
 seo_image_height: 1280
@@ -9,11 +9,11 @@ seo_type: music.song
 seo_audio: /assets/audio/dentro_preview.mp3
 seo_audio_type: audio/mpeg
 seo_music_duration: 217
-seo_music_album: https://open.spotify.com/album/3PboKdbseRUnPz6HgXxsIy
+seo_music_album: https://almadetuz.bandcamp.com/album/dentro
 seo_music_album_track: 1
 seo_music_release_date: 2025-01-10
-seo_music_musician: https://open.spotify.com/artist/1A4ezsQEPReJxvoTJp4u51
-seo_mobile_spotify_url: spotify://track/4h0dnLVe5uNwmRbFwPQ9TB?si=5ac884c854f34596
+seo_music_musician: https://almadetuz.bandcamp.com
+seo_mobile_bandcamp_url: https://almadetuz.bandcamp.com/album/dentro
 ---
 {% include link_track_start.html %}
 
@@ -34,10 +34,12 @@ seo_mobile_spotify_url: spotify://track/4h0dnLVe5uNwmRbFwPQ9TB?si=5ac884c854f345
   artist_name="Alma de Tüz"
   album_name="Dentro"
 
+  bandcamp="PLAY"
   spotify="PLAY"
   youtube="PLAY"
   apple="PLAY"
 
+  bandcamp_url="https://almadetuz.bandcamp.com/album/dentro"
 %}
 
 {% include link_track_next.html %}
@@ -82,9 +84,10 @@ Si la quieres para ti, para siempre, déjame aquí tu mail y te la mando en form
   youtube_list_id="PLeNBLdOfTIZIo8bN0wvi-wY2qZxzu0E96"
 
   apple_link="https://music.apple.com/es/album/a/1789125953?app=music&itscg=10002&itsct=mus_1650986310&ct=QTG5iaA1GZSNiKw&at=1010l367Y&ls=1&mttnsubad=album_newrelease_Measure"
+  bandcamp_url="https://almadetuz.bandcamp.com/album/dentro"
 
   campaign="dentro"
-  medium="spotify"
+  medium="bandcamp"
 
 %}
 

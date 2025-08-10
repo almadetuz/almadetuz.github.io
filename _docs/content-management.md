@@ -165,8 +165,8 @@ seo_image: /assets/images/artwork_seo.jpg
 seo_type: music.song
 seo_audio: /assets/audio/preview.mp3
 seo_music_duration: 217
-seo_music_album: spotify_album_url
-seo_mobile_spotify_url: spotify_mobile_url
+seo_music_album: https://artist.bandcamp.com/album/album-title
+seo_mobile_bandcamp_url: https://artist.bandcamp.com/album/album-title
 ---
 ```
 

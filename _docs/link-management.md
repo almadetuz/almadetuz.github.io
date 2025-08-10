@@ -83,11 +83,11 @@ seo_type: music.song
 seo_audio: /assets/audio/preview.mp3
 seo_audio_type: audio/mpeg
 seo_music_duration: 217
-seo_music_album: https://open.spotify.com/album/album_id
+seo_music_album: https://artist.bandcamp.com/album/album_id
 seo_music_album_track: 1
 seo_music_release_date: 2025-01-10
-seo_music_musician: https://open.spotify.com/artist/artist_id
-seo_mobile_spotify_url: spotify://track/track_id?si=session_id
+seo_music_musician: https://artist.bandcamp.com/
+seo_mobile_spotify_url: https://artist.bandcamp.com/album/album-title
 ---
 ```
 
@@ -143,7 +143,7 @@ seo_mobile_spotify_url: spotify://track/track_id?si=session_id
 #### Track Links
 ```yaml
 # Example: /l/spotify/dentro/
-seo_mobile_spotify_url: spotify://track/4h0dnLVe5uNwmRbFwPQ9TB?si=5ac884c854f34596
+seo_mobile_bandcamp_url: https://almadetuz.bandcamp.com/album/raices
 ```
 
 #### JavaScript Deep Linking
@@ -159,7 +159,7 @@ seo_mobile_spotify_url: spotify://track/4h0dnLVe5uNwmRbFwPQ9TB?si=5ac884c854f345
 #### Artist Profile Links
 ```yaml
 # Example: /l/artist/almadetuz/
-seo_mobile_spotify_url: spotify://artist/1A4ezsQEPReJxvoTJp4u51/?si=588825ef8a984182
+seo_mobile_bandcamp_url: https://almadetuz.bandcamp.com/album/raices
 ```
 
 ### YouTube Integration
@@ -293,9 +293,9 @@ seo_music_musician: https://open.spotify.com/artist/artist_id
 #### Mobile App Linking
 ```yaml
 # Spotify Deep Links
-seo_mobile_spotify_url: spotify://track/track_id?si=session_id
+seo_mobile_bandcamp_url: https://artist.bandcamp.com/album/album-title
 
-# YouTube Deep Links  
+# YouTube Deep Links
 seo_mobile_youtube_url: youtube://video_id
 seo_web_youtube_url: https://youtube.com/watch?v=video_id
 ```

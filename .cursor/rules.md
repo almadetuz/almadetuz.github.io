@@ -26,7 +26,7 @@ When working on this Jekyll-based website, ALWAYS follow these principles:
 
 ```scss
 $bp-thin: 360px;        // Minimal mobile devices
-$bp-mobile: 576px;      // Standard mobile devices  
+$bp-mobile: 576px;      // Standard mobile devices
 $bp-tablet: 768px;      // Tablet devices
 $bp-bigtablet: 908px;   // Large tablets
 $bp-screen: 1280px;     // Desktop screens
@@ -37,16 +37,16 @@ $bp-wide: 1800px;       // Large desktop screens
 
 ### ALWAYS Use This Component Template:
 ```liquid
-<!-- 
+<!--
   Component: component-name.html
   Purpose: Brief description
-  
+
   Required Parameters:
   - param_name (string): Description
-  
+
   Optional Parameters:
   - optional_param (string, default: "value"): Description
-  
+
   Usage:
   {% include component-name.html
     param_name="value"
@@ -122,7 +122,7 @@ seo_image_height: 720
 ```javascript
 (function() {
   'use strict';
-  
+
   function handleAction(event) {
     try {
       // Implementation
@@ -131,7 +131,7 @@ seo_image_height: 720
       // Graceful fallback
     }
   }
-  
+
   // Event delegation
   document.addEventListener('click', function(event) {
     if (event.target.matches('.btn-action')) {
@@ -254,8 +254,8 @@ _sass/
 seo_type: music.song
 seo_audio: /assets/audio/preview.mp3
 seo_music_duration: 217
-seo_music_album: spotify_album_url
-seo_mobile_spotify_url: spotify://track/id
+seo_music_album: https://artist.bandcamp.com/album/album-title
+seo_mobile_bandcamp_url: https://artist.bandcamp.com/album/album-title
 ```
 
 ### Platform buttons MUST support:
