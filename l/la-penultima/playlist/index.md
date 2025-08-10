@@ -6,10 +6,10 @@ seo_image: /assets/images/la-penultima/la_penultima_seo.jpg
 seo_image_width: 1280
 seo_image_height: 1280
 seo_type: music.song
-seo_music_album: https://soundcloud.com/almadetuz/sets/la-penultima
+seo_music_album: https://almadetuz.bandcamp.com/album/la-pen-ltima
 seo_music_album_track: 5
 seo_music_release_date: 2025-06-29
-seo_music_musician: https://soundcloud.com/almadetuz
+seo_music_musician: https://almadetuz.bandcamp.com
 ---
 {% include link_track_start.html
   style="la_penultima"
@@ -32,6 +32,7 @@ seo_music_musician: https://soundcloud.com/almadetuz
   artist_name="Ros Moderna Eterna"
   album_name="La penúltima"
 
+  bandcamp="PLAY"
   soundcloud="PLAY"
 
 %}
@@ -71,9 +72,10 @@ Eso es la penúltima, tu excusa.
   youtube_channel_id="UCOPHcngzAIc4ZqT2cc0V0jw"
 
   soundcloud_track_id="almadetuz/sets/la-penultima"
+  bandcamp_url="https://almadetuz.bandcamp.com/album/la-pen-ltima"
 
   campaign="lp-playlist"
-  medium="soundcloud"
+  medium="bandcamp"
 
 %}
 
