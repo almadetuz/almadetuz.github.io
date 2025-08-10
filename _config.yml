@@ -29,6 +29,14 @@ exclude:
   - resize_img.sh
   - config.ru
   - Rakefile
+  - .cursor/
+  - .github/
+  - .vscode/
+  - .DS_Store
+  - .gitignore
+  - .git/
+  - .gitattributes
+
 
 # SEO and OG global variables
 title: Alma de Tüz
