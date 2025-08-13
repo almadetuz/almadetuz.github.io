@@ -2,4 +2,4 @@
 description: When a task is being planned
 alwaysApply: false
 ---
-When planning a task, then read ./cursor/instrunctions.md file for taking into account the task workflow, common task types and analytics integration
+When planning a task, then read ./cursor/instructions.md file for taking into account the task workflow, common task types and analytics integration

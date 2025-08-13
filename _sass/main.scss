@@ -136,12 +136,6 @@ img.img-center, img.img-center-320, img.img-center-480, img.img-center-640 {
   // padding: 10px 0px;
 }
 
-@media screen and (min-width: $bp-thin) {
-  img.img-left, img.img-right,
-  img.img-center, img.img-center-320, img.img-center-480, img.img-center-640 {
-      // width: 155px;
-  }
-}
 @media screen and (min-width: $bp-mobile) {
   img.img-left {
     width: 216px;
@@ -360,44 +354,75 @@ div.social a:hover {
     }
 }
 
-p.listen-also,
+div.listen-also,
 p.more-info,
 p.press-info {
   padding-top: 10px;
+  margin-bottom: 2rem;
   font-size: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-p.listen-also a,
+div.listen-also a,
 p.more-info a {
   font-size: 1.6em;
   color: #212529;
-  padding-left: 8px;
+  padding-right: 14px;
 }
 
-p.listen-also i.fa-youtube,
-p.listen-also i.fa-soundcloud,
-p.listen-also i.fa-apple,
-p.listen-also i.fa-bandcamp,
-p.listen-also i.fa-spotify {
+div.listen-also span {
+  padding-right: 14px;
+}
+
+div.listen-also .listen-also-icons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 5px; /* Space between text and icons on mobile */
+}
+
+@media screen and (min-width: $bp-mobile) {
+  div.listen-also {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  div.listen-also .listen-also-icons {
+    margin-top: 0;
+    margin-left: 8px; /* Space between text and icons on desktop */
+  }
+
+  div.listen-also span,
+  p.more-info a {
+    padding-left: 5px;
+  }
+}
+
+div.listen-also i.fa-youtube,
+div.listen-also i.fa-soundcloud,
+div.listen-also i.fa-apple,
+div.listen-also i.fa-bandcamp,
+div.listen-also i.fa-spotify {
   transition: color .15s ease;
 }
-p.listen-also i.fa-youtube:hover {
+div.listen-also i.fa-youtube:hover {
   color: #E74529;
 }
-p.listen-also i.fa-soundcloud:hover {
+div.listen-also i.fa-soundcloud:hover {
   color: #E85029;
 }
-p.listen-also i.fa-apple:hover {
+div.listen-also i.fa-apple:hover {
   color: #D60017;
 }
 
-p.listen-also i.fa-bandcamp:hover {
+div.listen-also i.fa-bandcamp:hover {
   color: #319BBF;
 }
-p.listen-also i.fa-spotify:hover {
+div.listen-also i.fa-spotify:hover {
   color: #3AE176;
 }
-p.listen-also .icon-tidal .tidal-icon {
+div.listen-also .icon-tidal .tidal-icon {
   height: 28px;
   vertical-align: middle;
   transition: color .15s ease;
@@ -481,11 +506,6 @@ p.listen-also .icon-tidal .tidal-icon {
 
 }
 
-.button-image {
-//  display: block;
-//  float: left;
-}
-
 .button-image .bg-image {
   display: inline-block;
   position: relative;
@@ -506,13 +526,6 @@ p.listen-also .icon-tidal .tidal-icon {
   right: 12px;
   font-size: 3em;
 }
-
-@media screen and (min-width: $bp-mobile) {
-  .button-image .bg-image {
-//    height: 180px;
-  }
-}
-
 
 .block-title-image-bg {
   position: relative;

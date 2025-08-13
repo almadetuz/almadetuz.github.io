@@ -14,14 +14,16 @@
 </iframe>
 {% endif %}
 {% endif %}
-<p class="listen-also">Escúchalo también en:
+<div class="listen-also"><span>Escúchalo también en:</span>
+<div class="listen-also-icons">
 {% if include.bandcamp_album_slug %}
   <a target="_blank" href="https://almadetuz.bandcamp.com/album/{{ include.bandcamp_album_slug }}" aria-label="Escuchar en Bandcamp"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 {% endif %}
 {% if include.tidal_album_id %}
   <a target="_blank" href="https://tidal.com/album/{{ include.tidal_album_id }}" aria-label="Escuchar en Tidal" class="icon-tidal" title="Tidal">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="tidal-icon">
-      <path d="M320 96l64 64-64 64-64-64 64-64zm128 0l64 64-64 64-64-64 64-64zm-256 0l64 64-64 64-64-64 64-64zm128 128l64 64-64 64-64-64 64-64z" fill="currentColor"/>
+      <path d="m 256.19807,83.159341 85.3634,85.363389 -85.3634,85.3634 -85.3634,-85.3634 z m 170.72679,0 85.3634,85.363389 -85.3634,85.3634 -85.36339,-85.3634 z m -341.453582,0 85.363392,85.363389 -85.363392,85.3634 -85.3634023,-85.3634 z m 170.726792,170.726789 85.3634,85.3634 -85.3634,85.3634 -85.3634,-85.3634 z"
+            fill="currentColor"/>
     </svg>
   </a>
 {% endif %}
@@ -32,19 +34,20 @@
     </svg>
   </a>
 {% endif %}
+{% if include.soundcloud_album_slug %}
+  <a target="_blank" href="https://soundcloud.com/almadetuz/{{ include.soundcloud_album_slug }}?si=ee2fd6a668ce4258819a95628cf8fbaa" aria-label="Escuchar en Soundcloud"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
+{% endif %}
 {% if include.apple_album_id %}
   <a target="_blank" href="https://music.apple.com/es/album/a/{{ include.apple_album_id }}?app=music&itscg=10002&itsct=mus_1650986310&ct=QTG5iaA1GZSNiKw&at=1010l367Y&ls=1&mttnsubad=album_newrelease_Measure" aria-label="Escuchar en Apple Music"><i class="fab fa-apple" title="Apple Music"></i></a>
 {% endif %}
 {% if include.youtube_track_id %}
   <a target="_blank" href="https://music.youtube.com/watch?v={{ include.youtube_track_id }}&list={{ include.youtube_list_id }}" aria-label="Escuchar en YouTube Music"><i class="fab fa-youtube" title="Youtube"></i></a>
 {% endif %}
-{% if include.soundcloud_album_slug %}
-  <a target="_blank" href="https://soundcloud.com/almadetuz/{{ include.soundcloud_album_slug }}?si=ee2fd6a668ce4258819a95628cf8fbaa" aria-label="Escuchar en Soundcloud"><i class="fab fa-soundcloud" title="Soundcloud"></i></a>
-{% endif %}
 {% if include.spotify_track_id %}
   <a target="_blank" href="https://open.spotify.com/intl-es/track/{{ include.spotify_track_id }}?si=8106f422fbed44da" aria-label="Escuchar en Spotify"><i class="fab fa-spotify" title="Spotify"></i></a>
-{% endif %}
-{% if include.spotify_album_id %}
+{% else if include.spotify_album_id %}
   <a target="_blank" href="https://open.spotify.com/intl-es/album/{{ include.spotify_album_id }}?si=8106f422fbed44da" aria-label="Escuchar en Spotify"><i class="fab fa-spotify" title="Spotify"></i></a>
 {% endif %}
-</p>
+</div>
+</div>
+<!--p class="listen-also">Escúchalo también en:</p-->
