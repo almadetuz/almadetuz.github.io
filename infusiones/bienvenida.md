@@ -19,40 +19,6 @@ sitemap: false
    class_bg="bg-white"
 %}
 
-El pasado 10 de Enero publiqué mi última canción:
-
-_Dentro_
-{:.text-center}
-
-Puedes escucharla aquí (si aún no lo has hecho):
-
-<div class="pt-3 pb-5 ps-0 pe-0 container d-flex justify-content-center align-items-center mx-auto" style="max-width: 720px">
-<iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=708834592/size=small/bgcol=ffffff/linkcol=de270f/transparent=true/" seamless><a href="https://almadetuz.bandcamp.com/album/dentro">Dentro</a></iframe>
-</div>
-
-Y puedes descargartela en .mp3 aquí, para que la tengas para siempre.
-
-<div class="pt-3 pb-3 text-center">
-<p>
-<a href="/assets/audio/dentro_infusiones.mp3" download="dentro_infusiones.mp3">Descargar Dentro <i class="fa fa-download"></i></a>
-</p>
-</div>
-
-Esta canción nace en el invierno, cuando el frío más intenso cubre senderos y valles. Es una canción para la búsqueda del calor interno cuando hace frío fuera.
-
-Si te soy sincera, nada cambia para mí si escuchas mis canciones en Spotify, Youtube y demás ...
-
-Lo que sí me emociona es recibir lo que has sentido al escucharla
-
-_"El arte es expresar lo que nos emociona."_
-{:.text-center}
-
-Desde que empecé a compartir mis canciones con el mundo y perdí el miedo a mostrar mi vulnerabilidad me han llegado muchos mensajes de personas que se han emocionado con ellas.
-
-La mayoría de los mensajes son preciosos.
-
-Es increible como la misma canción puede resonar de maneras tan diversas en las personas.
-
 Las _"Infusiones de Tüz"_ es el lugar donde comparto arte, música, poesía y todo aquello que me inspira.
 
 Es una comunidad de personas que sabemos que el arte y la creatividad nos hace sentir mejor,
@@ -79,12 +45,6 @@ Y recuerda que siempre puedes escribirme un email a <a href="mailto:infusiones@a
 {% include block_container_end.html %}
 
 {% include block_buttons_start.html %}
-{% include button_image.html
-   title="Coser y Cantar"
-   url="/coser-y-cantar/madrid-16-nov"
-   image="/assets/images/coser_y_cantar_320.jpg"
-   title_class="text-soft-white"
-%}
 {% include button_image.html
    title="Mis canciones"
    url="/mis-canciones"

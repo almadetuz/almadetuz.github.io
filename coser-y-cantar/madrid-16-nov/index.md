@@ -1,6 +1,7 @@
 ---
 title: Coser y Cantar
 layout: page
+sitemap: false
 seo_description: "Espacio de arteterapia creativa: costura, voz, cuerpo y música en vivo"
 seo_image: /assets/images/coser_y_cantar_seo.jpg
 seo_image_width: 1280
