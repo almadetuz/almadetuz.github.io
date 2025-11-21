@@ -1,5 +1,5 @@
 ---
-title: Daua Fest - Sala Revi Live29 Noviembre 2025
+title: Daua Fest - Sala Revi Live - 29 Noviembre 2025
 layout: clean
 seo_description: "Daua Fest: Sala Revi Live - 29 Noviembre 2025"
 seo_image: /assets/images/conciertos/daua_fest_seo.jpg
