@@ -1,65 +1,68 @@
 <!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ page.title }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
 
-    {% feed_meta %}
-    {% include seo.html %}
+  {% feed_meta %}
+  {% include seo.html %}
 
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="apple-touch-icon" href="/assets/images/icon.png">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-    <!-- Normalize -->
-    <link rel="stylesheet" href="/assets/css/normalize.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.v5.3.3.min.css">
-    <!-- Cookie consent CSS -->
-    <link rel="stylesheet" href="/assets/css/cookieconsent_v3.css">
-    <!-- Custom -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="apple-touch-icon" href="/assets/images/icon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  <!-- Normalize -->
+  <link rel="stylesheet" href="/assets/css/normalize.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.v5.3.3.min.css">
+  <!-- Cookie consent CSS -->
+  <link rel="stylesheet" href="/assets/css/cookieconsent_v3.css">
+  <!-- Custom -->
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body class="{{ layout.body_class }}">
-<script type="text/javascript">
-var environment = document.location.host.includes("{{ site.host }}") ? "production" : "devel";
-var base = '{{ page.url | absolute_url }}';
-var title = '{{ page.title }}';
-const query_params = new URLSearchParams(window.location.search);
-var last_utm = {};
-try { last_utm = JSON.parse(localStorage.getItem('adt_last_utms')) || {}; }
-catch (error) { last_utm = {}; }
-last_utm = {
-  utm_source: query_params.get('utm_source') || last_utm['utm_source'],
-  utm_medium: query_params.get('utm_medium') || last_utm['utm_medium'],
-  utm_campaign: query_params.get('utm_campaign') || last_utm['utm_campaign'],
-  utm_term: query_params.get('utm_term') || last_utm['utm_term'],
-  utm_content: query_params.get('utm_content') || last_utm['utm_content']
-};
-const web_event_prop = {
-  page_title: title,
-  page_domain: document.location.hostname,
-  page_location: document.location.href,
-  page_path: document.location.pathname,
-  page_url: base,
-  utm_source: last_utm['utm_source'],
-  utm_medium: last_utm['utm_medium'],
-  utm_campaign: last_utm['utm_campaign'],
-  utm_term: last_utm['utm_term'],
-  utm_content: last_utm['utm_content'],
-  referrer: document.referrer,
-  referring_domain: URL.parse(document.referrer)?.hostname || null,
-};
-localStorage.setItem('adt_last_utms', JSON.stringify(last_utm));
-</script>
+  <script type="text/javascript">
+    var environment = document.location.host.includes("{{ site.host }}") ? "production" : "devel";
+    var base = '{{ page.url | absolute_url }}';
+    var title = '{{ page.title }}';
+    const query_params = new URLSearchParams(window.location.search);
+    var last_utm = {};
+    var fb_learn = {{ page.fb_learn | default: false }};
+    try { last_utm = JSON.parse(localStorage.getItem('adt_last_utms')) || {}; }
+    catch (error) { last_utm = {}; }
+    last_utm = {
+      utm_source: query_params.get('utm_source') || last_utm['utm_source'],
+      utm_medium: query_params.get('utm_medium') || last_utm['utm_medium'],
+      utm_campaign: query_params.get('utm_campaign') || last_utm['utm_campaign'],
+      utm_term: query_params.get('utm_term') || last_utm['utm_term'],
+      utm_content: query_params.get('utm_content') || last_utm['utm_content']
+    };
+    const web_event_prop = {
+      page_title: title,
+      page_domain: document.location.hostname,
+      page_location: document.location.href,
+      page_path: document.location.pathname,
+      page_url: base,
+      utm_source: last_utm['utm_source'],
+      utm_medium: last_utm['utm_medium'],
+      utm_campaign: last_utm['utm_campaign'],
+      utm_term: last_utm['utm_term'],
+      utm_content: last_utm['utm_content'],
+      referrer: document.referrer,
+      referring_domain: URL.parse(document.referrer)?.hostname || null,
+    };
+    localStorage.setItem('adt_last_utms', JSON.stringify(last_utm));
+  </script>
 
-{% include form_js.html %}
+  {% include form_js.html %}
 
-{{ content }}
+  {{ content }}
 
-{% include bootstrap_js.html %}
+  {% include bootstrap_js.html %}
 
 </body>
+
 </html>
