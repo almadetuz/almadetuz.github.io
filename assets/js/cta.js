@@ -20,7 +20,7 @@ class CallToAction {
             this.cb_click(e);
         }
         // Wait for the callback to finish
-        await new Promise(resolve => setTimeout(resolve, 300));
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // Redirect to the URL
         const url = this.ctaurl.getAttribute("href");

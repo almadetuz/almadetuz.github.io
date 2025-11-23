@@ -1,32 +1,32 @@
 <div class="col-sm-6 button-link text-center mt-3 mb-3"
-    id="{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}">
-    <a class="btn {{ include.class | default: 'btn-primary' }} button-link-url ms-3 me-3"
-        id="{{ include.cta_prefix | default: 'checkout' }}-ctaurl-{{ include.cta_id }}"
-        href="{{ include.url | default: '#' }}" target="{{ include.target | default: '_blank' }}">
-        {{ include.text }}
-    </a>
-    {% if include.subtext %}
-    <p class="button-link-subtext">{{ include.subtext }}</p>
-    {% endif %}
+  id="{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}">
+  <a class="btn {{ include.class | default: 'btn-primary' }} button-link-url ms-3 me-3"
+    id="{{ include.cta_prefix | default: 'checkout' }}-ctaurl-{{ include.cta_id }}"
+    href="{{ include.url | default: '#' }}" target="{{ include.target | default: '_blank' }}">
+    {{ include.text }}
+  </a>
+  {% if include.subtext %}
+  <p class="button-link-subtext">{{ include.subtext }}</p>
+  {% endif %}
 </div>
 
 <script type="text/javascript">
-    (function () {
-        var cta_prop = { cta: "{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}" };
-        function CtaClick(e) {
-            amp_event('CTAClick', { ...web_event_prop, ...cta_prop });
-            fb_event('InitiateCheckout');
-            gads_event('conversion', 'checkout');
-        }
-        function CtaView(e) {
-            var scroll_prop = { view_time: Math.trunc(e.time / 1000) };
-            amp_event('CTAView', { ...web_event_prop, ...cta_prop, ...scroll_prop });
-            fb_event('ViewContent', 'Form', 'View');
-            gads_event('conversion', 'form_view');
-        }
-        CallToAction.add("{{ include.cta_prefix | default: 'checkout' }}", "{{ include.cta_id }}",
-            (e) => { CtaClick(e); });
-        ScrollEvent.add("{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}",
-            (e) => { CtaView(e); });
-    })();
+  (function () {
+    var cta_prop = { cta: "{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}" };
+    function CtaClick(e) {
+      amp_event('CTAClick', { ...web_event_prop, ...cta_prop });
+      fb_event('InitiateCheckout');
+      gads_event('conversion', 'checkout');
+    }
+    function CtaView(e) {
+      var scroll_prop = { view_time: Math.trunc(e.time / 1000) };
+      amp_event('CTAView', { ...web_event_prop, ...cta_prop, ...scroll_prop });
+      fb_event('ViewContent', 'Form', 'View');
+      gads_event('conversion', 'form_view');
+    }
+    CallToAction.add("{{ include.cta_prefix | default: 'checkout' }}", "{{ include.cta_id }}",
+      (e) => { CtaClick(e); });
+    ScrollEvent.add("{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}",
+      (e) => { CtaView(e); });
+  })();
 </script>
