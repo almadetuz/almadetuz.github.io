@@ -2,7 +2,7 @@
   id="{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}">
   <a class="btn {{ include.class | default: 'btn-primary' }} button-link-url ms-3 me-3"
     id="{{ include.cta_prefix | default: 'checkout' }}-ctaurl-{{ include.cta_id }}"
-    href="{{ include.url | default: '#' }}" target="{{ include.target | default: '_blank' }}">
+    href="{{ include.url | default: '#' }}" target="{{ include.target | default: '_self' }}">
     {{ include.text }}
   </a>
   {% if include.subtext %}

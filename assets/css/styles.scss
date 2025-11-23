@@ -12,14 +12,28 @@ $bp-wide: 1800px;
 // @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 
 $color-almond: #E6D7C7;
+$color-almond-rgb: rgb(230, 215, 207);
 $color-isabelline: #F9F5F1;
+$color-isabelline-rgb: rgb(249, 245, 241);
 $color-jasmine: #FADE89;
+$color-jasmine-rgb: rgb(250, 222, 137);
 $color-auburn-claro: #BA3F3B;
+$color-auburn-claro-rgb: rgb(186, 63, 59);
 $color-auburn-semi: #AB3A36;
+$color-auburn-semi-rgb: rgb(171, 58, 54);
 $color-auburn: #9A3531;
+$color-auburn-rgb: rgb(154, 53, 49);
 $color-auburn-oscuro: #8C2F2C;
+$color-auburn-oscuro-rgb: rgb(140, 47, 44);
 $color-tea-rose: #E7B3B1;
+$color-tea-rose-rgb: rgb(231, 179, 177);
 $color-eerie-black: #212529;
+$color-eerie-black-rgb: rgb(33, 37, 41);
+
+:root {
+  --bs-primary: #{$color-auburn-claro};
+  --bs-primary-rgb: #{red($color-auburn-claro-rgb)}, #{green($color-auburn-claro-rgb)}, #{blue($color-auburn-claro-rgb)};
+}
 
 $font-h1-titular: 'Caprasimo';
 $font-h2-subtitular: 'Sorts Mill Goudy';

@@ -28,12 +28,12 @@ p {
 }
 
 a {
-  color: #BF3D45;
+  color: $color-auburn-claro;
   text-decoration: none;
 }
 
 a:hover {
-  color: #820004;
+  color: $color-auburn-oscuro;
   text-decoration: none;
 }
 
@@ -340,11 +340,11 @@ div.mobile_social a {
 }
 
 div.social a:hover {
-  color: #820004;
+  color: $color-auburn-oscuro;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-  color: #BF3D45;
+  color: $color-auburn-claro;
   font-size: 0.8em;
 }
 
@@ -367,7 +367,7 @@ div.social a:hover {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #820004;
+  color: $color-auburn-oscuro;
 }
 
 .navbar-brand img {

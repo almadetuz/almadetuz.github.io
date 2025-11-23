@@ -1,0 +1,61 @@
+---
+layout: tracking
+fb_learn: true
+---
+<div class="container text-center mt-5"
+  style="min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+  <div class="text-primary spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  <h2 class="mt-3">Redirigiendo...</h2>
+  <p class="text-muted">Por favor espere un momento.</p>
+  <p class="text-muted">Si no se redirige automáticamente,<br><a id="manual-redirect-link" href="#" target="_self">haz
+      clic aquí</a>.
+  </p>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get('u');
+    const eventName = params.get('e');
+    const target = params.get('t') || '_self';
+    const eventsMap = {
+      'checkout': { amp: 'Checkout', fb: 'InitiateCheckout', gads: 'checkout' },
+      'form_submitted': { amp: 'FormSubmitted', fb: 'ViewContent', gads: 'form_submitted' },
+      'lead': { amp: 'Lead', fb: 'Lead', gads: 'lead' },
+      'suscribe': { amp: 'Suscribed', fb: 'CompleteRegistration', gads: 'suscribe' }
+    };
+
+    if (url) {
+      // Update manual link
+      var link = document.getElementById('manual-redirect-link');
+      if (link) {
+        link.href = url;
+        link.target = target;
+      }
+
+      // Fire the event if provided
+      if (eventName && eventsMap[eventName]) {
+        try {
+          if (typeof amp_event === 'function') amp_event(eventsMap[eventName].amp, web_event_prop);
+          if (typeof fb_event === 'function') fb_event(eventsMap[eventName].fb);
+          if (typeof gads_event === 'function') gads_event('conversion', eventsMap[eventName].gads);
+        } catch (e) {
+          console.error("Error sending events:", e);
+        }
+      }
+
+      // Delay redirection to allow event to send
+      setTimeout(function () {
+        if (target === '_blank') {
+          window.open(url, '_blank');
+        } else {
+          window.location.href = url;
+        }
+      }, 3000);
+    } else {
+      document.querySelector('.container').innerHTML = '<div class="alert alert-danger">Error: No se ha especificado una URL de destino.</div>';
+    }
+  });
+</script>

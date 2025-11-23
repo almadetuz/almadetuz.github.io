@@ -21,10 +21,9 @@ seo_image_height: 1280
 Ven al **Daua Fest** este Sábado 29 de Noviembre a las 19:30.
 
 {% include button_link.html
-   url="https://www.enterticket.es/eventos/daua-fest-400874"
+   url="/l/redirect.html?u=https://www.enterticket.es/eventos/daua-fest-400874&e=checkout"
    text="Quiero mis entradas por 20€"
    subtext="Precio en taquilla: 25€"
-   target="_blank"
    cta_id="1"
 %}
 
@@ -59,10 +58,9 @@ No vienes solo a escuchar canciones, vienes a ver un show donde el Rock, el Folk
 Es imposible que no encuentres un momento que te haga vibrar.
 
 {% include button_link.html
-   url="https://www.enterticket.es/eventos/daua-fest-400874"
+   url="/l/redirect.html?u=https://www.enterticket.es/eventos/daua-fest-400874&e=checkout"
    text="Comprar entradas anticipadas"
    subtext="Anticipadas: 20€, en taquilla: 25€"
-   target="_blank"
    cta_id="2"
 %}
 
@@ -136,9 +134,8 @@ Sala Revi Live (Vicálvaro, Madrid).
 {: .text-center .fst-italic }
 
 {% include button_link.html
-   url="https://www.enterticket.es/eventos/daua-fest-400874"
+   url="/l/redirect.html?u=https://www.enterticket.es/eventos/daua-fest-400874&e=checkout"
    text="Sí, quiero vivir la experiencia"
-   target="_blank"
    cta_id="3"
 %}
 
