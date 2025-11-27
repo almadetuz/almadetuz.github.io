@@ -63,11 +63,15 @@
       fb_revoke();
     }
   });
-  function fb_event(event, category, name) {
+  function fb_event(event, category = undefined, name = undefined, id = undefined, value = 1.00, currency = 'EUR') {
     var event_prop = {};
+    var event_id = {};
     if (typeof (category) !== 'undefined') event_prop['content_category'] = category;
     if (typeof (name) !== 'undefined') event_prop['content_name'] = name;
-    fb_track('track', event, event_prop);
+    if (typeof (id) !== 'undefined') event_id['eventID'] = id;
+    if (typeof (value) !== 'undefined') event_prop['value'] = value;
+    if (typeof (currency) !== 'undefined') event_prop['currency'] = currency;
+    fb_track('track', event, event_prop, event_id);
     fb_log('fb.track: ' + event);
     if (Object.keys(event_prop).length > 0) fb_log(event_prop);
   }

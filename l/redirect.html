@@ -19,6 +19,7 @@ fb_learn: true
     const params = new URLSearchParams(window.location.search);
     const url = params.get('u');
     const eventName = params.get('e');
+    const fb_value = params.get('v') || 1.00;
     const target = params.get('t') || '_self';
     const eventsMap = {
       'checkout': { amp: 'Checkout', fb: 'InitiateCheckout', gads: 'checkout' },
@@ -39,7 +40,7 @@ fb_learn: true
       if (eventName && eventsMap[eventName]) {
         try {
           if (typeof amp_event === 'function') amp_event(eventsMap[eventName].amp, web_event_prop);
-          if (typeof fb_event === 'function') fb_event(eventsMap[eventName].fb);
+          if (typeof fb_event === 'function') fb_event(eventsMap[eventName].fb, id=last_utm['transaction_id'], value=fb_value);
           if (typeof gads_event === 'function') gads_event('conversion', eventsMap[eventName].gads);
         } catch (e) {
           console.error("Error sending events:", e);

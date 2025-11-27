@@ -16,7 +16,7 @@ preference_modal: true
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", (event) => {
     amp_event('Checkout', web_event_prop);
-    fb_event('InitiateCheckout');
+    fb_event('InitiateCheckout', value={{ page.fb_value | default: 1.00 }}, currency="{{ page.fb_currency | default: 'EUR' }}");
     gads_event('conversion', 'checkout');
   });
 </script>

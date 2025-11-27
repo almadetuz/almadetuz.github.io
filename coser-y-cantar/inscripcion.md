@@ -1,6 +1,7 @@
 ---
 title: Coser y Cantar
 layout: checkout
+fb_value: 100.00
 sitemap: false
 ---
 

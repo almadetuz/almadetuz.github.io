@@ -14,13 +14,13 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
   <!-- Normalize -->
-  <link rel="stylesheet" href="/assets/css/normalize.css">
+  <link rel="stylesheet" href="/assets/css/normalize.css?v={{ site.time | date: '%s' }}">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="/assets/css/bootstrap.v5.3.3.min.css">
   <!-- Cookie consent CSS -->
-  <link rel="stylesheet" href="/assets/css/cookieconsent_v3.css">
+  <link rel="stylesheet" href="/assets/css/cookieconsent_v3.css?v={{ site.time | date: '%s' }}">
   <!-- Custom -->
-  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css?v={{ site.time | date: '%s' }}">
 </head>
 
 <body class="{{ layout.body_class }}">
@@ -38,7 +38,12 @@
       utm_medium: query_params.get('utm_medium') || last_utm['utm_medium'],
       utm_campaign: query_params.get('utm_campaign') || last_utm['utm_campaign'],
       utm_term: query_params.get('utm_term') || last_utm['utm_term'],
-      utm_content: query_params.get('utm_content') || last_utm['utm_content']
+      utm_content: query_params.get('utm_content') || last_utm['utm_content'],
+      utm_id: query_params.get('utm_id') || last_utm['utm_id'],
+      fbclid: query_params.get('fbclid') || last_utm['fbclid'],
+      campaign_id: query_params.get('campaign_id') || last_utm['campaign_id'],
+      ad_id: query_params.get('ad_id') || last_utm['ad_id'],
+      transaction_id: query_params.get('fbclid') ? crypto.randomUUID() : last_utm['transaction_id']
     };
     const web_event_prop = {
       page_title: title,
@@ -51,6 +56,7 @@
       utm_campaign: last_utm['utm_campaign'],
       utm_term: last_utm['utm_term'],
       utm_content: last_utm['utm_content'],
+      utm_id: last_utm['utm_id'],
       referrer: document.referrer,
       referring_domain: URL.parse(document.referrer)?.hostname || null,
     };
