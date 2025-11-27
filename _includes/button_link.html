@@ -13,10 +13,16 @@
 <script type="text/javascript">
   (function () {
     var cta_prop = { cta: "{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}" };
-    function CtaClick(e) {
+    async function CtaClick(e) {
       amp_event('CTAClick', { ...web_event_prop, ...cta_prop });
-      fb_event('InitiateCheckout');
-      gads_event('conversion', 'checkout');
+      fb_event("{{ include.fb_event_name | default: 'InitiateCheckout' }}",
+               category="{{ include.fb_category | default: 'Button' }}",
+               name="{{ include.fb_name | default: 'Click' }}",
+               id=last_utm['transaction_id'],
+               value={{ include.fb_value | default: 1.00 }},
+               currency="{{ include.fb_currency | default: 'EUR' }}");
+      gads_event('conversion', "{{ include.gads_event_name | default: 'checkout' }}");
+      await api_track_fb_event('InitiateCheckout', event_id=last_utm['transaction_id'], custom_data={ value: {{ include.fb_value | default: 1.00 }}, currency: "{{ include.fb_currency | default: 'EUR' }}" });
     }
     function CtaView(e) {
       var scroll_prop = { view_time: Math.trunc(e.time / 1000) };
@@ -25,7 +31,7 @@
       gads_event('conversion', 'form_view');
     }
     CallToAction.add("{{ include.cta_prefix | default: 'checkout' }}", "{{ include.cta_id }}",
-      (e) => { CtaClick(e); });
+      (e) => CtaClick(e));
     ScrollEvent.add("{{ include.cta_prefix | default: 'checkout' }}-cta-{{ include.cta_id }}",
       (e) => { CtaView(e); });
   })();

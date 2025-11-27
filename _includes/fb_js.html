@@ -73,6 +73,7 @@
     if (typeof (currency) !== 'undefined') event_prop['currency'] = currency;
     fb_track('track', event, event_prop, event_id);
     fb_log('fb.track: ' + event);
+    if (Object.keys(event_id).length > 0) fb_log(event_id);
     if (Object.keys(event_prop).length > 0) fb_log(event_prop);
   }
 </script>

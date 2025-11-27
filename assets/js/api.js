@@ -36,7 +36,6 @@ function _api_event_source_url_get() {
 
 async function api_track_fb_event(event_name, event_id = undefined, custom_data = {}) {
   try {
-    console.log("FB CAPI Event: " + event_name);
     const response = await axios.post(API_URL + "/track/fb", {
       event_name: event_name,
       event_id: event_id,
@@ -47,7 +46,6 @@ async function api_track_fb_event(event_name, event_id = undefined, custom_data 
     }, {
       headers: { 'Content-Type': 'application/json' }
     });
-    console.log("FB CAPI Response: " + response.data);
   } catch (errors) {
     console.error("FB CAPI Error:", errors);
   }
