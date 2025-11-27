@@ -61,11 +61,13 @@ No vienes solo a escuchar canciones, vienes a ver un show donde el Rock, el Folk
 Es imposible que no encuentres un momento que te haga vibrar.
 
 {% include button_link.html
-   url="/l/redirect.html?u=https://www.enterticket.es/eventos/daua-fest-400874&e=checkout&v=20.00"
+   url="https://www.enterticket.es/eventos/daua-fest-400874"
    text="Comprar entradas anticipadas"
    subtext="Anticipadas: 20€, en taquilla: 25€"
    fb_value="20.00"
    cta_id="2"
+   fb_event_name="InitiateCheckout"
+   gads_event_name="checkout"
 %}
 
 {% include block_container_end.html %}
@@ -138,10 +140,12 @@ Sala Revi Live (Vicálvaro, Madrid).
 {: .text-center .fst-italic }
 
 {% include button_link.html
-   url="/l/redirect.html?u=https://www.enterticket.es/eventos/daua-fest-400874&e=checkout&v=20.00"
+   url="https://www.enterticket.es/eventos/daua-fest-400874"
    text="Sí, quiero vivir la experiencia"
    fb_value="20.00"
    cta_id="3"
+   fb_event_name="InitiateCheckout"
+   gads_event_name="checkout"
 %}
 
 <p><br></p>
