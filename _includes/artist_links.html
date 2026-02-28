@@ -1,5 +1,8 @@
 <div class="listen-also {{ include.classes }}">
-<div class="listen-also-icons">
+<div class="listen-also-icons text-center">
+{% if include.instagram_id %}
+  <a target="_blank" href="https://www.instagram.com/{{ include.instagram_id }}/" aria-label="{{ include.artist_name }} en Instagram"><i class="fab fa-instagram" title="Instagram"></i></a>
+{% endif %}
 {% if include.bandcamp_artist_id %}
   <a target="_blank" href="https://{{ include.bandcamp_artist_id }}.bandcamp.com" aria-label="{{ include.artist_name }} en Bandcamp"><i class="fab fa-bandcamp" title="Bandcamp"></i></a>
 {% endif %}
