@@ -96,9 +96,6 @@ novalidate>
     msgError.classList.remove("d-block");
     msgSuccess.classList.remove("d-block");
 
-    // Wait 2 seconds
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
     if (form.checkValidity()) {
         const formData = new FormData(form);
         const data = {
