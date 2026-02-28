@@ -1,0 +1,142 @@
+<div class="container-fluid {{ include.class }} mb-4 mt-4 rounded-2">
+<div class="row">
+<div class="col">
+
+<form
+id="subscribe-form-{{ include.form_id }}"
+name="subscribe-form"
+class="mc-form needs-validation mb-3 mt-3"
+target="_self"
+novalidate>
+
+<div class="title">
+  {{ include.title }}
+</div>
+
+<div class="subtitle">
+  {{ include.subtitle }}
+</div>
+
+<div class="mb-3">
+  <label for="subscribe-email-{{ include.form_id }}" class="form-label">Email</label>
+  <input type="email" name="EMAIL" class="form-control" id="subscribe-email-{{ include.form_id }}" required value="">
+  <div class="invalid-feedback">
+    Tienes que poner un email válido
+  </div>
+</div>
+
+<div class="form-check">
+  <input type="checkbox" id="subscribe-gdpr-{{ include.gdpr_id | default: '97974' }}-{{ include.form_id }}" name="gdpr" class="form-check-input" value="true" required>
+  <label class="form-check-label" for="subscribe-gdpr-{{ include.gdpr_id | default: '97974' }}-{{ include.form_id }}">
+    He leído y acepto la <a href="/legal/privacidad.html" target="_blank">política de protección de datos</a>.
+  </label>
+  <div class="invalid-feedback">
+    Tienes que aceptar nuestra política de protección de datos, en cualquier momento te puedes dar de baja con un sólo clic.
+  </div>
+</div>
+
+<div class="text-center">
+<button class="btn btn-primary disabled" type="submit" id="subscribe-submit-{{ include.form_id }}">
+  <span class="spinner-border spinner-border-sm d-none" id="subscribe-spinner-{{ include.form_id }}" role="status" aria-hidden="true"></span>
+  {{ include.button }}
+</button>
+</div>
+
+<div class="valid-feedback mt-3 mb-3 text-center" style="font-size: 1.1em;" id="subscribe-success-message-{{ include.form_id }}">
+  {{ include.success_message | default: '¡Perfecto! El correo electrónico está en camino. Revisa tu bandeja de entrada (y la de promociones/spam por si acaso).' }}
+</div>
+
+<div class="invalid-feedback mt-3 mb-3 text-center" id="subscribe-error-message-{{ include.form_id }}">
+  {{ include.generic_error_message | default: 'Ha habido un error. Por favor, inténtalo de nuevo más tarde. Escribenos a infusiones@almadetuz.com si no se soluciona.' }}
+</div>
+
+<div class="line-bottom">
+  {{ include.line_bottom }}
+</div>
+
+<div class="legal">
+  Para cumplir con el RGPD (Reglamento General de Protección de Datos) es necesario que leas y aceptes la
+  <a href="/legal/privacidad.html" target="_blank">política de protección de datos</a> de la web.
+</div>
+
+</form>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+(function () {
+  const formId = "{{ include.form_id }}";
+  const cardName = "{{ include.card_name }}";
+  const form = document.getElementById("subscribe-form-" + formId);
+  const btn = document.getElementById("subscribe-submit-" + formId);
+  const spinner = document.getElementById("subscribe-spinner-" + formId);
+  const msgError = document.getElementById("subscribe-error-message-" + formId);
+  const msgSuccess = document.getElementById("subscribe-success-message-" + formId);
+
+  btn.classList.remove("disabled");
+
+  var form_prop = {form: "subscribe-" + formId};
+
+  function FormView(e) {
+    if (typeof amp_event === 'function') {
+      var scroll_prop = {view_time: Math.trunc(e.time / 1000)};
+      amp_event('FormView', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop, ...scroll_prop});
+    }
+    if (typeof fb_event === 'function') fb_event('ViewContent', 'Form', 'View');
+    if (typeof gads_event === 'function') gads_event('conversion', 'form_view');
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    btn.classList.add("disabled");
+    spinner.classList.remove("d-none");
+    console.log("spinner: remove d-none")
+    msgError.classList.remove("d-block");
+    msgSuccess.classList.remove("d-block");
+
+    // Wait 2 seconds
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    if (form.checkValidity()) {
+        const formData = new FormData(form);
+        const data = {
+            email: formData.get('EMAIL'),
+            gdpr: formData.get('gdpr') === 'true'
+        };
+
+        try {
+            const response = await api_card_lead(cardName, data);
+            if (response && response.status === 200) {
+                msgSuccess.classList.add("d-block");
+                form.reset();
+                form.classList.remove('was-validated');
+
+                if (typeof amp_event === 'function') amp_event('FormSubmit', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop});
+                if (typeof fb_event === 'function') fb_event('SubmitApplication');
+                if (typeof gads_event === 'function') gads_event('conversion', 'form_submit');
+            } else {
+                throw new Error("Invalid response");
+            }
+        } catch (error) {
+            console.error(error);
+            msgError.classList.add("d-block");
+            msgError.innerText = error?.response?.data?.message || '{{ include.generic_error_message | default: "Ha habido un error. Por favor, inténtalo de nuevo más tarde." }}';
+            if (typeof amp_event === 'function') amp_event('FormError', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop});
+        }
+    } else {
+        if (typeof amp_event === 'function') amp_event('FormError', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop});
+        form.classList.add('was-validated');
+    }
+
+    spinner.classList.add("d-none");
+    console.log("spinner: add d-none")
+    btn.classList.remove("disabled");
+  });
+
+  if (typeof ScrollEvent !== 'undefined' && ScrollEvent.add) {
+    ScrollEvent.add("subscribe-form-" + formId, (e) => { FormView(e); });
+  }
+})();
+</script>

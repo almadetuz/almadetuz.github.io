@@ -15,6 +15,23 @@ async function api_user_activity_access(activity_code, data) {
   }
 }
 
+async function api_card_lead(card_name, data) {
+  try {
+    return await axios.post(API_URL +
+      "/card/" + card_name + "/lead",
+      data,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+  } catch (errors) {
+    console.error(errors);
+    throw errors;
+  }
+}
+
 function _api_event_user_data_get() {
     const query_params = new URLSearchParams(window.location.search);
     var last_utm = {};

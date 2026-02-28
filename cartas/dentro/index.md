@@ -13,83 +13,14 @@ seo_image_height: 850
   class_bg="bg-white"
 %}
 
-## ¿Qué es esto, te preguntarás?
-{: .titular .text-start}
-
-Esta carta que tienes en tus manos es la primera de muchas que saldrán a la luz en mis conciertos y encuentros musicales. Cada carta tiene aparejada una canción, un poema, un instante.
-
 ![Carta de la Golondrina del Renacer](/assets/images/cartas/dentro_golondrina_del_renacer_ambos_lados_480.jpg){: .img-center-480 }
-
-Las he ido elaborando yo misma,
-eligiendo cuidadosamente los textos,
-unidos a las canciones, a imágenes, a cuentos y relatos que me han inspirado en los últimos años.
-
-Si te apetece formar parte de mi universo particular e íntimo te animo a que la leas y busques con qué canción de las que ya tengo publicadas crees que va emparejada... 🥰
-
-Es algo simbólico y al mismo tiempo, un bonito juego para hacerte llegar mi mundo de Tüz.
-
-Si algo de todo esto  te ha llegado,\\
-algo te ha resonado o de pronto algo cobra sentido para ti, \\
-me encantaría que me lo contaras.
-
-Te dejo mis datos de redes abajo.
-
-Dejo siempre la puerta abierta y la chimenea encendida.🔥
-
 
 {% include block_container_end.html %}
 
 {% include block_container_start.html %}
 
-## Oráculo de Tüz
-{: .titular .text-start}
-
-La voz del aliento creativo
-{: .text-end .fst-italic }
-
-El Oráculo de Tüz nació del cuerpo y de la palabra,
-del temblor que deja la herida y de la música que la transforma.
-Cada carta es una chispa del fuego interior —
-una flor que brota del pecho,
-una golondrina que despierta al alba,
-un canto que atraviesa el silencio.
-
-Este Oráculo no predice.\\
-Recuerda
-{: .text-center .fw-bold .fst-italic}
-
-Este oráculo fue tejido con canciones, con memoria y con luz.
-
-Sus símbolos nacen de la tierra del cuerpo,
-de la voz que se abre paso entre cicatrices,
-de las historias que las mujeres llevan en la sangre.
-
-Aquí no hay adivinación, sino reconocimiento.
-
-Cada carta te devuelve a tu centro,
-al fuego que nunca se apaga,
-a esa frase que sostiene toda existencia:
-
-Dentro, toda la luz.
-{: .text-center .fw-bold .fst-italic}
-
-Cuando abras una carta, no busques futuro:\\
-escucha su respiración.
-
-Deja que el fuego de Tüz te hable
-con la voz de tu propia alma.
-
-{% include block_container_end.html %}
-
-
-{% include block_container_start.html 
-  class_bg="bg-white"
-%}
-
 ## Golondrina del Renacer
 {: .titular .text-start}
-
-![Golondrina del Renacer](/assets/images/cartas/dentro_golondrina_del_renacer_480.jpg){: .img-center-480 }
 
 Significado general
 {: .fw-bold}
@@ -131,35 +62,90 @@ Afirmación
 
 {% include block_container_start.html %}
 
-Vale, ahora viene la parte más divertida.
+Esta carta nació de esta canción. Dale al play y deja que la Golondrina te guíe de vuelta a casa.
 
-Entra en la plataforma que más te guste y escucha las canciones que tengo publicadas.
-
-{% include artist_links.html
-   classes="text-center"
-   artist_name="Alma de Tüz"
-   bandcamp_artist_id="almadetuz"
-   tidal_artist_id="35124876"
-   deezer_artist_id="187442217"
-   apple_artist_id="1650986310"
-   youtube_artist_id="@almadetuz"
-   soundcloud_artist_id="almadetuz"
-   spotify_artist_id="1A4ezsQEPReJxvoTJp4u51"
-%}
-
-Y cuéntame en [Instagram](https://www.instagram.com/amanda_tuz/){: target="_blank"} con un mensaje privado qué canción crees que es la más adecuada para esta carta.
+PLAY de BANDCAMP
 
 {% include block_container_end.html %}
 
 
-{% include mail_form.html
-   title="<i>Entérate la primera de las novedades de Alma de Tüz</i>"
-   subtitle="Sólo tienes que dejar tu email"
-   button="Quiero enterarme"
+{% include mail_form_lead.html
+   title="<i>Un mensaje personal para tu renacer</i>"
+   subtitle="Deja tu correo para recibir una reflexión única del Oráculo de Tüz y una sorpresa para acompañar tu vuelo."
+   button="Recibir mi mensaje"
    class="bg-rose"
-   form_id=1
-   context_group_id=2225
-   context_id=256
+   card_name="dentro"
+   form_id="lead"
 %}
 
+{% include block_container_start.html
+  class_container="container-fluid"
+  class_row="row"
+%}
+
+## ¿Qué es esto, te preguntarás?
+{: .titular .text-start}
+
+Esta carta que tienes en tus manos es la primera de muchas que saldrán a la luz en mis conciertos y encuentros musicales. Cada carta tiene aparejada una canción, un poema, un instante.
+
+Las he ido elaborando yo misma,
+eligiendo cuidadosamente los textos,
+unidos a las canciones, a imágenes, a cuentos y relatos que me han inspirado en los últimos años.
+
+Es algo simbólico y al mismo tiempo, un bonito juego para hacerte llegar mi mundo de Tüz.
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html
+  class_bg="bg-white"
+%}
+
+## Oráculo de Tüz
+{: .titular .text-start}
+
+La voz del aliento creativo
+{: .text-end .fst-italic }
+
+El Oráculo de Tüz nació del cuerpo y de la palabra, \\
+del temblor que deja la herida y de la música que la transforma. \\
+Cada carta es una chispa del fuego interior, \\
+una flor que brota del pecho, \\
+una golondrina que despierta al alba, \\
+un canto que atraviesa el silencio.
+
+Este Oráculo no predice.\\
+Recuerda
+{: .text-center .fw-bold .fst-italic}
+
+Este oráculo fue tejido con canciones, con memoria y con luz.
+
+Sus símbolos nacen de la tierra del cuerpo, \\
+de la voz que se abre paso entre cicatrices, \\
+de las historias que las mujeres llevan en la sangre.
+
+Aquí no hay adivinación, sino __reconocimiento__.
+
+Cada carta te devuelve a tu centro, \\
+al fuego que nunca se apaga, \\
+a esa frase que sostiene toda existencia
+
+Cuando abras una carta, no busques futuro,\\
+escucha su respiración.
+
+Deja que el fuego de Tüz te hable con la voz de tu propia alma.
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html %}
+
+{% include artist_links.html
+   classes="justify-content-center"
+   artist_name="Alma de Tüz"
+   instagram_id="amanda_tuz"
+   bandcamp_artist_id="almadetuz"
+   tidal_artist_id="35124876"
+   youtube_artist_id="@almadetuz"
+%}
+
+{% include block_container_end.html %}
 
