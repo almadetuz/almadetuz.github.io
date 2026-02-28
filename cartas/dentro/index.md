@@ -25,9 +25,11 @@ seo_image_height: 850
 Significado general
 {: .fw-bold}
 
-La Golondrina del Renacer surge cuando el alma recuerda su propia luz. Tras un largo vuelo por la sombra, el corazón comienza a abrirse, y desde dentro brotan las flores que anuncian el regreso a la vida. Esta Carta es el llamado silencioso que no llega de afuera: vibra dentro, donde habita la voz más pura. No es un juicio que condena, sino un despertar que libera. La golondrina, hecha de aire y de memoria, lleva en su interior un jardín de claridad. Cada flor es un recuerdo sanado, cada pétalo, una parte del alma que vuelve a respirar.
+La Golondrina del Renacer surge cuando el alma recuerda su propia luz. Tras un largo vuelo por la sombra, el corazón comienza a abrirse, y desde dentro brotan las flores que anuncian el regreso a la vida.
 
-Esta carta te invita a detenerte y escuchar: _no busques la luz afuera_.
+Esta carta es el llamado silencioso que no llega de afuera: vibra dentro, donde habita la voz más pura. No es un juicio que condena, sino un despertar que libera. La golondrina, hecha de aire y de memoria, lleva en su interior un jardín de claridad. Cada flor es un recuerdo sanado, cada pétalo, una parte del alma que vuelve a respirar.
+
+Te invita a detenerte y escuchar: _no busques la luz afuera_.
 
 Toda la luz está dentro.
 {: .text-center .fw-bold .fst-italic}
@@ -37,7 +39,11 @@ En el centro de tu ser existe un sol que nunca se apagó; solo esperaba que deja
 Mensaje espiritual
 {: .fw-bold}
 
-Estás renaciendo desde tu propia esencia. No necesitas cambiar para ser quien eres: solo recordarlo de nuevo. La libertad no se alcanza al escapar, sino al abrazar lo que florece dentro. Escucha el canto interior, el eco suave que dice: _'Estás aquí, estás viva, estás completa.'_
+Estás renaciendo desde tu propia esencia. No necesitas cambiar para ser quien eres: solo recordarlo de nuevo. La libertad no se alcanza al escapar, sino al abrazar lo que florece dentro. Escucha el canto interior, el eco suave que dice:
+
+"Estás aquí, estás viva, estás completa."
+{: .text-center .fst-italic}
+
 
 Cuando La Golondrina del Renacer aparece, la vida te invita a alzar vuelo desde el corazón. Es tiempo de perdonarte, de soltar las voces ajenas, y de dejar que tu luz se expanda sin miedo. No hay mayor milagro que reconocerte como la fuente de tu propia claridad.
 
@@ -49,25 +55,42 @@ Renacimiento interior · Luz propia · Despertar · Perdón · Liberación · Ve
 Significado invertido
 {: .fw-bold}
 
-Invertida, esta carta refleja la duda que surge antes del vuelo: el miedo a ver tu propia luz. Tal vez has estado mirando fuera buscando respuestas que solo florecen dentro. Recuerda: no hay oscuridad que pueda apagar lo que eres. Respira. Vuelve al centro. La luz no se fue: te espera.
+Invertida, esta carta refleja la duda que surge antes del vuelo: el miedo a ver tu propia luz.
+Tal vez has estado mirando fuera buscando respuestas que solo florecen dentro.
+
+Recuerda: no hay oscuridad que pueda apagar lo que eres. \\
+Respira. \\
+Vuelve al centro. \\
+La luz no se fue: te espera.
 
 Afirmación
 {: .fw-bold}
 
-“Toda la luz está dentro. Florezco desde mi alma y vuelo libre hacia mi verdad.”
-{: .fst-italic}
+“Toda la luz está dentro. \\
+Florezco desde mi alma y vuelo libre hacia mi verdad.”
+{: .text-center .fst-italic}
+
+{% include block_container_end.html %}
+
+
+{% include block_container_start.html
+  class_bg="bg-white"
+%}
+
+Esta carta nació de esta canción. \\
+Dale al play y deja que la Golondrina te guíe de vuelta a casa.
+
+{% include song_links.html
+   title="Dentro feat. Iovis"
+   album_type="single"
+   bandcamp_album_slug="dentro-feat-iovis"
+   bandcamp_album_id="954581068"
+%}
 
 {% include block_container_end.html %}
 
 
 {% include block_container_start.html %}
-
-Esta carta nació de esta canción. Dale al play y deja que la Golondrina te guíe de vuelta a casa.
-
-PLAY de BANDCAMP
-
-{% include block_container_end.html %}
-
 
 {% include mail_form_lead.html
    title="<i>Un mensaje personal para tu renacer</i>"
@@ -77,6 +100,8 @@ PLAY de BANDCAMP
    card_name="dentro"
    form_id="lead"
 %}
+
+{% include block_container_end.html %}
 
 {% include block_container_start.html
   class_container="container-fluid"

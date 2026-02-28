@@ -45,7 +45,7 @@
 {% endif %}
 {% if include.spotify_track_id %}
   <a target="_blank" href="https://open.spotify.com/intl-es/track/{{ include.spotify_track_id }}?si=8106f422fbed44da" aria-label="Escuchar en Spotify"><i class="fab fa-spotify" title="Spotify"></i></a>
-{% else if include.spotify_album_id %}
+{% elsif include.spotify_album_id %}
   <a target="_blank" href="https://open.spotify.com/intl-es/album/{{ include.spotify_album_id }}?si=8106f422fbed44da" aria-label="Escuchar en Spotify"><i class="fab fa-spotify" title="Spotify"></i></a>
 {% endif %}
 </div>
