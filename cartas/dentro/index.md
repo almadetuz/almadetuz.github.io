@@ -12,9 +12,13 @@ seo_image_height: 850
   class_row="row"
   class_bg="bg-white"
 %}
+<div class="position-relative" markdown="1">
 
 ![Carta de la Golondrina del Renacer](/assets/images/cartas/dentro_golondrina_del_renacer_ambos_lados_480.jpg){: .img-center-480 }
 
+{% include scroll_down_arrow.html %}
+
+</div>
 {% include block_container_end.html %}
 
 {% include block_container_start.html %}
