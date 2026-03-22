@@ -16,35 +16,10 @@ novalidate>
 }
 </style>
 
-<div id="subscribe-success-state-{{ include.form_id }}" class="d-none text-center py-5" style="animation: formFadeIn 0.5s ease-out;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-check-circle mb-4" viewBox="0 0 16 16" style="opacity: 0.9;">
-    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-  </svg>
-  <h2 class="mb-3" style="font-weight: 600;">¡Mensaje enviado!</h2>
-  <p style="font-size: 1.1em; opacity: 0.9;">
-    {{ include.success_message | default: 'El correo electrónico está en camino.<br/>Revisa tu bandeja de entrada (y la de promociones/spam por si acaso).' }}
-  </p>
-</div>
-
-<div id="subscribe-warning-state-{{ include.form_id }}" class="d-none text-center py-5" style="animation: formFadeIn 0.5s ease-out;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-check-circle mb-4" viewBox="0 0 16 16" style="opacity: 0.9;">
-    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-  </svg>
-  <p id="subscribe-warning-message-{{ include.form_id }}" style="font-size: 1.1em; opacity: 0.9;">
-  </p>
-</div>
-
-<div id="subscribe-error-state-{{ include.form_id }}" class="d-none text-center py-5" style="animation: formFadeIn 0.5s ease-out;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-exclamation-triangle mb-4" viewBox="0 0 16 16" style="opacity: 0.9;">
-    <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
-    <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>
-  </svg>
-  <h2 class="mb-3" style="font-weight: 600;">Error al enviar el mensaje</h2>
-  <p style="font-size: 1.1em; opacity: 0.9;">
-     {{ include.generic_error_message | default: 'Escríbenos a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a> para inscribirte manualmente.' }}
-  </p>
+<div id="subscribe-feedback-{{ include.form_id }}" class="d-none text-center py-5" style="animation: formFadeIn 0.5s ease-out;">
+  <i id="subscribe-feedback-icon-{{ include.form_id }}" class="" style="font-size: 5rem;"></i>
+  <h2 id="subscribe-feedback-title-{{ include.form_id }}" class="mb-3" style="font-weight: 600;"></h2>
+  <p id="subscribe-feedback-message-{{ include.form_id }}" style="font-size: 1.1em; opacity: 0.9;"></p>
 </div>
 
 <div id="subscribe-fields-{{ include.form_id }}">
@@ -61,6 +36,14 @@ novalidate>
   <input type="email" name="EMAIL" class="form-control" id="subscribe-email-{{ include.form_id }}" required value="">
   <div class="invalid-feedback">
     Tienes que poner un email válido
+  </div>
+</div>
+
+<div class="mb-3 d-none">
+  <label for="subscribe-name-{{ include.form_id }}" class="form-label">Nombre</label>
+  <input type="text" name="FNAME" class="form-control" id="subscribe-name-{{ include.form_id }}" value="">
+  <div class="invalid-feedback">
+    Tienes que poner un nombre válido
   </div>
 </div>
 
@@ -104,11 +87,36 @@ novalidate>
   const form = document.getElementById("subscribe-form-" + formId);
   const btn = document.getElementById("subscribe-submit-" + formId);
   const spinner = document.getElementById("subscribe-spinner-" + formId);
-  const stateError = document.getElementById("subscribe-error-state-" + formId);
-  const stateWarning = document.getElementById("subscribe-warning-state-" + formId);
-  const msgWarning = document.getElementById("subscribe-warning-message-" + formId);
-  const stateSuccess = document.getElementById("subscribe-success-state-" + formId);
+  const fbDiv = document.getElementById("subscribe-feedback-" + formId);
+  const fbIcon = document.getElementById("subscribe-feedback-icon-" + formId);
+  const fbTitle = document.getElementById("subscribe-feedback-title-" + formId);
+  const fbMessage = document.getElementById("subscribe-feedback-message-" + formId);
   const fields = document.getElementById("subscribe-fields-" + formId);
+  const feedback = {
+    success: {
+      icon: 'bi-check2-circle',
+      title: "{{ include.success_title | default: '¡Mensaje enviado!' }}",
+      message: "{{ include.success_message | default: 'El correo electrónico está en camino.<br/>Revisa tu bandeja de entrada (y la de promociones/spam por si acaso).' }}"
+    },
+    error: {
+      icon: 'bi-x-circle-fill',
+      title: "{{ include.error_title | default: 'Error del servidor' }}",
+      message: 'Escríbenos a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a> para hacerlo manualmente.'
+    },
+    "already-sent": {
+      icon: 'bi-exclamation-triangle',
+      title: 'Revisa tu bandeja de entrada',
+      message: 'Hace un tiempo te enviamos un correo electrónico.<br/>' +
+               'Mira si te ha llegado a la carpeta de spam.<br/>' +
+               'Si no lo encuentras, escríbenos a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a> para solusionarlo.'
+    },
+    "ip-out-of-scope": {
+      icon: 'bi-x-circle-fill',
+      title: 'Sólo para España',
+      message: 'Este servicio es sólo para personas que residen en España.<br/>' +
+               'Si crees que es un error, escríbenos a <a href="mailto:infusiones@almadetuz.com">infusiones@almadetuz.com</a> para solucionarlo.'
+    }
+  }
 
   btn.classList.remove("disabled");
 
@@ -129,9 +137,7 @@ novalidate>
     btn.classList.add("disabled");
     spinner.classList.remove("d-none");
     console.log("spinner: remove d-none")
-    stateError.classList.add("d-none");
-    stateSuccess.classList.add("d-none");
-    stateWarning.classList.add("d-none");
+    fbDiv.classList.add("d-none");
     fields.classList.remove("d-none");
     console.log("fields: remove d-none")
 
@@ -139,25 +145,23 @@ novalidate>
         const formData = new FormData(form);
         const data = {
             email: formData.get('EMAIL'),
+            name: formData.get('FNAME'),
             gdpr: formData.get('gdpr') === 'true'
         };
 
         try {
             const response = context_type === 'card' ? await api_card_lead(context_name, data) : await api_web_lead(context_name, data);
             if (response && response.status === 200) {
+                const fbStatus = response.data.status;
+                const fbConfig = feedback[fbStatus] ?? feedback['error'];
                 fields.classList.add("d-none");
                 console.log("fields: add d-none")
-                if (response.data.status === 'success') {
-                  stateSuccess.classList.remove("d-none");
-                } else if (response.data.status === 'already-sent') {
-                  const warningText = "Hace un tiempo te enviamos un correo electrónico.<br/>" +
-                                      "Revisa tu bandeja de entrada y mira si te ha llegado a la carpeta de spam.<br/>" +
-                                      "Si no lo encuentras, escríbenos a <a href='mailto:infusiones@almadetuz.com'>infusiones@almadetuz.com</a> para revisarlo con el informático."
-                  msgWarning.innerHTML = warningText;
-                  stateWarning.classList.remove("d-none");
-                } else {
-                  throw new Error("Unknown status: " + response.data.status);
-                }
+
+                fbIcon.className = 'bi ' + fbConfig.icon;
+                fbTitle.innerHTML = fbConfig.title;
+                fbMessage.innerHTML = fbConfig.message;
+                fbDiv.classList.remove("d-none");
+                console.log("fbDiv: remove d-none")
                 form.reset();
                 form.classList.remove('was-validated');
 
