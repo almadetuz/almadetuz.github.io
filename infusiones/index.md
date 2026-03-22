@@ -60,7 +60,7 @@ y espero un tiempo a leer vuestras respuestas.
 
 Sólo tienes que escribir tu email y te apunto a la lista.
 
-{% include mail_form.html
+{% include mail_form_lead.html
 
    button="Sí, quiero unirme"
    line_bottom="En los emails que recibirás además te cuento las actividades, conciertos y talleres que organizo.<br>Serás la primera en enterarte.<br>Si esto es un problema para ti, puedes darte de baja cuando quieras."

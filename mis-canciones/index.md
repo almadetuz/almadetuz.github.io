@@ -239,7 +239,7 @@ y te aviso de mis próximos conciertos.
 
 {% include block_container_end.html %}
 
-{% include mail_form.html
+{% include mail_form_lead.html
    title="Infusiones de Tüz"
    subtitle="Escribo sobre cómo la música nos rescata y comparto pedacitos de arte que me ayudan a respirar<br><br>Si dejas tu email aquí, te apunto"
    button="Enviar para apuntarme"
