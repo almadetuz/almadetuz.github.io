@@ -22,15 +22,15 @@ seo_image_height: 720
 
 {% include block_container_end.html %}
 
-{% include mail_form.html
+{% include mail_form_lead.html
    title="Infusiones de Tüz"
    subtitle="Suelo escribir junto a una infusión para darme el tiempo de saborear las palabras.<br><br>Las Infusiones de Tüz son mensajes que llegan a tu mail una vez por semana, en las que cuento historias entretejidas con arte, música, poesía y todo aquello que me inspira, que me sana.<br><br>¿Quieres recibirlas?<br>Pon aquí tu email. Así de fácil."
    button="Sí, quiero recibirlas"
    line_bottom="En los emails que recibirás además te cuento las actividades, conciertos y talleres que organizo.<br>Serás la primera en enterarte.<br>Si esto es un problema para ti, puedes darte de baja cuando quieras."
    class="bg-rose"
-   form_id=1
-   context_group_id=2225
-   context_id=64
+   form_id="initial"
+   context_type="web"
+   context_name="home"
 %}
 
 {% include block_container_start.html
@@ -145,15 +145,15 @@ Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
 
 {% include block_container_end.html %}
 
-{% include mail_form.html
+{% include mail_form_lead.html
    title="Infusiones de Tüz"
    subtitle="Si quieres saber lo que significa Tüz y descubrir el final de la historia, deja tu email y te lo cuento"
    button="Descubrir el Tüz"
    line_bottom="Darse de alta es gratis, darse de baja también."
    class="bg-rose"
-   form_id=2
-   context_group_id=2225
-   context_id=4
+   form_id="end"
+   context_type="web"
+   context_name="tuz"
 %}
 
 {% include block_buttons_start.html %}

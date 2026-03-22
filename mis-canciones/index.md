@@ -225,6 +225,31 @@ _"Es bueno subir a la montaña cuando no sabemos que otra cosa podemos hacer."_
 
 {% include block_container_end.html %}
 
+{% include block_container_start.html
+   class_bg="bg-white"
+%}
+
+## La música es un hilo invisible que nos conecta
+
+Detrás de cada canción siempre hay una historia.
+
+En las *Infusiones de Tüz* te cuento lo que hay detrás, \\
+te comparto otras canciones que voy descubriendo \\
+y te aviso de mis próximos conciertos.
+
+{% include block_container_end.html %}
+
+{% include mail_form.html
+   title="Infusiones de Tüz"
+   subtitle="Escribo sobre cómo la música nos rescata y comparto pedacitos de arte que me ayudan a respirar<br><br>Si dejas tu email aquí, te apunto"
+   button="Enviar para apuntarme"
+   line_bottom="Por cierto, es gratis y en todos los emails que recibas tendrás un enlace para darte de baja."
+   class="bg-rose"
+   form_id="canciones"
+   context_type="web"
+   context_name="canciones"
+%}
+
 {% include block_container_start.html %}
 
 ![El hilo de la memoria](/assets/images/hilo_de_la_memoria_single_640.jpg){: .img-right }
@@ -496,18 +521,6 @@ Estrenada en el festival _DOC NYC 2022_, el 12 de Noviembre -
 %}
 
 {% include block_container_end.html %}
-
-
-{% include mail_form.html
-   title="Infusiones de Tüz"
-   subtitle="De vez en cuando escribo y comparto cómo la música me ha salvado la vida<br><br>¿Quieres recibirlo?"
-   button="Descubrir el Tüz"
-   line_bottom="En los emails que recibirás además te cuento las actividades, conciertos y talleres que organizo.<br>Serás la primera en enterarte.<br>Si esto es un problema para ti, puedes darte de baja cuando quieras."
-   class="bg-rose"
-   form_id=1
-   context_group_id=2225
-   context_id=16
-%}
 
 {% include block_buttons_start.html %}
 

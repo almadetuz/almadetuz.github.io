@@ -101,7 +101,8 @@ Dale al play y deja que la Golondrina te guíe de vuelta a casa.
    subtitle="Deja tu correo para recibir una reflexión única del Oráculo de Tüz y una sorpresa para acompañar tu vuelo."
    button="Recibir mi mensaje"
    class="bg-rose"
-   card_name="dentro"
+   context_type="card"
+   context_name="dentro"
    form_id="lead"
 %}
 

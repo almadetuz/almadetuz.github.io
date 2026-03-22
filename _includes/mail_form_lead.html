@@ -67,7 +67,8 @@ novalidate>
 <script type="text/javascript">
 (function () {
   const formId = "{{ include.form_id }}";
-  const cardName = "{{ include.card_name }}";
+  const context_name = "{{ include.context_name }}";
+  const context_type = "{{ include.context_type | default: 'web' }}";
   const form = document.getElementById("subscribe-form-" + formId);
   const btn = document.getElementById("subscribe-submit-" + formId);
   const spinner = document.getElementById("subscribe-spinner-" + formId);
@@ -104,7 +105,7 @@ novalidate>
         };
 
         try {
-            const response = await api_card_lead(cardName, data);
+            const response = context_type === 'card' ? await api_card_lead(context_name, data) : await api_web_lead(context_name, data);
             if (response && response.status === 200) {
                 msgSuccess.classList.add("d-block");
                 form.reset();
