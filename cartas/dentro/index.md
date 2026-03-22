@@ -12,14 +12,45 @@ seo_image_height: 850
   class_row="row"
   class_bg="bg-white"
 %}
+![Golondrina del Renacer](/assets/images/cartas/dentro_golondrina_del_renacer_ambos_lados_480.jpg){: .img-left }
+
+## Has descubierto <br> la Golondrina...
+{: .titular .text-start}
+
+<br>
 <div class="position-relative" markdown="1">
 
-![Carta de la Golondrina del Renacer](/assets/images/cartas/dentro_golondrina_del_renacer_ambos_lados_480.jpg){: .img-center-480 }
+## y tiene un mensaje para ti.
+{: .subtitular .text-end}
 
-{% include scroll_down_arrow.html %}
+{% include scroll_down_arrow.html
+  class="scroll-down-arrow-center"
+%}
 
 </div>
+
 {% include block_container_end.html %}
+
+{% include block_container_start.html %}
+
+Si has llegado hasta aquí, no es por azar. \\
+Algo en ti buscaba una respuesta, un aliento o quizá solo un poco de silencio.
+
+Para que el círculo se cierre falta un mensaje.
+
+{% include mail_form_lead.html
+   title="Un mensaje personal para tu renacer"
+   subtitle="Escribe tu correo y recibirás una reflexión única del Oráculo de Tüz y una sorpresa para acompañar tu vuelo."
+   button="Recibir mi mensaje"
+   line_bottom="No es siempre el mismo mensaje, depende de cuándo lo pidas. Es la magia del oráculo, el mensaje que te llega es por algo que la carta te ayuda a descubrir."
+   class="bg-rose"
+   form_id="initial"
+   context_type="card"
+   context_name="dentro"
+%}
+
+{% include block_container_end.html %}
+
 
 {% include block_container_start.html %}
 
@@ -77,52 +108,32 @@ Florezco desde mi alma y vuelo libre hacia mi verdad.”
 {% include block_container_end.html %}
 
 
-{% include block_container_start.html
-  class_bg="bg-white"
-%}
-
-Esta carta nació de esta canción. \\
-Dale al play y deja que la Golondrina te guíe de vuelta a casa.
-
-{% include song_links.html
-   title="Dentro feat. Iovis"
-   album_type="single"
-   bandcamp_album_slug="dentro-feat-iovis"
-   bandcamp_album_id="954581068"
-%}
-
-{% include block_container_end.html %}
-
-
-{% include block_container_start.html %}
-
 {% include mail_form_lead.html
-   title="<i>Un mensaje personal para tu renacer</i>"
-   subtitle="Deja tu correo para recibir una reflexión única del Oráculo de Tüz y una sorpresa para acompañar tu vuelo."
+   title="Esta carta nació de una canción"
+   subtitle="Escribe tu correo y descubre qué canción la acompaña."
    button="Recibir mi mensaje"
-   class="bg-rose"
+   class="bg-white"
+   form_id="cancion"
    context_type="card"
    context_name="dentro"
-   form_id="lead"
 %}
 
-{% include block_container_end.html %}
 
 {% include block_container_start.html
   class_container="container-fluid"
   class_row="row"
 %}
 
-## ¿Qué es esto, te preguntarás?
+## ¿Hay más cartas?
 {: .titular .text-start}
 
-Esta carta que tienes en tus manos es la primera de muchas que saldrán a la luz en mis conciertos y encuentros musicales. Cada carta tiene aparejada una canción, un poema, un instante.
+Esta carta que tienes en tus manos es la primera de muchas que saldrán a la luz en mis conciertos y encuentros musicales. Cada carta tiene aparejada una canción.
 
 Las he ido elaborando yo misma,
 eligiendo cuidadosamente los textos,
 unidos a las canciones, a imágenes, a cuentos y relatos que me han inspirado en los últimos años.
 
-Es algo simbólico y al mismo tiempo, un bonito juego para hacerte llegar mi mundo de Tüz.
+Es algo simbólico y al mismo tiempo, un bonito juego para entrar en el mundo de Tüz.
 
 {% include block_container_end.html %}
 
@@ -165,6 +176,18 @@ escucha su respiración.
 Deja que el fuego de Tüz te hable con la voz de tu propia alma.
 
 {% include block_container_end.html %}
+
+{% include mail_form_lead.html
+   title="No dejes que el vuelo termine aquí"
+   subtitle="Ya conoces la Golondrina del Renacer, el Oráculo de Tüz es un organismo vivo."
+   button="Recibir mi mensaje"
+   line_bottom="Si me dejas tu email, no solo recibirás el mensaje personal de la Golondrina del Renacer, además te enviaré la canción de la Golondrina para que la guardes (sin anuncios, sin internet, solo para ti)."
+   class="bg-rose"
+   form_id="final"
+   context_type="card"
+   context_name="dentro"
+%}
+
 
 {% include block_container_start.html %}
 

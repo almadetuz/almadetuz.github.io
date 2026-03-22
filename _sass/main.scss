@@ -145,7 +145,7 @@ img.img-center-480,
 img.img-center-640 {
   display: block;
   width: 100%;
-  margin: auto;
+  margin: 10px 0px;
   border-radius: var(--bs-border-radius);
   // padding: 10px 0px;
 }
@@ -631,8 +631,6 @@ div.listen-also .icon-tidal .tidal-icon {
 
 .scroll-down-arrow {
   position: absolute;
-  top: 35px;
-  right: -15px;
   transform: translateX(-50%);
   font-size: 2rem;
   color: #fff;
@@ -646,6 +644,25 @@ div.listen-also .icon-tidal .tidal-icon {
   display: flex;
   align-items: center;
   justify-content: center;
+
+}
+.scroll-down-arrow-right {
+  top: 40px;
+  right: -20px;
+}
+.scroll-down-arrow-center {
+  top: 40px;
+  left: 50%;
+}
+.scroll-down-arrow-left {
+  top: 40px;
+  left: 20px;
+}
+
+@media screen and (min-width: $bp-mobile) {
+  .scroll-down-arrow {
+    display: none;
+  }
 }
 
 @keyframes bounce {
