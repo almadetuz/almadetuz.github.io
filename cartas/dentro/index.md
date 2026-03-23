@@ -17,7 +17,6 @@ seo_image_height: 850
 ## Has descubierto <br> la Golondrina...
 {: .titular .text-start}
 
-<br>
 <div class="position-relative" markdown="1">
 
 ## y tiene un mensaje para ti.
