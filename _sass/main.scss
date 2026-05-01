@@ -676,3 +676,27 @@ div.listen-also .icon-tidal .tidal-icon {
     transform: translateY(-7px) translateX(-50%);
   }
 }
+
+footer {
+  font-size: 0.9em;
+}
+
+.legal {
+  p, li {
+    font-size: 1em;
+    line-height: 1.4em;
+  }
+  p {
+    margin-bottom: 1em;
+  }
+  h1, h2, h3 {
+    font-size: 1.2em;
+    line-height: 1.4em;
+  }
+  table {
+    margin: 20px 0px;
+  }
+  td, th {
+    padding: 4px;
+  }
+}

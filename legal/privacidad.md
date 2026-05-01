@@ -4,114 +4,213 @@ layout: legal
 ---
 # Política de privacidad
 
-En aplicación de lo dispuesto en el Reglamento Europeo General de Protección de Datos de Abril 2016 (RGPD), la Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos Personales (LOPD), el Real Decreto 1720/2007, de 21 de diciembre, por el que se aprueba el Reglamento de desarrollo de la LOPD (RLOPD), y la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE), le informamos que Amanda Fdez. Bartolomé (en adelante, Amanda Tüz), titular de la presente página web contenida en el dominio almadetuz.com, mantiene un compromiso de riguroso cumplimiento de la legislación vigente en materia de tratamiento de datos personales y seguridad de la información con objeto de garantizar a sus usuarios que la recogida y tratamiento de los datos facilitados se efectúan con plenas garantías de seguridad.
+Última actualización: 1 de mayo de 2026
 
-## Protección de datos personales
+Esta política se emite en cumplimiento del Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos (RGPD), de la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), y de la Ley 34/2002 de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSICE).
 
-Amanda Tüz, como propietaria del dominio almadetuz.com informa a los usuarios de la Web contenida en éstos, acerca de su <i>política de protección de datos personales</i> para que determinen libre y voluntariamente si desean facilitar sus datos personales que se les puedan requerir o que se puedan obtener con ocasión de los servicios y funcionalidades que ponemos a su disposición.
+## 1. Responsable del tratamiento
 
-### 1. ¿Cómo obtenemos sus datos personales?
+- **Titular:** Amanda Fdez. Bartolomé (en adelante, "Amanda Tüz" o "Alma de Tüz").
+- **Sitio web:** <a href="/">www.almadetuz.com</a>
+- **Correo de contacto en materia de protección de datos:** <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a>
 
-Recogemos sus datos personales en distintas ocasiones:
+Alma de Tüz no está obligada a designar Delegado de Protección de Datos. Las consultas en materia de privacidad se atienden por la dirección anterior.
 
-- Al apuntarte alguno de las actividades culturales que organizamos
-- Al suscribirte a nuestra newsletter
+## 2. Datos que se tratan, finalidades y bases jurídicas
 
-### 2. ¿Qué información podemos obtener sobre usted? (Derecho de información)
+<table class="table text-soft-white"><thead>
+    <tr>
+        <th>Tratamiento</th>
+        <th>Datos</th>
+        <th>Finalidad</th>
+        <th>Base jurídica (Art. 6 RGPD)</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+        <td>Suscripción a la newsletter</td>
+        <td>Email (y nombre si se facilita)</td>
+        <td>Envío de comunicaciones sobre música, eventos y proyectos de Alma de Tüz</td>
+        <td>Consentimiento (6.1.a)</td>
+    </tr>
+    <tr>
+        <td>Captación de leads / formularios de actividades</td>
+        <td>Email, datos del evento</td>
+        <td>Inscripción a la actividad y comunicación posterior</td>
+        <td>Ejecución de relación pre-contractual (6.1.b) y/o consentimiento</td>
+    </tr>
+    <tr>
+        <td>Bots de Instagram y Facebook (Meta)</td>
+        <td>Meta user ID, nombre público, mensajes, email si se facilita, marcas temporales</td>
+        <td>Mantener la conversación y enviar contenidos personalizados</td>
+        <td>Consentimiento (6.1.a)</td>
+    </tr>
+    <tr>
+        <td>Analítica web</td>
+        <td>Identificadores de cookie, IP truncada, eventos de uso</td>
+        <td>Medir uso del sitio para mejorarlo</td>
+        <td>Consentimiento (6.1.a)</td>
+    </tr>
+    <tr>
+        <td>Publicidad y medición de campañas (Meta Pixel, Google Ads)</td>
+        <td>Identificadores de cookie/publicitarios, eventos de conversión</td>
+        <td>Promocionar contenido musical, remarketing y medición</td>
+        <td>Consentimiento (6.1.a)</td>
+    </tr>
+    <tr>
+        <td>Cumplimiento de obligaciones legales</td>
+        <td>Los anteriores cuando proceda</td>
+        <td>Atender requerimientos fiscales, contables o judiciales</td>
+        <td>Obligación legal (6.1.c)</td>
+    </tr>
+</tbody></table>
 
-Se le solicitarán los siguientes datos de carácter personal:
+No se realizan tratamientos basados en interés legítimo para finalidades publicitarias. No se toman decisiones automatizadas con efectos jurídicos significativos sobre la persona usuaria. La elaboración de perfiles publicitarios la realizan Meta y Google en sus plataformas, conforme a su propia política, una vez recibido el consentimiento.
 
-- Email
-- Nombre
-- Apellidos
+## 3. Origen de los datos
 
-con la finalidad de:
+Los datos proceden de la propia persona usuaria. Cuando interactúa con los bots de Instagram o Facebook, parte de los datos (Meta user ID y nombre público) provienen de la plataforma Meta.
 
-- Enviar información por correo electrónico de las actividades y eventos organizados por Alma de Tüz
-- Enviar comunicaciones comerciales relacionadas con los servicios de Alma de Tüz.
-- Atender la petición de información y prestación de los servicios ofrecidos.
+## 4. Plazos de conservación
 
-### 3. ¿Cómo nos otorgas tu consentimiento para el tratamiento de los datos?
+<table class="table text-soft-white"><thead>
+    <tr>
+        <th>Tratamiento</th>
+        <th>Plazo</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+        <td>Newsletter</td>
+        <td>Hasta la baja de la suscripción + 1 año bloqueados para atender reclamaciones</td>
+    </tr>
+    <tr>
+        <td>Leads de actividades</td>
+        <td>2 años desde el último contacto, salvo conversión</td>
+    </tr>
+    <tr>
+        <td>Datos del bot Meta</td>
+        <td>Mientras dure la interacción + 12 meses de inactividad, o hasta solicitud de eliminación</td>
+    </tr>
+    <tr>
+        <td>Datos contables / fiscales</td>
+        <td>6 años (Cód. de Comercio) y 4 años (LGT)</td>
+    </tr>
+    <tr>
+        <td>Logs técnicos</td>
+        <td>30 días</td>
+    </tr>
+    <tr>
+        <td>Cookies</td>
+        <td>Las indicadas en la <a href="/legal/cookies.html">Política de cookies</a></td>
+    </tr>
+</tbody></table>
 
-Se entenderá que el usuario acepta las condiciones establecidas en la presente <i>política de privacidad</i> y otorga su consentimiento expreso, inequívoco e informado al tratamiento de sus datos personales por parte del titular de la web de conformidad con lo establecido en el RGPD, si pulsa el botón <strong>ENVIAR</strong> que se encuentra en los formularios de aportación de datos. Todos los datos personales detallados en el apartado 2, así como cualquier otro dato suministrado por los usuarios que se puedan obtener con ocasión de la cumplimentación de los formularios alojados en la web de Alma de Tüz, serán objeto de tratamiento e incorporados a un fichero automatizado de datos personales titularidad de Amanda Tüz, el cual consta en su registro de actividades correspondiente, quien será el responsable y destinatario de la información.
+Transcurridos los plazos, los datos se eliminan o anonimizan de manera segura.
 
-Los datos personales recogidos de nuestros usuarios son almacenados por Amanda Tüz, quien garantiza las medidas oportunas de índole técnica y organizativa para prevenir la integridad y seguridad de la información personal aportada. Los datos recabados son los adecuados, pertinentes y no excesivos en relación con el ámbito, las finalidades y servicios determinados, explícitos y legítimos detallados en la presente política de privacidad y recogidos en www.almadetuz.com.
+## 5. Destinatarios y encargados del tratamiento
 
-### 4. ¿Cómo mantenemos protegidos sus datos?
+Para prestar el servicio, Alma de Tüz cuenta con los siguientes proveedores que actúan como encargados o, en su caso, como responsables/corresponsables del tratamiento:
 
-Para garantizar la protección y mantener la seguridad, integridad y disponibilidad de sus datos, utilizamos diversas medidas de seguridad.
+<table class="table text-soft-white"><thead>
+    <tr>
+        <th>Proveedor</th>
+        <th>Función</th>
+        <th>País</th>
+        <th>Garantía</th>
+    </tr>
+    </thead><tbody>
+    <tr>
+        <td>GitHub Pages (GitHub Inc.)</td>
+        <td>Alojamiento del sitio estático</td>
+        <td>EEUU</td>
+        <td>DPF / SCCs</td>
+    </tr>
+    <tr>
+        <td>Resend</td>
+        <td>Envío de correo transaccional</td>
+        <td>EEUU</td>
+        <td>DPF / SCCs</td>
+    </tr>
+    <tr>
+        <td>MailerLite</td>
+        <td>Gestión de la lista de suscripciones</td>
+        <td>UE (Irlanda)</td>
+        <td>RGPD</td>
+    </tr>
+    <tr>
+        <td>Mailchimp (The Rocket Science Group)</td>
+        <td>Envío puntual de campañas, si aplica</td>
+        <td>EEUU</td>
+        <td>DPF / SCCs</td>
+    </tr>
+    <tr>
+        <td>Amplitude Inc.</td>
+        <td>Producto-analítica</td>
+        <td>EEUU</td>
+        <td>DPF / SCCs</td>
+    </tr>
+    <tr>
+        <td>Google Ireland Ltd. (Analytics, Ads, YouTube)</td>
+        <td>Analítica, publicidad y medición de campañas</td>
+        <td>UE / EEUU</td>
+        <td>DPF / SCCs — corresponsable en Ads</td>
+    </tr>
+    <tr>
+        <td>Meta Platforms Ireland Ltd. (Facebook, Instagram, Pixel, CAPI)</td>
+        <td>Bots, publicidad y medición</td>
+        <td>UE / EEUU</td>
+        <td>DPF / SCCs — corresponsable en Pixel</td>
+    </tr>
+    <tr>
+        <td>MaxMind</td>
+        <td>Base GeoLite2 utilizada localmente, sin envío de datos</td>
+        <td>N/A</td>
+        <td>Tratamiento local</td>
+    </tr>
+</tbody></table>
 
-Aunque en las transmisiones de datos a través de internet o desde una web no es posible garantizar una protección absoluta contra intrusiones, tanto nosotros como nuestros subcontratistas dedicamos los máximos esfuerzos para mantener las medidas de protección física, electrónica y procedimental con las cuales garantizar la protección de sus datos de acuerdo con las exigencias legales aplicables en esta materia.
+Con cada encargado se han suscrito los contratos exigidos por el artículo 28 RGPD. Para Meta y Google se aplica el régimen de **corresponsabilidad** (artículo 26 RGPD) en lo relativo a la recogida y transmisión de datos para fines publicitarios y de medición, conforme a la sentencia del TJUE *Fashion ID* (C-40/17). El listado puede actualizarse; la versión vigente se facilita previa solicitud a la dirección indicada en el apartado 1.
 
-Entre las medidas que utilizamos se incluyen las siguientes:
+## 6. Transferencias internacionales
 
-- Limitar el acceso a sus datos únicamente a aquellas personas que deban conocerlos en atención a las tareas que realizan.
-- Transferir en formato cifrado los datos recogidos.
-- Utilizar proveedores de servicios que cumplen con los más altos estándares de seguridad.
+Algunos proveedores tratan datos en **Estados Unidos**. Las transferencias se amparan en la **Decisión de Adecuación EU-US Data Privacy Framework** (Decisión (UE) 2023/1795) cuando el destinatario está certificado o, en su defecto, en **Cláusulas Contractuales Tipo (SCCs)** aprobadas por la Comisión Europea, complementadas con medidas adicionales cuando resulta procedente.
 
-### 5. ¿Durante cuánto tiempo conservamos sus datos?
+## 7. Consentimiento
 
-Sus datos personales serán conservados durante el tiempo necesario para cumplir la finalidad para la cual se recogieron. Si sus datos se utilizan para varias finalidades que nos obligan a conservarlos durante plazos diferentes, aplicaremos el plazo de conservación más largo.
+Cuando la base jurídica es el consentimiento, éste se solicita mediante una **acción afirmativa clara y específica** (casillas independientes para cada finalidad, sin pre-marcar). La persona usuaria puede **retirar el consentimiento en cualquier momento**, con la misma facilidad con la que lo otorgó (artículo 7.3 RGPD), escribiendo a <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a> o utilizando el enlace de baja incluido en cada correo. La retirada no afecta a la licitud del tratamiento previo.
 
-En todo caso, limitamos el acceso a sus datos sólo a aquellas personas que necesiten utilizarla para el desempeño de sus funciones.
+## 8. Derechos de la persona usuaria
 
-Nuestros plazos de conservación de datos están basados en necesidades de negocio, por lo que en relación con aquellos datos personales que ya no sean necesarios bien quedará limitado el acceso a los mismos al cumplimiento de obligaciones estrictamente legales o bien se destruirán de forma segura.
+Conforme a los artículos 15 a 22 del RGPD, la persona usuaria puede ejercer en cualquier momento y de forma gratuita los siguientes derechos:
 
-Finalidades relacionadas con el cumplimiento de obligaciones legales y regulatorias: determinada información deberá mantenerse durante los plazos exigidos por la normativa específica que resulte de aplicación (fiscal, mercantil, blanqueo de capitales, etc.). Durante éste periodo de tiempo, dichos datos permanecerán bloqueados, y sólo podrán ser utilizados a fin de poder atender a posibles consultas o reclamaciones posteriores.
+- **Acceso** a los datos personales tratados.
+- **Rectificación** de datos inexactos o incompletos.
+- **Supresión** ("derecho al olvido"). Para datos recogidos a través de Meta, ver las <a href="/legal/eliminacion-datos.html">Instrucciones para la eliminación de datos</a>.
+- **Limitación** del tratamiento.
+- **Oposición**, incluido el tratamiento con fines de mercadotecnia directa.
+- **Portabilidad** en formato estructurado y de uso común.
+- **No ser objeto de decisiones automatizadas** con efectos significativos.
+- **Revocar el consentimiento** prestado.
 
-### 6. ¿Con quién podemos compartir sus datos y cómo los protegemos?
+Para ejercer estos derechos, escriba a <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a> indicando el derecho que desea ejercer y adjuntando una copia o referencia que permita verificar su identidad. La respuesta se facilitará en el plazo máximo de un mes.
 
-Amanda Tüz no cede sus datos a terceros salvo en los casos en que exista una obligación legal, ni se realiza transferencia internacional de los mismos.
+Si considera que sus datos no han sido tratados conforme a la normativa, tiene derecho a presentar una **reclamación ante la Agencia Española de Protección de Datos (AEPD)**: <a href="https://www.aepd.es/" target="_blank" rel="noopener noreferrer">www.aepd.es</a>.
 
-### 7. Control de la Privacidad
+## 9. Personas menores de edad
 
-El usuario tendrá el control sobre sus datos y podrá acceder en todo momento y cambiar los mismos. De igual manera, podrá solicitar la baja del uso de sus datos de carácter personal en el siguiente correo electrónico: <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a>
+El sitio no está dirigido a menores de 14 años. Conforme al artículo 7 LOPDGDD, sólo se admite el tratamiento de datos de menores con dicha edad o superior; por debajo de los 14 años se requiere el consentimiento del titular de la patria potestad o tutela. Si Alma de Tüz tuviera conocimiento del tratamiento de datos de menores sin la debida autorización, procederá a su eliminación inmediata.
 
-Una vez finalizada la relación con Alma de Tüz, es decir, cuando el usuario se dé de baja del servicio, serán suprimidos todos sus datos de carácter personal automáticamente, los cuales permanecerán bloqueados a fin de cumplir con las obligaciones legales de conformidad con lo establecido en el apartado 5.
+## 10. Medidas de seguridad y notificación de brechas
 
-### 8. ¿Cómo puede ejercer los derechos de acceso, rectificación, supresión, limitación, portabilidad de los datos y oposición al tratamiento de Datos de Carácter Personal?
+Alma de Tüz aplica medidas técnicas y organizativas adecuadas al riesgo (cifrado en tránsito mediante HTTPS, control de accesos, mínima recogida de datos, proveedores con certificaciones reconocidas). En caso de violación de seguridad que suponga un riesgo para los derechos y libertades de las personas afectadas, se notificará a la AEPD en un plazo de 72 horas y, cuando proceda, también a las personas afectadas, conforme a los artículos 33 y 34 del RGPD.
 
-Los usuarios de la web de Alma de Tüz podrán ejercitar los derechos antes detallados reconocidos por el RGPD en cualquier momento y de forma gratuita, mediante  comunicación al correo electrónico: <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a>, Referencia: Protección de Datos de Carácter Personal.
+## 11. Enlaces externos
 
-Igualmente, le recordamos la posibilidad de dirigir una reclamación ante la Agencia Española de Protección de Datos de Carácter Personal por el tratamiento de sus datos personales realizado por parte de Amanda Tüz.
+Esta política sólo es de aplicación al sitio <a href="/">www.almadetuz.com</a>. Los servicios incrustados o enlazados (YouTube, Spotify, Bandcamp, Meta, etc.) cuentan con sus propias políticas de privacidad, que rigen el tratamiento de los datos en sus respectivas plataformas.
 
-Amanda Tüz no utilizará los datos personales para un fin distinto al expresado en el apartado 2, y guardará la máxima confidencialidad de la información suministrada. Asimismo, en cumplimiento de lo previsto en el LSSICE en los supuestos de envío de comunicaciones comerciales vía correo electrónico a <a href="mailto:protecciondedatos@almadetuz.com">protecciondedatos@almadetuz.com</a>, donde los usuarios podrán ejercitar en cualquier momento sus derechos de acceso, limitación, rectificación u oposición, para darse de baja en cualquier momento, y en consecuencia no recibir ningún tipo de información o comunicación.
+## 12. Cookies
 
-Le recordamos que usted tiene derecho a solicitar:
+El uso de cookies en el sitio se rige por la <a href="/legal/cookies.html">Política de cookies</a>, conforme al artículo 22.2 LSSICE (en la redacción dada por la Ley 11/2022) y a las Directrices 05/2020 del EDPB.
 
-- Más detalles sobre el uso que hacemos de su información
-- Una copia de la información que nos ha facilitado
-- Corregir inexactitudes en la información que mantenemos,
-- Borrar información para cuyo uso ya no tengamos base jurídica,
-- Revocar su consentimiento para el tratamiento de sus datos con esos fines, en los casos en que el tratamiento de los datos está condicionado al consentimiento, así como para cualquier comunicación de marketing directo,
-- Oponerse a cualquier tratamiento de sus datos -incluida la elaboración de perfiles- que tome como base jurídica el interés legítimo, a menos que nuestros motivos para llevar a cabo ese tratamiento compensen cualquier posible perjuicio hacia sus derechos de protección de datos,
-- Restringir la manera en que utilizamos sus datos mientras se investiga una reclamación.
+## 13. Modificaciones
 
-El ejercicio por su parte de estos derechos está sujeto a determinadas excepciones por motivos de interés general (por ejemplo, la prevención o detección de delitos) y por nuestros propios intereses (por ejemplo, el mantenimiento de la confidencialidad del asesoramiento jurídico). Si usted ejerciera alguno de estos derechos, comprobaremos que está facultado realmente para ello, y le responderemos en un mes o en el plazo máximo previsto en la normativa española, si éste fuera inferior.
-
-Si no está satisfecho con la manera en que utilizamos su información o con nuestra respuesta ante el ejercicio de cualquiera de estos derechos, puede presentar una reclamación ante la Agencia Española de Protección de Datos (<a hreaf="https://www.aepd.es/" target="_blank">www.aepd.es</a>).
-
-## Bases Jurídicas para el Tratamiento de Datos de Carácter Personal
-
-El uso de sus datos en las condiciones anteriormente descritas está permitido por la normativa de protección de datos europea y española de conformidad con las siguientes bases jurídicas:
-
-- Usted ha manifestado su consentimiento (se le ha presentado un formulario de consentimiento para que autorice el tratamiento de sus datos con determinadas finalidades y usted puede revocar el consentimiento prestado en todo momento)
-- El tratamiento de sus datos es necesario para la gestión y mantenimiento de la relación entre Alma de Tüz y sus usuarios
-- El tratamiento de sus datos es necesario para cumplir con nuestras obligaciones legales
-- Utilizamos sus datos para conseguir un interés legítimo y nuestros motivos para hacerlo compensen los posibles perjuicios para sus derechos a la protección de sus datos
-
-Puede haber finalidades que estén permitidas en virtud de otras bases jurídicas; en tales casos, haremos todo lo posible por identificar la base jurídica en cuestión y comunicársela lo antes posible en cuanto tengamos conocimiento de su existencia.
-
-## Uso de Cookies
-
-Una cookie es un archivo de texto que un servidor web puede guardar en el disco duro de un equipo para almacenar información sobre el usuario, y sólo puede ser leída por el sitio web que lo envió al equipo. Así como también, cualquier dispositivo de almacenamiento y recuperación de datos en equipos terminales de los destinatarios.
-
-El portal <a href="/">www.almadetuz.com</a> utiliza cookies para acceder a información relativa a los usuarios del sitio web, cuyo detalle e información sobre la utilización de las cookies, de forma clara y completa, se encuentran desarrolladas en nuestra <a href="/legal/cookies.html" target="_blank">Política de Cookies</a>, en cumplimiento de lo previsto en el artículo 22.2 de la LSSICE, modificada por el Real Decreto-Ley 13/2012, de 30 de marzo, que traspone al ordenamiento jurídico español la Directiva 2002/58/CE, relativa al tratamiento de los datos personales y a la protección de la intimidad en el sector de las comunicaciones electrónicas.
-
-## Enlaces
-
-Esta política de privacidad sólo es de aplicación a la página web (<a href="/">www.almadetuz.com</a>). No se garantiza en los accesos a través de enlaces con este sitio, ni a los enlaces desde este sitio con otras web.
-
-## Modificación
-
-Alma de Tüz podrá modificar la presente política para adaptarla a novedades legislativas o jurisprudenciales así como a futuras buenas prácticas. En dichos supuestos, Alma de Tüz anunciará en esta página los cambios introducidos con razonable antelación a su puesta en práctica, e informará a los usuarios de las actualizaciones o modificaciones de la presente política de privacidad.
+Alma de Tüz podrá modificar la presente política para adaptarla a novedades legislativas, jurisprudenciales o de buenas prácticas. Los cambios se publicarán en esta página con su fecha de actualización; cuando supongan una modificación sustancial del tratamiento, se comunicarán con antelación razonable a las personas usuarias suscritas.
