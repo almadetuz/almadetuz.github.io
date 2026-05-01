@@ -85,6 +85,18 @@ exclude:
   - resize_img.sh
   - config.ru
   - Rakefile
+  - .cursor/
+  - .github/
+  - .vscode/
+  - .DS_Store
+  - .gitignore
+  - .git/
+  - .gitattributes
+  - vendor/
+  - vendor/**/*
+  - node_modules/
+  - package.json
+  - package-lock.json
 ```
 
 These files are excluded from the generated site to keep it clean and secure.

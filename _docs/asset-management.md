@@ -10,9 +10,11 @@ This document describes the organization, optimization, and management of static
 assets/
 ├── css/                    # Stylesheets
 │   ├── styles.scss        # Main SASS file
-│   ├── bootstrap.v5.3.3.min.css
+│   ├── bootstrap.v5.3.3.min.css (+ source .css)
+│   ├── bootstrap-icons.v1.13.1.min.css
 │   ├── normalize.css
-│   └── cookieconsent_v3.css
+│   ├── cookieconsent_v3.css
+│   └── fonts/             # Self-hosted font files referenced by SASS
 ├── js/                     # JavaScript files
 │   ├── Custom scripts
 │   └── Third-party libraries
@@ -251,16 +253,19 @@ Fonts are optimized for performance with proper `font-display` properties and su
 
 ```
 assets/js/
-├── analytics-browser-2.6.1-min.js    # Analytics
-├── amplitude_v261.js                  # Amplitude tracking
-├── api.js                            # API integration
-├── axios.v1.6.8.min.js               # HTTP client
-├── bootstrap.bundle.v5.3.3.min.js    # Bootstrap JS
-├── cookieconsent_v3.js               # Cookie consent
-├── forms.js                          # Form handling
-├── link.js                           # Link management
-├── scroll_v1.js                      # Scroll tracking
-└── Third-party utilities
+├── analytics-browser-2.6.1-min.js    # Amplitude analytics-browser runtime
+├── amplitude_v261.js                  # Amplitude wiring/helpers
+├── api.js                             # Signup API client
+├── axios.v1.6.8.min.js (+ .js, maps)  # HTTP client
+├── bootstrap.bundle.v5.3.3.min.js     # Bootstrap JS (minified + source)
+├── cookieconsent_v3.js                # Cookie consent runtime
+├── cta.js                             # Call-to-action helpers
+├── forms.js                           # Form handling and FormSignup registry
+├── intersection-observer.min.js       # IntersectionObserver polyfill
+├── link.js                            # Deep-link / platform routing
+├── scroll_v1.js                       # Scroll tracking
+├── songkick_injector_20230525.js      # Concert listings injector
+└── verge.min.js                       # Viewport visibility helpers
 ```
 
 ### JavaScript Loading Strategy

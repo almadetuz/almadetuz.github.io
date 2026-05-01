@@ -12,11 +12,12 @@ This documentation describes the architecture and structure of the Alma de Tüz 
 - **Hosting**: GitHub Pages
 - **CSS Framework**: Bootstrap 5.3.3
 - **CSS Normalization**: Normalize.css
-- **Icon Library**: Font Awesome
-- **JavaScript Libraries**: 
-  - Amplitude (analytics)
-  - Axios (HTTP requests)
-  - Custom tracking and form handling
+- **Icon Libraries**: Font Awesome (via SASS) and Bootstrap Icons 1.13.1
+- **JavaScript Libraries**:
+  - Amplitude (analytics, v2.6.1 with `analytics-browser` runtime)
+  - Axios 1.6.8 (HTTP requests)
+  - Intersection Observer + verge (scroll/visibility tracking)
+  - Custom tracking and form handling (`api.js`, `forms.js`, `link.js`, `cta.js`, `scroll_v1.js`)
 - **Deployment**: Automated through GitHub Pages
 - **Alternative Local Server**: Puma (for development)
 
@@ -43,10 +44,12 @@ This documentation is organized into the following sections:
 - **Responsive design** with Bootstrap and custom SASS
 - **SEO optimization** with comprehensive metadata handling
 - **Analytics integration** with Amplitude, Facebook Pixel, and Google Ads
-- **Email subscription** integration with Mailchimp
-- **Link shortening system** for music platforms and social media
-- **Asset optimization** with multiple image formats and sizes
-- **Form handling** with validation and tracking
+- **Email subscription** via custom signup API (`/u/confirmar.html` flow) with Mailchimp as the downstream provider
+- **Link shortening system** for music platforms and social media (Spotify, YouTube, Bandcamp, Apple Music)
+- **Asset optimization** with multiple image formats and sizes (WebP + JPEG)
+- **Form handling** with validation, tracking and lead-capture variants (`mail_form.html`, `mail_form_lead.html`, `form_api_signup.html`)
+- **Audio download flow** (`download` layout with optional auto-download)
+- **Oracle/cards content** (`cartas/`) and workshop registration flows (`coser-y-cantar/`, `infusiones/`, `taller/`)
 
 ## Getting Started
 
@@ -67,3 +70,11 @@ The project supports both Jekyll's built-in server and Puma for local developmen
 - All dependencies are managed through the `github-pages` gem
 - Custom functionality is implemented through Jekyll includes and JavaScript
 - Responsive design follows mobile-first principles
+
+## Recent Areas of Active Iteration
+
+- **Lead capture**: `mail_form_lead.html` + `form_api_signup.html` posting to `/u/confirmar.html` (custom signup API replaced direct Mailchimp form integration)
+- **Cards content**: `cartas/dentro/` rewrite with companion `_singles/dentro.md`
+- **Download flow**: `download` layout + `d/` directory for hashed audio download URLs (excluded from `sitemap.xml`)
+- **Bandcamp-first**: Bandcamp is the primary album destination for music link pages; Spotify deep links remain available via a separate field
+- **Tracking**: `transaction_id` minted from `fbclid` for FB CAPI dedup; `utm_id`, `campaign_id`, `ad_id` persisted in `localStorage.adt_last_utms`

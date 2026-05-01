@@ -19,10 +19,13 @@ This document describes the SASS/CSS organization and styling system for the Alm
 <!-- 2. Bootstrap for layout framework -->
 <link rel="stylesheet" href="/assets/css/bootstrap.v5.3.3.min.css">
 
-<!-- 3. Cookie consent styling -->
+<!-- 3. Bootstrap Icons -->
+<link rel="stylesheet" href="/assets/css/bootstrap-icons.v1.13.1.min.css">
+
+<!-- 4. Cookie consent styling -->
 <link rel="stylesheet" href="/assets/css/cookieconsent_v3.css">
 
-<!-- 4. Custom styles (compiled SASS) -->
+<!-- 5. Custom styles (compiled SASS) -->
 <link rel="stylesheet" href="/assets/css/styles.css">
 ```
 

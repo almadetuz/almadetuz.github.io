@@ -8,16 +8,20 @@ The site uses a hierarchical layout system with inheritance and composition patt
 
 ```
 default.html (base)
-├── tracking.html (adds analytics)
-│   ├── page.html (content pages)
-│   ├── landing.html (marketing pages)
-│   └── legal.html (legal pages)
-├── link.html (music platform links)
-├── confirm.html (confirmation pages)
-├── lead.html (lead generation)
-├── checkout.html (e-commerce)
-└── suscribed.html (subscription success)
+└── tracking.html (adds analytics + cookie consent)
+    ├── page.html (content pages)
+    ├── landing.html (marketing pages, adds more.html)
+    ├── legal.html (legal pages, preference modal)
+    ├── link.html (music platform link pages)
+    ├── confirm.html (confirmation pages)
+    ├── lead.html (lead generation, fires Lead conversion)
+    ├── checkout.html (e-commerce)
+    ├── suscribed.html (subscription success)
+    ├── clean.html (header/footer-less main)
+    └── download.html (audio download with optional auto-download)
 ```
+
+All non-base layouts inherit (directly or transitively) from `tracking.html`, which itself inherits from `default.html`.
 
 ## Base Layout: `default.html`
 
@@ -52,6 +56,7 @@ default.html (base)
 <!-- CSS (in order) -->
 <link rel="stylesheet" href="/assets/css/normalize.css">
 <link rel="stylesheet" href="/assets/css/bootstrap.v5.3.3.min.css">
+<link rel="stylesheet" href="/assets/css/bootstrap-icons.v1.13.1.min.css">
 <link rel="stylesheet" href="/assets/css/cookieconsent_v3.css">
 <link rel="stylesheet" href="/assets/css/styles.css">
 
@@ -199,6 +204,40 @@ preference_modal: true
 - Welcome messaging
 - Next steps guidance
 - Engagement encouragement
+
+### Clean Layout: `clean.html`
+
+**Purpose**: Minimal pages with no header or footer (only `<main>`)
+
+**Features**:
+- Inherits from `tracking`
+- Cookie preference modal enabled
+- Fires standard `PageView` analytics events
+- Useful for embeds, confirmation flows, or third-party-rendered content
+
+### Download Layout: `download.html`
+
+**Purpose**: Audio download landing pages (e.g. `/d/dentro-cc373161`)
+
+**Features**:
+- Inherits from `tracking`, body class `page page-download`
+- Renders an HTML5 `<audio>` player when `page.mp3_url` is set
+- Download button using `page.download_filename` (default `cancion.mp3`)
+- Optional auto-download triggered ~1.5s after load when `page.auto_download: true`
+- Fires `PageView` / `ViewContent` / `gads conversion=pageview`
+- Excluded from `sitemap.xml` (per recent sitemap fix)
+
+**Front matter example**:
+```yaml
+---
+layout: download
+mp3_url: /assets/audio/dentro.mp3
+audio_title: Dentro
+download_filename: dentro.mp3
+auto_download: true
+sitemap: false
+---
+```
 
 ## Layout Configuration
 

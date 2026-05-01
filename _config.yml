@@ -29,6 +29,7 @@ exclude:
   - resize_img.sh
   - config.ru
   - Rakefile
+  - .claude/
   - .cursor/
   - .github/
   - .vscode/

@@ -47,7 +47,13 @@ last_utm = {
   utm_medium: query_params.get('utm_medium') || last_utm['utm_medium'],
   utm_campaign: query_params.get('utm_campaign') || last_utm['utm_campaign'],
   utm_term: query_params.get('utm_term') || last_utm['utm_term'],
-  utm_content: query_params.get('utm_content') || last_utm['utm_content']
+  utm_content: query_params.get('utm_content') || last_utm['utm_content'],
+  utm_id: query_params.get('utm_id') || last_utm['utm_id'],
+  fbclid: query_params.get('fbclid') || last_utm['fbclid'],
+  campaign_id: query_params.get('campaign_id') || last_utm['campaign_id'],
+  ad_id: query_params.get('ad_id') || last_utm['ad_id'],
+  // New transaction_id minted whenever a fresh fbclid arrives (used for FB CAPI dedup)
+  transaction_id: query_params.get('fbclid') ? crypto.randomUUID() : last_utm['transaction_id']
 };
 
 const web_event_prop = {
@@ -147,6 +153,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
   amp_event('PageView', web_event_prop);
   fb_event('ViewContent');
   gads_event('conversion', 'pageview');
+});
+```
+
+### Lead Tracking (`lead.html` layout)
+
+Pages using `layout: lead` fire a Lead conversion instead of a PageView:
+
+```javascript
+document.addEventListener("DOMContentLoaded", (event) => {
+  amp_event('Lead', web_event_prop);
+  fb_event('Lead');
+  gads_event('conversion', 'lead');
 });
 ```
 

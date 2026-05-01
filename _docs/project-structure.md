@@ -14,13 +14,15 @@ almadetuz.github.io/
 ├── _singles/                # Single content collection
 ├── _site/                   # Generated site (ignored in git)
 ├── assets/                  # Static assets (CSS, JS, images, etc.)
-├── l/                       # Link shortening system
+├── l/                       # Link shortening system (music platform links)
 ├── legal/                   # Legal pages (privacy, cookies)
-├── coser-y-cantar/         # Workshop content
-├── infusiones/             # Newsletter subscription pages
+├── cartas/                  # Oracle/tarot cards content
+├── coser-y-cantar/         # Workshop event flow (inscripcion, bienvenida, confirmar, madrid-16-nov/)
+├── infusiones/             # Newsletter subscription flow (index, bienvenida, confirmar)
 ├── mis-canciones/          # Music catalog
-├── taller/                 # Workshop/course content
-├── u/                      # User-related pages
+├── taller/                 # Workshop/course landing
+├── d/                       # Download landing pages (e.g. dentro-cc373161.md)
+├── u/                       # User signup confirmation pages
 ├── index.md                # Homepage
 ├── Gemfile                 # Ruby dependencies
 ├── README.md               # Development setup
@@ -49,8 +51,10 @@ Reusable template components organized by function:
 #### Analytics & Tracking
 - `amplitude_js.html` - Amplitude analytics
 - `matomo_js.html` - Matomo tracking
-- `google_tag.html` - Google Tag Manager
+- `google_tag.html` - Google Tag Manager / Google Ads
 - `fb_js.html` - Facebook Pixel
+- `cookie_js.html` - Cookie consent bootstrap
+- `scroll_js.html` - Scroll/visibility event tracking
 
 #### Layout Components
 - `header.html` - Site header
@@ -64,31 +68,37 @@ Reusable template components organized by function:
 - `block_title_image.html` - Title with background image
 
 #### Forms & Interaction
-- `mail_form.html` - Email subscription form
-- `form_js.html` - Form handling JavaScript
-- `form_api_signup.html` - API form integration
+- `mail_form.html` - Email subscription form (Mailchimp downstream)
+- `mail_form_lead.html` - Lead-capture form variant
+- `form_js.html` - Shared form handling JavaScript bootstrap
+- `form_api_signup.html` - Custom signup API integration (posts to `/u/confirmar.html`)
 
 #### Media & Links
 - `button_image.html` - Image-based buttons
+- `button_link.html` - Plain link button
 - `link_video.html` - Video embeds
-- Product templates for merchandise
+- `artist_links.html` / `song_links.html` - Platform link lists
+- Product templates: `product_pendientes_alma_beloved.html`, `product_pendientes_alma_en_flor.html`, `product_colgante_alma_ciclica.html`
 
 #### Specialized Components
-- Link tracking components for music platforms
-- Bootstrap JavaScript integration
-- Cookie consent handling
+- `link_track.html` and the `link_track_*` family (start/end, image, buttons, footer, next) — music platform landing pages
+- `link_js.html` - Deep-link routing and platform detection
+- `bootstrap_js.html` - Bootstrap JavaScript loader
+- `scroll_down_arrow.html` - Decorative scroll indicator
 
 ### `_layouts/`
 Page layout templates:
-- `default.html` - Base HTML structure
+- `default.html` - Base HTML structure (loads CSS, sets up UTM/event globals, includes `form_js.html` and `bootstrap_js.html`)
+- `tracking.html` - Wraps `default` and adds analytics initialization
 - `page.html` - Standard content pages
-- `landing.html` - Landing page layout
-- `link.html` - Music/link sharing pages
-- `tracking.html` - Pages with analytics
-- `legal.html` - Legal page layout
+- `landing.html` - Marketing/landing pages (adds `more.html` block)
+- `link.html` - Music/link sharing pages (white background, deep-link tracking)
+- `legal.html` - Legal page layout (with cookie preferences modal)
+- `clean.html` - Bare main-only layout (no header/footer)
 - `confirm.html` - Confirmation pages
 - `checkout.html` - E-commerce checkout
-- `lead.html` - Lead generation pages
+- `lead.html` - Lead generation pages (fires `Lead` conversion event)
+- `download.html` - Audio download pages with optional auto-download
 - `suscribed.html` - Subscription confirmation
 
 ### `_sass/`
@@ -102,27 +112,33 @@ SASS stylesheet organization:
 - `fa/` - Font Awesome customization
 
 ### `_singles/`
-Jekyll collection for single content pieces:
-- Song lyrics and individual content pieces
-- Example: `brillamos_por_igual.md`
+Jekyll collection for single content pieces (output as individual pages):
+- `brillamos_por_igual.md`
+- `dentro.md`
 
 ## Assets Directory
 
 ### `assets/css/`
 - `styles.scss` - Main stylesheet (compiles SASS)
-- `bootstrap.v5.3.3.min.css` - Bootstrap CSS
+- `bootstrap.v5.3.3.min.css` / `bootstrap.v5.3.3.css` - Bootstrap CSS (minified + source)
+- `bootstrap-icons.v1.13.1.min.css` - Bootstrap Icons font CSS
 - `normalize.css` - CSS normalization
 - `cookieconsent_v3.css` - Cookie consent styling
+- `fonts/` - Self-hosted font files
 
 ### `assets/js/`
 JavaScript libraries and custom scripts:
-- `amplitude_v261.js` - Analytics
-- `bootstrap.bundle.v5.3.3.min.js` - Bootstrap JavaScript
-- `api.js` - API integration
+- `amplitude_v261.js` + `analytics-browser-2.6.1-min.js` - Amplitude analytics
+- `axios.v1.6.8.min.js` (+ source/maps) - HTTP client
+- `bootstrap.bundle.v5.3.3.min.js` (+ source) - Bootstrap JavaScript
+- `cookieconsent_v3.js` - Cookie consent runtime
+- `intersection-observer.min.js`, `verge.min.js` - Visibility/viewport helpers
+- `api.js` - Signup API client
 - `forms.js` - Form handling
-- `link.js` - Link management
+- `link.js` - Link/deep-link management
+- `cta.js` - Call-to-action helpers
 - `scroll_v1.js` - Scroll tracking
-- Third-party libraries (Axios, intersection observer, etc.)
+- `songkick_injector_20230525.js` - Concert listings injector
 
 ### `assets/images/`
 Optimized images with multiple formats and sizes:
@@ -164,9 +180,12 @@ URL shortening and music platform integration:
 
 ### Content Sections
 - `mis-canciones/` - Music catalog and discography
-- `coser-y-cantar/` - Workshop content
-- `infusiones/` - Newsletter subscription
+- `coser-y-cantar/` - Workshop event flow
+- `infusiones/` - Newsletter subscription flow
 - `taller/` - Educational content
+- `cartas/` - Oracle/tarot cards
+- `d/` - Download landing pages (used with `download` layout)
+- `u/` - User signup confirmation pages
 
 ## Build Process
 

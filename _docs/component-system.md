@@ -161,13 +161,20 @@ The site uses a component-based architecture where reusable UI elements are impl
 - Honeypot spam protection
 
 #### Form Handling Components
-- `form_js.html`: JavaScript form handling
-- `form_api_signup.html`: API integration for signups
+- `form_js.html`: Loads `axios` + `api.js` + `forms.js`, included once in `default.html`
+- `form_api_signup.html`: Custom signup API form. Posts to `/u/confirmar.html` and registers itself via `FormSignup.add(prefix, form_id, form_activity_code)`. Mailchimp is the downstream provider for storage/email but the form itself goes through the project's own API.
+- `mail_form_lead.html`: Lead-capture form variant used in landing pages (recent commits: "Improve form lead", "form lead ux", "New api lead")
 
 ### Media Components
 
 #### Link Video Component (`link_video.html`)
 **Purpose**: Video embeds with responsive containers
+
+#### Button / Link Components
+- `button_image.html` — image-based call-to-action button
+- `button_link.html` — plain link button
+- `scroll_down_arrow.html` — decorative scroll indicator
+- `artist_links.html`, `song_links.html` — pre-formatted lists of platform links
 
 #### Product Components
 **Components**:

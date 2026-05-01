@@ -196,14 +196,28 @@ seo_video_url: https://youtube.com/watch?v=video_id
 #### Bandcamp Deep Linking
 ```html
 {% if page.seo_mobile_bandcamp_url %}
-  <meta name="al:android:app_name" content="Spotify" />
-  <meta name="al:android:package" content="com.spotify.music" />
+  <meta name="al:android:app_name" content="Bandcamp" />
+  <meta name="al:android:package" content="com.bandcamp.android" />
   <meta name="al:android:url" content="{{ page.seo_mobile_bandcamp_url }}" />
-  <meta name="al:ios:app_name" content="Spotify" />
-  <meta name="al:ios:app_store_id" content="324684580" />
+  <meta name="al:ios:app_name" content="Bandcamp" />
+  <meta name="al:ios:app_store_id" content="706408639" />
   <meta name="al:ios:url" content="{{ page.seo_mobile_bandcamp_url }}" />
 {% endif %}
 ```
+
+#### Spotify Deep Linking
+```html
+{% if page.seo_mobile_spotify_url %}
+  <meta name="al:android:app_name" content="Spotify" />
+  <meta name="al:android:package" content="com.spotify.music" />
+  <meta name="al:android:url" content="{{ page.seo_mobile_spotify_url }}" />
+  <meta name="al:ios:app_name" content="Spotify" />
+  <meta name="al:ios:app_store_id" content="324684580" />
+  <meta name="al:ios:url" content="{{ page.seo_mobile_spotify_url }}" />
+{% endif %}
+```
+
+> Bandcamp became the primary album destination in early 2025; Spotify remains supported via the separate `seo_mobile_spotify_url` field.
 
 #### YouTube Deep Linking
 ```html

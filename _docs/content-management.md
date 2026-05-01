@@ -45,10 +45,9 @@ Song lyrics and content here...
 - Year-based organization
 - Markdown content support
 
-**Example**: `brillamos_por_igual.md`
-- Personal song with metaphorical lyrics
-- Organized by verse structure
-- Includes metadata for categorization
+**Examples**:
+- `brillamos_por_igual.md`
+- `dentro.md` (added when the "carta dentro" flow was rewritten)
 
 ## Content Organization Patterns
 
@@ -221,6 +220,27 @@ seo_description: Workshop description
 - `bienvenida.md`: Welcome page
 - `confirmar.md`: Confirmation page
 
+### Workshop Event Content (`coser-y-cantar/`)
+
+**Pages**:
+- `index.md` (in collection or top-level)
+- `inscripcion.md`: Registration page
+- `bienvenida.md`: Post-signup welcome
+- `confirmar.md`: Email confirmation landing
+- `madrid-16-nov/`: Per-event subdirectory
+
+### Cards / Oracle Content (`cartas/`)
+
+**Purpose**: Oracle/tarot card landing pages (e.g. `cartas/dentro/`). Typically uses the `landing` or `page` layout and links to a download page under `/d/`.
+
+### Download Pages (`d/`)
+
+**Purpose**: Audio download landing pages using the `download` layout. Filenames include a short hash for unguessability (e.g. `dentro-cc373161.md`). These pages are excluded from `sitemap.xml`.
+
+### User Signup Pages (`u/`)
+
+**Purpose**: Targets for the custom signup API. `form_api_signup.html` posts to `/u/confirmar.html`.
+
 ## Legal and Compliance Content
 
 ### Legal Pages (`legal/`)
@@ -266,10 +286,20 @@ seo_image_height: 720
 ```yaml
 seo_type: music.song
 seo_audio: /assets/audio/preview.mp3
+seo_audio_type: audio/mpeg
 seo_music_duration: 217
-seo_music_album: spotify_album_url
-seo_music_musician: spotify_artist_url
+seo_music_album: bandcamp_or_spotify_album_url
+seo_music_album_track: 1
+seo_music_release_date: 2025-01-10
+seo_music_musician: artist_url
+# Mobile deep-link targets (any subset)
+seo_mobile_bandcamp_url: https://artist.bandcamp.com/album/album-title
+seo_mobile_spotify_url: https://open.spotify.com/album/...
+seo_mobile_youtube_url: youtube://VIDEO_ID
+seo_web_youtube_url: https://youtube.com/watch?v=VIDEO_ID
 ```
+
+> Note: Bandcamp is now the primary album reference (replaced Spotify in early 2025). Spotify is still supported via `seo_mobile_spotify_url`.
 
 ### Markdown Extensions
 
