@@ -1,5 +1,5 @@
 ---
-title: Concierto en tu retiro
+title: Concierto íntimo en tu retiro
 layout: page
 sitemap: false
 noindex: true
@@ -17,172 +17,116 @@ seo_image_height: 720
 
 {% include block_container_start.html %}
 
-Un concierto íntimo de Alma de Tüz la última noche, en la misma sala donde has trabajado todo el día.\\
-Lo canta una arteterapeuta que lleva veinte años haciendo retiros como el tuyo.
+¿Te imaginas tener un **concierto íntimo** la última noche de tu retiro, en la misma sala dónde el grupo ha estado trabajando durante todo el día,
+
+y, además, cantado con el cuidado y el mimo que sólo una **artista que lleva 20 años participando en retiros** como el tuyo puede hacer?
 
 {% include block_container_end.html %}
 
 {% include block_container_start.html class_bg="bg-white" %}
+Déjame que te cuente algo que llevo años viviendo en primera persona.
 
-Llevas todo el día sosteniendo y guiando al grupo.
+**Visualiza tu retiro**: sesión de mañana, sesión de tarde, y a las nueve de la noche el grupo sale de la sala habiéndose movido muchísimas cosas por dentro de cada una.
 
-Sesión de mañana, sesión de tarde, y a las nueve tus participantes salen de la sala con muchísimo movido dentro y ninguna manera de colocarlo.
+Llega la cena.
 
-Entonces llega la cena.
+Tú te retiras a descansar, que tienes que estar al 100% para el día siguiente.
 
-Y después de la cena, alguien saca una guitarra y canta unas versiones.
+Entonces, alguien saca una guitarra y canta unas versiones.
 
-No está mal. La sobremesa une, y a mucha gente le hace falta.
+No está mal.
 
-Pero la persona que necesita silencio para enterarse de lo que se le ha removido esa tarde no lo encuentra ahí,\\
-y acaba en lo social porque es lo único que hay.
+La sobremesa une, y a mucha gente le hace bien.
 
-**El día lo has diseñado entero. La noche se organiza sola.**
+### Pero la persona que necesita silencio para enterarse de lo que se le ha removido esa tarde no lo encuentra ahí, y acaba en lo social porque es lo único que hay.
+{: .fw-bold .text-center }
 
-{% include block_container_end.html %}
-
-{% include block_container_start.html %}
-
-Y sin embargo la noche es cuando están más llenos, más abiertos.
-
-Después del trabajo del retiro la gente está más blandita. Más receptiva, con menos capas puestas que en su vida de siempre.
+Ambas sabemos que la noche es cuando están más abiertas, más blanditas, después del trabajo de todo el día.
 
 Es exactamente el estado en el que una canción entra sin pedir permiso.
 
-Fuera de aquí, una canción es una canción.
+En cualquier otro momento, una canción es una canción.
 
-La última noche, después de lo que ha pasado en la sala esa tarde ...\\
-es otra cosa.
-
-{% include block_container_end.html %}
-
-{% include block_container_start.html class_bg="bg-white" %}
-
-## Lo que te propongo
-{: .fw-bold .text-center }
-
-Un concierto íntimo la última noche, después de la cena.
-
-Canciones tranquilas. Nadie tiene que cantar, ni levantarse, ni participar en nada. Solo escuchar.
-
-**Y no es un concierto de relleno.**
-
-Es probable que conozcas La Magara, una canción que compuse hace unos años y que ha dado la vuelta al mundo en innumerables grupos de mujeres. La puedes buscar en Spotify y ver cuánto se ha escuchado y se sigue escuchando todavía, sin publicidad, sin campañas de marketing, sólo el boca a boca.
-
-Las canciones que canto están compuestas desde lo que he vivido dentro de talleres de arteterapia, muchos parecidos al tuyo. Hablan de raíces, de cuerpo, de memoria, de maternidad, de lo que duele y de lo que se suelta.
-
-Es decir: hablan de lo mismo que tus participantes acaban de mover.
-
-Por eso funciona como sesión dentro del retiro y no como entretenimiento.\\
-Parece un rato de ocio.\\
-Por dentro es un masaje sonoro para integrar lo que tú has trabajado antes.
-
-<div id="cancionesCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#cancionesCarousel" data-bs-slide-to="0" class="active" aria-label="Raíces" aria-current="true"></button>
-    <button type="button" data-bs-target="#cancionesCarousel" data-bs-slide-to="1" aria-label="Luciérnagas"></button>
-    <button type="button" data-bs-target="#cancionesCarousel" data-bs-slide-to="2" aria-label="Si duele no es amor"></button>
-  </div>
-  <div class="carousel-inner">
-    <!-- Raíces -->
-    <div class="carousel-item active">
-      <div class="ratio ratio-16x9">
-        <video autoplay muted loop playsinline
-               poster="/assets/images/raices_teaser.jpg"
-               src="/assets/videos/raices_teaser.mp4" type="video/mp4" loading="lazy">
-        </video>
-      </div>
-      <div class="container">
-        <div class="carousel-caption text-end bg-dark bg-opacity-75 p-3">
-          <h3>Raíces</h3>
-          <p>Fuimos raíces y brotaron flores, esta canción honra a las mujeres olvidadas de la historia.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Luciérnagas -->
-    <div class="carousel-item">
-      <div class="ratio ratio-16x9">
-        <video autoplay muted loop playsinline
-               poster="/assets/images/luciernagas_teaser.jpg"
-               src="/assets/videos/luciernagas_libre_teaser.mp4" type="video/mp4" loading="lazy">
-        </video>
-      </div>
-      <div class="container">
-        <div class="carousel-caption text-end bg-dark bg-opacity-75 p-3">
-          <h3>Luciérnagas</h3>
-          <p>Una canción sobre amor, luz, maternidad, colecho, lactancia, olor a almendras en la piel.</p>
-        </div>
-      </div>
-    </div>
-    <!-- Si duele no es amor -->
-    <div class="carousel-item">
-      <div class="ratio ratio-16x9">
-        <video autoplay muted loop playsinline
-               poster="/assets/images/si_duele_acustico_teaser.jpg"
-               src="/assets/videos/si_duele_acustico_teaser_noaudio.mp4" type="video/mp4" loading="lazy">
-        </video>
-      </div>
-      <div class="container">
-        <div class="carousel-caption text-end bg-dark bg-opacity-75 p-3">
-          <h3>Si duele no es amor</h3>
-          <p>Inspirada en el cuento <i>"Barba Azul"</i> del libro <i>"Mujeres que corren con los lobos"</i>, de <i>Clarissa Pinkola</i>.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#cancionesCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Anterior</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#cancionesCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Siguiente</span>
-  </button>
-</div>
+La última noche, después de lo que ha pasado en la sala esa tarde,... es otra cosa.
 
 {% include block_container_end.html %}
 
 {% include block_container_start.html class_bg="bg-rose" %}
 
-Esto no se contrata escribiéndome a mí.
+## Esto es lo que te propongo
+{: .fw-bold .text-center }
 
-Lo primero es ver si tengo libre la fecha de tu retiro, y de eso se ocupa **Sala Oeste Producciones**. Cuando veamos que podemos hacerlo, entonces hablamos de la parte importante, cómo hacemos que el concierto haga que tu retiro sea aún más especial.
+Un **concierto íntimo la última noche**, después de la cena.
+
+Canciones tranquilas. Nadie tiene que cantar, ni levantarse, ni participar en nada.
+
+**Sólo escuchar**.
+
+Este es el set que suelo cantar:
+
+{% include carousel_canciones.html %}
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html %}
+
+## No es un concierto de relleno.
+{: .fw-bold .text-center }
+
+Es probable que conozcas **La Magara**, una canción que compuse hace unos años y que ha dado la vuelta al mundo en innumerables grupos de mujeres.
+
+La puedes buscar en Spotify y ver cuánto se ha escuchado (y se sigue escuchando todavía), sin publicidad, sin campañas de marketing, sólo el **boca a boca**.
+
+Las canciones que canto están compuestas desde lo que he vivido dentro de **talleres de arteterapia**, muchos parecidos al tuyo. Hablan de raíces, de cuerpo, de memoria, de maternidad, de lo que duele y de lo que se suelta.
+
+Es decir: **hablan de lo mismo que las participantes acaban de mover**.
+
+Por eso funciona como sesión dentro del retiro.
+
+Parece un rato de ocio,
+
+pero realmente es un **masaje sonoro para integrar lo que cada una ha trabajado antes**.
 
 <a class="btn btn-primary" href="#fechas">Ver fechas disponibles</a>
 {: .text-center }
 
 {% include block_container_end.html %}
 
-{% include block_container_start.html %}
+{% include block_container_start.html class_bg="bg-white" %}
 
-## Quién canta
+## ¿Quién canta?
 {: .fw-bold .text-center }
 
-Me llamo Amanda (hay gente que me conoce como La Magara, otras como Amanda Tüz o como Alma).
+Me llamo Amanda (hay gente que me conoce como La Magara y otras como Amanda Tüz).
 
-Canto y compongo. Formé un grupo que se llamó "Magara" y ahora tengo un proyecto musical en solitario que se llama "Alma de Tüz".
+Canto y compongo. Formé un grupo que se llamó "Magara" y ahora tengo un proyecto musical en solitario que se llama "**Alma de Tüz**".
 
-Pero además de eso soy **arteterapeuta**, y llevo veinte años participando en talleres y retiros, mixtos y de mujeres. Unas veces facilitando, otras sentada en el círculo como una más.
+Además, soy **arteterapeuta**, y llevo más de 20 años participando en talleres y retiros, mixtos y de mujeres. Unas veces facilitando, otras sentada en el círculo como una más.
 
-He compuesto más de treinta canciones, y la mayoría no salieron de una habitación con un ukelele.\\
-Salieron de lo que pasó en esos círculos en los que se comparten tanta emociones.
+He compuesto más de treinta canciones.
 
-Creo que esto es lo que más aporta a tu retiro.
+La mayoría no salieron de una habitación con el ukelele.\\
+Salieron de lo que pasó en esos círculos en los que se comparten tantas **emociones**.
 
-No que sepa cantar, **sino que sé lo que se mueve en el grupo a las nueve de la noche del último día**,\\
-y sé que el concierto no se puede hacer de cualquier manera.
+Sinceramente, creo que ésto **es lo que más aporta a tu retiro**.
 
-El trabajo lo has hecho tú.
+Es un concierto que no se puede hacer de cualquier manera.
 
-Yo llego al final, cuando ya está todo movido, y le pongo música a lo que tú has abierto.
+Yo llego casi al final, cuando ya está casi todo movido, y **le pongo música a lo que tú has abierto**.
 
-### Yo no llevo mi agenda
+{% include block_container_end.html %}
 
-La lleva **Sala Oeste Producciones**: fechas, equipo, técnico de sonido y presupuesto.
+{% include block_container_start.html %}
+
+## ¿Quién hace que suene bonito?
+{: .fw-bold .text-center }
+
+Yo no llevo la producción, lo hace **Sala Oeste Producciones**: fechas, equipo, técnico de sonido y presupuesto.
 
 Prefiero que sea así.
 
-Yo necesito estar enfocada en coordinarme contigo (la creadora del retiro), para poder conectar con el grupo esa noche.\\
+Yo necesito estar enfocada en coordinarme contigo (la creadora del retiro), para poder conectar con el grupo esa noche.
+
 Del sonido y la parte técnica, para que salga impecable, se ocupa gente que produce conciertos todos los días.
 
 Por eso el sonido de esa noche no va a ser un altavoz en una esquina.
@@ -191,29 +135,54 @@ Por eso el sonido de esa noche no va a ser un altavoz en una esquina.
 
 {% include block_container_start.html class_bg="bg-white" %}
 
-## Lo que esto le da a tu retiro
+## ¿Qué aporta a tu retiro?
 {: .fw-bold .text-center }
 
-- **Un cierre que no tienes que sostener tú.** Llevas días acompañando. Esa noche puedes sentarte y escuchar con ellas, por una vez desde dentro del círculo.
-- **Un momento común que no obliga a nadie.** La que quiere llorar, llora. La que quiere estar en silencio, está. Nadie tiene que exponerse ni participar.
-- **Algo que se cuenta después.** Cuando alguien vuelve a casa y le preguntan qué tal el retiro, casi nunca describe un programa. Describe un momento.
-- **Alguien que no te rompe el encuadre.** No entra un músico a hacer su show. Entra una arteterapeuta que ha estado en el círculo, sabe cuándo callarse y sabe que el retiro es tuyo.
-- **Producción resuelta, sin que tú montes nada.** Va un técnico de sonido que pasará desapercibido, no un altavoz bluetooth. Tú no tienes que resolver el equipo, ni el montaje, ni las pruebas. Una persona discreta que está enfocada en que no se rompa la magia y que resuelve cualquier imprevisto técnico que pueda surgir.
+- **Un cierre que no tienes que sostener tú.**\\
+Llevas días acompañando. Esa noche puedes sentarte y escuchar con ellas, por una vez, desde dentro del círculo.
+- **Un momento común que no obliga a nadie.**\\
+La que necesita llorar, llora. La que quiere estar en silencio, está. Nadie tiene que exponerse ni participar.
+- **Algo que se cuenta después.**\\
+Cuando alguien vuelve a casa y le preguntan qué tal el retiro, lo primero que cuenta no es el programa. Cuenta el momento que más le ha impactado.
+- **Alguien que no te rompe la atmósfera.**\\
+No entra un músico a hacer su show. Entra una arteterapeuta que ha estado en otros círculos, que sabe cuándo entrar y sabe que el retiro es tuyo.
+- **Producción resuelta, sin que tú montes nada.**\\
+Conmigo viene un técnico de sonido que pasará desapercibido, no un altavoz bluetooth. Tú no tienes que resolver el equipo, ni el montaje, ni las pruebas. Es una persona discreta que está enfocada en que no se rompa la magia y que resuelve cualquier imprevisto técnico que pueda surgir.
 
 {% include block_container_end.html %}
 
 {% include block_container_start.html %}
 
-## Se ajusta a tu programa
+## ¿Se puede ajustar a tu programa?
 {: .fw-bold .text-center }
 
-La última noche es donde más lo recomiendo, pero no es el único momento posible. También podría ser:
+Si.
 
-- **Umbral sonoro**. Para abrir el retiro y que el grupo llegue de verdad. Dejando sus problemas cotidianos fuera de la sala.
-- **La voz que ya eres**. Vivencial y participativo: el grupo explora vibración, escucha y voz. Sin técnica y sin exigencia.
-- **Círculo de integración**. Concierto de cierre, para recoger lo vivido y despedir.
+La última noche es donde más lo recomiendo, pero no es el único momento posible.
+
+También podría ser:
+
+- **Umbral sonoro**.\\
+Para abrir el retiro y que el grupo llegue de verdad. Dejando sus problemas cotidianos fuera de la sala.
+- **La voz que ya eres**\\
+Una dinámica vivencial y participativa: el grupo explora vibración, escucha y voz. Sin técnica y sin exigencia.
+- **Círculo de integración**\\
+Concierto de cierre, para recoger lo vivido y despedir.
 
 Antes de ir hablamos tú y yo: el tono, la duración, el repertorio y en qué punto del programa entra.
+
+{% include block_container_end.html %}
+
+{% include block_container_start.html class_bg="bg-rose" %}
+
+CONTINUE HERE
+
+Esto no se contrata escribiéndome a mí.
+
+Lo primero es ver si tengo libre la fecha de tu retiro, y de eso se ocupa **Sala Oeste Producciones**. Cuando veamos que podemos hacerlo, entonces hablamos de la parte importante, cómo hacemos que el concierto haga que tu retiro sea aún más especial.
+
+<a class="btn btn-primary" href="#fechas">Ver fechas disponibles</a>
+{: .text-center }
 
 {% include block_container_end.html %}
 
@@ -249,12 +218,12 @@ Antes de ir hablamos tú y yo: el tono, la duración, el repertorio y en qué pu
       </blockquote>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+    <i class="fas fa-chevron-circle-left"></i>
     <span class="visually-hidden">Anterior</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <button class="carousel-control carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+    <i class="fas fa-chevron-circle-right"></i>
     <span class="visually-hidden">Siguiente</span>
   </button>
 </div>
@@ -358,27 +327,37 @@ Antes de cerrar nada hablamos. Si veo que tu retiro no pide esto, te lo digo.
 
 Esta página no está en Google.
 
-No la vas a encontrar buscando: te ha llegado por email porque hemos pensado que encaja con lo que tú haces. Guárdate ese email, que es la manera de volver aquí.
+No la vas a encontrar buscando. Te ha llegado por email (o por mensaje privado) porque hemos pensado que encaja con lo que tú haces. Guárdate ese mensaje, que es la manera de volver aquí.
 
 Y lo primero que hay que mirar no es el presupuesto.
 
 Son **las fechas**.
 
-Estos son todos los fines de semana de la gira. Los verdes siguen libres.
+Estos son todos los dias que hay disponibles. Los verdes siguen libres.
 
 {% include calendar_retiros.html %}
 
-Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir.
+{% include block_container_end.html %}
+
+{% include block_container_start.html class_bg="bg-rose" %}
+
+Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir a:
 
 **Sala Oeste Producciones**\\
 booking@salaoeste.com
+{: #fechas .text-center }
 
-Escríbeles con tres datos: **cuándo** es tu retiro, **dónde** y **cuánta gente** sois.\\
-Te contestan con la disponibilidad y el presupuesto cerrado.
+Escríbeles con tres datos:\\
+**cuándo** es tu retiro,\\
+**dónde**\\
+y **los detalles técnicos**\\
+(cuántos participantes, cómo es la sala, qué equipo de sonidos tenéis, ...)
+
+Te contestarán confirmando la disponibilidad y el presupuesto.
 
 <a class="btn btn-primary" href="mailto:booking@salaoeste.com">Escribir a Sala Oeste</a>
 {: .text-center }
 
-Si te encaja el presupuesto, entonces hablamos tú y yo (Amanda) de lo importante: el contenido del concierto y cómo integrarlo en tu retiro para que aporte lo más posible.
+Si te encaja el presupuesto, entonces hablamos tú y yo (Amanda) de lo importante: el contenido del concierto y cómo integrarlo dentro de tu retiro para que aporte lo más posible.
 
 {% include block_container_end.html %}

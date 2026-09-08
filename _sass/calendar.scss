@@ -5,6 +5,8 @@ $calendar-busy-bg: #E0A184;
 $calendar-busy-text: #6B2C0C;
 $calendar-busy-border: #B9704B;
 $calendar-off-text: #6B6560;
+$calendar-dot: #D6D0CA;
+$calendar-dot-active: #6B6560;
 
 .calendar {
   margin-bottom: 1rem;
@@ -47,17 +49,16 @@ $calendar-off-text: #6B6560;
   text-decoration: line-through;
 }
 
-.calendar-carousel {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+// The controls sit on top of the slide, so the months need room to breathe on
+// both sides or the first and last one end up underneath them.
+#calendarCarousel {
+  padding: 0 2.5rem;
 }
 
 .calendar-months {
   display: flex;
-  flex: 1 1 auto;
+  align-items: flex-start;
   gap: 1.5rem;
-  min-width: 0;
 }
 
 .calendar-month {
@@ -86,7 +87,10 @@ $calendar-off-text: #6B6560;
   margin-bottom: 0.25rem;
 }
 
+// Six fixed rows, always. Combined with the padding cells in calendar.js this
+// gives every month the same height, so nothing below the carousel moves.
 .calendar-grid {
+  grid-template-rows: repeat(6, 2rem);
   row-gap: 0.25rem;
 }
 
@@ -130,17 +134,38 @@ $calendar-off-text: #6B6560;
   }
 }
 
-.calendar-arrow {
-  flex: 0 0 auto;
-  align-self: center;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  line-height: 1;
-  padding: 0.25rem 0.5rem;
-  color: $color-auburn;
+#calendarCarousel {
+  // Font Awesome chevrons rather than Bootstrap's icon spans, which is what the
+  // site's own carousels use.
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 2.5rem;
+    align-items: flex-start;
+    padding-top: 2.5rem;
+    color: $calendar-dot-active;
 
-  &:disabled {
-    opacity: 0.25;
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  // Below the calendar rather than floating over the last week of the month.
+  .carousel-indicators {
+    position: static;
+    margin: 1rem 0 0;
+
+    [data-bs-target] {
+      width: 0.6rem;
+      height: 0.6rem;
+      margin: 0 0.25rem;
+      border: none;
+      border-radius: 50%;
+      background-color: $calendar-dot;
+      opacity: 1;
+
+      &.active {
+        background-color: $calendar-dot-active;
+      }
+    }
   }
 }

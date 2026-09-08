@@ -1,0 +1,164 @@
+$songs-dot: #D6D0CA;
+$songs-dot-active: #6B6560;
+
+// Sin JS las fichas se quedan aquí, en rejilla. songs.js las mueve al carrusel
+// y esconde esta lista.
+.songs-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.songs-slide {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.song-card {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 20rem;
+  text-align: center;
+}
+
+.song-card-play {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: none;
+  cursor: pointer;
+}
+
+.song-card-play img {
+  display: block;
+  width: 100%;
+  // Los atributos width/height del <img> son la reserva de sitio mientras
+  // carga; sin este height la altura se queda en los 480px del atributo y el
+  // aspect-ratio no llega a aplicarse.
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.song-card-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 0 0.75rem rgba(0, 0, 0, 0.6);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.song-card-play:hover .song-card-icon,
+.song-card-play:focus-visible .song-card-icon {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.song-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0;
+}
+
+#cancionesCarousel {
+  // Las flechas van encima del slide, así que las fichas necesitan sitio a los
+  // lados o la primera y la última quedan debajo.
+  padding: 0 2.5rem;
+
+  // Font Awesome en vez de los spans de iconos de Bootstrap, que es lo que usan
+  // los demás carruseles del sitio.
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 2.5rem;
+    color: $songs-dot-active;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  // Debajo de las fichas, no flotando sobre la imagen.
+  .carousel-indicators {
+    position: static;
+    margin: 1rem 0 0;
+
+    [data-bs-target] {
+      width: 0.6rem;
+      height: 0.6rem;
+      margin: 0 0.25rem;
+      border: none;
+      border-radius: 50%;
+      background-color: $songs-dot;
+      opacity: 1;
+
+      &.active {
+        background-color: $songs-dot-active;
+      }
+    }
+  }
+
+  &.songs-single {
+    padding: 0;
+
+    .carousel-control-prev,
+    .carousel-control-next,
+    .carousel-indicators {
+      display: none;
+    }
+  }
+}
+
+.song-modal {
+  .modal-content {
+    border: 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  // El póster es la imagen cuadrada de la ficha dentro de una caja 16:9:
+  // recortada llena mejor que encajada entre dos franjas negras.
+  .song-modal-video {
+    object-fit: cover;
+    background-color: #000;
+  }
+
+  .song-modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    z-index: 2;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .song-modal-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .song-modal-text {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: $bp-tablet) {
+  .song-card-icon {
+    font-size: 3.5rem;
+  }
+
+  #cancionesCarousel .carousel-control i {
+    font-size: 2rem;
+  }
+}

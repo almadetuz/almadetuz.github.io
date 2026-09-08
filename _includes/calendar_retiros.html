@@ -8,6 +8,11 @@ Params:
 El estado de error va escrito aquí y visible. calendar.js lo sustituye por el
 calendario sólo si la llamada al API va bien: si el JS no corre, si falla la red
 o si el API está caído, la lectora sigue viendo a quién escribir.
+
+El carrusel es el de Bootstrap. calendar.js rellena .carousel-indicators y
+.carousel-inner: cada .carousel-item lleva tres meses en escritorio y uno en
+móvil, así que el número de slides cambia con el ancho y hay que reconstruirlo
+al cruzar el breakpoint.
 {%- endcomment -%}
 {%- assign calendar_email = include.email | default: 'booking@salaoeste.com' -%}
 <div class="calendar" data-calendar-slug="{{ include.slug | default: 'retiros' }}">
@@ -26,20 +31,24 @@ o si el API está caído, la lectora sigue viendo a quién escribir.
   <div class="calendar-view" hidden>
     <div class="calendar-legend">
       <span class="calendar-legend-item">
-        <span class="calendar-legend-sample calendar-free" aria-hidden="true">7</span> libre
+        <span class="calendar-legend-sample calendar-free" aria-hidden="true"></span> libre
       </span>
       <span class="calendar-legend-item">
-        <span class="calendar-legend-sample calendar-busy" aria-hidden="true">7</span> ocupado
+        <span class="calendar-legend-sample calendar-busy" aria-hidden="true">&nbsp;</span> ocupado
       </span>
     </div>
-    <div class="calendar-carousel">
-      <button type="button" class="calendar-arrow calendar-arrow-prev" aria-label="Meses anteriores">
-        <i class="fas fa-chevron-left"></i>
+
+    <div id="calendarCarousel" class="carousel slide">
+      <div class="carousel-inner"></div>
+      <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#calendarCarousel" data-bs-slide="prev">
+        <i class="fas fa-chevron-circle-left"></i>
+        <span class="visually-hidden">Meses anteriores</span>
       </button>
-      <div class="calendar-months" aria-live="polite"></div>
-      <button type="button" class="calendar-arrow calendar-arrow-next" aria-label="Meses siguientes">
-        <i class="fas fa-chevron-right"></i>
+      <button class="carousel-control carousel-control-next" type="button" data-bs-target="#calendarCarousel" data-bs-slide="next">
+        <i class="fas fa-chevron-circle-right"></i>
+        <span class="visually-hidden">Meses siguientes</span>
       </button>
+      <div class="carousel-indicators"></div>
     </div>
   </div>
 
