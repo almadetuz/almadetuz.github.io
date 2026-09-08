@@ -1,0 +1,26 @@
+{
+  "skill_name": "render-page",
+  "evals": [
+    {
+      "id": 0,
+      "name": "copy-doc-to-page",
+      "prompt": "Ya tengo el copy listo en _drafts/concierto-retiros.md. Móntame la página.",
+      "expected_output": "booking/concierto-retiros/index.md with correct front matter, block_container includes around all prose, mail_form_lead with unique form_ids, TODO_ image placeholders, and a passing jekyll build. None of the doc's scaffolding (mapa de secciones, H1 variants B/C, '> Por qué:' lines, Supuestos) reaches the page.",
+      "files": ["fixtures/concierto-retiros.md"]
+    },
+    {
+      "id": 1,
+      "name": "raw-prose-to-conventions",
+      "prompt": "la pagina de booking/retiros/index.md la escribi de un tiron y es solo texto plano, no usa ninguno de los includes del sitio. puedes rehacerla para que quede como las demas? que tenga los bloques, alguna imagen de titulo y el formulario de siempre",
+      "expected_output": "The existing raw-prose page rebuilt with block_container_start/end around prose, at least one block_title_image, mail_form_lead forms, and site CSS classes. Existing front matter preserved. Build passes.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "one-section-only",
+      "prompt": "necesito solo el bloque del formulario para meterlo a mano en /taller/coser-y-cantar-madrid/. es un taller de un dia en Malaga, 12 de abril, 15 plazas, 90 euros. dame el include ya con los parametros puestos",
+      "expected_output": "A single mail_form_lead include with the practical facts in the subtitle, a first-person button, unique form_id, class=bg-rose, context_type/context_name set. Should not rebuild the whole page.",
+      "files": []
+    }
+  ]
+}
