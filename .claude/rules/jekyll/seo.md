@@ -77,6 +77,17 @@ Always exclude:
 - `/u/*` user signup confirmation pages
 - Any draft, internal, or hash-suffixed page that should not be discoverable
 
+## Keeping a page out of search results
+
+`sitemap: false` only removes the page from `sitemap.xml`. It does **not** stop indexing: `robots.txt` is `Allow: /`, so a page reachable from any external link can still be crawled and indexed. For pages that must not appear in search results at all — outbound-only landing pages, private proposals — add:
+
+```yaml
+sitemap: false
+noindex: true
+```
+
+`noindex: true` makes `seo.html` emit `<meta name="robots" content="noindex, nofollow" />`. Use both keys together: the first keeps the page out of the sitemap, the second keeps it out of the index.
+
 ## Spanish-language SEO
 
 - Site is `es_ES`. Don't add `<html lang="en">` markup or English meta tags.

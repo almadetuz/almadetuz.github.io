@@ -1,3 +1,6 @@
+{% if page.noindex %}
+  <meta name="robots" content="noindex, nofollow" />
+{% endif %}
 <meta property="og:site_name" content="{{ site.title }}" />
 <meta property="og:title" content="{{ page.title }}" />
 <meta property="og:locale" content="{{ site.lang }}" />
