@@ -1,0 +1,63 @@
+{%- comment -%}
+Carrusel de canciones del repertorio, con pop-up de vídeo.
+
+Las canciones salen de `_data/canciones_retiros.yml`. Las fichas se escriben
+aquí en una lista plana y visible, y songs.js las mete dentro del carrusel:
+tres por slide en escritorio, una en móvil, así que el número de slides cambia
+con el ancho y hay que reconstruirlo al cruzar el breakpoint. Si el JS no
+corre, la lectora sigue viendo las fichas con su imagen y su título, sin
+carrusel y sin pop-up.
+
+El pop-up es un modal de Bootstrap: la X, el click fuera y el Esc ya cierran
+solos. El vídeo no se pide hasta que se abre, y se suelta al cerrar.
+{%- endcomment -%}
+<div class="songs">
+
+  <div class="songs-list">
+    {%- for song in site.data.canciones_retiros %}
+    <div class="song-card">
+      <button type="button" class="song-card-play"
+              data-song-title="{{ song.title }}"
+              data-song-video="{{ song.video }}"
+              data-song-poster="{{ song.image }}"
+              aria-label="Escuchar un trozo de «{{ song.title }}»">
+        <img src="{{ song.image }}" alt="" loading="lazy" width="480" height="480">
+        <span class="song-card-icon" aria-hidden="true"><i class="fas fa-play-circle"></i></span>
+      </button>
+      <h3 class="song-card-title">{{ song.title }}</h3>
+      <div class="song-card-text" hidden>{{ song.description }}</div>
+    </div>
+    {%- endfor %}
+  </div>
+
+  <div id="cancionesCarousel" class="carousel slide" hidden>
+    <div class="carousel-inner"></div>
+    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#cancionesCarousel" data-bs-slide="prev">
+      <i class="fas fa-chevron-circle-left"></i>
+      <span class="visually-hidden">Canciones anteriores</span>
+    </button>
+    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#cancionesCarousel" data-bs-slide="next">
+      <i class="fas fa-chevron-circle-right"></i>
+      <span class="visually-hidden">Canciones siguientes</span>
+    </button>
+    <div class="carousel-indicators"></div>
+  </div>
+
+  <div class="modal fade song-modal" id="cancionModal" tabindex="-1" aria-labelledby="cancionModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <button type="button" class="btn-close song-modal-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <div class="ratio ratio-16x9">
+          <video class="song-modal-video" loop playsinline controls preload="none"></video>
+        </div>
+        <div class="modal-body text-center">
+          <h3 class="song-modal-title" id="cancionModalTitle"></h3>
+          <p class="song-modal-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div>&nbsp;</div>
+<script src="/assets/js/songs.js?v={{ site.time | date: '%s' }}"></script>

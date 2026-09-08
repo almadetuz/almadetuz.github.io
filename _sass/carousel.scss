@@ -1,5 +1,4 @@
-#homeCarousel,
-#cancionesCarousel {
+#homeCarousel {
 .carousel-item {
   // height: 12rem;
   aspect-ratio: 16/9;
@@ -100,5 +99,10 @@
   .carousel-control-prev,
   .carousel-control-next {
     width: 3rem;
+    color: $color-eerie-black;
+  }
+
+  .carousel-control i {
+    font-size: 1.5rem;
   }
 }

@@ -1,0 +1,47 @@
+# Canciones del carrusel de /booking/retiros/.
+#
+# TODO: cada canción necesita sus propios ficheros.
+#   image — foto cuadrada, 480x480
+#   video — teaser de 20 s en 16:9, comprimido
+# Hasta que estén, todas las fichas apuntan a los mismos ficheros de relleno.
+
+- title: Raíces
+  image: /assets/images/alas_en_mi_single_480.jpg
+  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  description: >-
+    Fuimos raíces y brotaron flores. Esta canción honra a las mujeres
+    olvidadas de la historia.
+
+- title: Luciérnagas
+  image: /assets/images/alas_en_mi_single_480.jpg
+  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  description: >-
+    Una canción sobre amor, luz, maternidad, colecho, lactancia, olor a
+    almendras en la piel.
+
+- title: Si duele no es amor
+  image: /assets/images/alas_en_mi_single_480.jpg
+  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  description: >-
+    Inspirada en el cuento «Barba Azul», del libro «Mujeres que corren con los
+    lobos» de Clarissa Pinkola.
+
+- title: Sin el cuerpo no hay voz
+  image: /assets/images/alas_en_mi_single_480.jpg
+  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  description: >-
+    Una de las primeras canciones que compuse. Habla de lo que el cuerpo sabe
+    antes de que la cabeza se entere.
+
+- title: Universo
+  image: /assets/images/alas_en_mi_single_480.jpg
+  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  description: >-
+    Todo está conectado en el Universo, desde lo más pequeño hasta lo más
+    grande.
+
+- title: Volver
+  image: /assets/images/alas_en_mi_single_480.jpg
+  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  description: >-
+    Volver a ser. Una co-creación con el equipo artístico de Voarte.

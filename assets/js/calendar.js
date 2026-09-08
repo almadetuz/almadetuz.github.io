@@ -5,6 +5,8 @@ const CALENDAR_MONTH_NAMES = [
 const CALENDAR_WEEKDAY_NAMES = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá', 'Do'];
 const CALENDAR_STATUS_CLASS = { available: 'calendar-free', busy: 'calendar-busy' };
 const CALENDAR_STATUS_LABEL = { available: 'libre', busy: 'ocupado' };
+// Six weeks of seven days: the most any month can need, and a fixed height.
+const CALENDAR_GRID_CELLS = 42;
 
 // "2026-10-02" parsed with new Date() is UTC, which shifts the day in negative
 // offsets. Split it by hand so the day is always the local one.
@@ -29,12 +31,19 @@ class Calendar {
     this.error = root.querySelector('.calendar-error');
     this.empty = root.querySelector('.calendar-empty');
     this.view = root.querySelector('.calendar-view');
-    this.months_el = root.querySelector('.calendar-months');
-    this.prev_btn = root.querySelector('.calendar-arrow-prev');
-    this.next_btn = root.querySelector('.calendar-arrow-next');
+    this.carousel_el = root.querySelector('.carousel');
+    this.inner = root.querySelector('.carousel-inner');
+    this.indicators = root.querySelector('.carousel-indicators');
+    this.prev_btn = root.querySelector('.carousel-control-prev');
+    this.next_btn = root.querySelector('.carousel-control-next');
+    this.desktop = window.matchMedia('(min-width: 768px)');
     this.months = [];
-    this.start = 0;
-    this.touch_x = null;
+    this.slides = [];
+    this.carousel = null;
+    // Index into this.months of the first month on screen. Survives a rebuild,
+    // which is what keeps the reader on the same month when the layout flips
+    // between one and three months per slide.
+    this.first_month = 0;
   }
 
   async load() {
@@ -55,9 +64,9 @@ class Calendar {
         this.empty.hidden = false;
         return;
       }
-      this.start = this.openingIndex();
+      this.first_month = this.openingIndex();
       this.bind();
-      this.render();
+      this.build();
       this.error.hidden = true;
       this.view.hidden = false;
     } catch (errors) {
@@ -100,7 +109,7 @@ class Calendar {
   }
 
   visibleCount() {
-    return window.matchMedia('(min-width: 768px)').matches ? 3 : 1;
+    return this.desktop.matches ? 3 : 1;
   }
 
   clamp(index) {
@@ -109,44 +118,91 @@ class Calendar {
   }
 
   bind() {
-    this.prev_btn.addEventListener('click', () => this.move(-1));
-    this.next_btn.addEventListener('click', () => this.move(1));
-    window.addEventListener('resize', () => {
-      this.start = this.clamp(this.start);
-      this.render();
+    // Three months per slide on desktop, one on mobile, so crossing the
+    // breakpoint changes how many slides there are and the whole carousel has
+    // to be rebuilt around whichever month is on screen.
+    this.desktop.addEventListener('change', () => this.build());
+    this.carousel_el.addEventListener('slid.bs.carousel', (e) => {
+      this.first_month = e.to * this.visibleCount();
+      this.updateControls(e.to);
     });
-    this.months_el.addEventListener('touchstart', (e) => {
-      this.touch_x = e.changedTouches[0].clientX;
-    }, { passive: true });
-    this.months_el.addEventListener('touchend', (e) => {
-      if (this.touch_x === null) {
-        return;
-      }
-      const delta = e.changedTouches[0].clientX - this.touch_x;
-      this.touch_x = null;
-      if (Math.abs(delta) > 40) {
-        this.move(delta < 0 ? 1 : -1);
-      }
-    }, { passive: true });
   }
 
-  move(step) {
-    const next = this.clamp(this.start + step);
-    if (next === this.start) {
-      return;
+  // Chunks the months into slides, paints them with the one holding
+  // this.first_month active, and hands the result to Bootstrap.
+  build() {
+    const size = this.visibleCount();
+    this.slides = [];
+    for (let i = 0; i < this.months.length; i += size) {
+      this.slides.push(this.months.slice(i, i + size));
     }
-    this.start = next;
-    this.render();
+    const active = Math.floor(this.first_month / size);
+    // Snap to the first month of the slide, so a later rebuild lands on the
+    // same slide it came from instead of drifting.
+    this.first_month = active * size;
+
+    if (this.carousel) {
+      this.carousel.dispose();
+    }
+    this.renderSlides(active);
+    this.carousel = new bootstrap.Carousel(this.carousel_el, {
+      interval: false,
+      ride: false,
+      wrap: false,
+      touch: true
+    });
+    this.updateControls(active);
   }
 
-  render() {
-    const visible = this.visibleCount();
-    this.months_el.replaceChildren();
-    this.months.slice(this.start, this.start + visible).forEach((month) => {
-      this.months_el.appendChild(this.renderMonth(month));
+  renderSlides(active) {
+    this.inner.replaceChildren();
+    this.indicators.replaceChildren();
+    this.slides.forEach((slide, index) => {
+      this.inner.appendChild(this.renderSlide(slide, index === active));
+      this.indicators.appendChild(this.renderIndicator(slide, index, index === active));
     });
-    this.prev_btn.disabled = this.start === 0;
-    this.next_btn.disabled = this.start >= this.months.length - visible;
+  }
+
+  renderSlide(slide, active) {
+    const item = document.createElement('div');
+    item.className = active ? 'carousel-item active' : 'carousel-item';
+
+    const months = document.createElement('div');
+    months.className = 'calendar-months';
+    slide.forEach((month) => months.appendChild(this.renderMonth(month)));
+    item.appendChild(months);
+
+    return item;
+  }
+
+  renderIndicator(slide, index, active) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.bsTarget = '#' + this.carousel_el.id;
+    button.dataset.bsSlideTo = index;
+    button.setAttribute('aria-label', this.slideLabel(slide));
+    if (active) {
+      button.className = 'active';
+      button.setAttribute('aria-current', 'true');
+    }
+    return button;
+  }
+
+  slideLabel(slide) {
+    const first = slide[0];
+    const last = slide[slide.length - 1];
+    if (slide.length === 1) {
+      return CALENDAR_MONTH_NAMES[first.month] + ' de ' + first.year;
+    }
+    return 'De ' + CALENDAR_MONTH_NAMES[first.month] + ' de ' + first.year
+      + ' a ' + CALENDAR_MONTH_NAMES[last.month] + ' de ' + last.year;
+  }
+
+  // Bootstrap does not disable its own controls when wrap is off, and the
+  // calendar is supposed to show that it has a beginning and an end.
+  updateControls(index) {
+    this.prev_btn.disabled = index === 0;
+    this.next_btn.disabled = index >= this.slides.length - 1;
   }
 
   renderMonth(month) {
@@ -186,8 +242,11 @@ class Calendar {
       grid.appendChild(run.status === 'no' ? this.renderOffDay(run) : this.renderRun(run));
     });
 
-    const last = calendarWeekday(month.days[month.days.length - 1].date);
-    for (let i = last + 1; i < 7; i++) {
+    // Pad to a full six-week grid. A month needs four, five or six rows
+    // depending on where it starts, and without this the block changes height
+    // from slide to slide and shoves the text underneath around.
+    const used = first + month.days.length;
+    for (let i = used; i < CALENDAR_GRID_CELLS; i++) {
       grid.appendChild(document.createElement('div'));
     }
   }
