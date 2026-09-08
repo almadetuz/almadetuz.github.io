@@ -1,0 +1,146 @@
+$calendar-free-bg: #CDEFE0;
+$calendar-free-text: #0B5C42;
+$calendar-free-border: #3E9370;
+$calendar-busy-bg: #E0A184;
+$calendar-busy-text: #6B2C0C;
+$calendar-busy-border: #B9704B;
+$calendar-off-text: #6B6560;
+
+.calendar {
+  margin-bottom: 1rem;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calendar-legend-sample {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+}
+
+.calendar-legend-sample.calendar-free {
+  background-color: $calendar-free-bg;
+  border: 1px solid $calendar-free-border;
+  color: $calendar-free-text;
+}
+
+.calendar-legend-sample.calendar-busy {
+  background-color: $calendar-busy-bg;
+  border: 1px solid $calendar-busy-border;
+  color: $calendar-busy-text;
+  text-decoration: line-through;
+}
+
+.calendar-carousel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.calendar-months {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.calendar-month {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.calendar-month-name {
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-weekdays,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-weekdays {
+  font-size: 0.75rem;
+  text-align: center;
+  color: $calendar-off-text;
+  margin-bottom: 0.25rem;
+}
+
+.calendar-grid {
+  row-gap: 0.25rem;
+}
+
+.calendar-day,
+.calendar-run-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  font-size: 0.9rem;
+}
+
+.calendar-day {
+  color: $calendar-off-text;
+}
+
+.calendar-run {
+  display: flex;
+  height: 2rem;
+  border: 1px solid;
+  border-radius: 1rem;
+}
+
+.calendar-run-day {
+  flex: 1 1 0;
+}
+
+.calendar-run.calendar-free {
+  background-color: $calendar-free-bg;
+  border-color: $calendar-free-border;
+  color: $calendar-free-text;
+}
+
+.calendar-run.calendar-busy {
+  background-color: $calendar-busy-bg;
+  border-color: $calendar-busy-border;
+  color: $calendar-busy-text;
+
+  .calendar-run-day {
+    text-decoration: line-through;
+  }
+}
+
+.calendar-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  color: $color-auburn;
+
+  &:disabled {
+    opacity: 0.25;
+  }
+}

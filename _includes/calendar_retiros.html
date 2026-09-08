@@ -1,0 +1,47 @@
+{%- comment -%}
+Calendario de disponibilidad de la gira.
+
+Params:
+  slug (optional) — calendario del API, por defecto "retiros"
+  email (optional) — dirección de contacto del estado de error
+
+El estado de error va escrito aquí y visible. calendar.js lo sustituye por el
+calendario sólo si la llamada al API va bien: si el JS no corre, si falla la red
+o si el API está caído, la lectora sigue viendo a quién escribir.
+{%- endcomment -%}
+{%- assign calendar_email = include.email | default: 'booking@salaoeste.com' -%}
+<div class="calendar" data-calendar-slug="{{ include.slug | default: 'retiros' }}">
+
+  <p class="calendar-error">
+    Las fechas libres cambian cada semana y ahora mismo no puedo enseñártelas aquí.<br />
+    Escríbele a <strong>Sala Oeste</strong> con la fecha de tu retiro y te dicen en el día si está libre.<br />
+    <a href="mailto:{{ calendar_email }}">{{ calendar_email }}</a>
+  </p>
+
+  <p class="calendar-empty" hidden>
+    Ahora mismo no queda hueco en la gira 2026-2027.
+    Escríbenos igual, que se liberan fechas y estamos ya cerrando la siguiente.
+  </p>
+
+  <div class="calendar-view" hidden>
+    <div class="calendar-legend">
+      <span class="calendar-legend-item">
+        <span class="calendar-legend-sample calendar-free" aria-hidden="true">7</span> libre
+      </span>
+      <span class="calendar-legend-item">
+        <span class="calendar-legend-sample calendar-busy" aria-hidden="true">7</span> ocupado
+      </span>
+    </div>
+    <div class="calendar-carousel">
+      <button type="button" class="calendar-arrow calendar-arrow-prev" aria-label="Meses anteriores">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <div class="calendar-months" aria-live="polite"></div>
+      <button type="button" class="calendar-arrow calendar-arrow-next" aria-label="Meses siguientes">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
+
+</div>
+<script src="/assets/js/calendar.js?v={{ site.time | date: '%s' }}"></script>
