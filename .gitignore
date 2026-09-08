@@ -4,3 +4,4 @@ _site/
 .jekyll-metadata
 # Added by code-review-graph
 .code-review-graph/
+_drafts/
