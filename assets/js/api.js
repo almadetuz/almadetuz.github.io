@@ -49,6 +49,15 @@ async function api_web_lead(section_name, data) {
   }
 }
 
+async function api_calendar_get(calendar_slug) {
+  try {
+    return await axios.get(API_URL + "/calendar/" + calendar_slug);
+  } catch (errors) {
+    console.error(errors);
+    throw errors;
+  }
+}
+
 function _api_event_user_data_get() {
     const query_params = new URLSearchParams(window.location.search);
     var last_utm = {};

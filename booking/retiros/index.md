@@ -77,7 +77,68 @@ Por eso funciona como sesión dentro del retiro y no como entretenimiento.\\
 Parece un rato de ocio.\\
 Por dentro es un masaje sonoro para integrar lo que tú has trabajado antes.
 
-<!-- TODO: carrusel de canciones del repertorio (ficha con foto, título y botón de play, pop-up con vídeo self-hosted). No existe como include. Mientras tanto, esta sección va sin él -->
+<div id="cancionesCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#cancionesCarousel" data-bs-slide-to="0" class="active" aria-label="Raíces" aria-current="true"></button>
+    <button type="button" data-bs-target="#cancionesCarousel" data-bs-slide-to="1" aria-label="Luciérnagas"></button>
+    <button type="button" data-bs-target="#cancionesCarousel" data-bs-slide-to="2" aria-label="Si duele no es amor"></button>
+  </div>
+  <div class="carousel-inner">
+    <!-- Raíces -->
+    <div class="carousel-item active">
+      <div class="ratio ratio-16x9">
+        <video autoplay muted loop playsinline
+               poster="/assets/images/raices_teaser.jpg"
+               src="/assets/videos/raices_teaser.mp4" type="video/mp4" loading="lazy">
+        </video>
+      </div>
+      <div class="container">
+        <div class="carousel-caption text-end bg-dark bg-opacity-75 p-3">
+          <h3>Raíces</h3>
+          <p>Fuimos raíces y brotaron flores, esta canción honra a las mujeres olvidadas de la historia.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Luciérnagas -->
+    <div class="carousel-item">
+      <div class="ratio ratio-16x9">
+        <video autoplay muted loop playsinline
+               poster="/assets/images/luciernagas_teaser.jpg"
+               src="/assets/videos/luciernagas_libre_teaser.mp4" type="video/mp4" loading="lazy">
+        </video>
+      </div>
+      <div class="container">
+        <div class="carousel-caption text-end bg-dark bg-opacity-75 p-3">
+          <h3>Luciérnagas</h3>
+          <p>Una canción sobre amor, luz, maternidad, colecho, lactancia, olor a almendras en la piel.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Si duele no es amor -->
+    <div class="carousel-item">
+      <div class="ratio ratio-16x9">
+        <video autoplay muted loop playsinline
+               poster="/assets/images/si_duele_acustico_teaser.jpg"
+               src="/assets/videos/si_duele_acustico_teaser_noaudio.mp4" type="video/mp4" loading="lazy">
+        </video>
+      </div>
+      <div class="container">
+        <div class="carousel-caption text-end bg-dark bg-opacity-75 p-3">
+          <h3>Si duele no es amor</h3>
+          <p>Inspirada en el cuento <i>"Barba Azul"</i> del libro <i>"Mujeres que corren con los lobos"</i>, de <i>Clarissa Pinkola</i>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#cancionesCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#cancionesCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
 
 {% include block_container_end.html %}
 
@@ -161,19 +222,42 @@ Antes de ir hablamos tú y yo: el tono, la duración, el repertorio y en qué pu
 ## Esto ya ha pasado
 {: .fw-bold .text-center }
 
-<!-- TODO: carrusel de testimonios (una foto por testimonio, flechas laterales y puntos). No existe como include; van uno debajo de otro -->
-
-> Qué placer de noche con tu arte, con tus palabras, tus historias, esa presencia generosa y contundente, dulce y chistosa a la vez. Nos dejaste prendadas.
->
-> **Nosotras Fest**, organizadoras
-
-> Me enamoró verte en directo. Una voz preciosa y una presencia amorosa que se notaba en cada nota que salía de tu voz. Gracias. Una mami con baby que te miraba desde el sillón con admiración y fascinación mientras mi bebé dormía en el porteo.
->
-> **@soyclicmani**, participante
-
-> Que bonitooooo, fue una noche mágica que aún vibra en mi corazón. Gracias Amanda, gracias a todas Nosotras por este encuentro festival tan hermoso y revitalizador, juntas recordamos!!
->
-> **@monicamarcos.es**, participante
+<!-- TODO: fotos de los tres testimonios. Decidido montarlo sin ellas de momento -->
+<div id="testimoniosCarousel" class="carousel slide carousel-dark">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#testimoniosCarousel" data-bs-slide-to="0" class="active" aria-label="Nosotras Fest" aria-current="true"></button>
+    <button type="button" data-bs-target="#testimoniosCarousel" data-bs-slide-to="1" aria-label="soyclicmani"></button>
+    <button type="button" data-bs-target="#testimoniosCarousel" data-bs-slide-to="2" aria-label="monicamarcos.es"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <blockquote>
+        <p>Qué placer de noche con tu arte, con tus palabras, tus historias, esa presencia generosa y contundente, dulce y chistosa a la vez. Nos dejaste prendadas.</p>
+        <footer><strong>Nosotras Fest</strong>, organizadoras</footer>
+      </blockquote>
+    </div>
+    <div class="carousel-item">
+      <blockquote>
+        <p>Me enamoró verte en directo. Una voz preciosa y una presencia amorosa que se notaba en cada nota que salía de tu voz. Gracias. Una mami con baby que te miraba desde el sillón con admiración y fascinación mientras mi bebé dormía en el porteo.</p>
+        <footer><strong>@soyclicmani</strong>, participante</footer>
+      </blockquote>
+    </div>
+    <div class="carousel-item">
+      <blockquote>
+        <p>Que bonitooooo, fue una noche mágica que aún vibra en mi corazón. Gracias Amanda, gracias a todas Nosotras por este encuentro festival tan hermoso y revitalizador, juntas recordamos!!</p>
+        <footer><strong>@monicamarcos.es</strong>, participante</footer>
+      </blockquote>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
 
 He cantado en encuentros, círculos y espacios de trabajo corporal: **Nosotras Fest**, **Gozo, corazón y tacto**, el **Círculo Rojo Sagrado**, el ciclo **Orígenes** y el colectivo **VoArte**. De varios de ellos salieron después canciones.
 
@@ -280,10 +364,9 @@ Y lo primero que hay que mirar no es el presupuesto.
 
 Son **las fechas**.
 
-<!-- TODO: calendario de la gira. Falta montar `_includes/calendar_retiros.html`, `assets/js/calendar.js`, `_sass/calendar.scss` y `api_calendar_get()` en `assets/js/api.js`, con la leyenda (verde agua libre / terracota ocupado) y este mismo texto como estado de error dentro del include -->
+Estos son todos los fines de semana de la gira. Los verdes siguen libres.
 
-Las fechas libres cambian cada semana y ahora mismo no puedo enseñártelas aquí.\\
-Escríbele a **Sala Oeste** con la fecha de tu retiro y te dicen en el día si está libre.
+{% include calendar_retiros.html %}
 
 Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir.
 
