@@ -105,6 +105,9 @@ h2 {
 
 h3 {
   margin: 20px 0px 30px 0px;
+  // El 1.2 de Bootstrap aprieta demasiado los h3 que son una frase entera de
+  // varias líneas. 1.4 es el mismo interlineado que ya usan las páginas legales.
+  line-height: 1.4;
 }
 
 p,
@@ -112,6 +115,14 @@ li {
   font-size: 20px;
   line-height: 34px;
 
+}
+
+// Bootstrap deja los <li> sin margen, y con puntos de varias líneas la lista se
+// lee como un bloque sólido. El margen va entre puntos (`li + li`) y no debajo
+// de cada uno, para no sumarle aire al `margin-bottom` que el <ul> ya trae.
+// Sólo dentro de <main>: fuera están los menús, que no quieren separarse.
+main li + li {
+  margin-top: 1rem;
 }
 
 h1.titular,

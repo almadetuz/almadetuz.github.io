@@ -1,0 +1,24 @@
+// El bloque de precio de /booking/retiros/: la tabla de desglose (la única
+// tabla del sitio) y la letra de condiciones que va debajo del precio.
+.table-desglose {
+  // La columna del precio no parte nunca en dos líneas: con la descripción
+  // larga al lado, en móvil se quedaba en ~31px de ancho útil y "250 €" caía
+  // en dos. `nowrap` le fija el ancho al del contenido, que es el mínimo real.
+  td:last-child {
+    white-space: nowrap;
+  }
+
+  // La fila del total: "Total" pegado a su cifra en vez de al otro extremo.
+  tbody tr:last-child td {
+    text-align: right;
+  }
+}
+
+// Letra pequeña de presupuesto: va justo debajo del «250 €» y no debe competir
+// con él. El texto corrido del sitio es 20px/34px, demasiado peso para una nota
+// de condiciones.
+.pricing-conditions {
+  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}

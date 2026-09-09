@@ -83,26 +83,3 @@
   max-width: 320px;
 
 }
-
-#testimoniosCarousel {
-  padding: 0 3rem 3rem;
-
-  blockquote {
-    text-align: center;
-    margin-bottom: 0;
-  }
-
-  blockquote footer {
-    margin-top: 0.5rem;
-  }
-
-  .carousel-control-prev,
-  .carousel-control-next {
-    width: 3rem;
-    color: $color-eerie-black;
-  }
-
-  .carousel-control i {
-    font-size: 1.5rem;
-  }
-}

@@ -1,0 +1,38 @@
+# Testimonios del carrusel de /booking/retiros/.
+#
+# Los tres son comentarios reales del post de Nosotras Fest en Instagram
+# (https://www.instagram.com/p/Dcq083gNtJ5/). El recorte de cada cita, y por qué
+# se corta donde se corta, está en la sección 9 de
+# `_drafts/booking-retiros-concierto.md`.
+#
+# TODO: pedir permiso a las tres para publicarlos.
+# TODO: cada una necesita su avatar, foto cuadrada 320x320. Hasta que estén,
+#   las tres fichas apuntan al mismo fichero de relleno.
+
+- name: Nosotras Fest
+  nick: "@nosotras.fest"
+  role: organizadoras
+  avatar: /assets/images/amanda_foto_alas_en_mi_320.jpg
+  quote: >-
+    Qué placer de noche con tu arte, con tus palabras, tus historias, esa
+    presencia generosa y contundente, dulce y chistosa a la vez. Nos dejaste
+    prendadas.
+
+  # Sin nombre real: la ficha se queda con el nick en la primera línea.
+- nick: "@soyclicmani"
+  role: participante
+  avatar: /assets/images/amanda_foto_alas_en_mi_320.jpg
+  quote: >-
+    Me enamoró verte en directo. Una voz preciosa y una presencia amorosa que se
+    notaba en cada nota que salía de tu voz. Gracias. Una mami con baby que te
+    miraba desde el sillón con admiración y fascinación mientras mi bebé dormía
+    en el porteo.
+
+  # Sin nombre real: la ficha se queda con el nick en la primera línea.
+- nick: "@monicamarcos.es"
+  role: participante
+  avatar: /assets/images/amanda_foto_alas_en_mi_320.jpg
+  quote: >-
+    Que bonitooooo, fue una noche mágica que aún vibra en mi corazón. Gracias
+    Amanda, gracias a todas Nosotras por este encuentro festival tan hermoso y
+    revitalizador, juntas recordamos!!
