@@ -1,0 +1,13 @@
+{%- comment -%}
+La base de los carruseles de fichas (`cards.js`).
+
+La incluyen `carousel_canciones.html` y `carousel_testimonios.html`, y una
+página puede llevar los dos. Las variables de un `{% include %}` viven en el
+scope de la página, así que `cards_js` sobrevive de un include al siguiente y
+el `<script>` sale una sola vez: cargarlo dos veces sería un SyntaxError, la
+clase ya estaría declarada.
+{%- endcomment -%}
+{%- unless cards_js -%}
+<script src="/assets/js/cards.js?v={{ site.time | date: '%s' }}"></script>
+{%- assign cards_js = true -%}
+{%- endunless -%}

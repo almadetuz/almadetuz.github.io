@@ -1,0 +1,49 @@
+{%- comment -%}
+Carrusel de testimonios.
+
+Los testimonios salen de `_data/testimonios_retiros.yml`. Las fichas se escriben
+aquí en una lista plana y visible, y `testimonials.js` (sobre `cards.js`) las
+mete dentro del carrusel: tres por ficha en escritorio, una en móvil. Si el JS
+no corre, la lectora sigue viendo las tres fichas enteras, sin carrusel.
+{%- endcomment -%}
+<div class="testimonials">
+
+  <div class="testimonials-list">
+    {%- for person in site.data.testimonios_retiros %}
+    <div class="testimonial-card">
+      <div class="testimonial-card-head">
+        <img class="testimonial-card-avatar" src="{{ person.avatar }}" alt="" loading="lazy" width="320" height="320">
+        <div class="testimonial-card-who">
+          {%- comment -%}
+          De casi nadie tenemos el nombre real, sólo el nick. Cuando no hay
+          nombre el nick sube a la primera línea y abajo queda sólo el rol, en
+          vez de repetir el nick dos veces.
+          {%- endcomment -%}
+          <span class="testimonial-card-name">{{ person.name | default: person.nick }}</span>
+          <span class="testimonial-card-nick">{% if person.name %}{{ person.nick }}{% if person.role %} &middot; {% endif %}{% endif %}{{ person.role }}</span>
+        </div>
+        <i class="fab fa-instagram testimonial-card-network" title="Instagram" aria-hidden="true"></i>
+      </div>
+      <blockquote class="testimonial-card-quote">
+        <p>&laquo;{{ person.quote }}&raquo;</p>
+      </blockquote>
+    </div>
+    {%- endfor %}
+  </div>
+
+  <div id="testimoniosCarousel" class="carousel slide" hidden>
+    <div class="carousel-inner"></div>
+    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+      <i class="fas fa-chevron-circle-left"></i>
+      <span class="visually-hidden">Testimonios anteriores</span>
+    </button>
+    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+      <i class="fas fa-chevron-circle-right"></i>
+      <span class="visually-hidden">Testimonios siguientes</span>
+    </button>
+    <div class="carousel-indicators"></div>
+  </div>
+
+</div>
+{% include cards_js.html %}
+<script src="/assets/js/testimonials.js?v={{ site.time | date: '%s' }}"></script>

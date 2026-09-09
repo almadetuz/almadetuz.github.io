@@ -9,13 +9,20 @@ header {
       height: 80px;
   }
 
+  // El `line-height` igual a la altura era el truco para centrar UNA línea en
+  // una caja de alto fijo. Un título que envuelve (p. ej. el de
+  // /booking/retiros/ en móvil) se salía de esos 70px y pisaba lo de debajo.
+  // Con flex el centrado no depende del interlineado, y `min-height` deja que
+  // la caja crezca en vez de desbordarse.
   div.title {
     font-family: $font-title;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2px;
     text-align: center;
-    line-height: 70px;
-    height: 70px;
+    line-height: 1.25;
+    min-height: 70px;
   }
   div.title {
     span {
@@ -42,8 +49,8 @@ header {
     div.title {
       padding: 10px;
       text-align: left;
-      line-height: 90px;
-      height: 90px;
+      justify-content: flex-start;
+      min-height: 90px;
     }
 
     div.title {
@@ -68,8 +75,8 @@ header {
     div.title {
       padding: 10px;
       text-align: left;
-      line-height: 90px;
-      height: 90px;
+      justify-content: flex-start;
+      min-height: 90px;
     }
 
     div.title {
@@ -87,8 +94,7 @@ header {
     }
 
     div.title {
-      line-height: 90px;
-      height: 90px;
+      min-height: 90px;
     }
 
     div.title {
