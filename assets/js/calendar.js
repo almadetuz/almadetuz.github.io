@@ -24,6 +24,11 @@ function calendarDaysApart(from, to) {
   return Math.round((to - from) / 86400000);
 }
 
+// The months are a strip of cards like the songs and the testimonials, so the
+// carousel itself is CardCarousel: three months on screen on desktop, one on
+// mobile, and every step moves one month. Unlike those two the strip does not
+// loop -- the tour has a first and a last month -- so it runs with wrap off and
+// the arrows go dead at both ends.
 class Calendar {
   constructor(root, calendar_slug) {
     this.root = root;
@@ -31,19 +36,8 @@ class Calendar {
     this.error = root.querySelector('.calendar-error');
     this.empty = root.querySelector('.calendar-empty');
     this.view = root.querySelector('.calendar-view');
-    this.carousel_el = root.querySelector('.carousel');
     this.inner = root.querySelector('.carousel-inner');
-    this.indicators = root.querySelector('.carousel-indicators');
-    this.prev_btn = root.querySelector('.carousel-control-prev');
-    this.next_btn = root.querySelector('.carousel-control-next');
-    this.desktop = window.matchMedia('(min-width: 768px)');
     this.months = [];
-    this.slides = [];
-    this.carousel = null;
-    // Index into this.months of the first month on screen. Survives a rebuild,
-    // which is what keeps the reader on the same month when the layout flips
-    // between one and three months per slide.
-    this.first_month = 0;
   }
 
   async load() {
@@ -64,11 +58,21 @@ class Calendar {
         this.empty.hidden = false;
         return;
       }
-      this.first_month = this.openingIndex();
-      this.bind();
-      this.build();
+      this.renderMonths();
       this.error.hidden = true;
+      // Before the carousel starts: with the view hidden the months have no
+      // width and the strip cannot be positioned.
       this.view.hidden = false;
+      const carousel = new CardCarousel(this.root, {
+        list: '.calendar-months',
+        card: '.calendar-month',
+        single_class: 'calendar-single',
+        label: '.calendar-month-name',
+        interval: false,
+        wrap: false
+      });
+      carousel.index = this.openingIndex();
+      carousel.start();
     } catch (errors) {
       console.error(errors);
     }
@@ -98,111 +102,23 @@ class Calendar {
 
   // Opens on the current month when it falls inside the window, on the first
   // month when the window is still ahead, on the last one when it is past.
+  // CardCarousel is the one that clamps it to the last full window.
   openingIndex() {
     const today = new Date();
     const key = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0');
     const index = this.months.findIndex((month) => month.key === key);
     if (index >= 0) {
-      return this.clamp(index);
+      return index;
     }
-    return key < this.months[0].key ? 0 : this.clamp(this.months.length - 1);
+    return key < this.months[0].key ? 0 : this.months.length - 1;
   }
 
-  visibleCount() {
-    return this.desktop.matches ? 3 : 1;
-  }
-
-  clamp(index) {
-    const max = Math.max(0, this.months.length - this.visibleCount());
-    return Math.min(Math.max(index, 0), max);
-  }
-
-  bind() {
-    // Three months per slide on desktop, one on mobile, so crossing the
-    // breakpoint changes how many slides there are and the whole carousel has
-    // to be rebuilt around whichever month is on screen.
-    this.desktop.addEventListener('change', () => this.build());
-    this.carousel_el.addEventListener('slid.bs.carousel', (e) => {
-      this.first_month = e.to * this.visibleCount();
-      this.updateControls(e.to);
-    });
-  }
-
-  // Chunks the months into slides, paints them with the one holding
-  // this.first_month active, and hands the result to Bootstrap.
-  build() {
-    const size = this.visibleCount();
-    this.slides = [];
-    for (let i = 0; i < this.months.length; i += size) {
-      this.slides.push(this.months.slice(i, i + size));
-    }
-    const active = Math.floor(this.first_month / size);
-    // Snap to the first month of the slide, so a later rebuild lands on the
-    // same slide it came from instead of drifting.
-    this.first_month = active * size;
-
-    if (this.carousel) {
-      this.carousel.dispose();
-    }
-    this.renderSlides(active);
-    this.carousel = new bootstrap.Carousel(this.carousel_el, {
-      interval: false,
-      ride: false,
-      wrap: false,
-      touch: true
-    });
-    this.updateControls(active);
-  }
-
-  renderSlides(active) {
-    this.inner.replaceChildren();
-    this.indicators.replaceChildren();
-    this.slides.forEach((slide, index) => {
-      this.inner.appendChild(this.renderSlide(slide, index === active));
-      this.indicators.appendChild(this.renderIndicator(slide, index, index === active));
-    });
-  }
-
-  renderSlide(slide, active) {
-    const item = document.createElement('div');
-    item.className = active ? 'carousel-item active' : 'carousel-item';
-
+  // Every month in one flat strip; the windowing is CardCarousel's job.
+  renderMonths() {
     const months = document.createElement('div');
     months.className = 'calendar-months';
-    slide.forEach((month) => months.appendChild(this.renderMonth(month)));
-    item.appendChild(months);
-
-    return item;
-  }
-
-  renderIndicator(slide, index, active) {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.dataset.bsTarget = '#' + this.carousel_el.id;
-    button.dataset.bsSlideTo = index;
-    button.setAttribute('aria-label', this.slideLabel(slide));
-    if (active) {
-      button.className = 'active';
-      button.setAttribute('aria-current', 'true');
-    }
-    return button;
-  }
-
-  slideLabel(slide) {
-    const first = slide[0];
-    const last = slide[slide.length - 1];
-    if (slide.length === 1) {
-      return CALENDAR_MONTH_NAMES[first.month] + ' de ' + first.year;
-    }
-    return 'De ' + CALENDAR_MONTH_NAMES[first.month] + ' de ' + first.year
-      + ' a ' + CALENDAR_MONTH_NAMES[last.month] + ' de ' + last.year;
-  }
-
-  // Bootstrap does not disable its own controls when wrap is off, and the
-  // calendar is supposed to show that it has a beginning and an end.
-  updateControls(index) {
-    this.prev_btn.disabled = index === 0;
-    this.next_btn.disabled = index >= this.slides.length - 1;
+    this.months.forEach((month) => months.appendChild(this.renderMonth(month)));
+    this.inner.replaceChildren(months);
   }
 
   renderMonth(month) {

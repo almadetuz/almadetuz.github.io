@@ -1,47 +1,69 @@
 # Canciones del carrusel de /booking/retiros/.
 #
-# TODO: cada canción necesita sus propios ficheros.
 #   image — foto cuadrada, 480x480
 #   video — teaser de 20 s en 16:9, comprimido
-# Hasta que estén, todas las fichas apuntan a los mismos ficheros de relleno.
+#   description - Breve descripcion de lo que habla la cancion
+
+- title: Alas en mí
+  image: /assets/images/catalogo/alas_en_mi_ciudad_del_alba_480.jpg
+  video: /assets/videos/catalogo/alas_en_mi_ciudad_del_alba_640_v256_a128.mp4
+  description: >-
+    Nació del revoloteo de las golondrinas que cada año anidan en mi casa.
+    Un canto a esas alas que una se construye y aprende a usar con torpe
+    ternura, para elevar el vuelo y empezar de nuevo.
+
+- title: Dentro (feat. Iovis)
+  image: /assets/images/catalogo/dentro_iovis_480.jpg
+  video: /assets/videos/catalogo/dentro_iovis_640_v256_a128.mp4
+  description: >-
+    Si hace frío fuera, busca el fuego dentro. Una canción de invierno:
+    semillas que duermen bajo la tierra, niebla y nieve, y la certeza de que
+    la montaña acabará cantando el deshielo.
+
+- title: Mi cuerpo
+  image: /assets/images/catalogo/mi_cuerpo_ciudad_del_alba_480.jpg
+  video: /assets/videos/catalogo/mi_cuerpo_ciudad_del_alba_640_v256_a128.mp4
+  description: >-
+    Aprender a querer el propio cuerpo y transformar en templo la ceniza y el
+    dolor. El cuerpo como patria, refugio y morada: volcán, desierto, valles y
+    cordilleras propias que se habitan con toda libertad.
+
+- title: Nada hay que hacer
+  image: /assets/images/catalogo/nada_hay_que_hacer_480.jpg
+  video: /assets/videos/catalogo/nada_hay_que_hacer_640_v256_a128.mp4
+  description: >-
+    Arena mojada, un barco a la deriva, el vaivén del mar. La canción de la
+    quietud: nada hay que hacer, solo dejarse ser y estar y abrazar ese
+    latido breve de plenitud.
 
 - title: Raíces
-  image: /assets/images/alas_en_mi_single_480.jpg
-  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  image: /assets/images/catalogo/raices_cordoba_480.jpg
+  video: /assets/videos/catalogo/raices_cordoba_640_v256_a128.mp4
   description: >-
-    Fuimos raíces y brotaron flores. Esta canción honra a las mujeres
-    olvidadas de la historia.
-
-- title: Luciérnagas
-  image: /assets/images/alas_en_mi_single_480.jpg
-  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
-  description: >-
-    Una canción sobre amor, luz, maternidad, colecho, lactancia, olor a
-    almendras en la piel.
-
-- title: Si duele no es amor
-  image: /assets/images/alas_en_mi_single_480.jpg
-  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
-  description: >-
-    Inspirada en el cuento «Barba Azul», del libro «Mujeres que corren con los
-    lobos» de Clarissa Pinkola.
+    Nació en una luna llena de noviembre, tras la performance "Vosotras,
+    Raíces". Un canto a las hermanas y a las mujeres masacradas por el simple
+    hecho de serlo: si nacimos de las sombras, con la luz seremos hojas.
 
 - title: Sin el cuerpo no hay voz
-  image: /assets/images/alas_en_mi_single_480.jpg
-  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  image: /assets/images/catalogo/sin_el_cuerpo_cordoba_480.jpg
+  video: /assets/videos/catalogo/sin_el_cuerpo_cordoba_640_v256_a128.mp4
   description: >-
-    Una de las primeras canciones que compuse. Habla de lo que el cuerpo sabe
-    antes de que la cabeza se entere.
+    Una de las primeras canciones que compuse. La voz no nace en la garganta,
+    nace en el cuerpo entero: en sus brazos estoy, en sus pies me alzo, y es
+    él quien acompaña con el canto la existencia.
 
 - title: Universo
-  image: /assets/images/alas_en_mi_single_480.jpg
-  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  image: /assets/images/catalogo/universo_libre_de_barrio_480.jpg
+  video: /assets/videos/catalogo/universo_libre_de_barrio_640_v256_a128.mp4
   description: >-
-    Todo está conectado en el Universo, desde lo más pequeño hasta lo más
-    grande.
+    Inspirada en las conexiones neuronales vistas como un inmenso conjunto de
+    galaxias y nebulosas. Fractales que nos recuerdan que somos un universo
+    dentro del Universo, polvo eterno que forma parte de un todo más grande.
 
 - title: Volver
-  image: /assets/images/alas_en_mi_single_480.jpg
-  video: /assets/videos/sin_el_cuerpo_no_hay_voz_teaser.mp4
+  image: /assets/images/catalogo/volver_voarte_480.jpg
+  video: /assets/videos/catalogo/volver_voarte_640_v256_a128.mp4
   description: >-
-    Volver a ser. Una co-creación con el equipo artístico de Voarte.
+    Volver a ser, volver a ver de verdad. Una co-creación con el equipo
+    artístico de VoArte sobre recomenzar: levar anclas, naufragar las veces
+    necesarias y, otra vez, de nuevo, navegar.

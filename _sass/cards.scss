@@ -1,0 +1,39 @@
+// La tira de fichas de los carruseles (`cards.js`).
+//
+// Se importa después de `songs` y `testimonials` a propósito: la tira ES la
+// lista de fichas, así que `.cards-track` y `.songs-list` pesan lo mismo y
+// manda el orden.
+.cards-track {
+  --cards-gap: 1.5rem;
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: var(--cards-gap);
+  // Los medio segundos tienen que ser los mismos que CARDS_DURATION en
+  // `cards.js`, que es lo que espera para saltar de una copia a su original.
+  transition: transform 0.5s ease;
+}
+
+// El JS pone `--cards-visible`: 3 en escritorio, 1 en móvil. Las fichas de
+// fuera de la ventana se quedan en la tira, así que la ventana mide siempre lo
+// que la ficha más alta y el contenido de debajo no se mueve.
+.cards-track > * {
+  flex: 0 0 calc((100% - (var(--cards-visible) - 1) * var(--cards-gap)) / var(--cards-visible));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-track {
+    transition: none;
+  }
+}
+
+// Sobre el rosa los controles se pierden: el gris de siempre casi no se ve y el
+// punto apagado se confunde con el fondo. Cada carrusel lee estas variables con
+// su color de siempre como valor por defecto, así que basta con cambiarlas aquí
+// para toda la sección.
+.bg-rose {
+  --cards-control: var(--bs-primary);
+  --cards-control-hover: #{$color-auburn-semi};
+  --cards-dot: #{$color-isabelline};
+}

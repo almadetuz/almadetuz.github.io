@@ -16,13 +16,6 @@ $testimonials-muted: #6B6560;
   gap: 1.5rem;
 }
 
-.testimonials-slide {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
 .testimonial-card {
   // La cabecera se reordena según lo ancha que sea LA FICHA, no la ventana: la
   // ficha mide ~197px en tablet (tres por slide), ~352px entre 576 y 767px (una
@@ -124,16 +117,31 @@ $testimonials-muted: #6B6560;
 }
 
 #testimoniosCarousel {
-  // Las flechas van encima del slide, así que las fichas necesitan sitio a los
-  // lados o la primera y la última quedan debajo.
+  // Las flechas van encima de las fichas, así que necesitan sitio a los lados o
+  // la primera y la última quedan debajo.
   padding: 0 2.5rem;
+
+  // La ventana de la tira. El tope es el de las fichas que se ven a la vez
+  // (una aquí, tres de $bp-tablet en adelante), que si no en una pantalla ancha
+  // saldrían enormes; el resto del ancho se queda a los lados.
+  .carousel-inner {
+    max-width: 22rem;
+    margin: 0 auto;
+  }
 
   // Font Awesome en vez de los spans de iconos de Bootstrap, que es lo que usan
   // los demás carruseles del sitio.
   .carousel-control-prev,
   .carousel-control-next {
     width: 2.5rem;
-    color: $testimonials-dot-active;
+    // Bootstrap los deja a media opacidad; aquí el estado se ve en el color.
+    opacity: 1;
+    color: var(--cards-control, #{$testimonials-dot-active});
+
+    &:hover,
+    &:focus {
+      color: var(--cards-control-hover, #{$testimonials-dot-active});
+    }
 
     i {
       font-size: 1.5rem;
@@ -145,22 +153,24 @@ $testimonials-muted: #6B6560;
     position: static;
     margin: 1rem 0 0;
 
-    [data-bs-target] {
+    button {
       width: 0.6rem;
       height: 0.6rem;
       margin: 0 0.25rem;
+      padding: 0;
       border: none;
       border-radius: 50%;
-      background-color: $testimonials-dot;
+      background-color: var(--cards-dot, #{$testimonials-dot});
       opacity: 1;
 
+      // El punto de lo que se está viendo, en el color de marca.
       &.active {
-        background-color: $testimonials-dot-active;
+        background-color: var(--bs-primary);
       }
     }
   }
 
-  // Las tres fichas caben en un slide: ni flechas ni puntitos.
+  // Las tres fichas caben en la ventana: ni flechas ni puntitos.
   &.testimonials-single {
     padding: 0;
 
@@ -189,7 +199,14 @@ $testimonials-muted: #6B6560;
 }
 
 @media screen and (min-width: $bp-tablet) {
-  #testimoniosCarousel .carousel-control i {
-    font-size: 2rem;
+  #testimoniosCarousel {
+    // Tres fichas y los dos huecos de en medio.
+    .carousel-inner {
+      max-width: 69rem;
+    }
+
+    .carousel-control i {
+      font-size: 2rem;
+    }
   }
 }

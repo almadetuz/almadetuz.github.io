@@ -2,9 +2,10 @@
 Carrusel de testimonios.
 
 Los testimonios salen de `_data/testimonios_retiros.yml`. Las fichas se escriben
-aquí en una lista plana y visible, y `testimonials.js` (sobre `cards.js`) las
-mete dentro del carrusel: tres por ficha en escritorio, una en móvil. Si el JS
-no corre, la lectora sigue viendo las tres fichas enteras, sin carrusel.
+aquí en una lista plana y visible, y `testimonials.js` (sobre `cards.js`) la
+convierte en la tira del carrusel: las tres a la vista en escritorio, una en
+móvil. Si el JS no corre, la lectora sigue viendo las tres fichas enteras, sin
+carrusel.
 {%- endcomment -%}
 <div class="testimonials">
 
@@ -33,11 +34,11 @@ no corre, la lectora sigue viendo las tres fichas enteras, sin carrusel.
 
   <div id="testimoniosCarousel" class="carousel slide" hidden>
     <div class="carousel-inner"></div>
-    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="prev">
+    <button class="carousel-control carousel-control-prev" type="button">
       <i class="fas fa-chevron-circle-left"></i>
       <span class="visually-hidden">Testimonios anteriores</span>
     </button>
-    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#testimoniosCarousel" data-bs-slide="next">
+    <button class="carousel-control carousel-control-next" type="button">
       <i class="fas fa-chevron-circle-right"></i>
       <span class="visually-hidden">Testimonios siguientes</span>
     </button>

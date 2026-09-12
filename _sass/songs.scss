@@ -10,13 +10,6 @@ $songs-dot-active: #6B6560;
   gap: 1.5rem;
 }
 
-.songs-slide {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
 .song-card {
   flex: 1 1 0;
   min-width: 0;
@@ -72,16 +65,31 @@ $songs-dot-active: #6B6560;
 }
 
 #cancionesCarousel {
-  // Las flechas van encima del slide, así que las fichas necesitan sitio a los
-  // lados o la primera y la última quedan debajo.
+  // Las flechas van encima de las fichas, así que necesitan sitio a los lados o
+  // la primera y la última quedan debajo.
   padding: 0 2.5rem;
+
+  // La ventana de la tira. El tope es el de las fichas que se ven a la vez
+  // (una aquí, tres de $bp-tablet en adelante), que si no en una pantalla ancha
+  // saldrían enormes; el resto del ancho se queda a los lados.
+  .carousel-inner {
+    max-width: 20rem;
+    margin: 0 auto;
+  }
 
   // Font Awesome en vez de los spans de iconos de Bootstrap, que es lo que usan
   // los demás carruseles del sitio.
   .carousel-control-prev,
   .carousel-control-next {
     width: 2.5rem;
-    color: $songs-dot-active;
+    // Bootstrap los deja a media opacidad; aquí el estado se ve en el color.
+    opacity: 1;
+    color: var(--cards-control, #{$songs-dot-active});
+
+    &:hover,
+    &:focus {
+      color: var(--cards-control-hover, #{$songs-dot-active});
+    }
 
     i {
       font-size: 1.5rem;
@@ -93,17 +101,19 @@ $songs-dot-active: #6B6560;
     position: static;
     margin: 1rem 0 0;
 
-    [data-bs-target] {
+    button {
       width: 0.6rem;
       height: 0.6rem;
       margin: 0 0.25rem;
+      padding: 0;
       border: none;
       border-radius: 50%;
-      background-color: $songs-dot;
+      background-color: var(--cards-dot, #{$songs-dot});
       opacity: 1;
 
+      // El punto de lo que se está viendo, en el color de marca.
       &.active {
-        background-color: $songs-dot-active;
+        background-color: var(--bs-primary);
       }
     }
   }
@@ -158,7 +168,14 @@ $songs-dot-active: #6B6560;
     font-size: 3.5rem;
   }
 
-  #cancionesCarousel .carousel-control i {
-    font-size: 2rem;
+  #cancionesCarousel {
+    // Tres fichas y los dos huecos de en medio.
+    .carousel-inner {
+      max-width: 63rem;
+    }
+
+    .carousel-control i {
+      font-size: 2rem;
+    }
   }
 }

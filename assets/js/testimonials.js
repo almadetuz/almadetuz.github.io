@@ -1,15 +1,15 @@
 // Carrusel de testimonios. Todo lo hace CardCarousel; aquí sólo van los
-// selectores de la ficha y la decisión de no pasar solo: son citas para leer,
-// y en escritorio caben las tres en un slide, así que no se mueve nada.
+// selectores de la ficha y el ritmo, el mismo que el de las canciones. En
+// escritorio las tres caben en la ventana, así que ahí no se mueve nada.
+const TESTIMONIALS_INTERVAL = 4000;
 class Testimonials extends CardCarousel {
   constructor(root) {
     super(root, {
       list: '.testimonials-list',
       card: '.testimonial-card',
-      slide_class: 'testimonials-slide',
       single_class: 'testimonials-single',
       label: '.testimonial-card-name',
-      interval: false
+      interval: TESTIMONIALS_INTERVAL
     });
   }
 }

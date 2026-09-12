@@ -49,8 +49,8 @@ $calendar-dot-active: #6B6560;
   text-decoration: line-through;
 }
 
-// The controls sit on top of the slide, so the months need room to breathe on
-// both sides or the first and last one end up underneath them.
+// The controls sit on top of the months, so they need room to breathe on both
+// sides or the first and last one end up underneath them.
 #calendarCarousel {
   padding: 0 2.5rem;
 }
@@ -142,7 +142,19 @@ $calendar-dot-active: #6B6560;
     width: 2.5rem;
     align-items: flex-start;
     padding-top: 2.5rem;
-    color: $calendar-dot-active;
+    // Bootstrap los deja a media opacidad; aquí el estado se ve en el color.
+    opacity: 1;
+    color: var(--cards-control, #{$calendar-dot-active});
+
+    &:hover,
+    &:focus {
+      color: var(--cards-control-hover, #{$calendar-dot-active});
+    }
+
+    // La tira tiene un primer mes y un último, y al llegar la flecha se apaga.
+    &:disabled {
+      opacity: 0.3;
+    }
 
     i {
       font-size: 1.5rem;
@@ -154,18 +166,31 @@ $calendar-dot-active: #6B6560;
     position: static;
     margin: 1rem 0 0;
 
-    [data-bs-target] {
+    button {
       width: 0.6rem;
       height: 0.6rem;
       margin: 0 0.25rem;
+      padding: 0;
       border: none;
       border-radius: 50%;
-      background-color: $calendar-dot;
+      background-color: var(--cards-dot, #{$calendar-dot});
       opacity: 1;
 
+      // El punto de lo que se está viendo, en el color de marca.
       &.active {
-        background-color: $calendar-dot-active;
+        background-color: var(--bs-primary);
       }
+    }
+  }
+
+  // Todos los meses caben a la vez: ni flechas ni puntitos.
+  &.calendar-single {
+    padding: 0;
+
+    .carousel-control-prev,
+    .carousel-control-next,
+    .carousel-indicators {
+      display: none;
     }
   }
 }
