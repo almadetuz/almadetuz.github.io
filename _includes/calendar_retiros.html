@@ -9,10 +9,10 @@ El estado de error va escrito aquí y visible. calendar.js lo sustituye por el
 calendario sólo si la llamada al API va bien: si el JS no corre, si falla la red
 o si el API está caído, la lectora sigue viendo a quién escribir.
 
-El carrusel es el de Bootstrap. calendar.js rellena .carousel-indicators y
-.carousel-inner: cada .carousel-item lleva tres meses en escritorio y uno en
-móvil, así que el número de slides cambia con el ancho y hay que reconstruirlo
-al cruzar el breakpoint.
+El carrusel es el mismo de las canciones (`cards.js`): calendar.js pinta todos
+los meses en una tira dentro de .carousel-inner y cada paso corre un mes, tres
+a la vista en escritorio y uno en móvil. Aquí la tira no da la vuelta, que la
+gira tiene un primer mes y un último, así que las flechas se apagan al llegar.
 {%- endcomment -%}
 {%- assign calendar_email = include.email | default: 'booking@salaoeste.com' -%}
 <div class="calendar" data-calendar-slug="{{ include.slug | default: 'retiros' }}">
@@ -40,11 +40,11 @@ al cruzar el breakpoint.
 
     <div id="calendarCarousel" class="carousel slide">
       <div class="carousel-inner"></div>
-      <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#calendarCarousel" data-bs-slide="prev">
+      <button class="carousel-control carousel-control-prev" type="button">
         <i class="fas fa-chevron-circle-left"></i>
         <span class="visually-hidden">Meses anteriores</span>
       </button>
-      <button class="carousel-control carousel-control-next" type="button" data-bs-target="#calendarCarousel" data-bs-slide="next">
+      <button class="carousel-control carousel-control-next" type="button">
         <i class="fas fa-chevron-circle-right"></i>
         <span class="visually-hidden">Meses siguientes</span>
       </button>
@@ -53,4 +53,5 @@ al cruzar el breakpoint.
   </div>
 
 </div>
+{% include cards_js.html %}
 <script src="/assets/js/calendar.js?v={{ site.time | date: '%s' }}"></script>

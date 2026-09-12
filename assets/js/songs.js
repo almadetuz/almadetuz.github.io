@@ -1,5 +1,5 @@
-// Carrusel de canciones: las fichas y los slides los lleva CardCarousel, y aquí
-// queda sólo el pop-up de vídeo.
+// Carrusel de canciones: la tira de fichas la lleva CardCarousel, y aquí queda
+// sólo el pop-up de vídeo.
 //
 // Cada ficha se queda cuatro segundos en pantalla, y al pasar la última vuelve
 // a la primera.
@@ -10,7 +10,6 @@ class Songs extends CardCarousel {
     super(root, {
       list: '.songs-list',
       card: '.song-card',
-      slide_class: 'songs-slide',
       single_class: 'songs-single',
       label: '.song-card-title',
       interval: SONGS_INTERVAL
@@ -34,16 +33,14 @@ class Songs extends CardCarousel {
     });
 
     // Con el pop-up abierto el carrusel de detrás se queda quieto.
-    this.modal_el.addEventListener('show.bs.modal', () => this.carousel.pause());
+    this.modal_el.addEventListener('show.bs.modal', () => this.pause());
     this.modal_el.addEventListener('hidden.bs.modal', () => {
       this.video.pause();
       // Suelta el fichero en vez de dejarlo cargado: la próxima vez se vuelve a
       // pedir, y mientras tanto no hay un vídeo por canción en memoria.
       this.video.removeAttribute('src');
       this.video.load();
-      if (this.slides.length > 1) {
-        this.carousel.cycle();
-      }
+      this.cycle();
     });
   }
 
