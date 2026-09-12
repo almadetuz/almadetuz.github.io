@@ -3,8 +3,8 @@ title: Concierto íntimo en tu retiro
 layout: page
 sitemap: false
 noindex: true
-seo_description: "Un concierto íntimo la última noche de tu retiro. Canciones nacidas en talleres de arteterapia, cantadas por una arteterapeuta."
-seo_image: /assets/images/concierto_retiro_seo.jpg
+seo_description: "Un concierto íntimo la última noche de tu retiro, cantado por una artista que lleva 20 años participando en retiros como el tuyo."
+seo_image: /assets/images/alma_de_tuz_en_tu_retiro_seo.jpg
 seo_image_width: 1280
 seo_image_height: 720
 ---
