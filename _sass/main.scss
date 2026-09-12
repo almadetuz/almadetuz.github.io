@@ -612,6 +612,11 @@ div.listen-also .icon-tidal .tidal-icon {
 
 .block-title-image-bg {
   position: relative;
+  // La caja la llena la foto, recortando lo que sobra por el lado largo: en una
+  // caja apaisada se ve toda de ancho y centrada de alto, y en una vertical al
+  // revés. Por eso una foto de retrato pide una caja alta en móvil
+  // (`height_mobile` en el include), o se queda en una franja.
+  height: var(--block-title-image-height-mobile, var(--block-title-image-height, 400px));
   background-size: cover;
   /* Hace que la imagen cubra todo el div */
   background-position: center;
@@ -621,6 +626,15 @@ div.listen-also .icon-tidal .tidal-icon {
   /* align-items: center;
   justify-content: center;
   text-align: center; */
+}
+
+// 400px no es un punto de corte del sitio: es el ancho a partir del cual la caja
+// baja ya es más apaisada que una foto de retrato y la llena de ancho, así que
+// la caja alta sólo hace falta por debajo.
+@media screen and (min-width: 400px) {
+  .block-title-image-bg {
+    height: var(--block-title-image-height, 400px);
+  }
 }
 
 .block-title-image-overlay {

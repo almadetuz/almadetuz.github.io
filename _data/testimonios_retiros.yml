@@ -12,7 +12,7 @@
 - name: Nosotras Fest
   nick: "@nosotras.fest"
   role: organizadoras
-  avatar: /assets/images/amanda_foto_alas_en_mi_320.jpg
+  avatar: /assets/images/avatar/nosotras_fest.jpg
   quote: >-
     Qué placer de noche con tu arte, con tus palabras, tus historias, esa
     presencia generosa y contundente, dulce y chistosa a la vez. Nos dejaste
@@ -21,7 +21,7 @@
   # Sin nombre real: la ficha se queda con el nick en la primera línea.
 - nick: "@soyclicmani"
   role: participante
-  avatar: /assets/images/amanda_foto_alas_en_mi_320.jpg
+  avatar: /assets/images/avatar/soyclicmani.jpg
   quote: >-
     Me enamoró verte en directo. Una voz preciosa y una presencia amorosa que se
     notaba en cada nota que salía de tu voz. Gracias. Una mami con baby que te
@@ -31,7 +31,7 @@
   # Sin nombre real: la ficha se queda con el nick en la primera línea.
 - nick: "@monicamarcos.es"
   role: participante
-  avatar: /assets/images/amanda_foto_alas_en_mi_320.jpg
+  avatar: /assets/images/avatar/monicamarcos_es.jpg
   quote: >-
     Que bonitooooo, fue una noche mágica que aún vibra en mi corazón. Gracias
     Amanda, gracias a todas Nosotras por este encuentro festival tan hermoso y

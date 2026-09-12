@@ -9,9 +9,9 @@ seo_image_width: 1280
 seo_image_height: 720
 ---
 
-<!-- TODO: imagen de fondo del hero, 480px de ancho. Foto de Amanda cantando en un retiro -->
 {% include block_title_image.html
-   image='/assets/images/TODO_concierto_retiro_hero_480.jpg'
+   image='/assets/images/alma_de_tuz_en_tu_retiro.jpg'
+   height_mobile='140vw'
    title='No es animar la sobremesa.<br>Es una sesión de tu retiro, pero cantada.'
 %}
 

@@ -50,6 +50,7 @@ Alternating `class_bg="bg-white"` on every second block is how the long pages ge
 | `tag_class` | `titular text-start` | `titular text-center` to centre it |
 | `text_class` | `text-white` | The overlay darkens the photo, so white text is usually right |
 | `height` | `400px` | |
+| `height_mobile` | *(same as `height`)* | Below 400px wide. A portrait photo needs a tall box (e.g. `140vw`) or it shows up as a thin strip. |
 
 Used mid-page as a section break, not only at the top - see `coser-y-cantar/madrid-16-nov/index.md`, which has four.
 
