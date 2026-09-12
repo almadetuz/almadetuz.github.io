@@ -1,4 +1,9 @@
-<div class="block-title-image-bg" style="background-image: url('{{ include.image }}'); height: {{ include.height | default: '400px' }};">
+{%- comment -%}
+La altura va en variables y no en `height` a secas: así una media query puede
+darle otra en vertical, cosa que un estilo en línea no deja hacer. `height` es
+la de siempre; `height_mobile`, si se pasa, manda por debajo de 400px de ancho.
+{%- endcomment -%}
+<div class="block-title-image-bg" style="background-image: url('{{ include.image }}'); --block-title-image-height: {{ include.height | default: '400px' }};{% if include.height_mobile %} --block-title-image-height-mobile: {{ include.height_mobile }};{% endif %}">
 <div class="block-title-image-overlay">
 
 <div class="{{ include.class_container | default: 'container-fluid mt-3 mb-3 rounded-2' }} {{ include.class_bg | default: '' }}">
