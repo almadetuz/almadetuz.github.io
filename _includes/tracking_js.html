@@ -1,0 +1,9 @@
+<!-- Tracking broker -->
+<script type="text/javascript" src="/assets/js/tracking.js?v={{ site.time | date: '%s' }}"></script>
+<script type="text/javascript">
+  AdtTracking.configure({
+    catalog: {{ site.data.tracking_events | jsonify }},
+    redirectHosts: {{ site.data.redirect_hosts | jsonify }},
+    mode: 'shadow'
+  });
+</script>

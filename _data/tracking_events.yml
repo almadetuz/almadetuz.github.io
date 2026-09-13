@@ -1,0 +1,60 @@
+# Event catalog for assets/js/tracking.js (loaded by _includes/tracking_js.html).
+# The key is the canonical event name, the one Amplitude already uses.
+# - meta: Meta standard event plus custom_data. No meta key: no Pixel and no CAPI.
+# - gads: label in conversions. No gads key, or a label missing from conversions: no gtag call.
+# - value / currency: defaults, overridden by props of the same name.
+# - "{prop}" is replaced with the event prop of that name.
+
+conversions:
+  pageview: AW-11456512712/kB15CKjzyNwZEMiF8tYq
+  spotify: AW-11456512712/r0YzCOTRq5YZEMiF8tYq
+  youtube: AW-11456512712/Yu-DCN7bnJYZEMiF8tYq
+  artwork: AW-11456512712/8YK2CNLtrJYZEMiF8tYq
+  suscribe: AW-11456512712/vICZCMfp0NwZEMiF8tYq
+  lead: AW-11456512712/aBziCPKU0twZEMiF8tYq
+  checkout: AW-11456512712/80-wCM2Z1NwZEMiF8tYq
+  form_submit: AW-11456512712/6NTdCOCpl-cZEMiF8tYq
+  form_view: AW-11456512712/SNJzCOOpl-cZEMiF8tYq
+  form_submitted: AW-11456512712/HpSZCOapl-cZEMiF8tYq
+
+events:
+  PageView:
+    meta: { event: ViewContent }
+    gads: pageview
+  CTAClick:
+    meta: { event: InitiateCheckout, content_category: Button, content_name: Click }
+    gads: checkout
+    value: 1.00
+    currency: EUR
+  CTAView:
+    meta: { event: ViewContent, content_category: Form, content_name: View }
+    gads: form_view
+  Click:
+    meta: { event: ViewContent, content_category: streaming, content_name: "{button}" }
+    gads: "{button}"
+  Checkout:
+    meta: { event: InitiateCheckout }
+    gads: checkout
+    value: 1.00
+    currency: EUR
+  Lead:
+    meta: { event: Lead }
+    gads: lead
+  Suscribed:
+    meta: { event: CompleteRegistration }
+    gads: suscribe
+  FormSubmitted:
+    meta: { event: ViewContent, content_category: Form, content_name: Confirmation }
+    gads: form_submitted
+  FormSubmit:
+    meta: { event: SubmitApplication }
+    gads: form_submit
+  FormView:
+    meta: { event: ViewContent, content_category: Form, content_name: View }
+    gads: form_view
+  FormError: {}
+  AppNotInstalled: {}
+  FbGrant: {}
+  FbRevoke: {}
+  GaGrant: {}
+  GaRevoke: {}

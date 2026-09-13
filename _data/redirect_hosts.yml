@@ -1,0 +1,19 @@
+# Destinations that tracking.js may navigate to (exact host match for http/https).
+hosts:
+  - www.almadetuz.com
+  - almadetuz.com
+  - open.spotify.com
+  - music.youtube.com
+  - www.youtube.com
+  - soundcloud.com
+  - music.apple.com
+  - almadetuz.bandcamp.com
+  - www.enterticket.es
+
+# App deep links opened by assets/js/link.js
+schemes:
+  - spotify
+  - youtube
+  - youtubemusic
+  - soundcloud
+  - intent
