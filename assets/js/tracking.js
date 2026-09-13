@@ -165,7 +165,145 @@
     };
   }
 
+  // Browser side
+
+  function log() {
+    if (root.environment === 'devel') console.log('[tracking]', ...arguments);
+  }
+
+  function storageGet(key) {
+    try {
+      return root.localStorage.getItem(key);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function storageSet(key, value) {
+    try {
+      root.localStorage.setItem(key, value);
+    } catch (error) {
+      // Private mode or blocked storage: the event is still sent
+    }
+  }
+
+  function storageRemove(key) {
+    try {
+      root.localStorage.removeItem(key);
+    } catch (error) {
+      // Nothing to clear
+    }
+  }
+
+  function storageGetJson(key) {
+    try {
+      return JSON.parse(storageGet(key));
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // cookie_js.html runs before page content, so consent is readable when track() is called
+  function readConsent() {
+    const cookieConsent = root.CookieConsent;
+    if (!cookieConsent || typeof cookieConsent.acceptedCategory !== 'function') {
+      return { analytics: false, advertisement: false };
+    }
+    return {
+      analytics: cookieConsent.acceptedCategory('analytics'),
+      advertisement: cookieConsent.acceptedCategory('advertisement')
+    };
+  }
+
+  function clearIdentity() {
+    storageRemove(ANON_ID_KEY);
+    storageRemove(SESSION_KEY);
+  }
+
+  function readIdentity(consent, now) {
+    if (!consent.analytics) {
+      clearIdentity();
+      return { anonId: null, sessionId: null };
+    }
+    let anonId = storageGet(ANON_ID_KEY);
+    if (!UUID_PATTERN.test(anonId || '')) {
+      anonId = root.crypto.randomUUID();
+      storageSet(ANON_ID_KEY, anonId);
+    }
+    const session = nextSession(storageGetJson(SESSION_KEY), now);
+    storageSet(SESSION_KEY, JSON.stringify(session));
+    return { anonId: anonId, sessionId: session.id };
+  }
+
+  function currentPage() {
+    return {
+      url: root.location.href,
+      path: root.location.pathname,
+      title: root.document.title,
+      referrer: root.document.referrer
+    };
+  }
+
+  function wait(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  function configure(options) {
+    config = Object.assign({}, config, options);
+  }
+
+  // Resolves when the API answers or after 1.5 s. Never throws.
+  async function track(name, props) {
+    try {
+      const resolved = resolveEvent(config.catalog, name, props);
+      if (!resolved) {
+        log('catalog miss: ' + name);
+        return;
+      }
+      const now = Date.now();
+      const consent = readConsent();
+      const identity = readIdentity(consent, now);
+      const stored = storageGetJson(UTMS_KEY) || {};
+      const payload = buildPayload({
+        eventId: root.crypto.randomUUID(),
+        name: name,
+        mode: config.mode,
+        now: now,
+        language: root.navigator.language,
+        consent: consent,
+        resolved: resolved,
+        anonId: identity.anonId,
+        sessionId: identity.sessionId,
+        page: currentPage(),
+        attribution: pickAttribution(stored),
+        fbp: readCookie(root.document.cookie, '_fbp'),
+        fbc: buildFbc(readCookie(root.document.cookie, '_fbc'), stored.fbclid, stored.fbclid_ts),
+        props: props
+      });
+      log(name, payload);
+      if (typeof API_URL === 'undefined') return;
+
+      const request = fetch(API_URL + '/events', {
+        method: 'POST',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch((error) => log('api error', error));
+      await Promise.race([request, wait(API_TIMEOUT_MS)]);
+    } catch (error) {
+      log('track error', error);
+    }
+  }
+
+  if (typeof root.addEventListener === 'function') {
+    root.addEventListener('cc:onChange', () => {
+      if (!readConsent().analytics) clearIdentity();
+    });
+  }
+
   return {
+    configure: configure,
+    track: track,
     resolveEvent: resolveEvent,
     buildFbc: buildFbc,
     isAllowedUrl: isAllowedUrl,
