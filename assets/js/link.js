@@ -68,6 +68,10 @@ function fallbackLink(fallback) {
 }
 
 function amplitudeEvent(event, prop) {
+    // Shadow phase: the broker gets the same event; page data is sent separately
+    if (typeof track === 'function') {
+        track(event, AdtTracking.withoutKeys(prop, Object.keys(web_event_prop)));
+    }
     if (environment == 'production' && typeof(amplitude) !== 'undefined') {
         amplitude.track(event, prop);
     }
