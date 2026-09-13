@@ -1,4 +1,4 @@
-const API_URL = environment == 'production' ? "https://api.almadetuz.com" : "http://localhost:5000";
+const API_URL = environment == 'production' ? "https://api.almadetuz.com" : "https://dev.almadetuz.com";
 async function api_user_activity_access(activity_code, data) {
   try {
     return await axios.post(API_URL +

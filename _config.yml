@@ -37,11 +37,17 @@ exclude:
   - .gitignore
   - .git/
   - .gitattributes
+  - .mcp.json
+  - .kiro/
+  - .kiro/**/*
   - vendor/
   - vendor/**/*
   - node_modules/
   - package.json
   - package-lock.json
+  - AGENTS.md
+  - CLAUDE.md
+  - GEMINI.md
 
 
 # SEO and OG global variables
