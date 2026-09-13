@@ -4,6 +4,12 @@
 #   video — teaser de 20 s en 16:9, comprimido
 #   description - Breve descripcion de lo que habla la cancion
 
+- title: La Magara
+  image: /assets/images/catalogo/la_magara_la_cuadra_480.jpg
+  video: /assets/videos/catalogo/la_magara_la_cuadra_640_v256_a128.mp4
+  description: >-
+    "Soy mujer salvaje, serena, danzante"
+
 - title: Alas en mí
   image: /assets/images/catalogo/alas_en_mi_ciudad_del_alba_480.jpg
   video: /assets/videos/catalogo/alas_en_mi_ciudad_del_alba_640_v256_a128.mp4
