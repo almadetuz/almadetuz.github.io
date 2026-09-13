@@ -617,6 +617,8 @@ div.listen-also .icon-tidal .tidal-icon {
   // revés. Por eso una foto de retrato pide una caja alta en móvil
   // (`height_mobile` en el include), o se queda en una franja.
   height: var(--block-title-image-height-mobile, var(--block-title-image-height, 400px));
+  // Color de la paleta mientras la foto carga, en vez del fondo del body
+  background-color: $color-tea-rose;
   background-size: cover;
   /* Hace que la imagen cubra todo el div */
   background-position: center;
