@@ -59,7 +59,6 @@ async function api_calendar_get(calendar_slug) {
 }
 
 function _api_event_user_data_get() {
-    const query_params = new URLSearchParams(window.location.search);
     var last_utm = {};
     try { last_utm = JSON.parse(localStorage.getItem('adt_last_utms')) || {}; }
     catch (error) { last_utm = {}; }
@@ -67,8 +66,12 @@ function _api_event_user_data_get() {
     if (fbp) {
         fbp = fbp.split('=')[1];
     }
+    // undefined drops the key from the JSON body instead of sending "fb.1.<ts>.undefined"
+    const fbc = typeof AdtTracking !== 'undefined'
+        ? AdtTracking.buildFbc(AdtTracking.readCookie(document.cookie, '_fbc'), last_utm['fbclid'], last_utm['fbclid_ts'])
+        : null;
     return {
-        fbc: `fb.1.${Date.now()}.${query_params.get('fbclid') || last_utm['fbclid']}`,
+        fbc: fbc || undefined,
         fbp: fbp,
     };
 }

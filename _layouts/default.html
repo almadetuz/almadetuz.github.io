@@ -42,6 +42,11 @@
       utm_content: query_params.get('utm_content') || last_utm['utm_content'],
       utm_id: query_params.get('utm_id') || last_utm['utm_id'],
       fbclid: query_params.get('fbclid') || last_utm['fbclid'],
+      // First time this fbclid was seen, for the Meta fbc value
+      fbclid_ts: query_params.get('fbclid') && (query_params.get('fbclid') !== last_utm['fbclid'] || !last_utm['fbclid_ts']) ? Date.now() : last_utm['fbclid_ts'],
+      gclid: query_params.get('gclid') || last_utm['gclid'],
+      gbraid: query_params.get('gbraid') || last_utm['gbraid'],
+      wbraid: query_params.get('wbraid') || last_utm['wbraid'],
       campaign_id: query_params.get('campaign_id') || last_utm['campaign_id'],
       ad_id: query_params.get('ad_id') || last_utm['ad_id'],
       transaction_id: query_params.get('fbclid') ? crypto.randomUUID() : last_utm['transaction_id']
