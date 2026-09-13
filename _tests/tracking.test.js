@@ -204,6 +204,10 @@ test.describe('readCookie', () => {
     assert.equal(tracking.readCookie('a=1', '_fbc'), null);
     assert.equal(tracking.readCookie('', '_fbc'), null);
   });
+
+  test.it('returns the raw value when it cannot be decoded', () => {
+    assert.equal(tracking.readCookie('_fbc=fb.1.2.%E0%A4%A', '_fbc'), 'fb.1.2.%E0%A4%A');
+  });
 });
 
 test.describe('props helpers', () => {

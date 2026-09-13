@@ -111,7 +111,13 @@
 
   function readCookie(cookieString, name) {
     const row = (cookieString || '').split(/;\s*/).find((part) => part.startsWith(name + '='));
-    return row ? decodeURIComponent(row.slice(name.length + 1)) : null;
+    if (!row) return null;
+    const value = row.slice(name.length + 1);
+    try {
+      return decodeURIComponent(value);
+    } catch (error) {
+      return value;
+    }
   }
 
   function withoutKeys(props, keys) {
