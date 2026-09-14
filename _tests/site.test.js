@@ -2,6 +2,26 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const tracking = require('../assets/js/site.js');
 
+const fs = require('node:fs');
+const path = require('node:path');
+
+// Minimal reader for _data/redirect_hosts.yml (two lists, no dependencies)
+function readRedirectHosts() {
+  const lines = fs.readFileSync(path.join(__dirname, '../_data/redirect_hosts.yml'), 'utf8').split('\n');
+  const result = { hosts: [], schemes: [] };
+  let section = null;
+  for (const line of lines) {
+    const key = line.match(/^(hosts|schemes):\s*$/);
+    if (key) {
+      section = key[1];
+      continue;
+    }
+    const item = line.match(/^\s+-\s+(\S+)\s*$/);
+    if (item && section) result[section].push(item[1]);
+  }
+  return result;
+}
+
 const catalog = {
   conversions: {
     checkout: 'AW-11456512712/80-wCM2Z1NwZEMiF8tYq',
@@ -303,5 +323,173 @@ test.describe('buildPayload', () => {
     assert.match(payload.name, /^[A-Za-z]{1,64}$/);
     assert.ok(Object.values(payload.props).every((value) => value === null || typeof value !== 'object'));
     assert.ok(JSON.stringify(payload).length < 16 * 1024);
+  });
+});
+
+test.describe('navigationPlan', () => {
+  const base = 'https://www.almadetuz.com/l/spotify/dentro/';
+
+  test.it('assigns allowed web links in the same tab', () => {
+    assert.deepEqual(tracking.navigationPlan('https://open.spotify.com/track/1', '_self', redirectHosts, base),
+      { action: 'assign', url: 'https://open.spotify.com/track/1' });
+    assert.equal(tracking.navigationPlan('https://open.spotify.com/track/1', '', redirectHosts, base).action, 'assign');
+  });
+
+  test.it('opens web links for a new tab through the redirect page', () => {
+    assert.deepEqual(tracking.navigationPlan('https://open.spotify.com/track/1', '_blank', redirectHosts, base),
+      { action: 'redirect', url: 'https://open.spotify.com/track/1' });
+  });
+
+  test.it('keeps app links in the same tab even with target _blank', () => {
+    const intent = 'intent://track/1#Intent;scheme=spotify;package=com.spotify.music;end;';
+    assert.deepEqual(tracking.navigationPlan(intent, '_blank', redirectHosts, base), { action: 'assign', url: intent });
+  });
+
+  test.it('allows same-origin relative links without listing the host', () => {
+    assert.deepEqual(tracking.navigationPlan('/taller/?a=1', '_self', { hosts: [], schemes: [] }, 'http://localhost:4000/l/x/'),
+      { action: 'assign', url: 'http://localhost:4000/taller/?a=1' });
+  });
+
+  test.it('rejects unlisted, script and missing destinations', () => {
+    for (const url of ['https://evil.test/', 'javascript:alert(1)', '', null, undefined]) {
+      assert.deepEqual(tracking.navigationPlan(url, '_self', redirectHosts, base), { action: 'reject', url: null }, String(url));
+    }
+  });
+});
+
+test.describe('redirectUrl', () => {
+  test.it('encodes destination, event and flat props', () => {
+    assert.equal(
+      tracking.redirectUrl('https://open.spotify.com/track/1?si=x', 'Click', { button: 'spotify', nested: { a: 1 } }),
+      '/l/redirect.html?u=https%3A%2F%2Fopen.spotify.com%2Ftrack%2F1%3Fsi%3Dx&e=Click&p=%7B%22button%22%3A%22spotify%22%7D'
+    );
+  });
+
+  test.it('omits p when there are no props', () => {
+    assert.equal(tracking.redirectUrl('https://open.spotify.com/', 'Lead', {}),
+      '/l/redirect.html?u=https%3A%2F%2Fopen.spotify.com%2F&e=Lead');
+  });
+});
+
+test.describe('parseRedirect', () => {
+  const base = 'https://www.almadetuz.com/l/redirect.html';
+  const redirectCatalog = { conversions: {}, events: { Lead: {}, Click: {} } };
+
+  test.it('reads what redirectUrl writes', () => {
+    const search = '?' + tracking.redirectUrl('https://open.spotify.com/track/1', 'Click', { button: 'spotify' }).split('?')[1];
+    assert.deepEqual(tracking.parseRedirect(search, redirectCatalog, redirectHosts, base),
+      { url: 'https://open.spotify.com/track/1', name: 'Click', props: { button: 'spotify' } });
+  });
+
+  test.it('maps legacy event keys and the legacy value', () => {
+    assert.deepEqual(
+      tracking.parseRedirect('?u=https%3A%2F%2Fopen.spotify.com%2F&e=lead&v=20&t=_blank', redirectCatalog, redirectHosts, base),
+      { url: 'https://open.spotify.com/', name: 'Lead', props: { value: 20 } }
+    );
+  });
+
+  test.it('drops unknown events and malformed props', () => {
+    for (const search of ['?u=https%3A%2F%2Fopen.spotify.com%2F&e=constructor&p=%5B1%5D&v=abc', '?u=https%3A%2F%2Fopen.spotify.com%2F&p=%7Bbad']) {
+      const redirect = tracking.parseRedirect(search, redirectCatalog, redirectHosts, base);
+      assert.equal(redirect.name, null, search);
+      assert.deepEqual(redirect.props, {}, search);
+    }
+  });
+
+  test.it('rejects unlisted or missing destinations', () => {
+    assert.equal(tracking.parseRedirect('?u=https%3A%2F%2Fevil.test%2F&e=lead', redirectCatalog, redirectHosts, base).url, null);
+    assert.equal(tracking.parseRedirect('?e=lead', redirectCatalog, redirectHosts, base).url, null);
+  });
+});
+
+test.describe('rememberEvent', () => {
+  test.it('keeps the last 50 events', () => {
+    let pageEvents = [];
+    for (let i = 0; i < 55; i++) pageEvents = tracking.rememberEvent(pageEvents, { eventId: String(i) });
+    assert.equal(pageEvents.length, 50);
+    assert.equal(pageEvents[0].eventId, '5');
+    assert.equal(pageEvents[49].eventId, '54');
+  });
+});
+
+test.describe('planConsentUpgrade', () => {
+  const click = tracking.resolveEvent(catalog, 'Click', { button: 'spotify' });
+  const formError = tracking.resolveEvent(catalog, 'FormError', {});
+  const pageEvents = [
+    { eventId: 'a', consent: { analytics: false, advertisement: false }, resolved: click },
+    { eventId: 'b', consent: { analytics: true, advertisement: false }, resolved: formError },
+    { eventId: 'c', consent: { analytics: true, advertisement: true }, resolved: click }
+  ];
+  const all = { analytics: true, advertisement: true };
+
+  test.it('lists events whose consent rises and the Pixel and gtag calls they missed', () => {
+    const plan = tracking.planConsentUpgrade(pageEvents, all, 'live');
+    assert.deepEqual(plan.eventIds, ['a', 'b']);
+    assert.deepEqual(plan.pixel.map((entry) => entry.eventId), ['a']);
+    assert.deepEqual(plan.gtag.map((entry) => entry.eventId), ['a']);
+    assert.ok(plan.pageEvents.every((entry) => entry.consent.analytics && entry.consent.advertisement));
+  });
+
+  test.it('only raises the categories that were granted and never lowers one', () => {
+    const plan = tracking.planConsentUpgrade(pageEvents, { analytics: true, advertisement: false }, 'live');
+    assert.deepEqual(plan.eventIds, ['a']);
+    assert.deepEqual(plan.pixel, []);
+    assert.deepEqual(plan.pageEvents[0].consent, { analytics: true, advertisement: false });
+    assert.deepEqual(plan.pageEvents[2].consent, { analytics: true, advertisement: true });
+  });
+
+  test.it('does not repeat an upgrade', () => {
+    const first = tracking.planConsentUpgrade(pageEvents, all, 'live');
+    assert.deepEqual(tracking.planConsentUpgrade(first.pageEvents, all, 'live').eventIds, []);
+  });
+
+  test.it('does not fire Pixel or gtag in shadow mode', () => {
+    const plan = tracking.planConsentUpgrade(pageEvents, all, 'shadow');
+    assert.deepEqual(plan.eventIds, ['a', 'b']);
+    assert.deepEqual(plan.pixel, []);
+    assert.deepEqual(plan.gtag, []);
+  });
+});
+
+test.describe('buildConsentBody', () => {
+  test.it('sends identifiers only for granted categories', () => {
+    const input = { eventIds: ['a'], anonId: 'id', sessionId: 1, fbp: 'fb.1.1.1', fbc: null };
+    assert.deepEqual(tracking.buildConsentBody({ ...input, consent: { analytics: true, advertisement: false } }),
+      { event_ids: ['a'], consent: { analytics: true, advertisement: false }, anon_id: 'id', session_id: 1, fbp: null, fbc: null });
+    assert.deepEqual(tracking.buildConsentBody({ ...input, consent: { analytics: false, advertisement: true } }),
+      { event_ids: ['a'], consent: { analytics: false, advertisement: true }, anon_id: null, session_id: null, fbp: 'fb.1.1.1', fbc: null });
+  });
+});
+
+test.describe('pixelArgs', () => {
+  test.it('builds the fbq track call with the event id', () => {
+    const resolved = tracking.resolveEvent(catalog, 'CTAClick', {});
+    assert.deepEqual(tracking.pixelArgs(resolved, 'e-1'), [
+      'track',
+      'InitiateCheckout',
+      { content_category: 'Button', content_name: 'Click', value: 1.0, currency: 'EUR' },
+      { eventID: 'e-1' }
+    ]);
+  });
+});
+
+test.describe('_data/redirect_hosts.yml', () => {
+  test.it('allows every destination that link.js and the CTA buttons build', () => {
+    const hosts = readRedirectHosts();
+    const base = 'https://www.almadetuz.com/l/spotify/dentro/';
+    [
+      'https://open.spotify.com/track/1?si=x',
+      'spotify://track/1?si=x',
+      'intent://track/1?go=1&nd=1#Intent;scheme=spotify;package=com.spotify.music;end;',
+      'https://music.youtube.com/watch?v=1',
+      'youtubemusic://watch?v=1',
+      'https://www.youtube.com/watch?v=1',
+      'vnd.youtube://www.youtube.com/watch?v=1',
+      'https://music.apple.com/es/album/a/1727749674',
+      'https://soundcloud.com/almadetuz',
+      'soundcloud://almadetuz',
+      'https://almadetuz.bandcamp.com/album/dentro',
+      'https://www.enterticket.es/eventos/daua-fest-400874'
+    ].forEach((url) => assert.notEqual(tracking.navigationPlan(url, '_blank', hosts, base).action, 'reject', url));
   });
 });

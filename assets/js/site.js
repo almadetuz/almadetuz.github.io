@@ -25,6 +25,16 @@
     'fbclid', 'gclid', 'gbraid', 'wbraid', 'campaign_id', 'ad_id'
   ];
 
+  const REDIRECT_PATH = '/l/redirect.html';
+  const MAX_PAGE_EVENTS = 50;
+  // Keys of l/redirect.html links published before the broker (emails, ads)
+  const LEGACY_REDIRECT_EVENTS = {
+    checkout: 'Checkout',
+    form_submitted: 'FormSubmitted',
+    lead: 'Lead',
+    suscribe: 'Suscribed'
+  };
+
   let config = {
     catalog: { conversions: {}, events: {} },
     redirectHosts: { hosts: [], schemes: [] },
@@ -169,6 +179,97 @@
       gads: input.resolved.gads,
       props: flatProps(input.props)
     };
+  }
+
+  // How trackAndGo leaves the page. Same-origin links are always allowed. App
+  // links (intent://, spotify://, ...) stay in the same tab even for _blank:
+  // a new tab would lose the tap that lets the app open.
+  function navigationPlan(url, target, redirectHosts, baseUrl) {
+    const reject = { action: 'reject', url: null };
+    if (typeof url !== 'string' || !url) return reject;
+    let parsed;
+    try {
+      parsed = new URL(url, baseUrl);
+    } catch (error) {
+      return reject;
+    }
+    const web = parsed.protocol === 'https:' || parsed.protocol === 'http:';
+    const sameOrigin = web && parsed.origin === new URL(baseUrl).origin;
+    if (!sameOrigin && !isAllowedUrl(parsed.href, redirectHosts)) return reject;
+    return { action: web && target === '_blank' ? 'redirect' : 'assign', url: web ? parsed.href : url };
+  }
+
+  function redirectUrl(url, name, props) {
+    const params = new URLSearchParams({ u: url, e: name });
+    const flat = flatProps(props);
+    if (Object.keys(flat).length) params.set('p', JSON.stringify(flat));
+    return REDIRECT_PATH + '?' + params.toString();
+  }
+
+  // Query of l/redirect.html: u destination, e event name or legacy key,
+  // p JSON props, v value (legacy links). url is null when not allowed.
+  function parseRedirect(search, catalog, redirectHosts, baseUrl) {
+    const params = new URLSearchParams(search);
+    const plan = navigationPlan(params.get('u'), '_self', redirectHosts, baseUrl);
+    let name = params.get('e');
+    if (own(LEGACY_REDIRECT_EVENTS, name)) name = LEGACY_REDIRECT_EVENTS[name];
+    if (!own(catalog.events, name)) name = null;
+    let props = {};
+    try {
+      const parsed = JSON.parse(params.get('p'));
+      if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) props = flatProps(parsed);
+    } catch (error) {
+      props = {};
+    }
+    const value = Number(params.get('v'));
+    if (params.get('v') && Number.isFinite(value)) props.value = value;
+    return { url: plan.url, name: name, props: props };
+  }
+
+  function rememberEvent(pageEvents, entry) {
+    return pageEvents.concat([entry]).slice(-MAX_PAGE_EVENTS);
+  }
+
+  // Events of this page whose consent rises with the new choice, and the Pixel
+  // and gtag calls they missed. pageEvents comes back with the raised consent.
+  function planConsentUpgrade(pageEvents, consent, mode) {
+    const plan = { eventIds: [], pixel: [], gtag: [], pageEvents: [] };
+    pageEvents.forEach((entry) => {
+      const analytics = consent.analytics === true && !entry.consent.analytics;
+      const advertisement = consent.advertisement === true && !entry.consent.advertisement;
+      if (analytics || advertisement) plan.eventIds.push(entry.eventId);
+      if (advertisement) {
+        const decision = decideDestinations({ analytics: false, advertisement: true }, entry.resolved, mode);
+        if (decision.pixel) plan.pixel.push(entry);
+        if (decision.gtag) plan.gtag.push(entry);
+      }
+      plan.pageEvents.push({
+        eventId: entry.eventId,
+        resolved: entry.resolved,
+        consent: {
+          analytics: entry.consent.analytics || consent.analytics === true,
+          advertisement: entry.consent.advertisement || consent.advertisement === true
+        }
+      });
+    });
+    return plan;
+  }
+
+  function buildConsentBody(input) {
+    const analytics = input.consent.analytics === true;
+    const advertisement = input.consent.advertisement === true;
+    return {
+      event_ids: input.eventIds,
+      consent: { analytics: analytics, advertisement: advertisement },
+      anon_id: analytics ? input.anonId : null,
+      session_id: analytics ? input.sessionId : null,
+      fbp: advertisement ? input.fbp || null : null,
+      fbc: advertisement ? input.fbc || null : null
+    };
+  }
+
+  function pixelArgs(resolved, eventId) {
+    return ['track', resolved.meta.event, resolved.meta.custom_data, { eventID: eventId }];
   }
 
   // Browser side
@@ -319,6 +420,13 @@
     withoutKeys: withoutKeys,
     flatProps: flatProps,
     pickAttribution: pickAttribution,
-    buildPayload: buildPayload
+    buildPayload: buildPayload,
+    navigationPlan: navigationPlan,
+    redirectUrl: redirectUrl,
+    parseRedirect: parseRedirect,
+    rememberEvent: rememberEvent,
+    planConsentUpgrade: planConsentUpgrade,
+    buildConsentBody: buildConsentBody,
+    pixelArgs: pixelArgs
   };
 });
