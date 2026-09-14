@@ -15,8 +15,6 @@ preference_modal: true
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", (event) => {
-    amp_event('Lead', web_event_prop);
-    fb_event('Lead');
-    gads_event('conversion', 'lead');
+    track('Lead');
   });
 </script>
