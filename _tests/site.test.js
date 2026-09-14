@@ -400,6 +400,12 @@ test.describe('parseRedirect', () => {
     assert.equal(tracking.parseRedirect('?u=https%3A%2F%2Fevil.test%2F&e=lead', redirectCatalog, redirectHosts, base).url, null);
     assert.equal(tracking.parseRedirect('?e=lead', redirectCatalog, redirectHosts, base).url, null);
   });
+
+  test.it('rejects non-web destinations even when the scheme is allowlisted', () => {
+    const intent = '?u=' + encodeURIComponent('intent://x/#Intent;scheme=https;package=com.nonexistent;S.browser_fallback_url=https%3A%2F%2Fevil.example%2F;end') + '&e=suscribe';
+    assert.equal(tracking.parseRedirect(intent, redirectCatalog, redirectHosts, base).url, null);
+    assert.equal(tracking.parseRedirect('?u=' + encodeURIComponent('spotify://track/1') + '&e=lead', redirectCatalog, redirectHosts, base).url, null);
+  });
 });
 
 test.describe('rememberEvent', () => {

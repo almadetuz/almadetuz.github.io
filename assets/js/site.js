@@ -209,10 +209,16 @@
   }
 
   // Query of l/redirect.html: u destination, e event name or legacy key,
-  // p JSON props, v value (legacy links). url is null when not allowed.
+  // p JSON props, v value (legacy links). url is null when not allowed or not
+  // a web (http/https) link, since this page can only navigate itself there.
   function parseRedirect(search, catalog, redirectHosts, baseUrl) {
     const params = new URLSearchParams(search);
     const plan = navigationPlan(params.get('u'), '_self', redirectHosts, baseUrl);
+    let url = plan.url;
+    if (url) {
+      const scheme = new URL(url, baseUrl).protocol;
+      if (scheme !== 'https:' && scheme !== 'http:') url = null;
+    }
     let name = params.get('e');
     if (own(LEGACY_REDIRECT_EVENTS, name)) name = LEGACY_REDIRECT_EVENTS[name];
     if (!own(catalog.events, name)) name = null;
@@ -225,7 +231,7 @@
     }
     const value = Number(params.get('v'));
     if (params.get('v') && Number.isFinite(value)) props.value = value;
-    return { url: plan.url, name: name, props: props };
+    return { url: url, name: name, props: props };
   }
 
   function rememberEvent(pageEvents, entry) {
