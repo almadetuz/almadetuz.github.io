@@ -123,12 +123,10 @@ novalidate>
   var form_prop = {form: "subscribe-" + formId};
 
   function FormView(e) {
-    if (typeof amp_event === 'function') {
+    if (typeof track === 'function') {
       var scroll_prop = {view_time: Math.trunc(e.time / 1000)};
-      amp_event('FormView', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop, ...scroll_prop});
+      track('FormView', {...form_prop, ...scroll_prop});
     }
-    if (typeof fb_event === 'function') fb_event('ViewContent', 'Form', 'View');
-    if (typeof gads_event === 'function') gads_event('conversion', 'form_view');
   }
 
   form.addEventListener('submit', async function(e) {
@@ -165,19 +163,17 @@ novalidate>
                 form.reset();
                 form.classList.remove('was-validated');
 
-                if (typeof amp_event === 'function') amp_event('FormSubmit', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop});
-                if (typeof fb_event === 'function') fb_event('SubmitApplication');
-                if (typeof gads_event === 'function') gads_event('conversion', 'form_submit');
+                if (typeof track === 'function') track('FormSubmit', form_prop);
             } else {
                 throw new Error("Invalid response");
             }
         } catch (error) {
             // console.error(error);
             stateError.classList.remove("d-none");
-            if (typeof amp_event === 'function') amp_event('FormError', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop});
+            if (typeof track === 'function') track('FormError', form_prop);
         }
     } else {
-        if (typeof amp_event === 'function') amp_event('FormError', {...(typeof web_event_prop !== 'undefined' ? web_event_prop : {}), ...form_prop});
+        if (typeof track === 'function') track('FormError', form_prop);
         form.classList.add('was-validated');
     }
 

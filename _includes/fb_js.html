@@ -1,7 +1,5 @@
 <!-- Facebook Pixel -->
 <script>
-  var fb_consent = false;
-  var fb_queue = [];
   function fb_log(log) {
     if (environment == 'devel') console.log(log);
   }
@@ -17,38 +15,21 @@
   }(window, document, 'script',
     'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1185027625444517');
-  fb_track('track', 'PageView');
   fb_log('fb:init');
-  function fb_track() {
-    if (fb_consent) {
-      if (environment == 'production') fbq(...arguments);
-      fb_log('send: ' + [...arguments].join(', '));
-    }
-    else fb_queue.push(arguments);
-  }
-  function fb_flush() {
-    while (fb_queue.length > 0) {
-      var params = fb_queue.shift();
-      if (environment == 'production') fbq(...params);
-      fb_log('flush: ' + [...params].join(', '));
-    }
-  }
+  // Events are fired by assets/js/site.js (track), with the broker event id
   function fb_grant() {
     fbq('consent', 'grant');
-    fb_consent = true;
-    amp_event('FbGrant', web_event_prop);
+    track('FbGrant');
   }
   function fb_revoke() {
     fbq('consent', 'revoke');
-    fb_consent = false;
-    amp_event('FbRevoke', web_event_prop);
+    track('FbRevoke');
   }
   window.addEventListener('cc:onConsent', ({ detail }) => {
     const data = detail.cookie;
     fb_log('fb:cc:onConsent: ' + data.categories);
-    if (data.categories.includes("advertisement") || fb_learn) {
+    if (data.categories.includes("advertisement")) {
       fb_grant();
-      fb_flush();
     } else {
       fb_revoke();
     }
@@ -56,26 +37,12 @@
   window.addEventListener('cc:onChange', ({ detail }) => {
     const data = detail.cookie;
     fb_log('fb:cc:onChange: ' + data.categories);
-    if (data.categories.includes("advertisement") || fb_learn) {
+    if (data.categories.includes("advertisement")) {
       fb_grant();
-      fb_flush();
     } else {
       fb_revoke();
     }
   });
-  function fb_event(event, category = undefined, name = undefined, id = undefined, value = 1.00, currency = 'EUR') {
-    var event_prop = {};
-    var event_id = {};
-    if (typeof (category) !== 'undefined') event_prop['content_category'] = category;
-    if (typeof (name) !== 'undefined') event_prop['content_name'] = name;
-    if (typeof (id) !== 'undefined') event_id['eventID'] = id;
-    if (typeof (value) !== 'undefined') event_prop['value'] = value;
-    if (typeof (currency) !== 'undefined') event_prop['currency'] = currency;
-    fb_track('track', event, event_prop, event_id);
-    fb_log('fb.track: ' + event);
-    if (Object.keys(event_id).length > 0) fb_log(event_id);
-    if (Object.keys(event_prop).length > 0) fb_log(event_prop);
-  }
 </script>
 <!--noscript>
   With new GDPR regulation we can not add Facebook pixel when no JS is available because we can't get consent from the user without JS

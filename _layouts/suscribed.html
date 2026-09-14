@@ -15,8 +15,6 @@ preference_modal: true
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", (event) => {
-    amp_event('Suscribed', web_event_prop);
-    fb_event('CompleteRegistration');
-    gads_event('conversion', 'suscribe');
+    track('Suscribed');
   });
 </script>
