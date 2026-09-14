@@ -1,4 +1,4 @@
-# Event catalog for assets/js/tracking.js (loaded by _includes/tracking_js.html).
+# Event catalog for assets/js/site.js (loaded by _includes/tracking_js.html).
 # The key is the canonical event name, the one Amplitude already uses.
 # - meta: Meta standard event plus custom_data. No meta key: no Pixel and no CAPI.
 # - gads: label in conversions. No gads key, or a label missing from conversions: no gtag call.
