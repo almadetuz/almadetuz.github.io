@@ -50,21 +50,6 @@
       ad_id: query_params.get('ad_id') || last_utm['ad_id'],
       transaction_id: query_params.get('fbclid') ? crypto.randomUUID() : last_utm['transaction_id']
     };
-    const web_event_prop = {
-      page_title: title,
-      page_domain: document.location.hostname,
-      page_location: document.location.href,
-      page_path: document.location.pathname,
-      page_url: base,
-      utm_source: last_utm['utm_source'],
-      utm_medium: last_utm['utm_medium'],
-      utm_campaign: last_utm['utm_campaign'],
-      utm_term: last_utm['utm_term'],
-      utm_content: last_utm['utm_content'],
-      utm_id: last_utm['utm_id'],
-      referrer: document.referrer,
-      referring_domain: URL.parse(document.referrer)?.hostname || null,
-    };
     localStorage.setItem('adt_last_utms', JSON.stringify(last_utm));
   </script>
 
