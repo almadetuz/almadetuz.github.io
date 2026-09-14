@@ -67,36 +67,13 @@ function fallbackLink(fallback) {
     return encodeURIComponent(base + '?' + params.toString());
 }
 
-function amplitudeEvent(event, prop) {
-    // Shadow phase: the broker gets the same event; page data is sent separately
-    if (typeof track === 'function') {
-        track(event, AdtTracking.withoutKeys(prop, Object.keys(web_event_prop)));
-    }
-    if (environment == 'production' && typeof(amplitude) !== 'undefined') {
-        amplitude.track(event, prop);
-    }
-}
-
-function amplitudeClick(button) {
-    var click_prop = {
-        button: button
-    };
-    amplitudeEvent('Click', {...event_prop, ...click_prop});
-}
-
-function facebookClick(button) {
-    fb_event('ViewContent', 'streaming', button);
-}
-
-function googleAdsClick(button, link) {
-    gads_event('conversion', button);
+// Tracks the click and opens the link (see trackAndGo in site.js)
+function trackClick(link, button, target) {
+    return trackAndGo('Click', {...event_prop, button: button}, link, target);
 }
 
 function iOSClick(link, button) {
-    amplitudeClick(button);
-    facebookClick(button);
-    googleAdsClick(button);
-    window.location = link;
+    trackClick(link, button, '_self');
 }
 
 function androidClick(el_id) {
@@ -115,10 +92,9 @@ function linkSet(el_id, link, button) {
     var el_link = document.getElementById(el_id);
     if (el_link) {
         el_link.href = link;
-        el_link.onclick = function(){
-            amplitudeClick(button);
-            facebookClick(button);
-            googleAdsClick(button);
+        el_link.onclick = function(e){
+            e.preventDefault();
+            trackClick(link, button, el_link.target);
         };
     }
 }

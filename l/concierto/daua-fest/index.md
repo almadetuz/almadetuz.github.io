@@ -1,7 +1,6 @@
 ---
 title: Daua Fest - Sala Revi Live - 29 Noviembre 2025
 layout: clean
-fb_learn: true
 seo_description: "Daua Fest: Sala Revi Live - 29 Noviembre 2025"
 seo_image: /assets/images/conciertos/daua_fest_seo.jpg
 seo_image_width: 905
@@ -26,8 +25,6 @@ Ven al **Daua Fest** este Sábado 29 de Noviembre a las 19:30.
    subtext="Precio en taquilla: 25€"
    fb_value="20.00"
    cta_id="1"
-   fb_event_name="InitiateCheckout"
-   gads_event_name="checkout"
 %}
 
 Un viaje musical sinestésico con tres bandas donde la música se fusiona con la danza y la poesía.
@@ -66,8 +63,6 @@ Es imposible que no encuentres un momento que te haga vibrar.
    subtext="Anticipadas: 20€, en taquilla: 25€"
    fb_value="20.00"
    cta_id="2"
-   fb_event_name="InitiateCheckout"
-   gads_event_name="checkout"
 %}
 
 {% include block_container_end.html %}
@@ -144,8 +139,6 @@ Sala Revi Live (Vicálvaro, Madrid).
    text="Sí, quiero vivir la experiencia"
    fb_value="20.00"
    cta_id="3"
-   fb_event_name="InitiateCheckout"
-   gads_event_name="checkout"
 %}
 
 <p><br></p>

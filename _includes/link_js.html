@@ -74,10 +74,12 @@
     bandcampLinkSet(bandcamp_url);
   {% endif %}
 
-    event_to_trigger = 'PageView';
+    const page_view = track(failed == 0 ? 'PageView' : 'AppNotInstalled', event_prop);
     if (failed == 0) {
         {% if include.deep_link == 'yes' %}
           if (isMobile.any()) {
+            // Open the app once the page event is stored, so it is not lost
+            page_view.then(() => {
             if (deep_link == 'spotify') {
               {% if include.spotify_track_id %}
                 openSpotifyTrack(spotify_track_id, spotify_si, spotify_context);
@@ -119,6 +121,7 @@
                 openBandcamp(bandcamp_url);
               {% endif %}
             }
+            });
 
             // 2. Track that the app was not opened on iOS devices
             // if (isMobile.iOS()) {
@@ -128,12 +131,6 @@
             // }
           }
         {% endif %}
-    } else {
-        event_to_trigger = 'AppNotInstalled';
     }
-
-    document.addEventListener("DOMContentLoaded", (event) => {
-        amplitudeEvent(event_to_trigger, {...web_event_prop,...event_prop});
-    });
 })();
 </script>
