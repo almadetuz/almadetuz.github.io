@@ -102,7 +102,7 @@ Cards linking to other pages, in a grid:
 
 `button_image.html`: `title`, `url`, `image` (320px variant), `title_class`, `icon` (Font Awesome, default `fa-chevron-circle-right`), `icon_class`.
 
-`button_link.html` is a tracked CTA button - it fires `CTAClick`/`InitiateCheckout` analytics events and needs a unique `cta_id`. It is for checkout and purchase flows, not for email capture. Parameters: `text`, `url`, `cta_id`, `cta_prefix` (default `checkout`), `class`, `subtext`, `target`, plus `fb_*` and `gads_event_name` overrides.
+`button_link.html` is a tracked CTA button - it sends `CTAClick` through the tracking broker (Meta `InitiateCheckout`, Google Ads `checkout`) before navigating, and needs a unique `cta_id`. It is for checkout and purchase flows, not for email capture. The `url` host must be listed in `_data/redirect_hosts.yml` (same-site URLs are always allowed). Parameters: `text`, `url`, `cta_id`, `cta_prefix` (default `checkout`), `class`, `subtext`, `target`, `fb_value` (default `1.00`) and `fb_currency` (default `EUR`).
 
 `scroll_down_arrow.html` drops a chevron that scrolls one screen down. Optional `class`: `scroll-down-arrow-center|left|right`.
 

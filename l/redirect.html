@@ -1,6 +1,5 @@
 ---
 layout: tracking
-fb_learn: true
 sitemap: false
 ---
 <div class="container text-center mt-5"
@@ -17,47 +16,13 @@ sitemap: false
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const url = params.get('u');
-    const eventName = params.get('e');
-    const fb_value = params.get('v') || 1.00;
-    const target = params.get('t') || '_self';
-    const eventsMap = {
-      'checkout': { amp: 'Checkout', fb: 'InitiateCheckout', gads: 'checkout' },
-      'form_submitted': { amp: 'FormSubmitted', fb: 'ViewContent', gads: 'form_submitted' },
-      'lead': { amp: 'Lead', fb: 'Lead', gads: 'lead' },
-      'suscribe': { amp: 'Suscribed', fb: 'CompleteRegistration', gads: 'suscribe' }
-    };
-
-    if (url) {
-      // Update manual link
-      var link = document.getElementById('manual-redirect-link');
-      if (link) {
-        link.href = url;
-        link.target = target;
-      }
-
-      // Fire the event if provided
-      if (eventName && eventsMap[eventName]) {
-        try {
-          if (typeof amp_event === 'function') amp_event(eventsMap[eventName].amp, web_event_prop);
-          if (typeof fb_event === 'function') fb_event(eventsMap[eventName].fb, id=last_utm['transaction_id'], value=fb_value);
-          if (typeof gads_event === 'function') gads_event('conversion', eventsMap[eventName].gads);
-        } catch (e) {
-          console.error("Error sending events:", e);
-        }
-      }
-
-      // Delay redirection to allow event to send
-      setTimeout(function () {
-        if (target === '_blank') {
-          window.open(url, '_blank');
-        } else {
-          window.location.href = url;
-        }
-      }, 3000);
-    } else {
-      document.querySelector('.container').innerHTML = '<div class="alert alert-danger">Error: No se ha especificado una URL de destino.</div>';
+    // u: destination (must be in _data/redirect_hosts.yml), e: event, p: props, v: value
+    const redirect = AdtTracking.readRedirect(window.location.search);
+    if (!redirect.url) {
+      document.querySelector('.container').innerHTML = '<div class="alert alert-danger">Error: No se ha especificado una URL de destino válida.</div>';
+      return;
     }
+    document.getElementById('manual-redirect-link').href = redirect.url;
+    trackAndGo(redirect.name, redirect.props, redirect.url, '_self');
   });
 </script>

@@ -20,19 +20,11 @@ class CallToAction {
         this.processing = true;
         this.ctaurl.classList.add('disabled');
 
-        if (typeof this.cb_click == 'function') {
-            await this.cb_click(e);
-        }
-        // Wait for async callbacks to finish
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        // Redirect to the URL
+        // The callback tracks the click and navigates (trackAndGo)
         const url = this.ctaurl.getAttribute("href");
         const target = this.ctaurl.getAttribute("target");
-        if (target === '_blank') {
-            window.open(url, '_blank');
-        } else {
-            window.location.href = url;
+        if (typeof this.cb_click == 'function') {
+            await this.cb_click(e, url, target);
         }
         this.processing = false;
         this.ctaurl.classList.remove('disabled');
