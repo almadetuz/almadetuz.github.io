@@ -1,4 +1,4 @@
-# Destinations that tracking.js may navigate to (exact host match for http/https).
+# Destinations that assets/js/site.js may navigate to (exact host match for http/https).
 hosts:
   - www.almadetuz.com
   - almadetuz.com

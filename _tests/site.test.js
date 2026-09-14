@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const tracking = require('../assets/js/tracking.js');
+const tracking = require('../assets/js/site.js');
 
 const catalog = {
   conversions: {

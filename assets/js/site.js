@@ -1,7 +1,7 @@
 /*
  * Tracking broker client. Each event is sent once to api.almadetuz.com, which
  * stores it and forwards it to Amplitude and Meta. The pure helpers are
- * exported for node --test (_tests/tracking.test.js).
+ * exported for node --test (_tests/site.test.js).
  */
 (function (root, factory) {
   const tracking = factory(root);
