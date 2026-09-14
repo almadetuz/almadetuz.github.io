@@ -19,7 +19,7 @@ conversions:
 
 events:
   PageView:
-    meta: { event: ViewContent }
+    meta: { event: PageView }
     gads: pageview
   CTAClick:
     meta: { event: InitiateCheckout, content_category: Button, content_name: Click }

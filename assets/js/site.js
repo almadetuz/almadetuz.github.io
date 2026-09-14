@@ -1,7 +1,8 @@
 /*
  * Tracking broker client. Each event is sent once to api.almadetuz.com, which
- * stores it and forwards it to Amplitude and Meta. The pure helpers are
- * exported for node --test (_tests/site.test.js).
+ * stores it and forwards it to Amplitude and Meta CAPI. With advertisement
+ * consent the browser also fires the Meta Pixel (same event id) and the Google
+ * Ads conversion. The pure helpers are exported for node --test (_tests/site.test.js).
  */
 (function (root, factory) {
   const tracking = factory(root);
@@ -10,6 +11,7 @@
   } else {
     root.AdtTracking = tracking;
     root.track = tracking.track;
+    root.trackAndGo = tracking.trackAndGo;
   }
 })(typeof window !== 'undefined' ? window : globalThis, function (root) {
   'use strict';
@@ -274,6 +276,9 @@
 
   // Browser side
 
+  // Events sent from this page, for the consent upgrade
+  let pageEvents = [];
+
   function log() {
     if (root.environment === 'devel') console.log('[tracking]', ...arguments);
   }
@@ -342,6 +347,14 @@
     return { anonId: anonId, sessionId: session.id };
   }
 
+  function readFbIds(stored) {
+    const cookies = root.document.cookie;
+    return {
+      fbp: readCookie(cookies, '_fbp'),
+      fbc: buildFbc(readCookie(cookies, '_fbc'), stored.fbclid, stored.fbclid_ts)
+    };
+  }
+
   function currentPage() {
     return {
       url: root.location.href,
@@ -359,7 +372,34 @@
     config = Object.assign({}, config, options);
   }
 
-  // Resolves when the API answers or after 1.5 s. Never throws.
+  function postJson(path, body) {
+    return fetch(API_URL + path, {
+      method: 'POST',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    }).catch((error) => log('api error', error));
+  }
+
+  // Pixel and gtag only send from production, like fb_event and gads_event did
+  function firePixel(resolved, eventId) {
+    const args = pixelArgs(resolved, eventId);
+    log('pixel', ...args);
+    if (root.environment === 'production' && typeof root.fbq === 'function') root.fbq(...args);
+  }
+
+  // Resolves when gtag confirms the conversion, or never if gtag.js is blocked
+  // (callers race it against the 1.5 s timeout)
+  function fireGtag(sendTo) {
+    log('gtag conversion', sendTo);
+    if (root.environment !== 'production' || typeof root.gtag !== 'function') return Promise.resolve();
+    return new Promise((resolve) => {
+      root.gtag('event', 'conversion', { send_to: sendTo, event_callback: resolve, event_timeout: API_TIMEOUT_MS });
+    });
+  }
+
+  // Resolves when the API has stored the event and gtag has confirmed the
+  // conversion, or after 1.5 s. Never throws.
   async function track(name, props) {
     try {
       const resolved = resolveEvent(config.catalog, name, props);
@@ -368,11 +408,13 @@
         return;
       }
       const now = Date.now();
+      const eventId = root.crypto.randomUUID();
       const consent = readConsent();
       const identity = readIdentity(consent, now);
       const stored = storageGetJson(UTMS_KEY) || {};
+      const fbIds = readFbIds(stored);
       const payload = buildPayload({
-        eventId: root.crypto.randomUUID(),
+        eventId: eventId,
         name: name,
         mode: config.mode,
         now: now,
@@ -383,34 +425,88 @@
         sessionId: identity.sessionId,
         page: currentPage(),
         attribution: pickAttribution(stored),
-        fbp: readCookie(root.document.cookie, '_fbp'),
-        fbc: buildFbc(readCookie(root.document.cookie, '_fbc'), stored.fbclid, stored.fbclid_ts),
+        fbp: fbIds.fbp,
+        fbc: fbIds.fbc,
         props: props
       });
+      pageEvents = rememberEvent(pageEvents, { eventId: eventId, consent: payload.consent, resolved: resolved });
       log(name, payload);
-      if (typeof API_URL === 'undefined') return;
 
-      const request = fetch(API_URL + '/events', {
-        method: 'POST',
-        keepalive: true,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).catch((error) => log('api error', error));
-      await Promise.race([request, wait(API_TIMEOUT_MS)]);
+      const decision = decideDestinations(consent, resolved, config.mode);
+      if (decision.pixel) firePixel(resolved, eventId);
+      const waits = [];
+      if (decision.gtag) waits.push(fireGtag(resolved.sendTo));
+      if (typeof API_URL !== 'undefined') waits.push(postJson('/events', payload));
+      await Promise.race([Promise.all(waits), wait(API_TIMEOUT_MS)]);
     } catch (error) {
       log('track error', error);
     }
   }
 
+  // Tracks the event, then leaves the page. Returns false when the destination
+  // is not allowed. A web link for a new tab opens l/redirect.html in that tab
+  // right away, still inside the click, and that page tracks and navigates.
+  async function trackAndGo(name, props, url, target) {
+    const plan = navigationPlan(url, target, config.redirectHosts, root.location.href);
+    if (plan.action === 'reject') {
+      log('navigation rejected: ' + url);
+      return false;
+    }
+    if (plan.action === 'redirect') {
+      root.open(redirectUrl(plan.url, name, props), '_blank', 'noopener');
+      return true;
+    }
+    if (name) await track(name, props);
+    root.location.href = plan.url;
+    return true;
+  }
+
+  function readRedirect(search) {
+    return parseRedirect(search, config.catalog, config.redirectHosts, root.location.href);
+  }
+
+  // After the visitor accepts cookies: raise the consent of this page's earlier
+  // events on the API and fire the Pixel and gtag calls they missed
+  function upgradeConsent() {
+    try {
+      const consent = readConsent();
+      const plan = planConsentUpgrade(pageEvents, consent, config.mode);
+      pageEvents = plan.pageEvents;
+      if (!plan.eventIds.length) return;
+      const identity = readIdentity(consent, Date.now());
+      const fbIds = readFbIds(storageGetJson(UTMS_KEY) || {});
+      const body = buildConsentBody({
+        eventIds: plan.eventIds,
+        consent: consent,
+        anonId: identity.anonId,
+        sessionId: identity.sessionId,
+        fbp: fbIds.fbp,
+        fbc: fbIds.fbc
+      });
+      log('consent upgrade', body);
+      plan.pixel.forEach((entry) => firePixel(entry.resolved, entry.eventId));
+      plan.gtag.forEach((entry) => fireGtag(entry.resolved.sendTo));
+      if (typeof API_URL !== 'undefined') postJson('/events/consent', body);
+    } catch (error) {
+      log('consent upgrade error', error);
+    }
+  }
+
   if (typeof root.addEventListener === 'function') {
+    // setTimeout: fb_js.html and google_tag.html listen to the same events and
+    // must grant consent to the Pixel and gtag before the missed calls fire
+    root.addEventListener('cc:onConsent', () => setTimeout(upgradeConsent, 0));
     root.addEventListener('cc:onChange', () => {
       if (!readConsent().analytics) clearIdentity();
+      setTimeout(upgradeConsent, 0);
     });
   }
 
   return {
     configure: configure,
     track: track,
+    trackAndGo: trackAndGo,
+    readRedirect: readRedirect,
     resolveEvent: resolveEvent,
     buildFbc: buildFbc,
     isAllowedUrl: isAllowedUrl,
