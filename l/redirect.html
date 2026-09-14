@@ -16,7 +16,7 @@ sitemap: false
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // u: destination (must be in _data/redirect_hosts.yml), e: event, p: props, v: value
+    // u: web (http/https) destination (must be in _data/redirect_hosts.yml), e: event, p: props, v: value, t: ignored
     const redirect = AdtTracking.readRedirect(window.location.search);
     if (!redirect.url) {
       document.querySelector('.container').innerHTML = '<div class="alert alert-danger">Error: No se ha especificado una URL de destino válida.</div>';

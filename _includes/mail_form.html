@@ -81,6 +81,8 @@ novalidate>
     // The form leaves the page for Mailchimp: submit once the event is stored
     e.preventDefault();
     const form = e.target;
+    if (form.dataset.sending) return;
+    form.dataset.sending = '1';
     track('FormSubmit', form_prop).then(() => form.submit());
   }
   function FormView(e) {
