@@ -15,8 +15,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    uses: ./.github/workflows/tests.yml
+
   build:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout (with LFS)
         uses: actions/checkout@v7
