@@ -9,12 +9,19 @@ imagen y su título, sin carrusel y sin pop-up.
 
 El pop-up es un modal de Bootstrap: la X, el click fuera y el Esc ya cierran
 solos. El vídeo no se pide hasta que se abre, y se suelta al cerrar.
+
+Params:
+  name (opcional) - nombre del carrusel en los eventos, por defecto "canciones"
+  view_time (opcional) - ms a la vista para contar como visto, por defecto 1000
+
+Cada ficha va con `data-engage-type="song"` y el `slug` de la canción. El
+carrusel sigue `hidden` hasta que arranca el JS, así que sin JS no hay vista.
 {%- endcomment -%}
 <div class="songs">
 
   <div class="songs-list">
     {%- for song in site.data.canciones_retiros %}
-    <div class="song-card">
+    <div class="song-card" data-engage-type="song" data-engage-name="{{ song.slug }}">
       <button type="button" class="song-card-play"
               data-song-title="{{ song.title }}"
               data-song-video="{{ song.video }}"
@@ -29,7 +36,7 @@ solos. El vídeo no se pide hasta que se abre, y se suelta al cerrar.
     {%- endfor %}
   </div>
 
-  <div id="cancionesCarousel" class="carousel slide" hidden>
+  <div id="cancionesCarousel" class="carousel slide" data-engage-type="carousel" data-engage-name="{{ include.name | default: 'canciones' }}"{% if include.view_time %} data-engage-view-time="{{ include.view_time }}"{% endif %} hidden>
     <div class="carousel-inner"></div>
     <button class="carousel-control carousel-control-prev" type="button">
       <i class="fas fa-chevron-circle-left"></i>

@@ -4,6 +4,7 @@ Calendario de disponibilidad de la gira.
 Params:
   slug (optional) — calendario del API, por defecto "retiros"
   email (optional) — dirección de contacto del estado de error
+  name (optional) - nombre del carrusel en los eventos, por defecto "calendario"
 
 El estado de error va escrito aquí y visible. calendar.js lo sustituye por el
 calendario sólo si la llamada al API va bien: si el JS no corre, si falla la red
@@ -20,7 +21,7 @@ gira tiene un primer mes y un último, así que las flechas se apagan al llegar.
   <p class="calendar-error">
     Las fechas libres cambian cada semana y ahora mismo no puedo enseñártelas aquí.<br />
     Escríbele a <strong>Sala Oeste</strong> con la fecha de tu retiro y te dicen en el día si está libre.<br />
-    <a href="mailto:{{ calendar_email }}">{{ calendar_email }}</a>
+    <a href="mailto:{{ calendar_email }}" data-engage-type="button" data-engage-name="escribir-sala-oeste-error">{{ calendar_email }}</a>
   </p>
 
   <p class="calendar-empty" hidden>
@@ -38,7 +39,7 @@ gira tiene un primer mes y un último, así que las flechas se apagan al llegar.
       </span>
     </div>
 
-    <div id="calendarCarousel" class="carousel slide">
+    <div id="calendarCarousel" class="carousel slide" data-engage-type="carousel" data-engage-name="{{ include.name | default: 'calendario' }}">
       <div class="carousel-inner"></div>
       <button class="carousel-control carousel-control-prev" type="button">
         <i class="fas fa-chevron-circle-left"></i>
