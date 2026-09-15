@@ -403,3 +403,24 @@ test.describe('engagement catalog', () => {
     });
   });
 });
+
+// Entries start with "- " at column 0; slug is a two-space nested key
+function readSlugs(file) {
+  const lines = fs.readFileSync(path.join(__dirname, '../_data', file), 'utf8').split('\n');
+  return {
+    entries: lines.filter((line) => /^- /.test(line)).length,
+    slugs: lines.map((line) => line.match(/^  slug: (\S+)\s*$/)).filter(Boolean).map((match) => match[1])
+  };
+}
+
+test.describe('carousel slugs', () => {
+  ['canciones_retiros.yml', 'testimonios_retiros.yml'].forEach((file) => {
+    test.it(file + ' has a unique kebab-case slug per entry', () => {
+      const data = readSlugs(file);
+      assert.ok(data.entries > 0, 'no entries in ' + file);
+      assert.equal(data.slugs.length, data.entries);
+      assert.equal(new Set(data.slugs).size, data.slugs.length);
+      data.slugs.forEach((slug) => assert.match(slug, /^[a-z0-9]+(-[a-z0-9]+)*$/));
+    });
+  });
+});

@@ -5,11 +5,15 @@
 # se corta donde se corta, está en la sección 9 de
 # `_drafts/booking-retiros-concierto.md`.
 #
+# slug - nombre fijo del testimonio en los eventos, en kebab-case a partir del
+#   nick. No se cambia nunca, aunque cambie el nick.
+#
 # TODO: pedir permiso a las tres para publicarlos.
 # TODO: cada una necesita su avatar, foto cuadrada 320x320. Hasta que estén,
 #   las tres fichas apuntan al mismo fichero de relleno.
 
 - name: Nosotras Fest
+  slug: nosotras-fest
   nick: "@nosotras.fest"
   role: organizadoras
   avatar: /assets/images/avatar/nosotras_fest.jpg
@@ -20,6 +24,7 @@
 
   # Sin nombre real: la ficha se queda con el nick en la primera línea.
 - nick: "@soyclicmani"
+  slug: soyclicmani
   role: participante
   avatar: /assets/images/avatar/soyclicmani.jpg
   quote: >-
@@ -30,6 +35,7 @@
 
   # Sin nombre real: la ficha se queda con el nick en la primera línea.
 - nick: "@monicamarcos.es"
+  slug: monicamarcos-es
   role: participante
   avatar: /assets/images/avatar/monicamarcos_es.jpg
   quote: >-

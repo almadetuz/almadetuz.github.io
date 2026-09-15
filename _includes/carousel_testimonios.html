@@ -6,12 +6,18 @@ aquí en una lista plana y visible, y `testimonials.js` (sobre `cards.js`) la
 convierte en la tira del carrusel: las tres a la vista en escritorio, una en
 móvil. Si el JS no corre, la lectora sigue viendo las tres fichas enteras, sin
 carrusel.
+
+Params:
+  name (opcional) - nombre del carrusel en los eventos, por defecto "testimonios"
+  view_time (opcional) - ms a la vista para contar como visto, por defecto 1000
+
+Cada ficha va con `data-engage-type="testimony"` y el `slug` del testimonio.
 {%- endcomment -%}
 <div class="testimonials">
 
   <div class="testimonials-list">
     {%- for person in site.data.testimonios_retiros %}
-    <div class="testimonial-card">
+    <div class="testimonial-card" data-engage-type="testimony" data-engage-name="{{ person.slug }}">
       <div class="testimonial-card-head">
         <img class="testimonial-card-avatar" src="{{ person.avatar }}" alt="" loading="lazy" width="320" height="320">
         <div class="testimonial-card-who">
@@ -32,7 +38,7 @@ carrusel.
     {%- endfor %}
   </div>
 
-  <div id="testimoniosCarousel" class="carousel slide" hidden>
+  <div id="testimoniosCarousel" class="carousel slide" data-engage-type="carousel" data-engage-name="{{ include.name | default: 'testimonios' }}"{% if include.view_time %} data-engage-view-time="{{ include.view_time }}"{% endif %} hidden>
     <div class="carousel-inner"></div>
     <button class="carousel-control carousel-control-prev" type="button">
       <i class="fas fa-chevron-circle-left"></i>
