@@ -124,6 +124,10 @@ class Calendar {
   renderMonth(month) {
     const el = document.createElement('div');
     el.className = 'calendar-month';
+    // Viewed months are tracked by key (2026-10). CardCarousel observes them
+    // when it builds the strip.
+    el.dataset.engageType = 'calendar';
+    el.dataset.engageName = month.key;
 
     const name = document.createElement('h3');
     name.className = 'calendar-month-name';

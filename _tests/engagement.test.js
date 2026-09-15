@@ -341,7 +341,8 @@ const ENGAGEMENT_EVENTS = [
 // Sorted, unique event names each file passes as a literal to send(...) or
 // AdtEngagement.send(...). Tasks 3 and 4 add cards.js and songs.js.
 const SENDERS = {
-  'assets/js/engagement.js': ['ButtonClick', 'EmailCopy', 'EmailSelect']
+  'assets/js/engagement.js': ['ButtonClick', 'EmailCopy', 'EmailSelect'],
+  'assets/js/cards.js': ['CarouselArrow', 'CarouselPoint', 'CarouselSwipe']
 };
 
 // Minimal reader for the events section of _data/tracking_events.yml:

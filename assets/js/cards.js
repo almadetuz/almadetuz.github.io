@@ -72,8 +72,17 @@ class CardCarousel {
     // invalida aunque no se cruce el breakpoint.
     window.addEventListener('resize', () => this.place(false));
 
-    this.prev_el.addEventListener('click', () => this.step(-1));
-    this.next_el.addEventListener('click', () => this.step(1));
+    // Los eventos van con cada gesto, aunque el carrusel lo ignore porque aún
+    // está animando: miden la intención, no el movimiento. El paso automático
+    // no pasa por aquí y no manda nada.
+    this.prev_el.addEventListener('click', () => {
+      AdtEngagement.send('CarouselArrow', this.carousel_el, { direction: 'left' });
+      this.step(-1);
+    });
+    this.next_el.addEventListener('click', () => {
+      AdtEngagement.send('CarouselArrow', this.carousel_el, { direction: 'right' });
+      this.step(1);
+    });
 
     // Con el ratón o el foco dentro no se pasa solo, que si no se va justo
     // cuando la lectora se para a mirar.
@@ -108,6 +117,7 @@ class CardCarousel {
       const moved = e.changedTouches[0].clientX - touch_x;
       touch_x = null;
       if (Math.abs(moved) > CARDS_SWIPE) {
+        AdtEngagement.send('CarouselSwipe', this.carousel_el, { direction: AdtEngagement.swipeDirection(moved) });
         this.step(moved < 0 ? 1 : -1);
       }
     }, { passive: true });
@@ -133,6 +143,10 @@ class CardCarousel {
     this.shift = this.single || !this.wrap ? 0 : this.visible;
     this.index = Math.min(this.index, this.maxIndex());
     this.buildClones();
+    // Las copias nacen aquí, después de que engagement.js haya mirado la
+    // página, y se rehacen al cruzar el breakpoint. Llevan los mismos
+    // atributos que su ficha, así que una copia vista cuenta como la ficha.
+    AdtEngagement.observe(this.carousel_el);
     this.buildIndicators();
     this.place(false);
     this.cycle();
@@ -180,7 +194,10 @@ class CardCarousel {
       const button = document.createElement('button');
       button.type = 'button';
       button.setAttribute('aria-label', card.querySelector(this.options.label).textContent.trim());
-      button.addEventListener('click', () => this.slide(index));
+      button.addEventListener('click', () => {
+        AdtEngagement.send('CarouselPoint', this.carousel_el, { position: index + 1 });
+        this.slide(index);
+      });
       this.indicators.appendChild(button);
     });
   }
