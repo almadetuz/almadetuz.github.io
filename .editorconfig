@@ -23,4 +23,4 @@ indent_size = 2
 
 # change these settings to your own preference
 [*.{py,xml,js,tpl}]
-indent_size = 4
+indent_size = 2
