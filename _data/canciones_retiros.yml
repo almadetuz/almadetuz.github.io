@@ -3,14 +3,18 @@
 #   image — foto cuadrada, 480x480
 #   video — teaser de 20 s en 16:9, comprimido
 #   description - Breve descripcion de lo que habla la cancion
+#   slug - nombre fijo de la canción en los eventos, en kebab-case a partir
+#          del título. No se cambia nunca, aunque cambie el título.
 
 - title: La Magara
+  slug: la-magara
   image: /assets/images/catalogo/la_magara_la_cuadra_480.jpg
   video: /assets/videos/catalogo/la_magara_la_cuadra_640_v256_a128.mp4
   description: >-
     "Soy mujer salvaje, serena, danzante"
 
 - title: Alas en mí
+  slug: alas-en-mi
   image: /assets/images/catalogo/alas_en_mi_ciudad_del_alba_480.jpg
   video: /assets/videos/catalogo/alas_en_mi_ciudad_del_alba_640_v256_a128.mp4
   description: >-
@@ -19,6 +23,7 @@
     ternura, para elevar el vuelo y empezar de nuevo.
 
 - title: Dentro (feat. Iovis)
+  slug: dentro-feat-iovis
   image: /assets/images/catalogo/dentro_iovis_480.jpg
   video: /assets/videos/catalogo/dentro_iovis_640_v256_a128.mp4
   description: >-
@@ -27,6 +32,7 @@
     la montaña acabará cantando el deshielo.
 
 - title: Mi cuerpo
+  slug: mi-cuerpo
   image: /assets/images/catalogo/mi_cuerpo_ciudad_del_alba_480.jpg
   video: /assets/videos/catalogo/mi_cuerpo_ciudad_del_alba_640_v256_a128.mp4
   description: >-
@@ -35,6 +41,7 @@
     cordilleras propias que se habitan con toda libertad.
 
 - title: Nada hay que hacer
+  slug: nada-hay-que-hacer
   image: /assets/images/catalogo/nada_hay_que_hacer_480.jpg
   video: /assets/videos/catalogo/nada_hay_que_hacer_640_v256_a128.mp4
   description: >-
@@ -43,6 +50,7 @@
     latido breve de plenitud.
 
 - title: Raíces
+  slug: raices
   image: /assets/images/catalogo/raices_cordoba_480.jpg
   video: /assets/videos/catalogo/raices_cordoba_640_v256_a128.mp4
   description: >-
@@ -51,6 +59,7 @@
     hecho de serlo: si nacimos de las sombras, con la luz seremos hojas.
 
 - title: Sin el cuerpo no hay voz
+  slug: sin-el-cuerpo-no-hay-voz
   image: /assets/images/catalogo/sin_el_cuerpo_cordoba_480.jpg
   video: /assets/videos/catalogo/sin_el_cuerpo_cordoba_640_v256_a128.mp4
   description: >-
@@ -59,6 +68,7 @@
     él quien acompaña con el canto la existencia.
 
 - title: Universo
+  slug: universo
   image: /assets/images/catalogo/universo_libre_de_barrio_480.jpg
   video: /assets/videos/catalogo/universo_libre_de_barrio_640_v256_a128.mp4
   description: >-
@@ -67,6 +77,7 @@
     dentro del Universo, polvo eterno que forma parte de un todo más grande.
 
 - title: Volver
+  slug: volver
   image: /assets/images/catalogo/volver_voarte_480.jpg
   video: /assets/videos/catalogo/volver_voarte_640_v256_a128.mp4
   description: >-

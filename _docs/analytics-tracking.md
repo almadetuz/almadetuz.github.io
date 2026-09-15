@@ -241,6 +241,58 @@ ScrollEvent.add("element-id", (e) => {
 - Element visibility duration
 - Engagement patterns
 
+## Engagement Events (`/booking/retiros/`)
+
+`assets/js/engagement.js` (loaded by `_layouts/tracking.html`) sends what visitors see and do on the retiros page. Every event goes through `track()`, and the catalog entries in `_data/tracking_events.yml` are `{}`, so they only reach Amplitude, never the Meta Pixel, Meta CAPI or Google Ads.
+
+### Events
+
+All events carry `element_type` and `element_name`.
+
+| Event | element_type | Extra props | When |
+| --- | --- | --- | --- |
+| `ButtonView` | `button` | | Button viewed |
+| `ButtonClick` | `button` | | Button clicked |
+| `ViewContent` | `carousel`, `song`, `testimony`, `pricing`, `calendar` | | Element viewed |
+| `SongOpen` | `song` | | Song card clicked, modal opens |
+| `SongStart` | `song` | | Video starts or resumes |
+| `SongStop` | `song` | `play_time` | Visitor pauses the video with the modal open |
+| `SongClose` | `song` | `play_time` | Modal starts closing |
+| `CarouselArrow` | `carousel` | `direction` | Arrow clicked |
+| `CarouselSwipe` | `carousel` | `direction` | Swipe over 40 px |
+| `CarouselPoint` | `carousel` | `position` | Indicator dot clicked |
+| `EmailSelect` | `email` | | Selection touches the email (once per page load) |
+| `EmailCopy` | `email` | | Copy includes the email |
+
+- `direction`: `left` or `right`, where the carousel moves (a finger swipe to the left is `right`).
+- `position`: 1-based dot index.
+- `play_time`: whole seconds of wall-clock playing time. `SongStop` sends the stretch since the last `SongStart`; `SongClose` sends the total for that modal, including a stretch still running. Closing while playing sends only `SongClose`.
+- Carousel events are sent on every gesture, even when the carousel ignores it. Autoplay sends none.
+
+### Viewing rule
+
+An element is viewed when at least 50% of it is on screen, or its visible part covers at least 50% of the viewport. It has to stay viewed for `view_time` ms (1000 by default); the timer resets if it leaves, and all timers restart from zero when the tab comes back from the background. Each `element_type:element_name` sends its view event once per page load; a loop clone counts as its card.
+
+### Markup contract
+
+```html
+data-engage-type="button|carousel|song|testimony|pricing|calendar|email"
+data-engage-name="<constant-name>"
+data-engage-view-time="1000"   (optional)
+```
+
+`element_name` is a constant and must never contain an email address (the API drops it).
+
+| Include | Use |
+| --- | --- |
+| `engage_button.html` | `name`, `text`, `url`, optional `class`, `view_time`. Put `{: .text-center }` on the next line. |
+| `engage_view_start.html` / `engage_view_end.html` | Wrap a Markdown block: `type`, `name`, optional `view_time`. |
+| `engage_email.html` | Inline plain-text email: `email`, `name`. |
+| `carousel_canciones.html`, `carousel_testimonios.html` | Optional `name`, `view_time`. Cards are named by the `slug` field of `_data/canciones_retiros.yml` / `_data/testimonios_retiros.yml`; a slug never changes once published. |
+| `calendar_retiros.html` | Optional `name`. Months are named by `calendar.js` (`2026-10`). |
+
+Components that render after page load call `AdtEngagement.observe(element)`; `CardCarousel` already does it for its cards and clones. `AdtEngagement.send(name, element, extra)` does nothing when the element has no `data-engage-name`.
+
 ## Privacy and Compliance
 
 ### Cookie Consent Integration

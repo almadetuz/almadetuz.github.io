@@ -1,0 +1,12 @@
+{%- comment -%}
+Abre un bloque de Markdown que manda ViewContent (o ButtonView) al verse
+(assets/js/engagement.js). Se cierra con engage_view_end.html. Como
+block_container_start.html, deja dentro tablas y listas de atributos de
+kramdown: deja una línea en blanco después de la include.
+
+Params:
+  type (required) - pricing, carousel, song, testimony, calendar o button
+  name (required) - nombre fijo del bloque en los eventos, nunca un email
+  view_time (optional) - ms a la vista para contar como visto, por defecto 1000
+{%- endcomment -%}
+<div data-engage-type="{{ include.type }}" data-engage-name="{{ include.name }}"{% if include.view_time %} data-engage-view-time="{{ include.view_time }}"{% endif %} markdown="1">
