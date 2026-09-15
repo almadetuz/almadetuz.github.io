@@ -290,7 +290,7 @@ Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir a:
 
 **Sala Oeste Producciones**\\
 booking@salaoeste.com
-{: #fechas .text-center }
+{: .text-center }
 
 Escríbeles con tres datos:\\
 **cuándo** es tu retiro,\\
