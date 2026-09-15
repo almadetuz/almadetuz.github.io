@@ -342,7 +342,8 @@ const ENGAGEMENT_EVENTS = [
 // AdtEngagement.send(...). Tasks 3 and 4 add cards.js and songs.js.
 const SENDERS = {
   'assets/js/engagement.js': ['ButtonClick', 'EmailCopy', 'EmailSelect'],
-  'assets/js/cards.js': ['CarouselArrow', 'CarouselPoint', 'CarouselSwipe']
+  'assets/js/cards.js': ['CarouselArrow', 'CarouselPoint', 'CarouselSwipe'],
+  'assets/js/songs.js': ['SongClose', 'SongOpen', 'SongStart', 'SongStop']
 };
 
 // Minimal reader for the events section of _data/tracking_events.yml:
