@@ -20,6 +20,12 @@
 
   const DEFAULT_VIEW_TIME = 1000;
   const VIEWED_RATIO = 0.5;
+  const EMAIL_SELECT_DEBOUNCE_MS = 500;
+  // Every 5%, so elements taller than the screen still get updates
+  const THRESHOLDS = Array.from({ length: 21 }, (value, index) => index / 20);
+  const ENGAGE_SELECTOR = '[data-engage-type][data-engage-name]';
+  const BUTTON_SELECTOR = '[data-engage-type="button"][data-engage-name]';
+  const EMAIL_SELECTOR = '[data-engage-type="email"][data-engage-name]';
   const VIEW_EVENTS = {
     button: 'ButtonView',
     carousel: 'ViewContent',
@@ -153,7 +159,99 @@
     }
   }
 
+  // Browser side
+
+  const observed = new WeakSet();
+  const emailsSelected = new Set();
+  let tracker = null;
+  let observer = null;
+
+  function send(name, el, extra) {
+    const props = engageProps(el && el.dataset, extra);
+    if (!props) return;
+    root.track(name, props);
+  }
+
+  function onIntersect(entries) {
+    const viewport = { width: root.innerWidth, height: root.innerHeight };
+    entries.forEach((entry) => {
+      const dataset = entry.target.dataset;
+      if (isViewed(entry, viewport)) {
+        tracker.visible(viewKey(dataset), entry.target, viewTimeOf(dataset));
+      } else {
+        tracker.hidden(viewKey(dataset), entry.target);
+      }
+    });
+  }
+
+  // Safe to call again on the same scope: elements already observed are skipped
+  function observe(scope) {
+    if (!observer) return;
+    const elements = Array.from(scope.querySelectorAll(ENGAGE_SELECTOR));
+    if (typeof scope.matches === 'function' && scope.matches(ENGAGE_SELECTOR)) elements.unshift(scope);
+    elements.forEach((el) => {
+      if (observed.has(el) || !viewEventName(el.dataset.engageType)) return;
+      observed.add(el);
+      observer.observe(el);
+    });
+  }
+
+  function selectedEmails(selection) {
+    if (!selection || selection.isCollapsed || !selection.rangeCount) return [];
+    const range = selection.getRangeAt(0);
+    return Array.from(root.document.querySelectorAll(EMAIL_SELECTOR)).filter((el) => range.intersectsNode(el));
+  }
+
+  function init() {
+    const document = root.document;
+    tracker = new ViewTracker({
+      setTimeout: (fn, ms) => root.setTimeout(fn, ms),
+      clearTimeout: (id) => root.clearTimeout(id),
+      send: (key, el) => send(viewEventName(el.dataset.engageType), el)
+    });
+    // Created now, not on DOMContentLoaded: calendar.js and the carousels
+    // call observe() from their own listeners
+    if ('IntersectionObserver' in root) {
+      observer = new root.IntersectionObserver(onIntersect, { threshold: THRESHOLDS });
+    }
+    document.addEventListener('DOMContentLoaded', () => observe(document));
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        tracker.pauseAll();
+      } else {
+        tracker.resumeAll();
+      }
+    });
+
+    // Not trackAndGo: #fechas stays on the page and mailto: does not unload it
+    document.addEventListener('click', (event) => {
+      const button = event.target.closest(BUTTON_SELECTOR);
+      if (button) send('ButtonClick', button);
+    });
+
+    let selectTimer = null;
+    document.addEventListener('selectionchange', () => {
+      root.clearTimeout(selectTimer);
+      selectTimer = root.setTimeout(() => {
+        selectedEmails(document.getSelection()).forEach((el) => {
+          if (emailsSelected.has(el.dataset.engageName)) return;
+          emailsSelected.add(el.dataset.engageName);
+          send('EmailSelect', el);
+        });
+      }, EMAIL_SELECT_DEBOUNCE_MS);
+    });
+
+    document.addEventListener('copy', () => {
+      selectedEmails(document.getSelection()).forEach((el) => send('EmailCopy', el));
+    });
+  }
+
+  if (root.document && typeof root.document.addEventListener === 'function') init();
+
   return {
+    observe: observe,
+    send: send,
     VIEW_EVENTS: VIEW_EVENTS,
     isViewed: isViewed,
     viewEventName: viewEventName,

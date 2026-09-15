@@ -329,3 +329,75 @@ test.describe('engageProps', () => {
     assert.equal(engagement.engageProps(undefined, {}), null);
   });
 });
+
+const fs = require('node:fs');
+const path = require('node:path');
+
+const ENGAGEMENT_EVENTS = [
+  'ButtonView', 'ButtonClick', 'ViewContent', 'SongOpen', 'SongStart', 'SongStop', 'SongClose',
+  'CarouselArrow', 'CarouselSwipe', 'CarouselPoint', 'EmailSelect', 'EmailCopy'
+];
+
+// Sorted, unique event names each file passes as a literal to send(...) or
+// AdtEngagement.send(...). Tasks 3 and 4 add cards.js and songs.js.
+const SENDERS = {
+  'assets/js/engagement.js': ['ButtonClick', 'EmailCopy', 'EmailSelect']
+};
+
+// Minimal reader for the events section of _data/tracking_events.yml:
+// entry name -> inline value and nested keys
+function readCatalogEvents() {
+  const lines = fs.readFileSync(path.join(__dirname, '../_data/tracking_events.yml'), 'utf8').split('\n');
+  const events = {};
+  let inEvents = false;
+  let current = null;
+  for (const line of lines) {
+    if (/^\S/.test(line)) {
+      inEvents = /^events:\s*$/.test(line);
+      current = null;
+      continue;
+    }
+    if (!inEvents) continue;
+    const name = line.match(/^  ([A-Za-z]+):\s*(.*)$/);
+    if (name) {
+      current = { inline: name[2].trim(), keys: [] };
+      events[name[1]] = current;
+      continue;
+    }
+    const key = line.match(/^    (\w+):/);
+    if (key && current) current.keys.push(key[1]);
+  }
+  return events;
+}
+
+function sentNames(file) {
+  const source = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
+  const names = Array.from(source.matchAll(/send\('([A-Za-z]+)'/g), (match) => match[1]);
+  return Array.from(new Set(names)).sort();
+}
+
+test.describe('engagement catalog', () => {
+  const events = readCatalogEvents();
+
+  test.it('has every engagement event as an empty entry (Amplitude only)', () => {
+    ENGAGEMENT_EVENTS.forEach((name) => {
+      assert.ok(events[name], 'missing from catalog: ' + name);
+      assert.equal(events[name].inline, '{}', name + ' must be {}');
+      assert.deepEqual(events[name].keys, [], name + ' must have no meta or gads');
+    });
+  });
+
+  test.it('covers every view event', () => {
+    Object.values(engagement.VIEW_EVENTS).forEach((name) => {
+      assert.ok(ENGAGEMENT_EVENTS.includes(name), name);
+    });
+  });
+
+  Object.keys(SENDERS).forEach((file) => {
+    test.it(file + ' sends only its engagement events', () => {
+      const names = sentNames(file);
+      assert.deepEqual(names, SENDERS[file]);
+      names.forEach((name) => assert.ok(ENGAGEMENT_EVENTS.includes(name), name));
+    });
+  });
+});
