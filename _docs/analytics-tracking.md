@@ -284,7 +284,7 @@ data-engage-view-time="1000"   (optional)
 `element_name` is a constant and must never contain an email address (the API drops it).
 
 | Include | Use |
-| --- | --- | --- |
+| --- | --- |
 | `engage_button.html` | `name`, `text`, `url`, optional `class`, `view_time`. Put `{: .text-center }` on the next line. |
 | `engage_view_start.html` / `engage_view_end.html` | Wrap a Markdown block: `type`, `name`, optional `view_time`. |
 | `engage_email.html` | Inline plain-text email: `email`, `name`. |
