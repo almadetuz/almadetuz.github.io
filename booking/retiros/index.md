@@ -66,7 +66,7 @@ Y estas son las canciones que suelo cantar:
 
 {% include carousel_canciones.html %}
 
-<a class="btn btn-primary" href="#fechas">Ver fechas disponibles</a>
+{% include engage_button.html name="ver-fechas-canciones" text="Ver fechas disponibles" url="#fechas" %}
 {: .text-center }
 
 {% include block_container_end.html %}
@@ -111,7 +111,7 @@ Salieron de lo que pasó en esos círculos en los que se comparten tantas **emoc
 
 Y, sinceramente, creo que ésto **es lo que más aporta a tu retiro**.
 
-<a class="btn btn-primary" href="#fechas">Ver fechas disponibles</a>
+{% include engage_button.html name="ver-fechas-quien-canta" text="Ver fechas disponibles" url="#fechas" %}
 {: .text-center }
 
 {% include block_container_end.html %}
@@ -191,6 +191,8 @@ Te lo desgloso, porque un precio sin desglose no se puede juzgar.
 
 Si montaras esta noche por tu cuenta, contratando cada pieza por separado, saldría más o menos así:
 
+{% include engage_view_start.html type="pricing" name="desglose" %}
+
 | | | |
 |---|---|---:|
 | **Artista** | Un músico solista.<br>Concierto de 60 a 90 minutos, con la preparación y la adaptación previas a tu retiro. | 250 € |
@@ -199,7 +201,11 @@ Si montaras esta noche por tu cuenta, contratando cada pieza por separado, saldr
 | | **Total** | **630 €** |
 {: .table .table-desglose }
 
+{% include engage_view_end.html %}
+
 Eso es lo que cuesta. No está inflado, son tarifas de mercado y puedes pedir presupuesto a una productora y comprobarlo.
+
+{% include engage_view_start.html type="pricing" name="oferta" %}
 
 ### Pero ahora cuesta mucho menos
 {: .text-center }
@@ -213,13 +219,15 @@ IVA no incluido.\\
 El desplazamiento y el alojamiento se presupuestan según dónde estéis.
 {: .pricing-conditions .text-center }
 
+{% include engage_view_end.html %}
+
 No es un descuento de rebajas.
 
 Es que en las primeras fechas de la gira, Sala Oeste Producciones no cobra por el equipo y el técnico. Confían en que lo que te propongo es algo especial.
 
 Cuando se cierren las primeras fechas, el precio subirá. ¿Cuánto? No lo sé, de eso se encarga Sala Oeste.
 
-<a class="btn btn-primary" href="#fechas">Ver fechas libres</a>
+{% include engage_button.html name="ver-fechas-precio" text="Ver fechas libres" url="#fechas" %}
 {: .text-center }
 
 {% include block_container_end.html %}
@@ -289,7 +297,7 @@ Estos son todos los dias que hay disponibles. Los verdes siguen libres.
 Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir a:
 
 **Sala Oeste Producciones**\\
-booking@salaoeste.com
+{% include engage_email.html email="booking@salaoeste.com" name="booking-salaoeste" %}
 {: .text-center }
 
 Escríbeles con tres datos:\\
@@ -300,7 +308,7 @@ y **los detalles técnicos**\\
 
 Te contestarán confirmando la disponibilidad y el presupuesto.
 
-<a class="btn btn-primary" href="mailto:booking@salaoeste.com">Escribir a Sala Oeste</a>
+{% include engage_button.html name="escribir-sala-oeste" text="Escribir a Sala Oeste" url="mailto:booking@salaoeste.com?subject=Concierto%20en%20mi%20retiro" %}
 {: .text-center }
 
 Si te encaja el presupuesto, entonces hablamos tú y yo (Amanda) de lo importante: el contenido del concierto y cómo integrarlo dentro de tu retiro para que aporte lo más posible.

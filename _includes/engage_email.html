@@ -1,0 +1,14 @@
+{%- comment -%}
+Email en texto, sin enlace, que manda EmailSelect al seleccionarse y
+EmailCopy al copiarse (assets/js/engagement.js). No manda evento de vista.
+
+Params:
+  email (required) - la dirección que se enseña
+  name (required) - nombre fijo en los eventos, nunca el propio email: el API
+    borra cualquier valor que parezca un email
+
+Sale en línea y sin salto al final, para poder ir dentro de un párrafo con su
+`{: .text-center }` debajo.
+{%- endcomment -%}
+<span data-engage-type="email" data-engage-name="{{ include.name }}">{{ include.email }}</span>
+{%- comment -%} El -%} de esta etiqueta se come el salto de línea final del fichero. {%- endcomment -%}
