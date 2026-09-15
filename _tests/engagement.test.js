@@ -1,0 +1,331 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const engagement = require('../assets/js/engagement.js');
+
+function entry(overrides) {
+  return Object.assign({
+    isIntersecting: true,
+    intersectionRatio: 1,
+    boundingClientRect: { width: 300, height: 400 },
+    intersectionRect: { width: 300, height: 400 },
+    rootBounds: { width: 1000, height: 800 }
+  }, overrides);
+}
+
+const viewport = { width: 1000, height: 800 };
+
+test.describe('isViewed', () => {
+  test.it('counts an element half on screen', () => {
+    const half = entry({ intersectionRatio: 0.5, intersectionRect: { width: 300, height: 200 } });
+    assert.equal(engagement.isViewed(half, viewport), true);
+  });
+
+  test.it('does not count an element 49% on screen', () => {
+    const almost = entry({ intersectionRatio: 0.49, intersectionRect: { width: 300, height: 196 } });
+    assert.equal(engagement.isViewed(almost, viewport), false);
+  });
+
+  test.it('counts an element three viewports tall that covers the viewport', () => {
+    const tall = entry({
+      intersectionRatio: 800 / 2400,
+      boundingClientRect: { width: 1000, height: 2400 },
+      intersectionRect: { width: 1000, height: 800 }
+    });
+    assert.equal(engagement.isViewed(tall, viewport), true);
+  });
+
+  test.it('does not count a tall element covering less than half the viewport', () => {
+    const tall = entry({
+      intersectionRatio: 300 / 2400,
+      boundingClientRect: { width: 1000, height: 2400 },
+      intersectionRect: { width: 1000, height: 300 }
+    });
+    assert.equal(engagement.isViewed(tall, viewport), false);
+  });
+
+  test.it('counts a narrow card fully on screen', () => {
+    const card = entry({
+      boundingClientRect: { width: 200, height: 300 },
+      intersectionRect: { width: 200, height: 300 }
+    });
+    assert.equal(engagement.isViewed(card, viewport), true);
+  });
+
+  test.it('falls back to the viewport size when rootBounds is null', () => {
+    const tall = entry({
+      rootBounds: null,
+      intersectionRatio: 800 / 2400,
+      boundingClientRect: { width: 1000, height: 2400 },
+      intersectionRect: { width: 1000, height: 800 }
+    });
+    assert.equal(engagement.isViewed(tall, { width: 1000, height: 800 }), true);
+    assert.equal(engagement.isViewed(tall, { width: 1000, height: 2000 }), false);
+  });
+
+  test.it('does not count an element that is not intersecting', () => {
+    const away = entry({ isIntersecting: false, intersectionRatio: 0, intersectionRect: { width: 0, height: 0 } });
+    assert.equal(engagement.isViewed(away, viewport), false);
+  });
+
+  test.it('does not count an element with no size', () => {
+    const empty = entry({ boundingClientRect: { width: 0, height: 0 }, intersectionRect: { width: 0, height: 0 } });
+    assert.equal(engagement.isViewed(empty, viewport), false);
+  });
+});
+
+function makeTracker(sent) {
+  return new engagement.ViewTracker({
+    setTimeout: (fn, ms) => setTimeout(fn, ms),
+    clearTimeout: (id) => clearTimeout(id),
+    send: (key, el) => sent.push([key, el])
+  });
+}
+
+test.describe('ViewTracker', () => {
+  test.it('sends after the view time', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('song:la-magara', 'card', 1000);
+    t.mock.timers.tick(999);
+    assert.deepEqual(sent, []);
+    t.mock.timers.tick(1);
+    assert.deepEqual(sent, [['song:la-magara', 'card']]);
+  });
+
+  test.it('does not send when hidden before the view time', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('pricing:oferta', 'block', 1000);
+    t.mock.timers.tick(900);
+    tracker.hidden('pricing:oferta', 'block');
+    t.mock.timers.tick(5000);
+    assert.deepEqual(sent, []);
+  });
+
+  test.it('restarts from zero when viewed again', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('pricing:oferta', 'block', 1000);
+    t.mock.timers.tick(900);
+    tracker.hidden('pricing:oferta', 'block');
+    tracker.visible('pricing:oferta', 'block', 1000);
+    t.mock.timers.tick(900);
+    assert.deepEqual(sent, []);
+    t.mock.timers.tick(100);
+    assert.equal(sent.length, 1);
+  });
+
+  test.it('sends once per key', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('button:ver-fechas-precio', 'a', 1000);
+    t.mock.timers.tick(1000);
+    tracker.hidden('button:ver-fechas-precio', 'a');
+    tracker.visible('button:ver-fechas-precio', 'a', 1000);
+    t.mock.timers.tick(5000);
+    assert.equal(sent.length, 1);
+  });
+
+  test.it('uses a custom view time', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('carousel:canciones', 'carousel', 3000);
+    t.mock.timers.tick(2999);
+    assert.deepEqual(sent, []);
+    t.mock.timers.tick(1);
+    assert.equal(sent.length, 1);
+  });
+
+  test.it('times each key on its own', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('song:a', 'a', 1000);
+    t.mock.timers.tick(500);
+    tracker.visible('song:b', 'b', 1000);
+    t.mock.timers.tick(500);
+    assert.deepEqual(sent, [['song:a', 'a']]);
+    t.mock.timers.tick(500);
+    assert.deepEqual(sent, [['song:a', 'a'], ['song:b', 'b']]);
+  });
+
+  test.it('keeps the timer while another element of the key is viewed', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('song:la-magara', 'clone', 1000);
+    t.mock.timers.tick(600);
+    tracker.visible('song:la-magara', 'card', 1000);
+    tracker.hidden('song:la-magara', 'clone');
+    t.mock.timers.tick(399);
+    assert.deepEqual(sent, []);
+    t.mock.timers.tick(1);
+    assert.deepEqual(sent, [['song:la-magara', 'card']]);
+  });
+
+  test.it('pauseAll cancels the timers and resumeAll restarts them from zero', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('pricing:desglose', 'table', 1000);
+    t.mock.timers.tick(900);
+    tracker.pauseAll();
+    t.mock.timers.tick(5000);
+    assert.deepEqual(sent, []);
+    tracker.resumeAll();
+    t.mock.timers.tick(999);
+    assert.deepEqual(sent, []);
+    t.mock.timers.tick(1);
+    assert.equal(sent.length, 1);
+  });
+
+  test.it('resumeAll does not restart keys hidden while paused', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.visible('pricing:desglose', 'table', 1000);
+    tracker.pauseAll();
+    tracker.hidden('pricing:desglose', 'table');
+    tracker.resumeAll();
+    t.mock.timers.tick(5000);
+    assert.deepEqual(sent, []);
+  });
+
+  test.it('does not start timers while paused', (t) => {
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    const sent = [];
+    const tracker = makeTracker(sent);
+    tracker.pauseAll();
+    tracker.visible('pricing:desglose', 'table', 1000);
+    t.mock.timers.tick(5000);
+    assert.deepEqual(sent, []);
+    tracker.resumeAll();
+    t.mock.timers.tick(1000);
+    assert.equal(sent.length, 1);
+  });
+});
+
+test.describe('swipeDirection', () => {
+  test.it('sends right when the finger moves left', () => {
+    assert.equal(engagement.swipeDirection(-60), 'right');
+  });
+
+  test.it('sends left when the finger moves right', () => {
+    assert.equal(engagement.swipeDirection(60), 'left');
+  });
+});
+
+test.describe('PlayClock', () => {
+  test.it('stop returns the stretch in seconds', () => {
+    const clock = new engagement.PlayClock();
+    clock.start(1000);
+    assert.equal(clock.stop(6000), 5);
+  });
+
+  test.it('stop without start returns 0', () => {
+    const clock = new engagement.PlayClock();
+    assert.equal(clock.stop(5000), 0);
+  });
+
+  test.it('stop twice returns 0 the second time', () => {
+    const clock = new engagement.PlayClock();
+    clock.start(0);
+    clock.stop(2000);
+    assert.equal(clock.stop(4000), 0);
+  });
+
+  test.it('ignores start while already running', () => {
+    const clock = new engagement.PlayClock();
+    clock.start(0);
+    clock.start(2000);
+    assert.equal(clock.stop(4000), 4);
+  });
+
+  test.it('total adds the stretches and the running one', () => {
+    const clock = new engagement.PlayClock();
+    clock.start(0);
+    clock.stop(3000);
+    clock.start(10000);
+    assert.equal(clock.total(12000), 5);
+  });
+
+  test.it('total without a running stretch is the sum of stretches', () => {
+    const clock = new engagement.PlayClock();
+    clock.start(0);
+    clock.stop(3000);
+    assert.equal(clock.total(99000), 3);
+  });
+
+  test.it('rounds to the nearest second', () => {
+    const clock = new engagement.PlayClock();
+    clock.start(0);
+    assert.equal(clock.stop(1499), 1);
+    clock.start(2000);
+    assert.equal(clock.stop(3500), 2);
+    assert.equal(clock.total(3500), 3);
+  });
+});
+
+test.describe('viewEventName', () => {
+  test.it('maps buttons to ButtonView', () => {
+    assert.equal(engagement.viewEventName('button'), 'ButtonView');
+  });
+
+  test.it('maps content types to ViewContent', () => {
+    ['carousel', 'song', 'testimony', 'pricing', 'calendar'].forEach((type) => {
+      assert.equal(engagement.viewEventName(type), 'ViewContent', type);
+    });
+  });
+
+  test.it('has no view event for email or unknown types', () => {
+    assert.equal(engagement.viewEventName('email'), null);
+    assert.equal(engagement.viewEventName('constructor'), null);
+    assert.equal(engagement.viewEventName(undefined), null);
+  });
+});
+
+test.describe('viewKey', () => {
+  test.it('joins type and name', () => {
+    assert.equal(engagement.viewKey({ engageType: 'song', engageName: 'la-magara' }), 'song:la-magara');
+  });
+});
+
+test.describe('viewTimeOf', () => {
+  test.it('defaults to 1000 ms', () => {
+    assert.equal(engagement.viewTimeOf({}), 1000);
+    assert.equal(engagement.viewTimeOf({ engageViewTime: 'abc' }), 1000);
+  });
+
+  test.it('reads data-engage-view-time', () => {
+    assert.equal(engagement.viewTimeOf({ engageViewTime: '2500' }), 2500);
+    assert.equal(engagement.viewTimeOf({ engageViewTime: '0' }), 0);
+  });
+});
+
+test.describe('engageProps', () => {
+  test.it('builds element props with the extra props', () => {
+    const dataset = { engageType: 'carousel', engageName: 'canciones' };
+    assert.deepEqual(engagement.engageProps(dataset, { direction: 'right' }), {
+      element_type: 'carousel',
+      element_name: 'canciones',
+      direction: 'right'
+    });
+  });
+
+  test.it('works without extra props', () => {
+    assert.deepEqual(engagement.engageProps({ engageType: 'button', engageName: 'x' }), {
+      element_type: 'button',
+      element_name: 'x'
+    });
+  });
+
+  test.it('returns null without a name', () => {
+    assert.equal(engagement.engageProps({ engageType: 'carousel' }, {}), null);
+    assert.equal(engagement.engageProps(undefined, {}), null);
+  });
+});
