@@ -1,0 +1,17 @@
+{%- comment -%}
+Botón que manda ButtonView al verse y ButtonClick al pulsarse
+(assets/js/engagement.js).
+
+Params:
+  name (required) - nombre fijo del botón en los eventos, nunca un email
+  text (required) - texto del botón
+  url (required) - destino. El asunto de un mailto va ya escrito aquí con %20:
+    url_encode pone "+", y muchos clientes de correo lo enseñan tal cual
+  class (optional) - por defecto "btn btn-primary"
+  view_time (optional) - ms a la vista para contar como visto, por defecto 1000
+
+Sale en una sola línea y sin salto al final: con un salto, kramdown ve una
+línea en blanco y el `{: .text-center }` de debajo deja de ir al párrafo.
+{%- endcomment -%}
+<a class="{{ include.class | default: 'btn btn-primary' }}" href="{{ include.url }}" data-engage-type="button" data-engage-name="{{ include.name }}"{% if include.view_time %} data-engage-view-time="{{ include.view_time }}"{% endif %}>{{ include.text }}</a>
+{%- comment -%} El -%} de esta etiqueta se come el salto de línea final del fichero. {%- endcomment -%}
