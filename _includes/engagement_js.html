@@ -1,0 +1,9 @@
+{%- comment -%}
+Los eventos de interacción (`engagement.js`): vistas, pulsaciones de botón,
+gestos de los carruseles, tiempo de canción y selección del email.
+
+Va después de `scroll_js.html` y antes del contenido, para que
+`window.AdtEngagement` exista cuando arranquen `cards.js`, `songs.js` y
+`calendar.js`.
+{%- endcomment -%}
+<script src="/assets/js/engagement.js?v={{ site.time | date: '%s' }}"></script>
