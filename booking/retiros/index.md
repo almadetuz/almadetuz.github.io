@@ -66,7 +66,11 @@ Y estas son las canciones que suelo cantar:
 
 {% include carousel_canciones.html %}
 
-{% include engage_button.html name="ver-fechas-canciones" text="Ver fechas disponibles" url="#fechas" %}
+{% include engage_button.html
+  name="ver-fechas-canciones"
+  text="Ver fechas disponibles"
+  url="#fechas"
+%}
 {: .text-center }
 
 {% include block_container_end.html %}
@@ -111,7 +115,11 @@ Salieron de lo que pasó en esos círculos en los que se comparten tantas **emoc
 
 Y, sinceramente, creo que ésto **es lo que más aporta a tu retiro**.
 
-{% include engage_button.html name="ver-fechas-quien-canta" text="Ver fechas disponibles" url="#fechas" %}
+{% include engage_button.html
+  name="ver-fechas-quien-canta"
+  text="Ver fechas disponibles"
+  url="#fechas"
+%}
 {: .text-center }
 
 {% include block_container_end.html %}
@@ -227,7 +235,11 @@ Es que en las primeras fechas de la gira, Sala Oeste Producciones no cobra por e
 
 Cuando se cierren las primeras fechas, el precio subirá. ¿Cuánto? No lo sé, de eso se encarga Sala Oeste.
 
-{% include engage_button.html name="ver-fechas-precio" text="Ver fechas libres" url="#fechas" %}
+{% include engage_button.html
+  name="ver-fechas-precio"
+  text="Ver fechas libres"
+  url="#fechas"
+%}
 {: .text-center }
 
 {% include block_container_end.html %}
@@ -297,7 +309,10 @@ Estos son todos los dias que hay disponibles. Los verdes siguen libres.
 Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir a:
 
 **Sala Oeste Producciones**\\
-{% include engage_email.html email="booking@salaoeste.com" name="booking-salaoeste" %}
+{% include engage_email.html
+  email="booking@salaoeste.com"
+  name="booking-salaoeste"
+%}
 {: .text-center }
 
 Escríbeles con tres datos:\\
@@ -308,7 +323,11 @@ y **los detalles técnicos**\\
 
 Te contestarán confirmando la disponibilidad y el presupuesto.
 
-{% include engage_button.html name="escribir-sala-oeste" text="Escribir a Sala Oeste" url="mailto:booking@salaoeste.com?subject=Concierto%20en%20mi%20retiro" %}
+{% include engage_button.html
+  name="escribir-sala-oeste"
+  text="Escribir a Sala Oeste"
+  url="mailto:booking@salaoeste.com?subject=Quiero%20presupuesto%20para%20un%20concierto%20en%20mi%20retiro"
+%}
 {: .text-center }
 
 Si te encaja el presupuesto, entonces hablamos tú y yo (Amanda) de lo importante: el contenido del concierto y cómo integrarlo dentro de tu retiro para que aporte lo más posible.
