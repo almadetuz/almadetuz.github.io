@@ -27,6 +27,13 @@
   const ENGAGE_SELECTOR = '[data-engage-type][data-engage-name]';
   const BUTTON_SELECTOR = '[data-engage-type="button"][data-engage-name]';
   const EMAIL_SELECTOR = '[data-engage-type="email"][data-engage-name]';
+  const LINKS_SELECTOR = '[data-engage-type="links"][data-engage-name]';
+  const LINK_SELECTOR = LINKS_SELECTOR + ' a[data-engage-platform]';
+  const BOOTSTRAP_CAROUSEL_SELECTOR = '[data-engage-type="carousel"][data-engage-name][data-engage-carousel="bootstrap"]';
+  const FORM_SELECTOR = 'form[data-engage-type="form"][data-engage-name]';
+  const PLAYER_SELECTOR = 'iframe[data-engage-type="player"][data-engage-name]';
+  // Bootstrap's own SWIPE_THRESHOLD
+  const SWIPE_THRESHOLD = 40;
   const VIEW_EVENTS = {
     button: 'ButtonView',
     carousel: 'ViewContent',
@@ -177,6 +184,7 @@
 
   const observed = new WeakSet();
   const emailsSelected = new Set();
+  const sentOnce = new Set();
   let tracker = null;
   let observer = null;
 
@@ -208,6 +216,14 @@
       observed.add(el);
       observer.observe(el);
     });
+  }
+
+  // True only the first time for this event and element name in the page load
+  function firstTime(name, el) {
+    const key = name + ':' + el.dataset.engageName;
+    if (sentOnce.has(key)) return false;
+    sentOnce.add(key);
+    return true;
   }
 
   function selectedEmails(selection) {
@@ -242,6 +258,70 @@
     document.addEventListener('click', (event) => {
       const button = event.target.closest(BUTTON_SELECTOR);
       if (button) send('ButtonClick', button);
+    });
+
+    // Not trackAndGo either: the icons open in a new tab
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest(LINK_SELECTOR);
+      if (link) send('ButtonClick', link.closest(LINKS_SELECTOR), { platform: link.dataset.engagePlatform });
+    });
+
+    // Bootstrap carousels only: CardCarousel sends its own gestures from cards.js
+    document.addEventListener('click', (event) => {
+      const carousel = event.target.closest(BOOTSTRAP_CAROUSEL_SELECTOR);
+      if (!carousel) return;
+      const arrow = event.target.closest('[data-bs-slide]');
+      if (arrow) send('CarouselArrow', carousel, { direction: arrowDirection(arrow.dataset.bsSlide) });
+      const dot = event.target.closest('[data-bs-slide-to]');
+      const position = dot ? pointPosition(dot.dataset.bsSlideTo) : null;
+      if (position) send('CarouselPoint', carousel, { position: position });
+    });
+
+    let swipe = null;
+    document.addEventListener('touchstart', (event) => {
+      const carousel = event.target.closest(BOOTSTRAP_CAROUSEL_SELECTOR);
+      swipe = carousel ? { carousel: carousel, x: event.touches[0].clientX } : null;
+    }, { passive: true });
+    document.addEventListener('touchend', (event) => {
+      if (!swipe) return;
+      const dx = event.changedTouches[0].clientX - swipe.x;
+      if (Math.abs(dx) > SWIPE_THRESHOLD) send('CarouselSwipe', swipe.carousel, { direction: swipeDirection(dx) });
+      swipe = null;
+    }, { passive: true });
+
+    const onEmailField = (event) => {
+      if (!event.target.matches('input[type="email"]')) return;
+      const form = event.target.closest(FORM_SELECTOR);
+      if (form && firstTime('FormStart', form)) send('FormStart', form);
+    };
+    document.addEventListener('focusin', onEmailField);
+    document.addEventListener('input', onEmailField);
+
+    document.addEventListener('change', (event) => {
+      if (!event.target.matches('input[name="gdpr"]') || !event.target.checked) return;
+      const form = event.target.closest(FORM_SELECTOR);
+      if (form && firstTime('FormConsent', form)) send('FormConsent', form);
+    });
+
+    // A click inside a cross-origin iframe moves the focus into it: the page
+    // only sees its window blur, and activeElement is the iframe right after
+    root.addEventListener('blur', () => {
+      root.setTimeout(() => {
+        const player = document.activeElement;
+        if (player && player.matches(PLAYER_SELECTOR) && firstTime('PlayerClick', player)) send('PlayerClick', player);
+      }, 0);
+    });
+
+    // After a click in player A the focus stays in A, so a click in player B
+    // would not blur the window again. Hand the focus back to the page when
+    // the pointer enters another player (A loses keyboard control).
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll(PLAYER_SELECTOR).forEach((player) => {
+        player.addEventListener('pointerenter', () => {
+          const focused = document.activeElement;
+          if (focused && focused !== player && focused.matches(PLAYER_SELECTOR)) focused.blur();
+        });
+      });
     });
 
     let selectTimer = null;
