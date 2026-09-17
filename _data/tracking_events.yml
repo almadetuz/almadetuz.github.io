@@ -58,7 +58,7 @@ events:
   FbRevoke: {}
   GaGrant: {}
   GaRevoke: {}
-  # /booking/retiros engagement (Amplitude only)
+  # Engagement (Amplitude only)
   ButtonView: {}
   ButtonClick: {}
   ViewContent: {}
@@ -71,3 +71,6 @@ events:
   CarouselPoint: {}
   EmailSelect: {}
   EmailCopy: {}
+  FormStart: {}
+  FormConsent: {}
+  PlayerClick: {}

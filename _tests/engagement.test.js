@@ -220,6 +220,28 @@ test.describe('swipeDirection', () => {
   });
 });
 
+test.describe('arrowDirection', () => {
+  test.it('sends left for prev', () => {
+    assert.equal(engagement.arrowDirection('prev'), 'left');
+  });
+
+  test.it('sends right for next', () => {
+    assert.equal(engagement.arrowDirection('next'), 'right');
+  });
+});
+
+test.describe('pointPosition', () => {
+  test.it('turns the 0-based data-bs-slide-to into a 1-based position', () => {
+    assert.equal(engagement.pointPosition('0'), 1);
+    assert.equal(engagement.pointPosition('5'), 6);
+  });
+
+  test.it('returns null for a value that is not a number', () => {
+    assert.equal(engagement.pointPosition('x'), null);
+    assert.equal(engagement.pointPosition(undefined), null);
+  });
+});
+
 test.describe('PlayClock', () => {
   test.it('stop returns the stretch in seconds', () => {
     const clock = new engagement.PlayClock();
@@ -277,13 +299,15 @@ test.describe('viewEventName', () => {
   });
 
   test.it('maps content types to ViewContent', () => {
-    ['carousel', 'song', 'testimony', 'pricing', 'calendar'].forEach((type) => {
+    ['carousel', 'song', 'testimony', 'pricing', 'calendar', 'links', 'video'].forEach((type) => {
       assert.equal(engagement.viewEventName(type), 'ViewContent', type);
     });
   });
 
-  test.it('has no view event for email or unknown types', () => {
+  test.it('has no view event for email, form, player or unknown types', () => {
     assert.equal(engagement.viewEventName('email'), null);
+    assert.equal(engagement.viewEventName('form'), null);
+    assert.equal(engagement.viewEventName('player'), null);
     assert.equal(engagement.viewEventName('constructor'), null);
     assert.equal(engagement.viewEventName(undefined), null);
   });
@@ -335,7 +359,8 @@ const path = require('node:path');
 
 const ENGAGEMENT_EVENTS = [
   'ButtonView', 'ButtonClick', 'ViewContent', 'SongOpen', 'SongStart', 'SongStop', 'SongClose',
-  'CarouselArrow', 'CarouselSwipe', 'CarouselPoint', 'EmailSelect', 'EmailCopy'
+  'CarouselArrow', 'CarouselSwipe', 'CarouselPoint', 'EmailSelect', 'EmailCopy',
+  'FormStart', 'FormConsent', 'PlayerClick'
 ];
 
 // Sorted, unique event names each file passes as a literal to send(...) or

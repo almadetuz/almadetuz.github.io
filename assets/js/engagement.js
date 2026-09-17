@@ -1,12 +1,13 @@
 /*
- * Engagement events for /booking/retiros/: element views, button clicks,
- * carousel gestures, song play time and email selection. Every event ends in
- * track() from site.js, and their catalog entries have no meta and no gads, so
- * they only reach Amplitude.
+ * Engagement events: element views, button and link clicks, carousel
+ * gestures, song play time, email selection, subscription form progress and
+ * Bandcamp player clicks. Every event ends in track() from site.js, and their
+ * catalog entries have no meta and no gads, so they only reach Amplitude.
  *
  * Markup contract: data-engage-type, data-engage-name and the optional
- * data-engage-view-time (ms). The pure helpers are exported for node --test
- * (_tests/engagement.test.js).
+ * data-engage-view-time (ms), plus data-engage-platform on each link of a
+ * links row and data-engage-carousel="bootstrap" on Bootstrap carousels. The
+ * pure helpers are exported for node --test (_tests/engagement.test.js).
  */
 (function (root, factory) {
   const engagement = factory(root);
@@ -32,7 +33,9 @@
     song: 'ViewContent',
     testimony: 'ViewContent',
     pricing: 'ViewContent',
-    calendar: 'ViewContent'
+    calendar: 'ViewContent',
+    links: 'ViewContent',
+    video: 'ViewContent'
   };
 
   // Pure helpers
@@ -72,6 +75,17 @@
   // brings the next card, which is "right"
   function swipeDirection(dx) {
     return dx < 0 ? 'right' : 'left';
+  }
+
+  // Bootstrap arrows: data-bs-slide="prev" moves left, anything else right
+  function arrowDirection(value) {
+    return value === 'prev' ? 'left' : 'right';
+  }
+
+  // Bootstrap dots: data-bs-slide-to is 0-based, position is 1-based
+  function pointPosition(value) {
+    const index = parseInt(value, 10);
+    return Number.isNaN(index) ? null : index + 1;
   }
 
   // Dwell timers for view events, one per key (type:name). A key can be on
@@ -259,6 +273,8 @@
     viewTimeOf: viewTimeOf,
     engageProps: engageProps,
     swipeDirection: swipeDirection,
+    arrowDirection: arrowDirection,
+    pointPosition: pointPosition,
     ViewTracker: ViewTracker,
     PlayClock: PlayClock
   };
