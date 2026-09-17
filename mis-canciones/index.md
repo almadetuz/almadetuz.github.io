@@ -22,7 +22,7 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
 
 {% include block_container_end.html %}
 
-<div id="homeCarousel" class="carousel slide" data-bs-ride="carousel">
+<div id="homeCarousel" class="carousel slide" data-bs-ride="carousel" data-engage-type="carousel" data-engage-name="videos" data-engage-carousel="bootstrap">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="0" class="active" aria-label="Raíces" aria-current="true"></button>
     <button type="button" data-bs-target="#homeCarousel" data-bs-slide-to="1" aria-label="Sin el cuerpo no hay voz" class=""></button>
@@ -33,7 +33,7 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
   </div>
   <div class="carousel-inner">
     <!-- Raices -->
-    <div class="carousel-item active">
+    <div class="carousel-item active" data-engage-type="video" data-engage-name="raices">
       <div class="ratio ratio-16x9">
         <video autoplay muted loop
                  poster="/assets/images/raices_teaser.jpg"
@@ -45,13 +45,13 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
           <h1>Videoclip Raíces</h1>
           <p>Fuimos raices y brotaron flores, esta canción honra a las mujeres olvidadas de la historia.</p>
           <p>
-            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=hAtpp_zh9d4&list=PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp" target="_blank">Ver vídeo</a>
+            <a class="btn btn-primary" data-engage-type="button" data-engage-name="ver-video-raices" href="https://www.youtube.com/watch?v=hAtpp_zh9d4&list=PLeNBLdOfTIZKKuB_k4vd1MXWCYYGKt3wp" target="_blank">Ver vídeo</a>
           </p>
         </div>
       </div>
     </div>
     <!-- Sin en cuerpo no hay voz -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-engage-type="video" data-engage-name="sin-el-cuerpo-no-hay-voz">
       <div class="ratio ratio-16x9">
         <video autoplay muted loop
                  poster="/assets/images/sin_el_cuerpo_no_hay_voz_teaser.jpg"
@@ -63,13 +63,13 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
           <h1>Sin el cuerpo no hay voz</h1>
           <p>Esta fue una de las primeras canciones que compuse.</p>
           <p>
-            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=_7ZVQtYF4BQ&list=PLeNBLdOfTIZJ54DDAvTT-9urEz9dnsFXf" target="_blank">Ver vídeo</a>
+            <a class="btn btn-primary" data-engage-type="button" data-engage-name="ver-video-sin-el-cuerpo-no-hay-voz" href="https://www.youtube.com/watch?v=_7ZVQtYF4BQ&list=PLeNBLdOfTIZJ54DDAvTT-9urEz9dnsFXf" target="_blank">Ver vídeo</a>
           </p>
         </div>
       </div>
     </div>
     <!-- Universo -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-engage-type="video" data-engage-name="universo">
       <div class="ratio ratio-16x9">
         <video autoplay muted loop
                  poster="/assets/images/universo_teaser.jpg"
@@ -81,13 +81,13 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
           <h1>Videoclip Universo</h1>
           <p>Todo está conectado en el Universo, desde lo más pequeño hasta lo más grande.</p>
           <p>
-            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=BJ0aPpj7MFo&list=PLeNBLdOfTIZKKaFx41Juu0eZljypaP8Lv" target="_blank">Ver vídeo</a>
+            <a class="btn btn-primary" data-engage-type="button" data-engage-name="ver-video-universo" href="https://www.youtube.com/watch?v=BJ0aPpj7MFo&list=PLeNBLdOfTIZKKaFx41Juu0eZljypaP8Lv" target="_blank">Ver vídeo</a>
           </p>
         </div>
       </div>
     </div>
     <!-- Si duele no es amor -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-engage-type="video" data-engage-name="si-duele-no-es-amor">
       <div class="ratio ratio-16x9">
         <video autoplay muted loop
                  poster="/assets/images/si_duele_acustico_teaser.jpg"
@@ -99,13 +99,13 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
           <h1>Si duele no es amor - con Miriam de los Rios</h1>
           <p>Una canción inspirada en el cuento <i>"Barba Azul"</i> del libro <i>"Mujeres que corren con los lobos"</i> de <i>Clarissa Pinkola</i></p>
           <p>
-            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=hhNn7us73XI&list=PLeNBLdOfTIZL-7efxvAg-H3G8YCktBOxW" target="_blank">Ver vídeo</a>
+            <a class="btn btn-primary" data-engage-type="button" data-engage-name="ver-video-si-duele-no-es-amor" href="https://www.youtube.com/watch?v=hhNn7us73XI&list=PLeNBLdOfTIZL-7efxvAg-H3G8YCktBOxW" target="_blank">Ver vídeo</a>
           </p>
         </div>
       </div>
     </div>
     <!-- Luciérnagas -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-engage-type="video" data-engage-name="luciernagas">
       <div class="ratio ratio-16x9">
         <video autoplay muted loop
                 poster="/assets/images/luciernagas_teaser.jpg"
@@ -117,13 +117,13 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
           <h1>Luciérnagas - Acústico (Libre de Barrio)</h1>
           <p>Una canción sobre amor, luz, maternidad, colecho, lactancia, olor a almendras en la piel</p>
           <p>
-            <a class="btn btn-primary" href="https://www.youtube.com/watch?v=rs8UI4kpsNk&list=PLeNBLdOfTIZJyUPGr2He9_GXok9Lbrkk2" target="_blank">Ver vídeo</a>
+            <a class="btn btn-primary" data-engage-type="button" data-engage-name="ver-video-luciernagas" href="https://www.youtube.com/watch?v=rs8UI4kpsNk&list=PLeNBLdOfTIZJyUPGr2He9_GXok9Lbrkk2" target="_blank">Ver vídeo</a>
           </p>
         </div>
       </div>
     </div>
     <!-- Volver -->
-    <div class="carousel-item">
+    <div class="carousel-item" data-engage-type="video" data-engage-name="volver">
       <div class="ratio ratio-16x9">
           <video autoplay muted loop
                  poster="/assets/images/volver_teaser.jpg"
@@ -135,7 +135,7 @@ Mientras tanto ya podéis ir escuchando algunas de las canciones que formarán p
               <h1>VOLVER (Voarte) MMXXII</h1>
               <p>Volver a ser, co-creación con el equipo artístico de
                 <a href="https://voarte.org/" target="_blank">Voarte</a></p>
-              <p><a class="btn btn-primary" href="https://vimeo.com/720734235" target="_blank">Ver vídeo</a></p>
+              <p><a class="btn btn-primary" data-engage-type="button" data-engage-name="ver-video-volver" href="https://vimeo.com/720734235" target="_blank">Ver vídeo</a></p>
           </div>
       </div>
     </div>
@@ -211,6 +211,7 @@ _"Es bueno subir a la montaña cuando no sabemos que otra cosa podemos hacer."_
 
 {% include song_links.html
    title="La Montaña"
+   name="la-montana"
    album_type="single"
    bandcamp_album_slug="la-monta-a"
    bandcamp_album_id="1852528765"
@@ -271,6 +272,7 @@ El ritmo de esta canción es como la máquina de coser, como el tiktak del reloj
 
 {% include song_links.html
    title="El Hilo de la Memoria"
+   name="el-hilo-de-la-memoria"
    album_type="single"
    bandcamp_album_slug="el-hilo-de-la-memoria"
    bandcamp_album_id="977130829"
@@ -300,6 +302,7 @@ Este canto nació en una luna llena, tras la performance _"Vosotras, Raíces"_ e
 
 {% include song_links.html
    title="Raíces"
+   name="raices"
    album_type="single"
    bandcamp_album_slug="raices"
    bandcamp_album_id="3018956702"
@@ -344,6 +347,7 @@ _"Busco ternura, al florecer"_
 
 {% include song_links.html
    title="Canto para mí"
+   name="canto-para-mi"
    album_type="single"
    bandcamp_album_slug="canto-para-mi"
    bandcamp_album_id="3810163160"
@@ -388,6 +392,7 @@ musicalmente fusionando sonidos más oscuros con otros más luminosos haciendo u
 
 {% include song_links.html
    title="Luciérnagas"
+   name="luciernagas"
    album_type="single"
    bandcamp_album_slug="luciernagas"
    bandcamp_album_id="3480333"
@@ -424,6 +429,7 @@ territorios sonoros.
 
 {% include song_links.html
    title="Alas en mí"
+   name="alas-en-mi"
    album_type="single"
    bandcamp_album_slug="alas-en-mi"
    bandcamp_album_id="3519428533"
@@ -455,6 +461,7 @@ Fractales que nos invitan a imaginarnos como individuos que inevitablemente form
 
 {% include song_links.html
    title="Universo"
+   name="universo"
    album_type="single"
    bandcamp_album_slug="universo"
    bandcamp_album_id="447966212"
@@ -507,6 +514,7 @@ Estrenada en el festival _DOC NYC 2022_, el 12 de Noviembre -
 
 {% include song_links.html
    title="A Witch Story"
+   name="a-witch-story"
    album_type="album"
    album_height="340px"
    bandcamp_album_slug="a-witch-story"
