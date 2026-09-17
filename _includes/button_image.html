@@ -1,5 +1,16 @@
+{%- comment -%}
+Botón con imagen de fondo.
+
+Params:
+  title (obligatorio): texto del botón
+  image (obligatorio): URL de la imagen de fondo
+  url (opcional): destino, '#' por defecto
+  title_class, icon, icon_class (opcionales): clases del título y del icono
+  name (opcional): data-engage-name, por defecto el title en slug ("Mis canciones" -> mis-canciones)
+{%- endcomment -%}
+{%- assign engage_name_default = include.title | slugify: 'latin' -%}
 <div class="col-sm-6 button-image text-center mt-3 mb-3">
-  <a class="url ms-3 me-3" href="{{ include.url | default: '#' }}">
+  <a class="url ms-3 me-3" href="{{ include.url | default: '#' }}" data-engage-type="button" data-engage-name="{{ include.name | default: engage_name_default }}">
     <div class="bg-image rounded-4" style="background-image: url('{{ include.image }}')">
       <div class="title text-start {{ include.title_class }}">
         {{ include.title }}
