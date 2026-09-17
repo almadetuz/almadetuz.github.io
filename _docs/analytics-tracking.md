@@ -243,7 +243,7 @@ ScrollEvent.add("element-id", (e) => {
 
 ## Engagement Events
 
-`assets/js/engagement.js` (loaded by `_layouts/tracking.html` on every page) sends what visitors see and do: on `/booking/retiros/`, and on every page that uses the shared includes listed below (Home, Mis canciones, Cartas - Dentro, Infusiones and others). Every event goes through `track()`, and the catalog entries in `_data/tracking_events.yml` are `{}`, so they only reach Amplitude, never the Meta Pixel, Meta CAPI or Google Ads.
+`assets/js/engagement.js` (loaded by `_layouts/tracking.html` on every page that uses the tracking layout) sends what visitors see and do: on `/booking/retiros/`, and on every page that uses the shared includes listed below (Home, Mis canciones, Cartas - Dentro, Infusiones and others). Every event goes through `track()`, and the catalog entries in `_data/tracking_events.yml` are `{}`, so they only reach Amplitude, never the Meta Pixel, Meta CAPI or Google Ads.
 
 ### Events
 
@@ -273,7 +273,7 @@ All events carry `element_type` and `element_name`.
 - `play_time`: whole seconds of wall-clock playing time. `SongStop` sends the stretch since the last `SongStart`; `SongClose` sends the total for that modal, including a stretch still running. Closing while playing sends only `SongClose`.
 - `platform`: `bandcamp`, `tidal`, `deezer`, `soundcloud`, `apple`, `youtube`, `spotify` or `instagram`.
 - Carousel events are sent on every gesture, even when the carousel ignores it. Autoplay and keyboard navigation send none.
-- `PlayerClick` is a click, not a play: it can be play, pause, seek or a link inside the player.
+- `PlayerClick` is a click, not a play: it can be play, pause, seek or a link inside the player, or keyboard focus entering the player.
 - `form` and `player` have no view event. Forms keep `FormView`, `FormSubmit` and `FormError` (see Form Tracking), with the same `subscribe-<form_id>` name in their `form` prop.
 
 ### Viewing rule
@@ -310,7 +310,7 @@ A raw-HTML Bootstrap carousel (like `#homeCarousel` on Mis canciones) gets `data
 
 ### Bandcamp players
 
-A click inside a Bandcamp iframe does not reach the page, so `engagement.js` watches the window `blur` and checks whether the focused element is a player. After a click in one player the focus stays inside it; when the pointer enters another player, `engagement.js` hands the focus back to the page so the next click is detected. The cost: the first player loses keyboard control when the pointer moves over the second one.
+A click inside a Bandcamp iframe does not reach the page, so `engagement.js` watches the window `blur` and checks whether the focused element is a player. After a click in one player the focus stays inside it; when the pointer enters another player, `engagement.js` hands the focus back to the page so that the next click can be detected. Not yet verified in Chrome: if the hand-off does not work, only the first player clicked on a page load sends `PlayerClick`; clicking the page in between restores detection. The cost when it does work: the first player loses keyboard control when the pointer moves over the second one.
 
 ## Privacy and Compliance
 
