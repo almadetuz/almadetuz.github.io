@@ -1,3 +1,17 @@
+{%- comment -%}
+Formulario de suscripción (FormView, FormSubmit y FormError desde el script de
+abajo; FormStart y FormConsent desde engagement.js).
+
+Params:
+  form_id (obligatorio): único en la página. Da los ids y el nombre
+    "subscribe-<form_id>" del prop form y de data-engage-name
+  context_type (opcional): "web" (por defecto) o "card"
+  context_name (obligatorio): contexto que recibe la API
+  title, subtitle, button, line_bottom: textos
+  class (opcional): clases del contenedor
+  gdpr_id (opcional): prefijo del id de la casilla, 97974 por defecto
+  success_title, success_message, error_title (opcionales): textos de respuesta
+{%- endcomment -%}
 <div class="container-fluid {{ include.class }} mb-4 mt-4 rounded-2">
 <div class="row">
 <div class="col">
@@ -5,6 +19,8 @@
 <form
 id="subscribe-form-{{ include.form_id }}"
 name="subscribe-form"
+data-engage-type="form"
+data-engage-name="subscribe-{{ include.form_id }}"
 class="mc-form needs-validation mb-3 mt-3"
 target="_self"
 novalidate>
