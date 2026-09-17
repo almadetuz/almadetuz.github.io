@@ -193,6 +193,7 @@ Deja que el fuego de Tüz te hable con la voz de tu propia alma.
 {% include artist_links.html
    classes="justify-content-center"
    artist_name="Alma de Tüz"
+   name="alma-de-tuz"
    instagram_id="amanda_tuz"
    bandcamp_artist_id="almadetuz"
    tidal_artist_id="35124876"

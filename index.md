@@ -159,6 +159,7 @@ Estaba **abriendo los ojos a mi interior** por primera vez en mi vida.
 {% include block_buttons_start.html %}
 {% include button_image.html
    title="Mis canciones"
+   name="mis-canciones"
    url="/mis-canciones"
    image="/assets/images/amanda_btn_la_montana_320.jpg"
    title_class="text-soft-black"
