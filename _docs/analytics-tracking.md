@@ -241,9 +241,9 @@ ScrollEvent.add("element-id", (e) => {
 - Element visibility duration
 - Engagement patterns
 
-## Engagement Events (`/booking/retiros/`)
+## Engagement Events
 
-`assets/js/engagement.js` (loaded by `_layouts/tracking.html`) sends what visitors see and do on the retiros page. Every event goes through `track()`, and the catalog entries in `_data/tracking_events.yml` are `{}`, so they only reach Amplitude, never the Meta Pixel, Meta CAPI or Google Ads.
+`assets/js/engagement.js` (loaded by `_layouts/tracking.html` on every page) sends what visitors see and do: on `/booking/retiros/`, and on every page that uses the shared includes listed below (Home, Mis canciones, Cartas - Dentro, Infusiones and others). Every event goes through `track()`, and the catalog entries in `_data/tracking_events.yml` are `{}`, so they only reach Amplitude, never the Meta Pixel, Meta CAPI or Google Ads.
 
 ### Events
 
@@ -253,7 +253,8 @@ All events carry `element_type` and `element_name`.
 | --- | --- | --- | --- |
 | `ButtonView` | `button` | | Button viewed |
 | `ButtonClick` | `button` | | Button clicked |
-| `ViewContent` | `carousel`, `song`, `testimony`, `pricing`, `calendar` | | Element viewed |
+| `ButtonClick` | `links` | `platform` | Icon in a links row clicked |
+| `ViewContent` | `carousel`, `song`, `testimony`, `pricing`, `calendar`, `links`, `video` | | Element viewed |
 | `SongOpen` | `song` | | Song card clicked, modal opens |
 | `SongStart` | `song` | | Video starts or resumes |
 | `SongStop` | `song` | `play_time` | Visitor pauses the video with the modal open |
@@ -263,22 +264,30 @@ All events carry `element_type` and `element_name`.
 | `CarouselPoint` | `carousel` | `position` | Indicator dot clicked |
 | `EmailSelect` | `email` | | Selection touches the email (once per page load) |
 | `EmailCopy` | `email` | | Copy includes the email |
+| `FormStart` | `form` | | First focus or typing in the email field (once per form per page load) |
+| `FormConsent` | `form` | | Privacy checkbox checked (once per form per page load; unchecking and checking again sends nothing) |
+| `PlayerClick` | `player` | | Click inside a Bandcamp player (once per player per page load) |
 
 - `direction`: `left` or `right`, where the carousel moves (a finger swipe to the left is `right`).
 - `position`: 1-based dot index.
 - `play_time`: whole seconds of wall-clock playing time. `SongStop` sends the stretch since the last `SongStart`; `SongClose` sends the total for that modal, including a stretch still running. Closing while playing sends only `SongClose`.
-- Carousel events are sent on every gesture, even when the carousel ignores it. Autoplay sends none.
+- `platform`: `bandcamp`, `tidal`, `deezer`, `soundcloud`, `apple`, `youtube`, `spotify` or `instagram`.
+- Carousel events are sent on every gesture, even when the carousel ignores it. Autoplay and keyboard navigation send none.
+- `PlayerClick` is a click, not a play: it can be play, pause, seek or a link inside the player.
+- `form` and `player` have no view event. Forms keep `FormView`, `FormSubmit` and `FormError` (see Form Tracking), with the same `subscribe-<form_id>` name in their `form` prop.
 
 ### Viewing rule
 
-An element is viewed when at least 50% of it is on screen, or its visible part covers at least 50% of the viewport. It has to stay viewed for `view_time` ms (1000 by default); the timer resets if it leaves, and all timers restart from zero when the tab comes back from the background. Each `element_type:element_name` sends its view event once per page load; a loop clone counts as its card.
+An element is viewed when at least 50% of it is on screen, or its visible part covers at least 50% of the viewport. It has to stay viewed for `view_time` ms (1000 by default); the timer resets if it leaves, and all timers restart from zero when the tab comes back from the background. Each `element_type:element_name` sends its view event once per page load; a loop clone counts as its card. Inactive Bootstrap carousel slides are hidden, so only the slide on screen counts.
 
 ### Markup contract
 
 ```html
-data-engage-type="button|carousel|song|testimony|pricing|calendar|email"
+data-engage-type="button|carousel|song|testimony|pricing|calendar|email|links|video|form|player"
 data-engage-name="<constant-name>"
-data-engage-view-time="1000"   (optional)
+data-engage-view-time="1000"         (optional)
+data-engage-platform="<platform>"    (on each <a> inside a links row)
+data-engage-carousel="bootstrap"     (on a Bootstrap carousel element)
 ```
 
 `element_name` is a constant and must never contain an email address (the API drops it).
@@ -290,8 +299,18 @@ data-engage-view-time="1000"   (optional)
 | `engage_email.html` | Inline plain-text email: `email`, `name`. |
 | `carousel_canciones.html`, `carousel_testimonios.html` | Optional `name`, `view_time`. Cards are named by the `slug` field of `_data/canciones_retiros.yml` / `_data/testimonios_retiros.yml`; a slug never changes once published. |
 | `calendar_retiros.html` | Optional `name`. Months are named by `calendar.js` (`2026-10`). |
+| `button_image.html` | Optional `name`, default the `title` in slug (`Mis canciones` is `mis-canciones`). |
+| `song_links.html` | `name` for the links row and the Bandcamp player. Pass it explicitly (default: the `title` in slug); it never changes once published. |
+| `artist_links.html` | Optional `name`, default the `artist_name` in slug (`Alma de Tüz` is `alma-de-tuz`). |
+| `mail_form_lead.html` | No new param: the form is named `subscribe-<form_id>`. |
 
 Components that render after page load call `AdtEngagement.observe(element)`; `CardCarousel` already does it for its cards and clones. `AdtEngagement.send(name, element, extra)` does nothing when the element has no `data-engage-name`.
+
+A raw-HTML Bootstrap carousel (like `#homeCarousel` on Mis canciones) gets `data-engage-type="carousel"`, a name and `data-engage-carousel="bootstrap"`; its `data-bs-slide` arrows, `data-bs-slide-to` dots and swipes are then tracked by `engagement.js`. Each slide can be a `video` element and each slide link a `button`. `CardCarousel` carousels do not use this attribute: `cards.js` sends their gestures.
+
+### Bandcamp players
+
+A click inside a Bandcamp iframe does not reach the page, so `engagement.js` watches the window `blur` and checks whether the focused element is a player. After a click in one player the focus stays inside it; when the pointer enters another player, `engagement.js` hands the focus back to the page so the next click is detected. The cost: the first player loses keyboard control when the pointer moves over the second one.
 
 ## Privacy and Compliance
 
