@@ -37,10 +37,12 @@ function captionLines(text) {
 // Escape plain text segments (outside mentions): backslash-escape special characters,
 // replace braces with entities so Liquid never sees them.
 function escapePlainText(text) {
+  // Replace & first so we don't re-escape the & in &#123; we generate later
+  text = text.replace(/&/g, '&amp;');
   // Escape backslash first so we don't double-escape
   text = text.replace(/\\/g, '\\\\');
-  // Escape these characters anywhere: * _ ` [ ] < > | $
-  text = text.replace(/([*_`\[\]<>|$])/g, '\\$1');
+  // Escape these characters anywhere: * _ ` [ ] < > | $ - ~
+  text = text.replace(/([*_`\[\]<>|$\-~])/g, '\\$1');
   // Replace braces with entities so Liquid never sees them
   text = text.replace(/\{/g, '&#123;');
   text = text.replace(/\}/g, '&#125;');
@@ -51,8 +53,8 @@ function escapePlainText(text) {
 function escapeLineStart(line) {
   // Line-leading # -> \#
   if (line.startsWith('#')) return '\\' + line;
-  // Line-leading + - = : -> \+, \-, \=, \:
-  if (/^[+\-=:]/.test(line)) return '\\' + line;
+  // Line-leading + = : -> \+, \=, \:
+  if (/^[+=:]/.test(line)) return '\\' + line;
   // Digits followed by . and space: N. -> N\.
   if (/^(\d+)\.\s/.test(line)) {
     const match = line.match(/^(\d+)(\.\s)/);

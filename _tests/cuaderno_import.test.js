@@ -141,25 +141,57 @@ test('shortcodes Psych could misread are quoted', () => {
 
 
 test('caption renders through kramdown with its visible text intact', () => {
-  const input = '*palavra*\n_outra_\n: definicion\n[id]: http://x.com\na | b\n$$x$$\n<b>no</b>\n`code`\n{{ x }}\n{% endraw %}';
+  const input = `---
+*palavra*
+_outra_
+texto
+===
+: definicion
+[id]: http://x.com
+a | b
+$$x$$
+<b>no</b>
+\`code\`
+~~tachado~~
+a -- b
+&amp; &copy; &#123;
+{{ x }}
+{% endraw %}`;
   
   const escaped = c.cleanCaption(input);
   const html = execFileSync('bundle', ['exec', 'ruby', '-e', 
     'require "kramdown"; print Kramdown::Document.new($stdin.read, input: "GFM", hard_wrap: false).to_html'],
   { cwd: ROOT, input: escaped, encoding: 'utf8' });
   
-  // Strip HTML tags and decode entities
+  // Assert HTML does not contain unwanted markup
+  assert.ok(!html.includes('<hr'), 'Should not render horizontal rules');
+  assert.ok(!html.includes('<em'), 'Should not render emphasis (em or del tags)');
+  assert.ok(!html.includes('<strong'), 'Should not render strong');
+  assert.ok(!html.includes('<del'), 'Should not render strikethrough');
+  assert.ok(!html.includes('<h1'), 'Should not render h1');
+  assert.ok(!html.includes('<h2'), 'Should not render h2');
+  assert.ok(!html.includes('<code'), 'Should not render code');
+  assert.ok(!html.includes('<dl'), 'Should not render definition list');
+  assert.ok(!html.includes('<table'), 'Should not render table');
+  assert.ok(!html.includes('<a '), 'Should not render links (other than auto-links)');
+  
+  // Strip HTML tags and decode HTML entities
   const text = html
     .replace(/<[^>]*>/g, '')
-    .replace(/&#123;/g, '{')
-    .replace(/&#125;/g, '}')
+    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
-    .replace(/&amp;/g, '&')
     .replace(/&quot;/g, '"')
+    .replace(/&ndash;/g, '\u{2013}')
+    .replace(/&mdash;/g, '\u{2014}')
+    .replace(/&hellip;/g, '\u{2026}')
+    .replace(/&lsquo;/g, '\u{2018}')
+    .replace(/&rsquo;/g, '\u{2019}')
+    .replace(/&ldquo;/g, '\u{201C}')
+    .replace(/&rdquo;/g, '\u{201D}')
     .replace(/\s+/g, ' ')
     .trim();
   
-  const expectedText = input.replace(/\\n/g, '\n').replace(/\s+/g, ' ').trim();
+  const expectedText = input.replace(/\s+/g, ' ').trim();
   assert.equal(text, expectedText);
 });
