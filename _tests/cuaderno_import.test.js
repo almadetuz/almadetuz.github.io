@@ -157,12 +157,12 @@ a -- b
 &amp; &copy; &#123;
 {{ x }}
 {% endraw %}`;
-  
+
   const escaped = c.cleanCaption(input);
-  const html = execFileSync('bundle', ['exec', 'ruby', '-e', 
+  const html = execFileSync('bundle', ['exec', 'ruby', '-e',
     'require "kramdown"; print Kramdown::Document.new($stdin.read, input: "GFM", hard_wrap: false).to_html'],
   { cwd: ROOT, input: escaped, encoding: 'utf8' });
-  
+
   // Assert HTML does not contain unwanted markup
   assert.ok(!html.includes('<hr'), 'Should not render horizontal rules');
   assert.ok(!html.includes('<em'), 'Should not render emphasis (em or del tags)');
@@ -174,7 +174,7 @@ a -- b
   assert.ok(!html.includes('<dl'), 'Should not render definition list');
   assert.ok(!html.includes('<table'), 'Should not render table');
   assert.ok(!html.includes('<a '), 'Should not render links (other than auto-links)');
-  
+
   // Strip HTML tags and decode HTML entities
   const text = html
     .replace(/<[^>]*>/g, '')
@@ -191,7 +191,123 @@ a -- b
     .replace(/&rdquo;/g, '\u{201D}')
     .replace(/\s+/g, ' ')
     .trim();
-  
+
   const expectedText = input.replace(/\s+/g, ' ').trim();
   assert.equal(text, expectedText);
+});
+
+// ---- Registry ----
+
+function tmpFile(name, text) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cuaderno-reg-'));
+  fs.writeFileSync(path.join(dir, name), text);
+  return path.join(dir, name);
+}
+
+const REG = {
+  account: 'amanda_tuz', newest: '2026-09-12T18:24:26Z', oldest: '2026-08-01T10:00:00Z', backfill_done: false,
+  posts: [
+    { shortcode: 'DdMn38xDZt_', date: '2026-09-12T18:24:26Z', type: 'carousel', decision: 'accepted', slug: 'nuevos-brotes' },
+    { shortcode: 'Pend0000001', date: '2026-08-01T10:00:00Z', type: 'image', decision: 'pending' }
+  ]
+};
+
+function item(shortcode, date, type = 'image', pinned = false) {
+  return { shortcode, date, type, pinned, caption: `Texto de ${shortcode}\nsegunda línea` };
+}
+
+// Timeline order: pinned posts first, then newest to oldest.
+const SCAN = {
+  end: false,
+  items: [
+    item('Pin0000001', '2025-01-01T09:00:00Z', 'image', true),
+    item('Pin0000002', '2026-08-15T09:00:00Z', 'video', true),
+    item('New0000002', '2026-10-01T12:00:00Z', 'video'),
+    item('New0000001', '2026-09-20T08:05:09Z', 'carousel'),
+    item('DdMn38xDZt_', '2026-09-12T18:24:26Z', 'carousel'),
+    item('Old0000001', '2026-07-30T10:00:00Z'),
+    item('Old0000002', '2026-07-20T10:00:00Z')
+  ]
+};
+
+test('the real registry round-trips byte for byte through load and dump', () => {
+  const file = path.join(ROOT, '_data/cuaderno_instagram.yml');
+  assert.equal(c.dumpRegistry(c.loadRegistry(ROOT)), fs.readFileSync(file, 'utf8'));
+});
+
+test('dumped registry parses back to the same data with Psych', () => {
+  assert.deepEqual(c.loadYaml(tmpFile('r.yml', c.dumpRegistry(REG))), REG);
+});
+
+test('list: new posts first, then backfill (pinned old one included), then pending; recent pinned ignored', () => {
+  const list = c.buildList(REG, SCAN);
+  assert.deepEqual(list.items.map((i) => `${i.n}:${i.shortcode}:${i.source}`), [
+    '1:New0000002:new', '2:New0000001:new',
+    '3:Old0000001:backfill', '4:Old0000002:backfill', '5:Pin0000001:backfill',
+    '6:Pend0000001:pending'
+  ]);
+  assert.ok(list.items.every((i) => !('pinned' in i)));
+  assert.equal(list.backfill_done, false);
+});
+
+test('list refuses a scan that never reached the newest listed post', () => {
+  const partial = { end: false, items: SCAN.items.slice(0, 4) };
+  assert.throws(() => c.buildList(REG, partial), /scan stopped before reaching the newest listed post/);
+});
+
+test('backfill takes 12 at a time and is done only when the end was reached with nothing left over', () => {
+  const olds = Array.from({ length: 13 }, (_, k) => item(`Old${String(k).padStart(7, '0')}`, `2026-07-${String(29 - k).padStart(2, '0')}T10:00:00Z`));
+  const many = { end: true, items: [SCAN.items[4], ...olds] };
+  const list = c.buildList(REG, many);
+  assert.equal(list.items.filter((i) => i.source === 'backfill').length, 12);
+  assert.equal(list.backfill_done, false);
+  const few = { end: true, items: [SCAN.items[4], ...olds.slice(0, 12)] };
+  assert.equal(c.buildList(REG, few).backfill_done, true);
+  assert.equal(c.buildList({ ...REG, backfill_done: true }, many).items.filter((i) => i.source === 'backfill').length, 0);
+});
+
+test('list rejects an unknown media type', () => {
+  const bad = { end: true, items: [item('Bad0000001', '2026-10-02T00:00:00Z', 'unknown-11')] };
+  assert.throws(() => c.buildList(REG, bad), /unknown type/);
+});
+
+test('answers: sí/si/SÍ, commas, spaces, ranges, empty', () => {
+  assert.deepEqual(c.parseAnswer('sí 1,3; no 2', 6), { yes: [1, 3], no: [2] });
+  assert.deepEqual(c.parseAnswer('SÍ 1-2\nno 4 5', 6), { yes: [1, 2], no: [4, 5] });
+  assert.deepEqual(c.parseAnswer('si 6', 6), { yes: [6], no: [] });
+  assert.deepEqual(c.parseAnswer('', 6), { yes: [], no: [] });
+});
+
+test('answers: unknown word, out of range, both yes and no, not a number', () => {
+  assert.throws(() => c.parseAnswer('quizá 1', 6), /cannot read/);
+  assert.throws(() => c.parseAnswer('sí 7', 6), /out of range/);
+  assert.throws(() => c.parseAnswer('sí 0', 6), /out of range/);
+  assert.throws(() => c.parseAnswer('sí 1; no 1', 6), /both yes and no: 1/);
+  assert.throws(() => c.parseAnswer('sí uno', 6), /not a number/);
+});
+
+test('decisions: no -> rejected, sí and unanswered -> pending, sí returned for import, cursors move', () => {
+  const list = c.buildList(REG, SCAN);
+  const { registry, toImport } = c.applyDecisions(REG, list, c.parseAnswer('sí 1,6; no 2,3', list.items.length));
+  assert.deepEqual(toImport, ['New0000002', 'Pend0000001']);
+  const d = Object.fromEntries(registry.posts.map((p) => [p.shortcode, p.decision]));
+  assert.deepEqual(d, {
+    New0000002: 'pending', New0000001: 'rejected', DdMn38xDZt_: 'accepted', Pend0000001: 'pending',
+    Old0000001: 'rejected', Old0000002: 'pending', Pin0000001: 'pending'
+  });
+  assert.equal(registry.newest, '2026-10-01T12:00:00Z');
+  assert.equal(registry.oldest, '2025-01-01T09:00:00Z');
+  assert.equal(registry.posts[0].shortcode, 'New0000002');
+  assert.ok(!registry.posts.some((p) => p.shortcode === 'Pin0000002'));
+});
+
+test('accept marks the post accepted with its slug', () => {
+  const reg = c.accept(REG, 'Pend0000001', 'una-cosa');
+  assert.deepEqual(reg.posts[1], { shortcode: 'Pend0000001', date: '2026-08-01T10:00:00Z', type: 'image', decision: 'accepted', slug: 'una-cosa' });
+});
+
+test('cli: slug command prints the slug; unknown command exits 1 with usage', () => {
+  const cli = path.join(ROOT, '_scripts/cuaderno.js');
+  assert.equal(execFileSync('node', [cli, 'slug', 'Raíces vivas'], { encoding: 'utf8' }), 'raices-vivas\n');
+  assert.throws(() => execFileSync('node', [cli, 'nope'], { stdio: 'pipe' }), /Usage: cuaderno.js/);
 });

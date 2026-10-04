@@ -165,4 +165,164 @@ function buildPost({ meta, caption, title, slug, alt }) {
   ].join('\n');
 }
 
-module.exports = { cleanCaption, seoDescription, slugify, scalar, ratioFor, thumbBase, mediaBlocks, buildPost };
+// ---- Registry ----
+
+const REGISTRY = '_data/cuaderno_instagram.yml';
+const BATCH = 12;
+const TYPES = ['image', 'carousel', 'video'];
+const REGISTRY_HEADER = [
+  '# Instagram posts already listed by the cuaderno-instagram skill.',
+  '# Decisions are words (accepted | rejected | pending): Psych reads yes/no as booleans.',
+  '# Cursors are dates, not grid positions, because pinned posts sit on top.'
+];
+
+// Psych (Ruby), the parser Jekyll uses. Times come back as "2026-09-12T18:24:26Z".
+function loadYaml(file) {
+  const json = execFileSync('ruby', ['-rdate', '-ryaml', '-rjson', '-e',
+    'conv = ->(o) { case o when Hash then o.transform_values(&conv) when Array then o.map(&conv) ' +
+    'when Time then o.utc.strftime("%Y-%m-%dT%H:%M:%SZ") else o end }; ' +
+    'puts JSON.generate(conv.(YAML.safe_load(File.read(ARGV[0]), permitted_classes: [Time, Date])))', file],
+  { encoding: 'utf8' });
+  return JSON.parse(json);
+}
+
+function loadRegistry(root) {
+  return loadYaml(path.join(root, REGISTRY));
+}
+
+// Posts newest first; cursors are always the newest and oldest listed dates.
+function withCursors(reg) {
+  const posts = [...reg.posts].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  return { ...reg, posts, newest: posts[0].date, oldest: posts[posts.length - 1].date };
+}
+
+function dumpRegistry(reg) {
+  const lines = [...REGISTRY_HEADER,
+    `account: ${reg.account}`, `newest: ${reg.newest}`, `oldest: ${reg.oldest}`,
+    `backfill_done: ${reg.backfill_done}`, 'posts:'];
+  for (const p of reg.posts) {
+    lines.push(`  - shortcode: ${scalar(p.shortcode)}`, `    date: ${p.date}`, `    type: ${p.type}`, `    decision: ${p.decision}`);
+    if (p.slug) lines.push(`    slug: ${scalar(p.slug)}`);
+  }
+  return `${lines.join('\n')}\n`;
+}
+
+function saveRegistry(root, reg) {
+  fs.writeFileSync(path.join(root, REGISTRY), dumpRegistry(withCursors(reg)));
+}
+
+// Numbered list to show the user: new posts, then a backfill batch, then posts still pending.
+function buildList(reg, scan) {
+  const byDate = (a, b) => (a.date < b.date ? 1 : -1);
+  for (const i of scan.items) {
+    if (!TYPES.includes(i.type)) throw new Error(`${i.shortcode}: unknown type "${i.type}"`);
+  }
+  if (!scan.end && !scan.items.some((i) => !i.pinned && i.date <= reg.newest)) {
+    throw new Error('scan stopped before reaching the newest listed post');
+  }
+  const known = new Set(reg.posts.map((p) => p.shortcode));
+  const unknown = scan.items.filter((i) => !known.has(i.shortcode));
+  const fresh = unknown.filter((i) => i.date > reg.newest).sort(byDate);
+  const older = reg.backfill_done ? [] : unknown.filter((i) => i.date < reg.oldest).sort(byDate);
+  const pending = reg.posts.filter((p) => p.decision === 'pending').map((p) => ({
+    shortcode: p.shortcode, date: p.date, type: p.type,
+    caption: (scan.items.find((i) => i.shortcode === p.shortcode) || {}).caption || ''
+  }));
+  const items = [
+    ...fresh.map((i) => ({ ...i, source: 'new' })),
+    ...older.slice(0, BATCH).map((i) => ({ ...i, source: 'backfill' })),
+    ...pending.map((i) => ({ ...i, source: 'pending' }))
+  ].map(({ pinned, ...i }, k) => ({ n: k + 1, ...i }));
+  return { items, backfill_done: reg.backfill_done || (scan.end && older.length <= BATCH) };
+}
+
+function formatList(list) {
+  const SOURCE = { new: 'nuevo', backfill: 'anterior', pending: 'pendiente' };
+  const TYPE = { image: 'imagen', carousel: 'carrusel', video: 'vídeo' };
+  return list.items.map((i) => {
+    const first = (i.caption.split('\n').find((l) => l.trim()) || '').trim().slice(0, 90);
+    return `${i.n}. ${i.date.slice(0, 10)}  ${TYPE[i.type]}  [${SOURCE[i.source]}]  ${first}\n` +
+      `    https://www.instagram.com/p/${i.shortcode}/`;
+  }).join('\n');
+}
+
+// "sí 1,3; no 2" (also "si", "SÍ", ranges "4-6", spaces). Throws on anything else.
+function parseAnswer(text, max) {
+  const out = { yes: [], no: [] };
+  for (const part of text.split(/[;\n]/).map((s) => s.trim()).filter(Boolean)) {
+    const m = part.match(/^(s[ií]|no)(?!\p{L})\s*(.*)$/iu);
+    if (!m) throw new Error(`cannot read "${part}": answer like "sí 1,3; no 2"`);
+    const key = /^s/i.test(m[1]) ? 'yes' : 'no';
+    for (const tok of m[2].split(/[\s,]+/).filter(Boolean)) {
+      const r = tok.match(/^(\d+)(?:-(\d+))?$/);
+      if (!r) throw new Error(`"${tok}" is not a number or a range`);
+      const a = Number(r[1]);
+      const b = Number(r[2] || r[1]);
+      if (a < 1 || b > max || a > b) throw new Error(`"${tok}" is out of range 1-${max}`);
+      for (let n = a; n <= b; n++) out[key].push(n);
+    }
+  }
+  const both = out.yes.filter((n) => out.no.includes(n));
+  if (both.length) throw new Error(`both yes and no: ${both.join(', ')}`);
+  return out;
+}
+
+// "no" -> rejected. "sí" and unanswered -> pending; the "sí" ones are returned to import now.
+// A post becomes accepted only when its import succeeds (see accept).
+function applyDecisions(reg, list, answer) {
+  const posts = reg.posts.map((p) => ({ ...p }));
+  const toImport = [];
+  for (const item of list.items) {
+    const decision = answer.no.includes(item.n) ? 'rejected' : 'pending';
+    if (answer.yes.includes(item.n)) toImport.push(item.shortcode);
+    const existing = posts.find((p) => p.shortcode === item.shortcode);
+    if (existing) existing.decision = decision;
+    else posts.push({ shortcode: item.shortcode, date: item.date, type: item.type, decision });
+  }
+  return { registry: withCursors({ ...reg, posts, backfill_done: list.backfill_done }), toImport };
+}
+
+function accept(reg, shortcode, slug) {
+  return { ...reg, posts: reg.posts.map((p) => (p.shortcode === shortcode ? { ...p, decision: 'accepted', slug } : p)) };
+}
+
+// ---- CLI ----
+
+const COMMANDS = {
+  list(scanFile, listFile) {
+    const list = buildList(loadRegistry(ROOT), JSON.parse(fs.readFileSync(scanFile, 'utf8')));
+    fs.writeFileSync(listFile, JSON.stringify(list, null, 2));
+    console.log(list.items.length ? formatList(list) : 'No hay publicaciones nuevas.');
+  },
+  decide(listFile, answer = '') {
+    const list = JSON.parse(fs.readFileSync(listFile, 'utf8'));
+    const { registry, toImport } = applyDecisions(loadRegistry(ROOT), list, parseAnswer(answer, list.items.length));
+    saveRegistry(ROOT, registry);
+    console.log(JSON.stringify({ import: toImport }));
+  },
+  slug(title) {
+    console.log(slugify(title));
+  }
+};
+
+function main() {
+  const [cmd, ...args] = process.argv.slice(2);
+  if (!COMMANDS[cmd]) {
+    console.error('Usage: cuaderno.js list <scan.json> <list.json> | decide <list.json> "<answer>" | slug "<title>"');
+    process.exit(1);
+  }
+  try {
+    COMMANDS[cmd](...args);
+  } catch (e) {
+    console.error(`ERROR: ${e.message}`);
+    process.exit(1);
+  }
+}
+
+module.exports = {
+  cleanCaption, seoDescription, slugify, scalar, ratioFor, thumbBase, mediaBlocks, buildPost,
+  loadYaml, loadRegistry, dumpRegistry, saveRegistry, withCursors, buildList, formatList,
+  parseAnswer, applyDecisions, accept, COMMANDS
+};
+
+if (require.main === module) main();
