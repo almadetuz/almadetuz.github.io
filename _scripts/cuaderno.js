@@ -287,6 +287,71 @@ function accept(reg, shortcode, slug) {
   return { ...reg, posts: reg.posts.map((p) => (p.shortcode === shortcode ? { ...p, decision: 'accepted', slug } : p)) };
 }
 
+// ---- Import ----
+
+const ACCOUNT = 'amanda_tuz';
+const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const MAX_VIDEO_BYTES = 8 * 1024 * 1024;
+
+function runScript(root, script, args) {
+  execFileSync(path.join(root, '_scripts', script), args, { cwd: root, stdio: ['ignore', 'ignore', 'pipe'] });
+}
+
+// Bundle dir (meta.json, caption.txt, media from bundle.js) -> media files, post and accepted entry.
+// On any failure it removes what it created, so the post stays pending and the slug stays free.
+function importPost({ root = ROOT, dir, slug, title, alt }) {
+  const meta = JSON.parse(fs.readFileSync(path.join(dir, 'meta.json'), 'utf8'));
+  const caption = fs.readFileSync(path.join(dir, 'caption.txt'), 'utf8');
+  if (meta.user !== ACCOUNT) throw new Error(`${meta.shortcode} belongs to @${meta.user}, not @${ACCOUNT}`);
+  if (!SLUG.test(slug)) throw new Error(`invalid slug "${slug}"`);
+  const reg = loadRegistry(root);
+  const entry = reg.posts.find((p) => p.shortcode === meta.shortcode);
+  if (!entry || entry.decision !== 'pending') throw new Error(`${meta.shortcode} is not pending in the registry`);
+  const imgRel = `assets/images/cuaderno/${slug}`;
+  const imgDir = path.join(root, imgRel);
+  const postsDir = path.join(root, '_posts');
+  if (fs.existsSync(imgDir) || (fs.existsSync(postsDir) && fs.readdirSync(postsDir).some((f) => f.endsWith(`-${slug}.md`)))) {
+    throw new Error(`slug "${slug}" is already used`);
+  }
+
+  const videos = [];
+  let postFile = null;
+  try {
+    fs.mkdirSync(imgDir, { recursive: true });
+    fs.mkdirSync(path.join(root, 'assets/videos/cuaderno'), { recursive: true });
+    const jpgs = [];
+    for (const item of meta.items) {
+      const base = `${slug}_${item.n}`;
+      if (item.kind === 'image') {
+        execFileSync('convert', [path.join(dir, item.file), '-quality', '92', path.join(imgDir, `${base}.jpg`)], { stdio: 'pipe' });
+        jpgs.push(base);
+      } else {
+        execFileSync('convert', [path.join(dir, item.poster), '-quality', '92', path.join(imgDir, `${base}_poster.jpg`)], { stdio: 'pipe' });
+        jpgs.push(`${base}_poster`);
+        const video = `assets/videos/cuaderno/${base}.mp4`;
+        videos.push(video);
+        runScript(root, 'transcode_video.sh', [path.join(dir, item.file), video]);
+      }
+    }
+    for (const base of jpgs) runScript(root, 'resize_img.sh', [`cuaderno/${slug}/${base}.jpg`, '640', '480', '320']);
+    runScript(root, 'seo_img.sh', [`${imgRel}/${thumbBase(meta, slug)}.jpg`, `${imgRel}/${slug}_seo.jpg`]);
+    runScript(root, 'convert_img.sh', [`cuaderno/${slug}`]);
+    fs.mkdirSync(postsDir, { recursive: true });
+    postFile = `_posts/${meta.taken_at.slice(0, 10)}-${slug}.md`;
+    fs.writeFileSync(path.join(root, postFile), buildPost({ meta, caption, title, slug, alt }));
+    saveRegistry(root, accept(reg, meta.shortcode, slug));
+  } catch (e) {
+    fs.rmSync(imgDir, { recursive: true, force: true });
+    for (const v of videos) fs.rmSync(path.join(root, v), { force: true });
+    if (postFile) fs.rmSync(path.join(root, postFile), { force: true });
+    throw e;
+  }
+  const warnings = videos
+    .filter((v) => fs.statSync(path.join(root, v)).size > MAX_VIDEO_BYTES)
+    .map((v) => `${v} is over 8 MB`);
+  return { shortcode: meta.shortcode, slug, post: postFile, url: `https://test.almadetuz.com/cuaderno/${slug}/`, warnings };
+}
+
 // ---- CLI ----
 
 const COMMANDS = {
@@ -303,13 +368,16 @@ const COMMANDS = {
   },
   slug(title) {
     console.log(slugify(title));
+  },
+  import(dir, slug, title, alt) {
+    console.log(JSON.stringify(importPost({ dir, slug, title, alt }), null, 2));
   }
 };
 
 function main() {
   const [cmd, ...args] = process.argv.slice(2);
   if (!COMMANDS[cmd]) {
-    console.error('Usage: cuaderno.js list <scan.json> <list.json> | decide <list.json> "<answer>" | slug "<title>"');
+    console.error('Usage: cuaderno.js list <scan.json> <list.json> | decide <list.json> "<answer>" | slug "<title>" | import <bundle-dir> <slug> "<title>" "<alt>"');
     process.exit(1);
   }
   try {
@@ -323,7 +391,7 @@ function main() {
 module.exports = {
   cleanCaption, seoDescription, slugify, scalar, ratioFor, thumbBase, mediaBlocks, buildPost,
   loadYaml, loadRegistry, dumpRegistry, saveRegistry, withCursors, buildList, formatList,
-  parseAnswer, applyDecisions, accept, COMMANDS
+  parseAnswer, applyDecisions, accept, importPost, COMMANDS
 };
 
 if (require.main === module) main();

@@ -328,3 +328,96 @@ test('cli: slug command prints the slug; unknown command exits 1 with usage', ()
   assert.equal(execFileSync('node', [cli, 'slug', 'Raíces vivas'], { encoding: 'utf8' }), 'raices-vivas\n');
   assert.throws(() => execFileSync('node', [cli, 'nope'], { stdio: 'pipe' }), /Usage: cuaderno.js/);
 });
+
+// ---- Import ----
+
+const SIZES = ['', '_320', '_480', '_640'];
+
+// A throwaway repo root with copies of the media scripts, so they resolve their root to it.
+function tmpRoot() {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'cuaderno-root-'));
+  fs.mkdirSync(path.join(root, '_scripts'));
+  for (const s of ['resize_img.sh', 'convert_img.sh', 'seo_img.sh', 'transcode_video.sh']) {
+    fs.copyFileSync(path.join(ROOT, '_scripts', s), path.join(root, '_scripts', s));
+    fs.chmodSync(path.join(root, '_scripts', s), 0o755);
+  }
+  fs.mkdirSync(path.join(root, '_data'));
+  c.saveRegistry(root, {
+    account: 'amanda_tuz', newest: '', oldest: '', backfill_done: false,
+    posts: [
+      { shortcode: 'DxTest00001', date: '2026-09-20T08:05:09Z', type: 'carousel', decision: 'pending' },
+      { shortcode: 'DdMn38xDZt_', date: '2026-09-12T18:24:26Z', type: 'carousel', decision: 'accepted', slug: 'nuevos-brotes' }
+    ]
+  });
+  return root;
+}
+
+// What bundle.js downloads, with generated media.
+function makeBundle(meta, caption) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'cuaderno-bundle-'));
+  fs.writeFileSync(path.join(dir, 'meta.json'), JSON.stringify(meta));
+  fs.writeFileSync(path.join(dir, 'caption.txt'), caption);
+  for (const i of meta.items) {
+    if (i.kind === 'image') {
+      execFileSync('convert', ['-size', `${i.width}x${i.height}`, 'xc:#80a080', path.join(dir, i.file)]);
+    } else {
+      execFileSync('convert', ['-size', `${i.width}x${i.height}`, 'xc:#a08080', path.join(dir, i.poster)]);
+      execFileSync('ffmpeg', ['-v', 'error', '-y', '-f', 'lavfi', '-i', `testsrc=size=${i.width}x${i.height}:rate=30`,
+        '-t', '1', '-c:v', 'libx264', '-pix_fmt', 'yuv420p', path.join(dir, i.file)]);
+    }
+  }
+  return dir;
+}
+
+function registryOf(root) {
+  return Object.fromEntries(c.loadRegistry(root).posts.map((p) => [p.shortcode, p]));
+}
+
+test('import writes every variant, the post and the accepted registry entry', () => {
+  const root = tmpRoot();
+  const dir = makeBundle(META, 'Nueva cosecha.\n\nGracias @edu #vino');
+  const res = c.importPost({ root, dir, slug: 'nueva-cosecha', title: 'Nueva cosecha', alt: 'Racimos' });
+  const img = (f) => path.join(root, 'assets/images/cuaderno/nueva-cosecha', f);
+  for (const base of ['nueva-cosecha_1', 'nueva-cosecha_3', 'nueva-cosecha_2_poster']) {
+    for (const s of SIZES) for (const ext of ['.jpg', '.webp']) assert.ok(fs.existsSync(img(base + s + ext)), base + s + ext);
+  }
+  assert.equal(execFileSync('identify', ['-format', '%wx%h', img('nueva-cosecha_seo.jpg')], { encoding: 'utf8' }), '1280x720');
+  assert.ok(fs.existsSync(img('nueva-cosecha_seo.webp')));
+  assert.equal(execFileSync('file', ['-b', '--mime-type', img('nueva-cosecha_1.jpg')], { encoding: 'utf8' }).trim(), 'image/jpeg');
+  assert.ok(fs.existsSync(path.join(root, 'assets/videos/cuaderno/nueva-cosecha_2.mp4')));
+  const post = fs.readFileSync(path.join(root, '_posts/2026-09-20-nueva-cosecha.md'), 'utf8');
+  assert.equal(post, c.buildPost({ meta: META, caption: 'Nueva cosecha.\n\nGracias @edu #vino', title: 'Nueva cosecha', slug: 'nueva-cosecha', alt: 'Racimos' }));
+  assert.deepEqual(registryOf(root).DxTest00001, { shortcode: 'DxTest00001', date: '2026-09-20T08:05:09Z', type: 'carousel', decision: 'accepted', slug: 'nueva-cosecha' });
+  assert.deepEqual(res, { shortcode: 'DxTest00001', slug: 'nueva-cosecha', post: '_posts/2026-09-20-nueva-cosecha.md', url: 'https://test.almadetuz.com/cuaderno/nueva-cosecha/', warnings: [] });
+});
+
+test('import refuses a slug already used and leaves everything as it was', () => {
+  const root = tmpRoot();
+  fs.mkdirSync(path.join(root, '_posts'));
+  fs.writeFileSync(path.join(root, '_posts/2026-09-12-nuevos-brotes.md'), '---\n---\n');
+  const dir = makeBundle(META, 'x');
+  assert.throws(() => c.importPost({ root, dir, slug: 'nuevos-brotes', title: 'T', alt: 'a' }), /slug "nuevos-brotes" is already used/);
+  assert.equal(registryOf(root).DxTest00001.decision, 'pending');
+  assert.ok(!fs.existsSync(path.join(root, 'assets/images/cuaderno/nuevos-brotes')));
+});
+
+test('import refuses posts that are not pending, other accounts and bad slugs', () => {
+  const root = tmpRoot();
+  const dir = makeBundle({ ...META, items: [META.items[0]] }, 'x');
+  assert.throws(() => c.importPost({ root, dir, slug: 'Mal Slug', title: 'T', alt: 'a' }), /invalid slug/);
+  const other = makeBundle({ ...META, user: 'almadetuz', items: [META.items[0]] }, 'x');
+  assert.throws(() => c.importPost({ root, dir: other, slug: 'ok', title: 'T', alt: 'a' }), /belongs to @almadetuz/);
+  const accepted = makeBundle({ ...META, shortcode: 'DdMn38xDZt_', items: [META.items[0]] }, 'x');
+  assert.throws(() => c.importPost({ root, dir: accepted, slug: 'otra', title: 'T', alt: 'a' }), /not pending/);
+});
+
+test('a broken media file aborts the import, removes what it created and keeps the post pending', () => {
+  const root = tmpRoot();
+  const dir = makeBundle(META, 'x');
+  fs.writeFileSync(path.join(dir, '3.webp'), 'not an image');
+  assert.throws(() => c.importPost({ root, dir, slug: 'rota', title: 'T', alt: 'a' }));
+  assert.ok(!fs.existsSync(path.join(root, 'assets/images/cuaderno/rota')));
+  assert.ok(!fs.existsSync(path.join(root, 'assets/videos/cuaderno/rota_2.mp4')));
+  assert.ok(!fs.existsSync(path.join(root, '_posts')) || fs.readdirSync(path.join(root, '_posts')).length === 0);
+  assert.equal(registryOf(root).DxTest00001.decision, 'pending');
+});
