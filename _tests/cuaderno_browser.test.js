@@ -111,3 +111,12 @@ for (const snippet of ['scan', 'bundle']) {
     for (const line of below().split('\n')) assert.doesNotMatch(line, /^(const |let |function |async function )/);
   });
 }
+
+test('scan.js downloads its result as cuaderno-scan.json and reports only a summary', () => {
+  const main = fs.readFileSync(path.join(SKILL, 'scan.js'), 'utf8').split('\n// MAIN\n')[1];
+  assert.match(main, /cuaderno-scan\.json/);
+  assert.match(main, /\.download = /);
+  assert.match(main, /application\/json/);
+  assert.match(main, /result: JSON\.stringify\(\{ file: 'cuaderno-scan\.json', items: /);
+  assert.doesNotMatch(main, /result: JSON\.stringify\(\{ end, complete: scanDone\(/);
+});

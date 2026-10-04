@@ -94,7 +94,15 @@ function scanDone(items, end, { newest, oldest, backfillDone, batch }) {
       XMLHttpRequest.prototype.send = origSend;
     }
     if (!found.size) throw new Error('no timeline data captured: login wall or rate limit, look at the tab');
-    window.__cuaderno = { snippet: 'scan', state: 'done', result: JSON.stringify({ end, complete: scanDone([...found.values()], end, PARAMS), items: [...found.values()] }) };
+    const items = [...found.values()];
+    const complete = scanDone(items, end, PARAMS);
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([JSON.stringify({ end, complete, items })], { type: 'application/json' }));
+    link.download = 'cuaderno-scan.json';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.__cuaderno = { snippet: 'scan', state: 'done', result: JSON.stringify({ file: 'cuaderno-scan.json', items: items.length, end, complete }) };
   } catch (e) {
     window.__cuaderno = { snippet: 'scan', state: 'error', error: e.message };
   }

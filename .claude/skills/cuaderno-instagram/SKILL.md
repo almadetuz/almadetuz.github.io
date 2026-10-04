@@ -23,7 +23,7 @@ Rules:
 
 ## Running a snippet
 
-A snippet returns `'started'` at once and keeps working in the page, because the Chrome tool aborts any evaluation after 45 seconds. Then poll with `javascript_tool` running exactly `JSON.stringify(window.__cuaderno || null)` about every 10 seconds (use `computer` action `wait` with duration 10 between polls), until `state` is `done` or `error`. Poll at most 15 times for the scan and 12 for a bundle; if `state` is still `running`, take a screenshot, stop and report. `error` is handled like a thrown error in the steps. `done` gives `result`, the JSON string to use.
+A snippet returns `'started'` at once and keeps working in the page, because the Chrome tool aborts any evaluation after 45 seconds. Then poll with `javascript_tool` running exactly `JSON.stringify(window.__cuaderno || null)` about every 10 seconds (use `computer` action `wait` with duration 10 between polls), until `state` is `done` or `error`. Poll at most 15 times for the scan and 12 for a bundle; if `state` is still `running`, take a screenshot, stop and report. `error` is handled like a thrown error in the steps. `done` gives `result`, a short JSON summary. The `javascript_tool` output is cut at about 1000 characters, which is why the scan downloads its result as a file and the bundle downloads a tar instead of returning data.
 
 ## 1. Read the registry
 
@@ -33,8 +33,8 @@ Read `_data/cuaderno_instagram.yml`. Note `newest`, `oldest`, `backfill_done` an
 
 1. Navigate the tab to `https://www.instagram.com/p/<newest shortcode>/`.
 2. If the URL now contains `/accounts/login`, or a screenshot shows a login wall, stop and ask the user to log in to Instagram in that Chrome. Continue only when they say so.
-3. Read `.claude/skills/cuaderno-instagram/scan.js`. In the `PARAMS` line below `// MAIN`, replace `__NEWEST__` and `__OLDEST__` with the registry dates (inside the existing quotes) and `__BACKFILL_DONE__` with `true` or `false`. Run the whole text with `javascript_tool` and poll as in "Running a snippet"; the scan takes 10 to 100 seconds.
-4. If the state is `error`, show the error to the user and stop. Otherwise save `result`, unchanged, to `<SCRATCH>/scan.json` with the Write tool.
+3. Read `.claude/skills/cuaderno-instagram/scan.js`. In the `PARAMS` line below `// MAIN`, replace `__NEWEST__` and `__OLDEST__` with the registry dates (inside the existing quotes) and `__BACKFILL_DONE__` with `true` or `false`. Delete any stale download first with `rm -f "<DL>/cuaderno-scan.json"`. Then run the whole text with `javascript_tool` and poll as in "Running a snippet"; the scan takes 10 to 100 seconds.
+4. If the state is `error`, show the error to the user and stop. Otherwise the scan has downloaded its result: check `ls "<DL>/cuaderno-scan.json"`. If it is not there yet, wait with Monitor (an until-loop on that file, at most 1 minute). If Chrome blocks the download, take a screenshot and ask the user to allow downloads from instagram.com, then navigate again (step 1) and run the scan again. Then run `mv "<DL>/cuaderno-scan.json" "<SCRATCH>/scan.json"`.
 
 ## 3. List and ask
 
