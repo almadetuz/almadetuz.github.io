@@ -10,6 +10,8 @@ const ROOT = path.resolve(__dirname, '..');
 const SITE = fs.mkdtempSync(path.join(os.tmpdir(), 'cuaderno-site-'));
 // Fixture posts are written into _posts for one build and always removed.
 // Their names start with "zz-fixture" so cuaderno_content.test.js can skip them.
+// Dates pin both prev/next boundaries whatever real posts exist: 2999 is newer
+// than any real post (newest end), 1900 is older than any (oldest end).
 const FIXTURES = {
   '2999-01-02-zz-fixture-media.md': `---
 title: "Fixture: media"
@@ -44,6 +46,19 @@ date: 2999-01-01 10:00:00 +0000
 ---
 
 Texto antiguo.
+`,
+  '1900-01-01-zz-fixture-oldest.md': `---
+title: "Fixture oldest"
+instagram: FIXTUREoldest
+seo_description: "Oldest fixture post"
+seo_image: /assets/images/cuaderno/zz-fixture-oldest/zz-fixture-oldest_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
+thumb: /assets/images/cuaderno/zz-fixture-oldest/zz-fixture-oldest_1
+date: 1900-01-01 10:00:00 +0000
+---
+
+Texto el mas antiguo.
 `
 };
 
@@ -116,6 +131,9 @@ test('previous/next links appear only when the neighbour exists', () => {
   assert.ok(newer.includes('href="/cuaderno/zz-fixture-older/"'));
   assert.ok(!newer.includes('class="cuaderno-next"'));
   assert.ok(older.includes('href="/cuaderno/zz-fixture-media/"'));
+  const oldest = read('cuaderno/zz-fixture-oldest/index.html');
+  assert.ok(!oldest.includes('class="cuaderno-prev"'));
+  assert.match(oldest, /class="cuaderno-next"[^>]*href="\/cuaderno\/[^"]+"/);
 });
 
 test('index lists posts newest first with thumb, date and description', () => {
