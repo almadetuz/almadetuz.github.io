@@ -69,7 +69,8 @@ function buildTar(files) {
 
 // MAIN
 const ACCOUNT = 'amanda_tuz';
-const code = location.pathname.split('/').filter(Boolean)[1];
+const code = (location.pathname.match(/\/(?:p|reel)\/([^/]+)/) || [])[1];
+if (!code) throw new Error('not a post page: ' + location.pathname);
 let post = null;
 for (const s of document.querySelectorAll('script[type="application/json"]')) {
   if (!s.textContent.includes('xdt_api__v1__media__shortcode__web_info')) continue;
