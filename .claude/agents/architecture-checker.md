@@ -120,7 +120,7 @@ Detect convention and architecture violations in this Jekyll project. Full rule 
 | **Detect** | New image without responsive `_320/_480/_640/.{jpg,webp}` siblings; CDN `<script>` tag introduced; vendor file edited in place; Bootstrap CSS modified directly. |
 | **Rule** | See `assets.md` |
 
-**Fix**: Generate the missing variants (use `resize_img.sh` + `convert_img.sh`); commit a versioned vendor file instead of editing; override Bootstrap via CSS custom properties.
+**Fix**: Generate the missing variants (use `_scripts/resize_img.sh` + `_scripts/convert_img.sh`); commit a versioned vendor file instead of editing; override Bootstrap via CSS custom properties.
 
 ---
 

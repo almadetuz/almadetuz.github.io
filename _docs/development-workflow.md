@@ -232,10 +232,10 @@ body {
 #### Image Processing Scripts
 ```bash
 # Convert images to WebP format
-./convert_img.sh
+./_scripts/convert_img.sh
 
 # Resize images for multiple breakpoints
-./resize_img.sh
+./_scripts/resize_img.sh
 ```
 
 #### Manual Optimization

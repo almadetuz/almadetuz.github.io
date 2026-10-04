@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Example: ./resize_img.sh filename.jpg 1280 640 480 320
+# Example: _scripts/resize_img.sh filename.jpg 1280 640 480 320
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 IMG_PATH="assets/images"
-cd "$SCRIPT_DIR"
+ROOT_DIR=$( cd -- "$SCRIPT_DIR/.." &> /dev/null && pwd )
+cd "$ROOT_DIR"
 
 filename=$1
 shift

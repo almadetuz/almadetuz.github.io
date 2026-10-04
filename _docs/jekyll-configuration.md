@@ -81,8 +81,6 @@ exclude:
   - README.md
   - LICENSE
   - Procfile
-  - convert_img.sh
-  - resize_img.sh
   - config.ru
   - Rakefile
   - .cursor/

@@ -20,7 +20,7 @@ Every content image that displays larger than a thumbnail needs both WebP and JP
 <name>.{jpg,webp}      # ~1024w "full" variant
 ```
 
-- Generate variants with `resize_img.sh` and `convert_img.sh` (committed at the repo root, excluded from the build).
+- Generate variants with `_scripts/resize_img.sh` and `_scripts/convert_img.sh` (Jekyll ignores `_scripts/`).
 - Reference them via `link_track_image.html` (or analogous includes) — pass the full `srcset` strings as parameters.
 - Use `loading="lazy"` for everything below the fold.
 - Album art lives under `assets/images/<album-slug>/`; standalone images live directly under `assets/images/`.

@@ -36,8 +36,7 @@ assets/js/*.min.js
 assets/js/*.min.js.map
 
 # Image processing scripts (manual tools)
-convert_img.sh
-resize_img.sh
+_scripts/
 
 # Deployment files
 Procfile

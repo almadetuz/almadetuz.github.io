@@ -293,8 +293,8 @@ Non-critical JavaScript is loaded after page content to improve performance.
 ### Image Optimization Process
 
 #### Manual Scripts
-- `convert_img.sh`: Image format conversion
-- `resize_img.sh`: Batch resizing for multiple breakpoints
+- `_scripts/convert_img.sh`: Image format conversion
+- `_scripts/resize_img.sh`: Batch resizing for multiple breakpoints
 
 #### Optimization Strategies
 1. **Multiple Formats**: WebP with JPEG fallbacks

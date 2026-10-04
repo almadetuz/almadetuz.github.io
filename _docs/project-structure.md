@@ -214,4 +214,4 @@ The following are excluded from version control:
 - `_site/` - Generated site
 - `.jekyll-cache/` - Jekyll cache
 - Development and deployment specific files
-- Image processing scripts (`convert_img.sh`, `resize_img.sh`)
+- Image processing scripts in `_scripts/` (`resize_img.sh`, `convert_img.sh`, `seo_img.sh`, `transcode_video.sh`)
