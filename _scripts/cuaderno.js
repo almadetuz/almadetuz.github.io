@@ -26,10 +26,13 @@ function captionLines(text) {
   let prev;
   do {
     prev = t;
-    t = t.replace(TRAILING_TAGS, '');
-    const lines = t.split('\n');
-    while (lines.length && SPACER.test(lines[lines.length - 1])) lines.pop();
-    t = lines.join('\n');
+    const stripped = t.replace(TRAILING_TAGS, '');
+    if (stripped !== t) {
+      // Spacer lines only go when they sat before a removed hashtag block.
+      const lines = stripped.split('\n');
+      while (lines.length && SPACER.test(lines[lines.length - 1])) lines.pop();
+      t = lines.join('\n');
+    }
   } while (t !== prev);
   return t.split('\n').map((l) => (BLANK.test(l) ? '' : l.trim()));
 }
@@ -72,7 +75,7 @@ function linkMentionsWithEscape(line) {
     // Escape text before this mention
     result += escapePlainText(line.slice(lastIndex, match.index));
     // Add the mention as a link (handle is not escaped, URL is correct)
-    result += `[@${match[1]}](https://www.instagram.com/${match[1]}/)`;
+    result += `[@${match[1].replace(/_/g, '\\_')}](https://www.instagram.com/${match[1]}/)`;
     lastIndex = match.index + match[0].length;
   }
 
@@ -95,10 +98,11 @@ function cleanCaption(text) {
 function seoDescription(text, fallback) {
   const plain = captionLines(text).join(' ').replace(EMOJI, '').replace(/\s+/g, ' ').trim();
   const s = plain || fallback;
-  if (s.length <= 150) return s;
-  const cut = s.slice(0, 150);
+  const chars = Array.from(s);
+  if (chars.length <= 150) return s;
+  const cut = chars.slice(0, 150);
   const space = cut.lastIndexOf(' ');
-  return (space > 100 ? cut.slice(0, space) : cut).replace(/[\s,;:]+$/, '');
+  return (space > 100 ? cut.slice(0, space) : cut).join('').replace(/[\s,;:]+$/, '');
 }
 
 function slugify(title) {
@@ -253,6 +257,7 @@ function parseAnswer(text, max) {
   for (const part of text.split(/[;\n]/).map((s) => s.trim()).filter(Boolean)) {
     const m = part.match(/^(s[ií]|no)(?!\p{L})\s*(.*)$/iu);
     if (!m) throw new Error(`cannot read "${part}": answer like "sí 1,3; no 2"`);
+    if (!m[2].trim()) throw new Error(`"${part}" has no numbers: answer like "sí 1,3; no 2"`);
     const key = /^s/i.test(m[1]) ? 'yes' : 'no';
     for (const tok of m[2].split(/[\s,]+/).filter(Boolean)) {
       const r = tok.match(/^(\d+)(?:-(\d+))?$/);
@@ -291,6 +296,7 @@ function accept(reg, shortcode, slug) {
 
 const ACCOUNT = 'amanda_tuz';
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const SIZES = ['', '_320', '_480', '_640'];
 const MAX_VIDEO_BYTES = 8 * 1024 * 1024;
 
 function runScript(root, script, args) {
@@ -339,6 +345,14 @@ function importPost({ root = ROOT, dir, slug, title, alt }) {
     fs.mkdirSync(postsDir, { recursive: true });
     postFile = `_posts/${meta.taken_at.slice(0, 10)}-${slug}.md`;
     fs.writeFileSync(path.join(root, postFile), buildPost({ meta, caption, title, slug, alt }));
+    const expected = [];
+    for (const base of jpgs) {
+      for (const size of SIZES) for (const ext of ['jpg', 'webp']) expected.push(`${imgRel}/${base}${size}.${ext}`);
+    }
+    for (const ext of ['jpg', 'webp']) expected.push(`${imgRel}/${slug}_seo.${ext}`);
+    expected.push(...videos);
+    const missing = expected.filter((f) => !fs.existsSync(path.join(root, f)));
+    if (missing.length) throw new Error(`media scripts did not produce: missing ${missing.join(', ')}`);
     saveRegistry(root, accept(reg, meta.shortcode, slug));
   } catch (e) {
     fs.rmSync(imgDir, { recursive: true, force: true });
@@ -370,7 +384,10 @@ const COMMANDS = {
     console.log(slugify(title));
   },
   import(dir, slug, title, alt) {
-    console.log(JSON.stringify(importPost({ dir, slug, title, alt }), null, 2));
+    if (![dir, slug, title, alt].every((a) => typeof a === 'string' && a)) {
+      throw new Error("usage: import <bundle-dir> <slug> '<title>' '<alt>'");
+    }
+    console.log(JSON.stringify(importPost({ dir: path.resolve(dir), slug, title, alt }), null, 2));
   }
 };
 

@@ -49,7 +49,11 @@ test('caption keeps hashtags inside the text and escapes lines kramdown would re
 
 test('caption links @mentions but not emails or trailing dots', () => {
   assert.equal(c.cleanCaption('Gracias @edu.vino y @amanda_tuz. Escríbeme a hola@almadetuz.com'),
-    'Gracias [@edu.vino](https://www.instagram.com/edu.vino/) y [@amanda_tuz](https://www.instagram.com/amanda_tuz/). Escríbeme a hola@almadetuz.com');
+    'Gracias [@edu.vino](https://www.instagram.com/edu.vino/) y [@amanda\\_tuz](https://www.instagram.com/amanda_tuz/). Escríbeme a hola@almadetuz.com');
+});
+
+test('caption without hashtags keeps a final spacer line', () => {
+  assert.equal(c.cleanCaption('Texto\n...'), 'Texto\\\n...');
 });
 
 test('caption collapses blank-looking lines into one paragraph break', () => {
@@ -66,6 +70,13 @@ test('seo description is one line, no emojis, at most 150 chars, cut at a word',
   assert.ok(s.startsWith('Nuevos brotes. Hoy palabra'));
   assert.ok(s.endsWith('palabra'));
   assert.equal(c.seoDescription('Nueva cosecha.\n\nGracias @edu #vino', 'x'), 'Nueva cosecha. Gracias @edu');
+});
+
+test('seo description cut never splits an astral character', () => {
+  const s = c.seoDescription('a' + '\u{1D400}'.repeat(200), 'x');
+  assert.ok(!/[\uD800-\uDFFF]/.test(s.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, '')));
+  assert.ok(Array.from(s).length <= 150);
+  assert.ok(s.length > 0);
 });
 
 test('seo description falls back to the title for an empty or emoji-only caption', () => {
@@ -156,7 +167,8 @@ $$x$$
 a -- b
 &amp; &copy; &#123;
 {{ x }}
-{% endraw %}`;
+{% endraw %}
+@_vino_ y @amanda_tuz`;
 
   const escaped = c.cleanCaption(input);
   const html = execFileSync('bundle', ['exec', 'ruby', '-e',
@@ -173,7 +185,7 @@ a -- b
   assert.ok(!html.includes('<code'), 'Should not render code');
   assert.ok(!html.includes('<dl'), 'Should not render definition list');
   assert.ok(!html.includes('<table'), 'Should not render table');
-  assert.ok(!html.includes('<a '), 'Should not render links (other than auto-links)');
+  assert.equal((html.match(/<a /g) || []).length, 2, 'Only the two mention links');
 
   // Strip HTML tags and decode HTML entities
   const text = html
@@ -284,6 +296,8 @@ test('answers: unknown word, out of range, both yes and no, not a number', () =>
   assert.throws(() => c.parseAnswer('sí 0', 6), /out of range/);
   assert.throws(() => c.parseAnswer('sí 1; no 1', 6), /both yes and no: 1/);
   assert.throws(() => c.parseAnswer('sí uno', 6), /not a number/);
+  assert.throws(() => c.parseAnswer('sí', 6), /"sí" has no numbers/);
+  assert.throws(() => c.parseAnswer('sí 1; no', 6), /"no" has no numbers/);
 });
 
 test('decisions: no -> rejected, sí and unanswered -> pending, sí returned for import, cursors move', () => {
@@ -327,6 +341,12 @@ test('cli: slug command prints the slug; unknown command exits 1 with usage', ()
   const cli = path.join(ROOT, '_scripts/cuaderno.js');
   assert.equal(execFileSync('node', [cli, 'slug', 'Raíces vivas'], { encoding: 'utf8' }), 'raices-vivas\n');
   assert.throws(() => execFileSync('node', [cli, 'nope'], { stdio: 'pipe' }), /Usage: cuaderno.js/);
+});
+
+test('cli: import without all four arguments exits 1 with its usage', () => {
+  const cli = path.join(ROOT, '_scripts/cuaderno.js');
+  assert.throws(() => execFileSync('node', [cli, 'import', '/nonexistent', 'slug', 'Titulo'], { stdio: 'pipe' }),
+    (e) => e.status === 1 && /usage: import <bundle-dir> <slug> '<title>' '<alt>'/.test(e.stderr.toString()));
 });
 
 // ---- Import ----
@@ -420,4 +440,27 @@ test('a broken media file aborts the import, removes what it created and keeps t
   assert.ok(!fs.existsSync(path.join(root, 'assets/videos/cuaderno/rota_2.mp4')));
   assert.ok(!fs.existsSync(path.join(root, '_posts')) || fs.readdirSync(path.join(root, '_posts')).length === 0);
   assert.equal(registryOf(root).DxTest00001.decision, 'pending');
+});
+
+test('a media script that exits 0 without its output aborts the import', () => {
+  const root = tmpRoot();
+  fs.writeFileSync(path.join(root, '_scripts/convert_img.sh'), '#!/bin/sh\nexit 0\n');
+  fs.chmodSync(path.join(root, '_scripts/convert_img.sh'), 0o755);
+  const dir = makeBundle(META, 'x');
+  assert.throws(() => c.importPost({ root, dir, slug: 'vacia', title: 'T', alt: 'a' }), /missing/);
+  assert.ok(!fs.existsSync(path.join(root, 'assets/images/cuaderno/vacia')));
+  assert.ok(!fs.existsSync(path.join(root, 'assets/videos/cuaderno/vacia_2.mp4')));
+  assert.ok(!fs.existsSync(path.join(root, '_posts')) || fs.readdirSync(path.join(root, '_posts')).length === 0);
+  assert.equal(registryOf(root).DxTest00001.decision, 'pending');
+});
+
+test('a failed import can be retried with the same slug', () => {
+  const root = tmpRoot();
+  const dir = makeBundle(META, 'x');
+  fs.writeFileSync(path.join(dir, '3.webp'), 'not an image');
+  assert.throws(() => c.importPost({ root, dir, slug: 'reintento', title: 'T', alt: 'a' }));
+  const fixed = makeBundle(META, 'x');
+  const res = c.importPost({ root, dir: fixed, slug: 'reintento', title: 'T', alt: 'a' });
+  assert.equal(res.slug, 'reintento');
+  assert.equal(registryOf(root).DxTest00001.decision, 'accepted');
 });
