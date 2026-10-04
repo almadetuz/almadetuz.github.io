@@ -1,0 +1,10 @@
+{%- comment -%}
+One image in a Cuaderno post. Full column width on mobile, 640px max on desktop.
+
+Params:
+  src - image base path, no size suffix and no extension
+  alt - alt text
+{%- endcomment -%}
+<figure class="cuaderno-media cuaderno-image">
+  {% include cuaderno_picture.html src=include.src alt=include.alt %}
+</figure>

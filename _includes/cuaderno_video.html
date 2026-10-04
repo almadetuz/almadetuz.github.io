@@ -1,0 +1,18 @@
+{%- comment -%}
+Video in a Cuaderno post, in the Instagram format (vertical by default).
+About 400px wide on desktop, full width on mobile.
+
+Params:
+  src - mp4 path
+  poster - poster image base path (the Instagram cover), no size suffix and no extension
+  ratio (optional) - 9x16 (default), 4x5 or 1x1
+{%- endcomment -%}
+{::nomarkdown}
+<figure class="cuaderno-media cuaderno-video">
+  <div class="ratio ratio-{{ include.ratio | default: '9x16' }}">
+    <video controls playsinline preload="metadata" poster="{{ include.poster }}_640.jpg">
+      <source src="{{ include.src }}" type="video/mp4">
+    </video>
+  </div>
+</figure>
+{:/nomarkdown}

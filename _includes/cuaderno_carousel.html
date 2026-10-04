@@ -1,0 +1,37 @@
+{%- comment -%}
+Bootstrap carousel of images in a Cuaderno post.
+
+Params:
+  id - unique html id for the carousel
+  images - comma separated image base paths, in Instagram order
+  alt - alt text for every slide
+{%- endcomment -%}
+{%- assign images = include.images | split: "," -%}
+<figure class="cuaderno-media cuaderno-carousel">
+  <div id="{{ include.id }}" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+    <div class="carousel-indicators">
+      {%- for image in images %}
+      <button type="button" data-bs-target="#{{ include.id }}" data-bs-slide-to="{{ forloop.index0 }}"{% if forloop.first %} class="active" aria-current="true"{% endif %} aria-label="Imagen {{ forloop.index }}"></button>
+      {%- endfor %}
+    </div>
+    <div class="carousel-inner">
+      {%- for image in images %}
+      <div class="carousel-item{% if forloop.first %} active{% endif %}">
+        {%- if forloop.first %}
+        {% include cuaderno_picture.html src=image alt=include.alt lazy=false %}
+        {%- else %}
+        {% include cuaderno_picture.html src=image alt=include.alt %}
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#{{ include.id }}" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#{{ include.id }}" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+</figure>
