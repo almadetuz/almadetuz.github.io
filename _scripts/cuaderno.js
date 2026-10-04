@@ -34,25 +34,59 @@ function captionLines(text) {
   return t.split('\n').map((l) => (BLANK.test(l) ? '' : l.trim()));
 }
 
-// Instagram has no markup, so a line that kramdown would read as heading, list or quote is escaped.
-function escapeLine(line) {
-  return line
-    .replace(/^#/, '\\#')
-    .replace(/^([>+*-])(\s)/, '\\$1$2')
-    .replace(/^(\d+)\.(\s)/, '$1\\.$2');
+// Escape plain text segments (outside mentions): backslash-escape special characters,
+// replace braces with entities so Liquid never sees them.
+function escapePlainText(text) {
+  // Escape backslash first so we don't double-escape
+  text = text.replace(/\\/g, '\\\\');
+  // Escape these characters anywhere: * _ ` [ ] < > | $
+  text = text.replace(/([*_`\[\]<>|$])/g, '\\$1');
+  // Replace braces with entities so Liquid never sees them
+  text = text.replace(/\{/g, '&#123;');
+  text = text.replace(/\}/g, '&#125;');
+  return text;
 }
 
-function linkMentions(line) {
-  return line.replace(MENTION, '[@$1](https://www.instagram.com/$1/)');
+// Escape line-leading characters that kramdown would read as markup.
+function escapeLineStart(line) {
+  // Line-leading # -> \#
+  if (line.startsWith('#')) return '\\' + line;
+  // Line-leading + - = : -> \+, \-, \=, \:
+  if (/^[+\-=:]/.test(line)) return '\\' + line;
+  // Digits followed by . and space: N. -> N\.
+  if (/^(\d+)\.\s/.test(line)) {
+    const match = line.match(/^(\d+)(\.\s)/);
+    return match[1] + '\\' + match[2] + line.slice(match[0].length);
+  }
+  return line;
+}
+
+// Link mentions and escape text segments outside them.
+function linkMentionsWithEscape(line) {
+  let result = '';
+  let lastIndex = 0;
+
+  for (const match of line.matchAll(MENTION)) {
+    // Escape text before this mention
+    result += escapePlainText(line.slice(lastIndex, match.index));
+    // Add the mention as a link (handle is not escaped, URL is correct)
+    result += `[@${match[1]}](https://www.instagram.com/${match[1]}/)`;
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Escape remaining text after last mention
+  result += escapePlainText(line.slice(lastIndex));
+
+  return result;
 }
 
 // Caption as kramdown: paragraphs kept, a single line break becomes a "\" hard break.
 function cleanCaption(text) {
   const paragraphs = captionLines(text).join('\n').trim().split(/\n{2,}/).filter(Boolean);
   const body = paragraphs
-    .map((p) => p.split('\n').map((l) => linkMentions(escapeLine(l))).join('\\\n'))
+    .map((p) => p.split('\n').map((l) => escapeLineStart(linkMentionsWithEscape(l))).join('\\\n'))
     .join('\n\n');
-  return /\{[{%]/.test(body) ? `{% raw %}\n${body}\n{% endraw %}` : body;
+  return body;
 }
 
 // One line, no emojis, at most 150 characters cut at a word. Falls back to the title.

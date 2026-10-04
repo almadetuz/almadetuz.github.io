@@ -56,8 +56,8 @@ test('caption collapses blank-looking lines into one paragraph break', () => {
   assert.equal(c.cleanCaption('Uno\n⠀\n\n\nDos'), 'Uno\n\nDos');
 });
 
-test('caption with Liquid braces is wrapped in raw so the build does not break', () => {
-  assert.equal(c.cleanCaption('Usa {{ esto }} y {% aquello %}'), '{% raw %}\nUsa {{ esto }} y {% aquello %}\n{% endraw %}');
+test('caption with Liquid braces uses entities so Liquid never sees them', () => {
+  assert.equal(c.cleanCaption('Usa {{ esto }} y {% aquello %} {% endraw %}'), 'Usa &#123;&#123; esto &#125;&#125; y &#123;% aquello %&#125; &#123;% endraw %&#125;');
 });
 
 test('seo description is one line, no emojis, at most 150 chars, cut at a word', () => {
@@ -137,4 +137,29 @@ test('shortcodes Psych could misread are quoted', () => {
   assert.equal(c.scalar('-abc'), '"-abc"');
   assert.equal(c.scalar('12345'), '"12345"');
   assert.equal(c.scalar('no'), '"no"');
+});
+
+
+test('caption renders through kramdown with its visible text intact', () => {
+  const input = '*palavra*\n_outra_\n: definicion\n[id]: http://x.com\na | b\n$$x$$\n<b>no</b>\n`code`\n{{ x }}\n{% endraw %}';
+  
+  const escaped = c.cleanCaption(input);
+  const html = execFileSync('bundle', ['exec', 'ruby', '-e', 
+    'require "kramdown"; print Kramdown::Document.new($stdin.read, input: "GFM", hard_wrap: false).to_html'],
+  { cwd: ROOT, input: escaped, encoding: 'utf8' });
+  
+  // Strip HTML tags and decode entities
+  const text = html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&#123;/g, '{')
+    .replace(/&#125;/g, '}')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/\s+/g, ' ')
+    .trim();
+  
+  const expectedText = input.replace(/\\n/g, '\n').replace(/\s+/g, ' ').trim();
+  assert.equal(text, expectedText);
 });
