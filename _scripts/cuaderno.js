@@ -223,7 +223,8 @@ function buildList(reg, scan) {
   const known = new Set(reg.posts.map((p) => p.shortcode));
   const unknown = scan.items.filter((i) => !known.has(i.shortcode));
   const fresh = unknown.filter((i) => i.date > reg.newest).sort(byDate);
-  const older = reg.backfill_done ? [] : unknown.filter((i) => i.date < reg.oldest).sort(byDate);
+  // A pinned old post seen in a partial scan would move oldest past posts not seen yet.
+  const older = reg.backfill_done ? [] : unknown.filter((i) => i.date < reg.oldest && (!i.pinned || scan.end)).sort(byDate);
   const pending = reg.posts.filter((p) => p.decision === 'pending').map((p) => ({
     shortcode: p.shortcode, date: p.date, type: p.type,
     caption: (scan.items.find((i) => i.shortcode === p.shortcode) || {}).caption || ''
@@ -233,7 +234,7 @@ function buildList(reg, scan) {
     ...older.slice(0, BATCH).map((i) => ({ ...i, source: 'backfill' })),
     ...pending.map((i) => ({ ...i, source: 'pending' }))
   ].map(({ pinned, ...i }, k) => ({ n: k + 1, ...i }));
-  return { items, backfill_done: reg.backfill_done || (scan.end && older.length <= BATCH) };
+  return { items, backfill_done: Boolean(reg.backfill_done || (scan.end && older.length <= BATCH)) };
 }
 
 function formatList(list) {

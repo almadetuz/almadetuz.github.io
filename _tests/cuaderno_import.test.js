@@ -239,12 +239,12 @@ test('dumped registry parses back to the same data with Psych', () => {
   assert.deepEqual(c.loadYaml(tmpFile('r.yml', c.dumpRegistry(REG))), REG);
 });
 
-test('list: new posts first, then backfill (pinned old one included), then pending; recent pinned ignored', () => {
+test('list: new posts first, then backfill, then pending; pinned posts left out of a partial scan', () => {
   const list = c.buildList(REG, SCAN);
   assert.deepEqual(list.items.map((i) => `${i.n}:${i.shortcode}:${i.source}`), [
     '1:New0000002:new', '2:New0000001:new',
-    '3:Old0000001:backfill', '4:Old0000002:backfill', '5:Pin0000001:backfill',
-    '6:Pend0000001:pending'
+    '3:Old0000001:backfill', '4:Old0000002:backfill',
+    '5:Pend0000001:pending'
   ]);
   assert.ok(list.items.every((i) => !('pinned' in i)));
   assert.equal(list.backfill_done, false);
@@ -288,22 +288,39 @@ test('answers: unknown word, out of range, both yes and no, not a number', () =>
 
 test('decisions: no -> rejected, sí and unanswered -> pending, sí returned for import, cursors move', () => {
   const list = c.buildList(REG, SCAN);
-  const { registry, toImport } = c.applyDecisions(REG, list, c.parseAnswer('sí 1,6; no 2,3', list.items.length));
+  const { registry, toImport } = c.applyDecisions(REG, list, c.parseAnswer('sí 1,5; no 2,3', list.items.length));
   assert.deepEqual(toImport, ['New0000002', 'Pend0000001']);
   const d = Object.fromEntries(registry.posts.map((p) => [p.shortcode, p.decision]));
   assert.deepEqual(d, {
     New0000002: 'pending', New0000001: 'rejected', DdMn38xDZt_: 'accepted', Pend0000001: 'pending',
-    Old0000001: 'rejected', Old0000002: 'pending', Pin0000001: 'pending'
+    Old0000001: 'rejected', Old0000002: 'pending'
   });
   assert.equal(registry.newest, '2026-10-01T12:00:00Z');
-  assert.equal(registry.oldest, '2025-01-01T09:00:00Z');
+  assert.equal(registry.oldest, '2026-07-20T10:00:00Z');
   assert.equal(registry.posts[0].shortcode, 'New0000002');
+  assert.ok(!registry.posts.some((p) => p.shortcode === 'Pin0000001'));
   assert.ok(!registry.posts.some((p) => p.shortcode === 'Pin0000002'));
 });
 
 test('accept marks the post accepted with its slug', () => {
   const reg = c.accept(REG, 'Pend0000001', 'una-cosa');
   assert.deepEqual(reg.posts[1], { shortcode: 'Pend0000001', date: '2026-08-01T10:00:00Z', type: 'image', decision: 'accepted', slug: 'una-cosa' });
+});
+
+test('list offers an old pinned post as backfill once the scan reached the end', () => {
+  const fullScan = { ...SCAN, end: true };
+  const list = c.buildList(REG, fullScan);
+  const pinned1 = list.items.find((i) => i.shortcode === 'Pin0000001');
+  assert.ok(pinned1);
+  assert.equal(pinned1.source, 'backfill');
+  assert.ok(!list.items.some((i) => i.shortcode === 'Pin0000002'));
+});
+
+test('buildList with missing scan.end returns strictly boolean backfill_done', () => {
+  const scanWithoutEnd = { items: SCAN.items };
+  const list = c.buildList(REG, scanWithoutEnd);
+  assert.equal(typeof list.backfill_done, 'boolean');
+  assert.equal(list.backfill_done, false);
 });
 
 test('cli: slug command prints the slug; unknown command exits 1 with usage', () => {
