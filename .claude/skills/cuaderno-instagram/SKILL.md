@@ -13,6 +13,7 @@ Rules:
 - Never call Instagram's `/api/` endpoints yourself and never retry in a loop: Instagram answers 429 and may flag the account. Read only what the page loads, through `.claude/skills/cuaderno-instagram/scan.js` and `.claude/skills/cuaderno-instagram/bundle.js`.
 - The Chrome tool blocks any result that contains a signed CDN URL. Both snippets return data without URLs; do not change that.
 - Run a snippet once per page load. To run it again, navigate to the page again first.
+- Pass the answer, title and alt text to the shell in single quotes; write a `'` inside them as `'\''`.
 
 ## Setup
 
@@ -36,7 +37,7 @@ Read `_data/cuaderno_instagram.yml`. Note `newest`, `oldest`, `backfill_done` an
 1. Run `node _scripts/cuaderno.js list $SCRATCH/scan.json $SCRATCH/list.json`.
 2. If it fails with "scan stopped before reaching the newest listed post", do step 2 once more. If it fails again, stop and report.
 3. Paste its output to the user unchanged and ask: «¿Cuáles importo? Responde por ejemplo "sí 1,3; no 2". Las que no nombres quedan pendientes.» If the output is "No hay publicaciones nuevas.", do not ask; use an empty answer.
-4. Run `node _scripts/cuaderno.js decide $SCRATCH/list.json "<the user's answer, unchanged>"`. This saves the registry: "no" becomes `rejected`, everything else `pending`. If it rejects the answer, show the error and ask again.
+4. Run `node _scripts/cuaderno.js decide $SCRATCH/list.json '<the user's answer, unchanged>'`. This saves the registry: "no" becomes `rejected`, everything else `pending`. If it rejects the answer, show the error and ask again.
 5. It prints `{"import":[...]}`. An empty list means there is nothing to import: go to step 5.
 
 ## 4. Import each "sí"
@@ -50,9 +51,9 @@ For each shortcode `<code>` in the import list, in order:
 5. Read `$SCRATCH/<code>/caption.txt` and `$SCRATCH/<code>/meta.json`. To look at the media, make a preview of the first image or poster, for example `convert "$SCRATCH/<code>/1.webp" -resize 640x "$SCRATCH/<code>/preview.jpg"`, and Read it.
 6. Choose:
    - **Title**: Amanda's own words, usually the first sentence or the central idea of the caption. At most about 8 words, no emojis, no final period. Example: the first post's caption opens with an emoji and "Nuevos brotes.", so its title is "Nuevos brotes".
-   - **Slug**: run `node _scripts/cuaderno.js slug "<title>"`.
+   - **Slug**: run `node _scripts/cuaderno.js slug '<title>'`.
    - **Alt**: one short sentence in Spanish describing what the images show (and where, if the caption says it). One alt text for all the images of the post.
-7. Run `node _scripts/cuaderno.js import "$SCRATCH/<code>" <slug> "<title>" "<alt>"`. It converts and resizes the images, crops the SEO image, transcodes videos, writes `_posts/<date>-<slug>.md` and marks the post `accepted` in the registry. Keep the JSON it prints (url, warnings).
+7. Run `node _scripts/cuaderno.js import "$SCRATCH/<code>" <slug> '<title>' '<alt>'`. It converts and resizes the images, crops the SEO image, transcodes videos, writes `_posts/<date>-<slug>.md` and marks the post `accepted` in the registry. Keep the JSON it prints (url, warnings).
 8. If it fails, it has already removed what it created and the post stays `pending`. Note the error and go on with the next post. If the error says the slug is already used, choose a more specific title and run step 7 once more.
 
 ## 5. Verify
