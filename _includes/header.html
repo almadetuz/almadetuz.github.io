@@ -3,8 +3,9 @@
 <div class="col">
     <a class="logo" href="/"><img src="/assets/images/icon.png" alt="Alma de Tüz"></a>
     <div class="title">
-    {% if page.title %}
-      <span>{{ page.title }}</span>
+    {% assign header_title = page.header_title | default: page.title %}
+    {% if header_title %}
+      <span>{{ header_title }}</span>
     {% endif %}
     </div>
 </div>

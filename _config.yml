@@ -12,6 +12,7 @@ defaults:
       type: posts
     values:
       layout: cuaderno_post
+      header_title: Cuaderno
       permalink: /cuaderno/:title/
 
 plugins:

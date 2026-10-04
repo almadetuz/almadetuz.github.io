@@ -8,7 +8,7 @@ Params:
 {%- endcomment -%}
 {%- assign images = include.images | split: "," -%}
 <figure class="cuaderno-media cuaderno-carousel">
-  <div id="{{ include.id }}" class="carousel slide" data-bs-touch="true" data-bs-interval="false">
+  <div id="{{ include.id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000" data-bs-touch="true">
     <div class="carousel-indicators">
       {%- for image in images %}
       <button type="button" data-bs-target="#{{ include.id }}" data-bs-slide-to="{{ forloop.index0 }}"{% if forloop.first %} class="active" aria-current="true"{% endif %} aria-label="Imagen {{ forloop.index }}"></button>
@@ -25,12 +25,12 @@ Params:
       </div>
       {%- endfor %}
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#{{ include.id }}" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <button class="carousel-control carousel-control-prev" type="button" data-bs-target="#{{ include.id }}" data-bs-slide="prev">
+      <i class="fas fa-chevron-circle-left" aria-hidden="true"></i>
       <span class="visually-hidden">Anterior</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#{{ include.id }}" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <button class="carousel-control carousel-control-next" type="button" data-bs-target="#{{ include.id }}" data-bs-slide="next">
+      <i class="fas fa-chevron-circle-right" aria-hidden="true"></i>
       <span class="visually-hidden">Siguiente</span>
     </button>
   </div>

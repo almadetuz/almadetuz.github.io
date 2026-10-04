@@ -120,9 +120,38 @@ test('post date is written in Spanish', () => {
   assert.match(html, /<time datetime="2999-01-02T\d\d:00:00[+-]\d\d:\d\d">2 de enero de 2999<\/time>/);
 });
 
-test('post links to the Instagram original', () => {
+test('post page does not link to the Instagram original', () => {
   const html = read('cuaderno/zz-fixture-media/index.html');
-  assert.ok(html.includes('href="https://www.instagram.com/p/FIXTUREnew/"'));
+  assert.ok(!html.includes('instagram.com/p/'));
+});
+
+test('post page header reads Cuaderno, not the post title', () => {
+  const html = read('cuaderno/zz-fixture-media/index.html');
+  const header = html.slice(html.indexOf('<header>'), html.indexOf('</header>'));
+  assert.ok(header.includes('<span>Cuaderno</span>'));
+  assert.ok(!header.includes('Fixture: media'));
+  assert.ok(html.includes('<title>Fixture: media'), 'post title stays in <title>');
+});
+
+test('non-post pages keep their own title in the header', () => {
+  const html = read('cuaderno/index.html');
+  const header = html.slice(html.indexOf('<header>'), html.indexOf('</header>'));
+  assert.match(header, /<span>[^<]+<\/span>/);
+  assert.ok(!header.includes('header_title'));
+});
+
+test('cuaderno carousel auto-advances every 4 seconds like /mis-canciones/', () => {
+  const html = read('cuaderno/zz-fixture-media/index.html');
+  assert.ok(html.includes('data-bs-ride="carousel"'));
+  assert.ok(html.includes('data-bs-interval="4000"'));
+  assert.ok(!html.includes('data-bs-interval="false"'));
+  assert.ok(html.includes('carousel-control carousel-control-prev'));
+  assert.ok(!html.includes('data-engage-carousel'));
+});
+
+test('back link is centered via its class', () => {
+  const html = read('cuaderno/zz-fixture-media/index.html');
+  assert.ok(html.includes('<p class="cuaderno-back"><a href="/cuaderno/">Volver al cuaderno</a></p>'));
 });
 
 test('previous/next links appear only when the neighbour exists', () => {

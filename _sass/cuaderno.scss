@@ -48,8 +48,27 @@
   --bs-aspect-ratio: calc(5 / 4 * 100%);
 }
 
-.cuaderno-instagram {
+.cuaderno-back {
   margin-top: 2rem;
+  text-align: center;
+}
+
+// Arrow icons sized as in #homeCarousel (_sass/carousel.scss); the indicators
+// and colours come from the global carousel rules in main.scss.
+.cuaderno-carousel .carousel-control i {
+  font-size: 2em;
+}
+
+@media screen and (min-width: $bp-mobile) {
+  .cuaderno-carousel .carousel-control i {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (min-width: $bp-tablet) {
+  .cuaderno-carousel .carousel-control i {
+    font-size: 3em;
+  }
 }
 
 .cuaderno-nav {
