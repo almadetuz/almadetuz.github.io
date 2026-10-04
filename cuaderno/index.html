@@ -1,0 +1,29 @@
+---
+title: Cuaderno
+layout: page
+seo_description: "Cuaderno de Alma de Tüz: lo que Amanda escribe sobre la voz, la música, el cuerpo y el arte."
+seo_image: /assets/images/alma_de_tuz_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
+---
+<section class="cuaderno-index">
+  <h1 class="cuaderno-title">Cuaderno</h1>
+  <p class="cuaderno-intro">Aquí guardo lo que escribo despacio, con una imagen al lado.</p>
+
+  <ul class="cuaderno-list">
+    {%- for post in site.posts %}
+    <li class="cuaderno-item">
+      <a href="{{ post.url }}">
+        {%- if post.thumb %}
+        {% include cuaderno_picture.html src=post.thumb alt="" sizes="120px" %}
+        {%- endif %}
+        <div>
+          <h2>{{ post.title }}</h2>
+          <p class="cuaderno-date">{% include cuaderno_date.html date=post.date %}</p>
+          <p>{{ post.seo_description }}</p>
+        </div>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>

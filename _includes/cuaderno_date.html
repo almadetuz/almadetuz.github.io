@@ -1,0 +1,9 @@
+{%- comment -%}
+Date in Spanish, "14 de marzo de 2025".
+
+Params:
+  date - a Jekyll date
+{%- endcomment -%}
+{%- assign meses = "enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre" | split: "," -%}
+{%- assign mes = include.date | date: "%-m" | minus: 1 -%}
+{{- include.date | date: "%-d" }} de {{ meses[mes] }} de {{ include.date | date: "%Y" -}}

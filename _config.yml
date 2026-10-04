@@ -11,6 +11,7 @@ defaults:
       path: ""
       type: posts
     values:
+      layout: cuaderno_post
       permalink: /cuaderno/:title/
 
 plugins:

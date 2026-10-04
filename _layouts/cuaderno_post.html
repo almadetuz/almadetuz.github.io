@@ -1,0 +1,30 @@
+---
+layout: page
+---
+<article class="cuaderno-post">
+  <h1 class="cuaderno-title">{{ page.title }}</h1>
+  <p class="cuaderno-date"><time datetime="{{ page.date | date_to_xmlschema }}">{% include cuaderno_date.html date=page.date %}</time></p>
+
+  <div class="cuaderno-body">
+    {{ content }}
+  </div>
+
+  {%- if page.instagram %}
+  <p class="cuaderno-instagram">
+    <a href="https://www.instagram.com/p/{{ page.instagram }}/" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i> Ver en Instagram</a>
+  </p>
+  {%- endif %}
+
+  {%- if page.previous or page.next %}
+  <nav class="cuaderno-nav" aria-label="Más entradas del cuaderno">
+    {%- if page.previous %}
+    <a class="cuaderno-prev" rel="prev" href="{{ page.previous.url }}">&larr; {{ page.previous.title }}</a>
+    {%- endif %}
+    {%- if page.next %}
+    <a class="cuaderno-next" rel="next" href="{{ page.next.url }}">{{ page.next.title }} &rarr;</a>
+    {%- endif %}
+  </nav>
+  {%- endif %}
+
+  <p><a href="/cuaderno/">Volver al cuaderno</a></p>
+</article>

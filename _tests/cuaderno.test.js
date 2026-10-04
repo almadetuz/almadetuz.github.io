@@ -31,6 +31,19 @@ Primer párrafo.
 {% include cuaderno_video.html src="/f/v.mp4" poster="/f/v_poster" %}
 
 {% include cuaderno_video.html src="/f/w.mp4" poster="/f/w_poster" ratio="4x5" %}
+`,
+  '2000-01-01-zz-fixture-older.md': `---
+title: "Fixture older"
+instagram: FIXTUREold
+seo_description: "Older fixture post"
+seo_image: /assets/images/cuaderno/zz-fixture-older/zz-fixture-older_seo.jpg
+seo_image_width: 1280
+seo_image_height: 720
+thumb: /assets/images/cuaderno/zz-fixture-older/zz-fixture-older_1
+date: 2000-01-01 10:00:00 +0000
+---
+
+Texto antiguo.
 `
 };
 
@@ -78,4 +91,50 @@ test('cuaderno_video renders a 9x16 playsinline video with the 640 poster by def
   const html = read('cuaderno/zz-fixture-media/index.html');
   assert.match(html, /<div class="ratio ratio-9x16">\s*<video controls playsinline preload="metadata" poster="\/f\/v_poster_640\.jpg">\s*<source src="\/f\/v\.mp4" type="video\/mp4">/);
   assert.ok(html.includes('class="ratio ratio-4x5"'));
+});
+
+test('posts live at /cuaderno/<slug>/ with the cuaderno_post layout', () => {
+  const html = read('cuaderno/zz-fixture-media/index.html');
+  assert.ok(html.includes('<article class="cuaderno-post">'));
+  assert.ok(html.includes('<h1 class="cuaderno-title">Fixture: media</h1>'));
+  assert.ok(html.includes('<header>'), 'page layout header is present');
+});
+
+test('post date is written in Spanish', () => {
+  const html = read('cuaderno/zz-fixture-media/index.html');
+  assert.match(html, /<time datetime="2000-01-02T\d\d:00:00[+-]\d\d:\d\d">2 de enero de 2000<\/time>/);
+});
+
+test('post links to the Instagram original', () => {
+  const html = read('cuaderno/zz-fixture-media/index.html');
+  assert.ok(html.includes('href="https://www.instagram.com/p/FIXTUREnew/"'));
+});
+
+test('previous/next links appear only when the neighbour exists', () => {
+  const newer = read('cuaderno/zz-fixture-media/index.html');
+  const older = read('cuaderno/zz-fixture-older/index.html');
+  assert.ok(newer.includes('href="/cuaderno/zz-fixture-older/"'));
+  assert.ok(!newer.includes('class="cuaderno-next"'));
+  assert.ok(older.includes('href="/cuaderno/zz-fixture-media/"'));
+  assert.ok(!older.includes('class="cuaderno-prev"'));
+});
+
+test('index lists posts newest first with thumb, date and description', () => {
+  const html = read('cuaderno/index.html');
+  const iNew = html.indexOf('href="/cuaderno/zz-fixture-media/"');
+  const iOld = html.indexOf('href="/cuaderno/zz-fixture-older/"');
+  assert.ok(iNew > -1 && iOld > iNew, 'newest first');
+  assert.ok(html.includes('/assets/images/cuaderno/zz-fixture-media/zz-fixture-media_1_320.webp'));
+  assert.ok(html.includes('Fixture post with every media include'));
+  assert.ok(html.includes('2 de enero de 2000'));
+});
+
+test('posts are in the feed and the sitemap', () => {
+  assert.ok(read('feed.xml').includes('/cuaderno/zz-fixture-media/'));
+  assert.ok(read('sitemap.xml').includes('/cuaderno/zz-fixture-media/'));
+  assert.ok(read('sitemap.xml').includes('/cuaderno/</loc>'));
+});
+
+test('post page carries its SEO description', () => {
+  assert.ok(read('cuaderno/zz-fixture-media/index.html').includes('content="Fixture post with every media include"'));
 });
