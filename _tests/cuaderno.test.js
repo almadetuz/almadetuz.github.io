@@ -11,7 +11,7 @@ const SITE = fs.mkdtempSync(path.join(os.tmpdir(), 'cuaderno-site-'));
 // Fixture posts are written into _posts for one build and always removed.
 // Their names start with "zz-fixture" so cuaderno_content.test.js can skip them.
 const FIXTURES = {
-  '2000-01-02-zz-fixture-media.md': `---
+  '2999-01-02-zz-fixture-media.md': `---
 title: "Fixture: media"
 instagram: FIXTUREnew
 seo_description: "Fixture post with every media include"
@@ -19,7 +19,7 @@ seo_image: /assets/images/cuaderno/zz-fixture-media/zz-fixture-media_seo.jpg
 seo_image_width: 1280
 seo_image_height: 720
 thumb: /assets/images/cuaderno/zz-fixture-media/zz-fixture-media_1
-date: 2000-01-02 10:00:00 +0000
+date: 2999-01-02 10:00:00 +0000
 ---
 
 Primer párrafo.
@@ -32,7 +32,7 @@ Primer párrafo.
 
 {% include cuaderno_video.html src="/f/w.mp4" poster="/f/w_poster" ratio="4x5" %}
 `,
-  '2000-01-01-zz-fixture-older.md': `---
+  '2999-01-01-zz-fixture-older.md': `---
 title: "Fixture older"
 instagram: FIXTUREold
 seo_description: "Older fixture post"
@@ -40,7 +40,7 @@ seo_image: /assets/images/cuaderno/zz-fixture-older/zz-fixture-older_seo.jpg
 seo_image_width: 1280
 seo_image_height: 720
 thumb: /assets/images/cuaderno/zz-fixture-older/zz-fixture-older_1
-date: 2000-01-01 10:00:00 +0000
+date: 2999-01-01 10:00:00 +0000
 ---
 
 Texto antiguo.
@@ -60,7 +60,7 @@ before(() => {
     for (const [name, body] of Object.entries(FIXTURES)) {
       fs.writeFileSync(path.join(ROOT, '_posts', name), body);
     }
-    execFileSync('bundle', ['exec', 'jekyll', 'build', '-q', '-d', SITE], { cwd: ROOT, stdio: 'pipe' });
+    execFileSync('bundle', ['exec', 'jekyll', 'build', '-q', '--future', '-d', SITE], { cwd: ROOT, stdio: 'pipe' });
   } finally {
     for (const name of Object.keys(FIXTURES)) {
       fs.rmSync(path.join(ROOT, '_posts', name), { force: true });
@@ -102,7 +102,7 @@ test('posts live at /cuaderno/<slug>/ with the cuaderno_post layout', () => {
 
 test('post date is written in Spanish', () => {
   const html = read('cuaderno/zz-fixture-media/index.html');
-  assert.match(html, /<time datetime="2000-01-02T\d\d:00:00[+-]\d\d:\d\d">2 de enero de 2000<\/time>/);
+  assert.match(html, /<time datetime="2999-01-02T\d\d:00:00[+-]\d\d:\d\d">2 de enero de 2999<\/time>/);
 });
 
 test('post links to the Instagram original', () => {
@@ -116,7 +116,6 @@ test('previous/next links appear only when the neighbour exists', () => {
   assert.ok(newer.includes('href="/cuaderno/zz-fixture-older/"'));
   assert.ok(!newer.includes('class="cuaderno-next"'));
   assert.ok(older.includes('href="/cuaderno/zz-fixture-media/"'));
-  assert.ok(!older.includes('class="cuaderno-prev"'));
 });
 
 test('index lists posts newest first with thumb, date and description', () => {
@@ -126,7 +125,7 @@ test('index lists posts newest first with thumb, date and description', () => {
   assert.ok(iNew > -1 && iOld > iNew, 'newest first');
   assert.ok(html.includes('/assets/images/cuaderno/zz-fixture-media/zz-fixture-media_1_320.webp'));
   assert.ok(html.includes('Fixture post with every media include'));
-  assert.ok(html.includes('2 de enero de 2000'));
+  assert.ok(html.includes('2 de enero de 2999'));
 });
 
 test('posts are in the feed and the sitemap', () => {

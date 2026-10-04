@@ -1,0 +1,13 @@
+# Instagram posts already listed by the cuaderno-instagram skill.
+# Decisions are words (accepted | rejected | pending): Psych reads yes/no as booleans.
+# Cursors are dates, not grid positions, because pinned posts sit on top.
+account: amanda_tuz
+newest: 2026-09-12T18:24:26Z
+oldest: 2026-09-12T18:24:26Z
+backfill_done: false
+posts:
+  - shortcode: DdMn38xDZt_
+    date: 2026-09-12T18:24:26Z
+    type: carousel
+    decision: accepted
+    slug: nuevos-brotes
