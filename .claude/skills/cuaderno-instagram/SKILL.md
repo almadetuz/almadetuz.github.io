@@ -21,6 +21,10 @@ Rules:
 - Load the Chrome tools in one ToolSearch call: `select:mcp__claude-in-chrome__tabs_context_mcp,mcp__claude-in-chrome__tabs_create_mcp,mcp__claude-in-chrome__navigate,mcp__claude-in-chrome__javascript_tool,mcp__claude-in-chrome__computer,mcp__claude-in-chrome__tabs_close_mcp,mcp__claude-in-chrome__list_connected_browsers,mcp__claude-in-chrome__select_browser`.
 - Call `tabs_context_mcp`. If a tool reports several browsers and none selected, call `list_connected_browsers` and ask the user which one with AskUserQuestion; never pick one yourself. Create a new tab for this run.
 
+## Running a snippet
+
+A snippet returns `'started'` at once and keeps working in the page, because the Chrome tool aborts any evaluation after 45 seconds. Then poll with `javascript_tool` running exactly `JSON.stringify(window.__cuaderno || null)` about every 10 seconds (use `computer` action `wait` with duration 10 between polls), until `state` is `done` or `error`. Poll at most 15 times for the scan and 12 for a bundle; if `state` is still `running`, take a screenshot, stop and report. `error` is handled like a thrown error in the steps. `done` gives `result`, the JSON string to use.
+
 ## 1. Read the registry
 
 Read `_data/cuaderno_instagram.yml`. Note `newest`, `oldest`, `backfill_done` and the shortcode of the first entry under `posts` (the newest listed post).
@@ -29,8 +33,8 @@ Read `_data/cuaderno_instagram.yml`. Note `newest`, `oldest`, `backfill_done` an
 
 1. Navigate the tab to `https://www.instagram.com/p/<newest shortcode>/`.
 2. If the URL now contains `/accounts/login`, or a screenshot shows a login wall, stop and ask the user to log in to Instagram in that Chrome. Continue only when they say so.
-3. Read `.claude/skills/cuaderno-instagram/scan.js`. In the `PARAMS` line below `// MAIN`, replace `__NEWEST__` and `__OLDEST__` with the registry dates (inside the existing quotes) and `__BACKFILL_DONE__` with `true` or `false`. Run the whole text with `javascript_tool`. It takes 10 to 100 seconds.
-4. If it throws, show the error to the user and stop. Otherwise save the returned JSON string, unchanged, to `<SCRATCH>/scan.json` with the Write tool.
+3. Read `.claude/skills/cuaderno-instagram/scan.js`. In the `PARAMS` line below `// MAIN`, replace `__NEWEST__` and `__OLDEST__` with the registry dates (inside the existing quotes) and `__BACKFILL_DONE__` with `true` or `false`. Run the whole text with `javascript_tool` and poll as in "Running a snippet"; the scan takes 10 to 100 seconds.
+4. If the state is `error`, show the error to the user and stop. Otherwise save `result`, unchanged, to `<SCRATCH>/scan.json` with the Write tool.
 
 ## 3. List and ask
 
@@ -45,7 +49,7 @@ Read `_data/cuaderno_instagram.yml`. Note `newest`, `oldest`, `backfill_done` an
 For each shortcode `<code>` in the import list, in order:
 
 1. Navigate to `https://www.instagram.com/p/<code>/` (a direct navigation: the post data is in the page only on a full load).
-2. Read `.claude/skills/cuaderno-instagram/bundle.js` and run it unchanged with `javascript_tool`. It downloads `cuaderno-<code>.tar` and returns the media kinds and the size in bytes.
+2. Read `.claude/skills/cuaderno-instagram/bundle.js` and run it unchanged with `javascript_tool`, then poll as in "Running a snippet". It downloads `cuaderno-<code>.tar`; `result` has the media kinds and the size in bytes.
 3. Check `ls "<DL>/cuaderno-<code>.tar"`. If it is not there yet, wait with Monitor (an until-loop on that file, at most 2 minutes). If it never appears, take a screenshot: Chrome may be asking to allow downloads from instagram.com. Ask the user to allow it, then navigate to the post again and repeat this step from 2.
 4. Run `mkdir -p "<SCRATCH>/<code>" && tar -xf "<DL>/cuaderno-<code>.tar" -C "<SCRATCH>/<code>" && mv "<DL>/cuaderno-<code>.tar" "<SCRATCH>/"`.
 5. Read `<SCRATCH>/<code>/caption.txt` and `<SCRATCH>/<code>/meta.json`. To look at the media, make a preview of the first image or poster, for example `convert "<SCRATCH>/<code>/1.webp" -resize 640x "<SCRATCH>/<code>/preview.jpg"`, and Read it.

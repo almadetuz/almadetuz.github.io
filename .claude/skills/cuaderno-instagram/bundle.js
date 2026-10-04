@@ -2,6 +2,10 @@
 // (the post data is embedded only on a full page load). It fetches every media file in the page,
 // packs them with meta.json and caption.txt into cuaderno-<code>.tar and downloads it.
 // It returns only counts and sizes: the tool blocks results that contain signed CDN URLs.
+// The work runs in the background (the tool aborts an evaluation after 45 s) and the snippet
+// returns 'started' at once. Read the outcome by polling javascript_tool with
+// JSON.stringify(window.__cuaderno || null) until state is 'done' (result holds the JSON string)
+// or 'error' (error holds the message).
 // Everything above the MAIN marker is pure and tested in _tests/cuaderno_browser.test.js.
 
 const TYPES = { 1: 'image', 2: 'video', 8: 'carousel' };
@@ -68,59 +72,67 @@ function buildTar(files) {
 }
 
 // MAIN
-const ACCOUNT = 'amanda_tuz';
-const code = (location.pathname.match(/\/(?:p|reel)\/([^/]+)/) || [])[1];
-if (!code) throw new Error('not a post page: ' + location.pathname);
-let post = null;
-for (const s of document.querySelectorAll('script[type="application/json"]')) {
-  if (!s.textContent.includes('xdt_api__v1__media__shortcode__web_info')) continue;
-  const info = findKey(JSON.parse(s.textContent), 'xdt_api__v1__media__shortcode__web_info');
-  if (info) { post = info.items[0]; break; }
-}
-if (!post) throw new Error('post data not found: navigate to the post URL directly and run again');
-if (post.code !== code) throw new Error(`page holds ${post.code}, expected ${code}`);
-if (post.user.username !== ACCOUNT) throw new Error(`post belongs to @${post.user.username}`);
+(async () => {
+  window.__cuaderno = { snippet: 'bundle', state: 'running' };
+  try {
+    const ACCOUNT = 'amanda_tuz';
+    const code = (location.pathname.match(/\/(?:p|reel)\/([^/]+)/) || [])[1];
+    if (!code) throw new Error('not a post page: ' + location.pathname);
+    let post = null;
+    for (const s of document.querySelectorAll('script[type="application/json"]')) {
+      if (!s.textContent.includes('xdt_api__v1__media__shortcode__web_info')) continue;
+      const info = findKey(JSON.parse(s.textContent), 'xdt_api__v1__media__shortcode__web_info');
+      if (info) { post = info.items[0]; break; }
+    }
+    if (!post) throw new Error('post data not found: navigate to the post URL directly and run again');
+    if (post.code !== code) throw new Error(`page holds ${post.code}, expected ${code}`);
+    if (post.user.username !== ACCOUNT) throw new Error(`post belongs to @${post.user.username}`);
 
-async function get(url) {
-  const r = await fetch(url);
-  if (!r.ok) throw new Error(`media download failed: HTTP ${r.status}`);
-  const b = await r.blob();
-  return { type: b.type, data: new Uint8Array(await b.arrayBuffer()) };
-}
+    async function get(url) {
+      const r = await fetch(url);
+      if (!r.ok) throw new Error(`media download failed: HTTP ${r.status}`);
+      const b = await r.blob();
+      return { type: b.type, data: new Uint8Array(await b.arrayBuffer()) };
+    }
 
-const files = [];
-const items = [];
-for (const m of planMedia(post)) {
-  if (m.kind === 'image') {
-    const img = await get(m.imageUrl);
-    const file = `${m.n}.${EXT[img.type] || 'bin'}`;
-    files.push({ name: file, data: img.data });
-    items.push({ n: m.n, kind: 'image', file, width: m.width, height: m.height });
-  } else {
-    const video = await get(m.videoUrl);
-    const cover = await get(m.posterUrl);
-    const poster = `${m.n}_poster.${EXT[cover.type] || 'bin'}`;
-    files.push({ name: `${m.n}.mp4`, data: video.data }, { name: poster, data: cover.data });
-    items.push({ n: m.n, kind: 'video', file: `${m.n}.mp4`, poster, width: m.width, height: m.height });
+    const files = [];
+    const items = [];
+    for (const m of planMedia(post)) {
+      if (m.kind === 'image') {
+        const img = await get(m.imageUrl);
+        const file = `${m.n}.${EXT[img.type] || 'bin'}`;
+        files.push({ name: file, data: img.data });
+        items.push({ n: m.n, kind: 'image', file, width: m.width, height: m.height });
+      } else {
+        const video = await get(m.videoUrl);
+        const cover = await get(m.posterUrl);
+        const poster = `${m.n}_poster.${EXT[cover.type] || 'bin'}`;
+        files.push({ name: `${m.n}.mp4`, data: video.data }, { name: poster, data: cover.data });
+        items.push({ n: m.n, kind: 'video', file: `${m.n}.mp4`, poster, width: m.width, height: m.height });
+      }
+    }
+    const meta = {
+      shortcode: post.code,
+      user: post.user.username,
+      taken_at: new Date(post.taken_at * 1000).toISOString().replace('.000Z', 'Z'),
+      type: TYPES[post.media_type],
+      items
+    };
+    const enc = new TextEncoder();
+    files.unshift(
+      { name: 'meta.json', data: enc.encode(JSON.stringify(meta, null, 2)) },
+      { name: 'caption.txt', data: enc.encode((post.caption && post.caption.text) || '') }
+    );
+    const tar = buildTar(files);
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(tar);
+    link.download = `cuaderno-${post.code}.tar`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.__cuaderno = { snippet: 'bundle', state: 'done', result: JSON.stringify({ shortcode: post.code, type: meta.type, media: items.map((i) => `${i.n}:${i.kind}`).join(' '), bytes: tar.size }) };
+  } catch (e) {
+    window.__cuaderno = { snippet: 'bundle', state: 'error', error: e.message };
   }
-}
-const meta = {
-  shortcode: post.code,
-  user: post.user.username,
-  taken_at: new Date(post.taken_at * 1000).toISOString().replace('.000Z', 'Z'),
-  type: TYPES[post.media_type],
-  items
-};
-const enc = new TextEncoder();
-files.unshift(
-  { name: 'meta.json', data: enc.encode(JSON.stringify(meta, null, 2)) },
-  { name: 'caption.txt', data: enc.encode((post.caption && post.caption.text) || '') }
-);
-const tar = buildTar(files);
-const link = document.createElement('a');
-link.href = URL.createObjectURL(tar);
-link.download = `cuaderno-${post.code}.tar`;
-document.body.appendChild(link);
-link.click();
-link.remove();
-JSON.stringify({ shortcode: post.code, type: meta.type, media: items.map((i) => `${i.n}:${i.kind}`).join(' '), bytes: tar.size });
+})();
+'started';

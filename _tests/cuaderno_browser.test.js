@@ -93,3 +93,21 @@ test('scan.js PARAMS keep the placeholders the skill replaces', () => {
   const src = fs.readFileSync(path.join(SKILL, 'scan.js'), 'utf8');
   assert.match(src, /const PARAMS = \{ newest: '__NEWEST__', oldest: '__OLDEST__', backfillDone: __BACKFILL_DONE__, batch: 12 \};/);
 });
+
+for (const snippet of ['scan', 'bundle']) {
+  const below = () => fs.readFileSync(path.join(SKILL, `${snippet}.js`), 'utf8').split('\n// MAIN\n')[1];
+
+  test(`${snippet}.js runs in the background and records its state on window.__cuaderno`, () => {
+    const main = below();
+    assert.match(main, new RegExp(`window\\.__cuaderno = \\{ snippet: '${snippet}', state: 'running' \\};`));
+    assert.match(main, new RegExp(`window\\.__cuaderno = \\{ snippet: '${snippet}', state: 'done', result: `));
+    assert.match(main, new RegExp(`window\\.__cuaderno = \\{ snippet: '${snippet}', state: 'error', error: e\\.message \\};`));
+    const lines = main.split('\n').filter((l) => l.trim());
+    assert.equal(lines[lines.length - 1], "'started';");
+    assert.equal(lines[lines.length - 2], '})();');
+  });
+
+  test(`${snippet}.js declares everything inside the IIFE so a second run does not redeclare`, () => {
+    for (const line of below().split('\n')) assert.doesNotMatch(line, /^(const |let |function |async function )/);
+  });
+}
