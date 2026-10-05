@@ -39,6 +39,7 @@ test('caption drops a trailing hashtag block that ends in a bare #', () => {
   assert.equal(c.cleanCaption('Cada nueva primavera.\u{1F98B}\n\n#gloriafuertes\n#amapolas\n#'),
     'Cada nueva primavera.\u{1F98B}');
   assert.equal(c.cleanCaption('Uno # dos.\nFin.'), 'Uno # dos.\\\nFin.');
+  assert.equal(c.cleanCaption('Aprendo C#'), 'Aprendo C#');
 });
 
 test('caption drops the trailing hashtag block and its spacer lines', () => {
