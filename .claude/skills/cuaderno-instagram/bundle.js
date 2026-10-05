@@ -79,10 +79,13 @@ function buildTar(files) {
     const code = (location.pathname.match(/\/(?:p|reel)\/([^/]+)/) || [])[1];
     if (!code) throw new Error('not a post page: ' + location.pathname);
     let post = null;
-    for (const s of document.querySelectorAll('script[type="application/json"]')) {
-      if (!s.textContent.includes('xdt_api__v1__media__shortcode__web_info')) continue;
-      const info = findKey(JSON.parse(s.textContent), 'xdt_api__v1__media__shortcode__web_info');
-      if (info) { post = info.items[0]; break; }
+    for (let attempt = 0; attempt < 20 && !post; attempt++) {
+      if (attempt) await new Promise((done) => setTimeout(done, 500));
+      for (const s of document.querySelectorAll('script[type="application/json"]')) {
+        if (!s.textContent.includes('xdt_api__v1__media__shortcode__web_info')) continue;
+        const info = findKey(JSON.parse(s.textContent), 'xdt_api__v1__media__shortcode__web_info');
+        if (info) { post = info.items[0]; break; }
+      }
     }
     if (!post) throw new Error('post data not found: navigate to the post URL directly and run again');
     if (post.code !== code) throw new Error(`page holds ${post.code}, expected ${code}`);

@@ -120,3 +120,9 @@ test('scan.js downloads its result as cuaderno-scan.json and reports only a summ
   assert.match(main, /result: JSON\.stringify\(\{ file: 'cuaderno-scan\.json', items: /);
   assert.doesNotMatch(main, /result: JSON\.stringify\(\{ end, complete: scanDone\(/);
 });
+
+test('bundle waits for the post data before giving up', () => {
+  const main = fs.readFileSync(path.join(SKILL, 'bundle.js'), 'utf8').split('\n// MAIN')[1];
+  assert.match(main, /for \(let \w+ = 0; \w+ < 20\b/);
+  assert.match(main, /setTimeout\(\w+, 500\)/);
+});

@@ -20,6 +20,7 @@ Rules:
 - Repo root is the working directory (`pwd` ends in `almadetuz.github.io`). Shell variables do not persist between Bash calls, so resolve two absolute paths once and write them literally into every later command and Write call, double-quoted in commands: `<SCRATCH>` is this session's scratchpad directory (given in your system prompt) and `<DL>` is the output of `xdg-user-dir DOWNLOAD` (run it once). Never use `$SCRATCH` or `$DL`.
 - Load the Chrome tools in one ToolSearch call: `select:mcp__claude-in-chrome__tabs_context_mcp,mcp__claude-in-chrome__tabs_create_mcp,mcp__claude-in-chrome__navigate,mcp__claude-in-chrome__javascript_tool,mcp__claude-in-chrome__computer,mcp__claude-in-chrome__tabs_close_mcp,mcp__claude-in-chrome__list_connected_browsers,mcp__claude-in-chrome__select_browser`.
 - Call `tabs_context_mcp`. If a tool reports several browsers and none selected, call `list_connected_browsers` and ask the user which one with AskUserQuestion; never pick one yourself. Create a new tab for this run.
+- Keep the Chrome tab in the foreground and visible during the run. In a hidden tab Chrome throttles timers and Instagram stops loading posts on scroll, so the scan stalls. If a poll shows the scan still running after about a minute, check `document.hidden` and, if true, ask the user to bring the tab to the front.
 
 ## Running a snippet
 
