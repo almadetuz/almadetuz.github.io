@@ -15,7 +15,7 @@ const ROOT = path.resolve(__dirname, '..');
 const BLANK = /^[\s⠀​ㅤ]*$/;
 // Spacer lines people put before a hashtag block: ".", middle dot, bullet, "-", "_".
 const SPACER = /^[.·•\-_\s⠀]*$/;
-const TRAILING_TAGS = /(?:\s*#[\p{L}\p{N}_]+)+\s*$/u;
+const TRAILING_TAGS = /(?:\s*#[\p{L}\p{N}_]*)+\s*$/u;
 const MENTION = /(?<![\w@.])@([A-Za-z0-9_](?:[A-Za-z0-9._]*[A-Za-z0-9_])?)/g;
 const EMOJI = /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}\u{1F3FB}-\u{1F3FF}‍️⃣]/gu;
 const RATIOS = { '9x16': 9 / 16, '4x5': 4 / 5, '1x1': 1, '16x9': 16 / 9 };

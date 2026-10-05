@@ -35,6 +35,12 @@ test('caption keeps paragraphs and turns single line breaks into hard breaks', (
     '\u{1F331}Primera línea.\\\nSegunda línea.\n\nOtro párrafo.');
 });
 
+test('caption drops a trailing hashtag block that ends in a bare #', () => {
+  assert.equal(c.cleanCaption('Cada nueva primavera.\u{1F98B}\n\n#gloriafuertes\n#amapolas\n#'),
+    'Cada nueva primavera.\u{1F98B}');
+  assert.equal(c.cleanCaption('Uno # dos.\nFin.'), 'Uno # dos.\\\nFin.');
+});
+
 test('caption drops the trailing hashtag block and its spacer lines', () => {
   assert.equal(c.cleanCaption('Texto final.\n.\n.\n.\n#vino #garnacha\n#cebreros'), 'Texto final.');
   assert.equal(c.cleanCaption('Gracias Edu #vino #garnacha'), 'Gracias Edu');
