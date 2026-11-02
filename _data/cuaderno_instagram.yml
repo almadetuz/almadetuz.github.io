@@ -2,12 +2,122 @@
 # Decisions are words (accepted | rejected | pending): Psych reads yes/no as booleans.
 # Cursors are dates, not grid positions, because pinned posts sit on top.
 account: amanda_tuz
-newest: 2026-09-12T18:24:26Z
-oldest: 2026-09-12T18:24:26Z
+newest: 2026-09-28T11:25:59Z
+oldest: 2026-04-20T22:07:48Z
 backfill_done: false
 posts:
+  - shortcode: Dd1EsqZN_pR
+    date: 2026-09-28T11:25:59Z
+    type: image
+    decision: rejected
+  - shortcode: DduBVr-NQSh
+    date: 2026-09-25T17:41:56Z
+    type: image
+    decision: accepted
+    slug: soy-lo-que-soy-gracias-a
   - shortcode: DdMn38xDZt_
     date: 2026-09-12T18:24:26Z
     type: carousel
     decision: accepted
     slug: nuevos-brotes
+  - shortcode: Dcq083gNtJ5
+    date: 2026-08-30T15:41:14Z
+    type: video
+    decision: accepted
+    slug: gratitud
+  - shortcode: DcoA5XNN74I
+    date: 2026-08-29T13:15:41Z
+    type: video
+    decision: rejected
+  - shortcode: DbtKaobothH
+    date: 2026-08-06T16:48:41Z
+    type: video
+    decision: rejected
+  - shortcode: Dbqql12of7W
+    date: 2026-08-05T17:22:40Z
+    type: image
+    decision: rejected
+  - shortcode: DbiIx5Tt41C
+    date: 2026-08-02T10:19:31Z
+    type: video
+    decision: pending
+  - shortcode: DbQep3JjUt3
+    date: 2026-07-26T13:18:03Z
+    type: carousel
+    decision: accepted
+    slug: sierra-oeste
+  - shortcode: DbIbb1HIDgr
+    date: 2026-07-23T10:23:48Z
+    type: video
+    decision: rejected
+  - shortcode: Da6fdicMAqN
+    date: 2026-07-18T00:35:17Z
+    type: video
+    decision: rejected
+  - shortcode: DafUkKpMIHm
+    date: 2026-07-07T11:07:09Z
+    type: image
+    decision: rejected
+  - shortcode: DZfhV-PtTMy
+    date: 2026-06-12T16:34:33Z
+    type: video
+    decision: rejected
+  - shortcode: DZV9jKNjKKV
+    date: 2026-06-08T23:21:26Z
+    type: carousel
+    decision: rejected
+  - shortcode: DZGNTqnjej9
+    date: 2026-06-02T20:31:16Z
+    type: carousel
+    decision: rejected
+  - shortcode: DZDGnEsNHzi
+    date: 2026-06-01T15:38:27Z
+    type: video
+    decision: accepted
+    slug: cartas-en-mi-buzon
+  - shortcode: DYnMlLstLwt
+    date: 2026-05-22T10:42:43Z
+    type: video
+    decision: rejected
+  - shortcode: DYlrWPyNSKT
+    date: 2026-05-21T05:22:57Z
+    type: video
+    decision: rejected
+  - shortcode: DYaWfmhNsnm
+    date: 2026-05-17T08:51:16Z
+    type: video
+    decision: rejected
+  - shortcode: DYVGFmetBAt
+    date: 2026-05-14T21:40:34Z
+    type: video
+    decision: rejected
+  - shortcode: DYRsFEjtLEh
+    date: 2026-05-13T11:04:17Z
+    type: video
+    decision: rejected
+  - shortcode: DYEZYVPtjBK
+    date: 2026-05-08T16:16:57Z
+    type: video
+    decision: rejected
+  - shortcode: DX8zr3otBsS
+    date: 2026-05-05T08:32:57Z
+    type: video
+    decision: rejected
+  - shortcode: DX4HG5otfBx
+    date: 2026-05-03T12:46:41Z
+    type: video
+    decision: accepted
+    slug: mis-luciernagas
+  - shortcode: DX120lqtjGt
+    date: 2026-05-02T15:54:11Z
+    type: video
+    decision: rejected
+  - shortcode: DXYnPP0jUxO
+    date: 2026-04-21T07:05:07Z
+    type: video
+    decision: accepted
+    slug: te-lo-prometo
+  - shortcode: DXXp2IIjSXu
+    date: 2026-04-20T22:07:48Z
+    type: video
+    decision: rejected
