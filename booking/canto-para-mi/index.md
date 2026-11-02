@@ -1,10 +1,8 @@
 ---
 title: Canto para mí
 layout: page
-sitemap: false
-noindex: true
 seo_description: "Dossier del concierto 'Canto para mí' de Alma de Tüz para salas de conciertos: formato, repertorio, necesidades técnicas y fechas libres de la gira 2026-2027."
-seo_image: /assets/images/canto_para_mi_single_seo.jpg
+seo_image: /assets/images/booking/alma_de_tuz_seo.jpg
 seo_image_width: 1280
 seo_image_height: 720
 ---
@@ -18,11 +16,11 @@ seo_image_height: 720
 
 **Alma de Tüz** es un proyecto musical de canciones propias que entrelazan **raíz latinoamericana y folklore castellano con jazz y canción de autor**.
 
-Para fans de Silvia Pérez Cruz, Silvana Estrada o Natalia Lafourcade.
+Para fans de Silvia Pérez Cruz, Silvana Estrada, Natalia Lafourcade, Lila Downs o Elis Regina.
 
 En *Canto para mí*, Amanda está sola en el escenario con su voz, piano, ukelele, pandero cuadrado y looper. **Sin bases pregrabadas**: todo lo que suena se toca delante del público.
 
-A tu sala llega **un directo cercano que emociona y empodera**, con espacio para la escucha, el silencio y la celebración.
+A tu sala llega **un directo íntimo que emociona y empodera**, con espacio para la escucha, el silencio y la celebración.
 
 Este es el dossier de la gira 2026-2027: repertorio, formato, rider técnico y calendario.
 
@@ -49,6 +47,18 @@ Amanda Tüz canta y compone. Estudió piano en el conservatorio, se licenció en
 Es autora de **La Magara**, una canción que lleva casi diez años circulando de boca en boca por grupos de mujeres de todo el mundo. Entre 2017 y 2021 lideró el grupo **Magara**, y compuso parte de la banda sonora del documental *A Witch Story*, estrenado en DOC NYC.
 
 Desde 2022 lidera **Alma de Tüz**, su proyecto más personal, con más de treinta canciones propias. «Tüz» significa aliento creativo y eso es lo que llega al público: canciones que **emocionan, empoderan y que invitan a la introspección**.
+
+{% include artist_links.html
+   classes="justify-content-center"
+   artist_name="Alma de Tüz"
+   name="alma-de-tuz"
+   instagram_id="amanda_tuz"
+   soundcloud_artist_id="almadetuz"
+   bandcamp_artist_id="almadetuz"
+   tidal_artist_id="35124876"
+   spotify_artist_id="1A4ezsQEPReJxvoTJp4u51"
+   youtube_artist_id="@almadetuz"
+%}
 
 {% include block_container_end.html %}
 
@@ -77,10 +87,10 @@ Actuación en formato solista, voz y multi-instrumentisto.
 Los instrumentos cambian en función de los temas interpretados, en las siguientes combinaciones:
 
 |---|---|
-| **Combinación 1** | Voz + Piano |
-| **Combinación 2** | Voz + Ukelele |
-| **Combinación 3** | Voz + Looper |
-| **Combinación 4** | Voz + Pandero |
+| **Combinación A** | Voz + Piano |
+| **Combinación B** | Voz + Ukelele |
+| **Combinación C** | Voz + Looper |
+| **Combinación D** | Voz + Pandero |
 {: .table }
 
 **Duración**: entre 60 y 90 minutos, de 12 a 16 canciones aprox.
@@ -167,9 +177,9 @@ Si alguna fecha os encaja, escribir a:
 {: .text-center }
 
 Por favor, en el email especificar:
-* **fecha** o fechas que las que están interesados
-* **sala** y ciudad
-* **ficha técnica** dela sala para poder evaluar el equipo técnico que Sala Oeste Producciones tiene que aportar
+* {: .lh-base .mt-1 } **fecha** o fechas que las que están interesados
+* {: .lh-base .mt-1 } **sala** y ciudad
+* {: .lh-base .mt-1 } **ficha técnica** de la sala para poder evaluar el equipo técnico que Sala Oeste Producciones tiene que aportar
 
 {% include engage_button.html
   name="escribir-sala-oeste"
