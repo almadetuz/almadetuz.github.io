@@ -16,11 +16,17 @@ seo_image_height: 720
 
 {% include block_container_start.html %}
 
-Esta página es el **dossier de la gira 2026-2027** de Alma de Tüz para salas de conciertos.
+**Alma de Tüz** es un proyecto musical de canciones propias que entrelazan **raíz latinoamericana y folklore castellano con jazz y canción de autor**.
 
-Aquí tienes lo necesario para valorar si encaja en tu programación: el formato, las canciones, lo que necesitamos técnicamente y las fechas que siguen libres.
+Para fans de Silvia Pérez Cruz, Silvana Estrada o Natalia Lafourcade.
 
-La producción y la contratación las lleva **Sala Oeste Producciones**.
+En *Canto para mí*, Amanda está sola en el escenario con su voz, piano, ukelele, pandero cuadrado y looper. **Sin bases pregrabadas**: todo lo que suena se toca delante del público.
+
+A tu sala llega **un directo cercano que emociona y empodera**, con espacio para la escucha, el silencio y la celebración.
+
+Este es el dossier de la gira 2026-2027: repertorio, formato, rider técnico y calendario.
+
+La producción y la contratación está a cargo de **Sala Oeste Producciones**.
 
 {% include engage_button.html
   name="ver-fechas-intro"
@@ -36,11 +42,13 @@ La producción y la contratación las lleva **Sala Oeste Producciones**.
 ## La artista
 {: .fw-bold .text-center }
 
-Amanda Tüz canta y compone. Formó el grupo **Magara** y ahora presenta su proyecto en solitario, **Alma de Tüz**.
+![Alma de Tüz](/assets/images/booking/alma_de_tuz_artista.jpg){: .img-left }
 
-Es autora de **La Magara**, una canción que lleva casi diez años circulando de boca en boca por grupos de mujeres de todo el mundo, sin campañas ni publicidad.
+Amanda Tüz canta y compone. Estudió piano en el conservatorio, se licenció en Musicología y ha cantado música antigua, jazz, boleros y canción de autor. Con la Cotton Club Dixieland Jazz Band actuó en el Festival Internacional de Jazz de Getxo.
 
-Tiene más de treinta canciones propias. Hablan de raíces, de cuerpo, de memoria, de maternidad, de lo que duele y de lo que se suelta.
+Es autora de **La Magara**, una canción que lleva casi diez años circulando de boca en boca por grupos de mujeres de todo el mundo. Entre 2017 y 2021 lideró el grupo **Magara**, y compuso parte de la banda sonora del documental *A Witch Story*, estrenado en DOC NYC.
+
+Desde 2022 lidera **Alma de Tüz**, su proyecto más personal, con más de treinta canciones propias. «Tüz» significa aliento creativo y eso es lo que llega al público: canciones que **emocionan, empoderan y que invitan a la introspección**.
 
 {% include block_container_end.html %}
 
@@ -49,9 +57,11 @@ Tiene más de treinta canciones propias. Hablan de raíces, de cuerpo, de memori
 ## Repertorio
 {: .fw-bold .text-center }
 
-Un concierto íntimo de canciones propias, voz y [PENDIENTE: instrumentos].
+*Canto para mí* es un cancionero de alta carga lírica y emocional sobre **los ciclos femeninos, el cuerpo, la memoria y la naturaleza creativa**.
 
-Pulsa en cada canción para ver un fragmento en vídeo.
+Se mueve entre la canción de autor, el folk de raíz, la bossa introspectiva, las nanas y la improvisación vocal del jazz. La instrumentación cambia en cada canción enriqueciendo la desnudez que implica un concierto íntimo en solitario, permitiendo al público viajar por mutitud de sonoridades.
+
+Pulsa en cada canción para escuchar un fragmento de los diferentes directos realizados hasta la fecha.
 
 {% include carousel_canciones.html %}
 
