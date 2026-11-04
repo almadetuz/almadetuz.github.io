@@ -1,16 +1,19 @@
 # Testimonios del carrusel de /booking/retiros/.
 #
-# Los tres son comentarios reales del post de Nosotras Fest en Instagram
-# (https://www.instagram.com/p/Dcq083gNtJ5/). El recorte de cada cita, y por qué
-# se corta donde se corta, está en la sección 9 de
-# `_drafts/booking-retiros-concierto.md`.
+# Nosotras Fest, soyclicmani y monicamarcos son comentarios reales del post de
+# Nosotras Fest en Instagram (https://www.instagram.com/p/Dcq083gNtJ5/). El
+# recorte de cada cita, y por qué se corta donde se corta, está en la sección 9
+# de `_drafts/booking-retiros-concierto.md`. El resto son mensajes directos a
+# Amanda, recortados con la misma regla de protagonismo.
 #
 # slug - nombre fijo del testimonio en los eventos, en kebab-case a partir del
-#   nick. No se cambia nunca, aunque cambie el nick.
+#   nick (sin nick, del nombre). No se cambia nunca, aunque cambie el nick.
+# nick - opcional. Sin nick el mensaje no vino de Instagram y la ficha no lleva
+#   el icono.
+# avatar - opcional. Sin avatar la ficha muestra la inicial.
 #
-# TODO: pedir permiso a las tres para publicarlos.
-# TODO: cada una necesita su avatar, foto cuadrada 320x320. Hasta que estén,
-#   las tres fichas apuntan al mismo fichero de relleno.
+# TODO: pedir permiso a todas para publicarlos.
+# TODO: conseguir los avatares de Miriam y Laura, que escribieron por email.
 
 - name: Nosotras Fest
   slug: nosotras-fest
@@ -21,6 +24,30 @@
     Qué placer de noche con tu arte, con tus palabras, tus historias, esa
     presencia generosa y contundente, dulce y chistosa a la vez. Nos dejaste
     prendadas.
+
+- name: Xamara
+  slug: xamarabienestar
+  nick: "@xamarabienestar"
+  role: organizadora
+  avatar: /assets/images/avatar/xamarabienestar.jpg
+  quote: >-
+    Muchas gracias por todo, la experiencia fue extraordinaria. Puntualidad,
+    profesionalidad, presencia y cercanía. Amanda y compañía se adaptaron
+    perfectamente a lo que habíamos hablado, tanto el contenido enfocado
+    totalmente a nuestro encuentro con una sensibilidad exquisita como el
+    continente con todos los medios técnicos y el sonido perfecto.
+
+- name: Laura Mora
+  slug: lauramoradamaya
+  nick: "@lauramoradamaya"
+  role: participante
+  avatar: /assets/images/avatar/lauramoradamaya.jpg
+  quote: >-
+    Sentir el acompañamiento de Amanda con su conocimiento de lo humano, su
+    música, su mirada, sus manos y su voz es una experiencia placentera y
+    profunda. Cuando sé que ella forma parte de algo, que está creando, que
+    invita a crear, respondo a su llamada y voy. Sin más, con confianza, sabiendo
+    que es un buen lugar donde Ser.
 
   # Sin nombre real: la ficha se queda con el nick en la primera línea.
 - nick: "@soyclicmani"
@@ -42,3 +69,25 @@
     Que bonitooooo, fue una noche mágica que aún vibra en mi corazón. Gracias
     Amanda, gracias a todas Nosotras por este encuentro festival tan hermoso y
     revitalizador, juntas recordamos!!
+
+  # Sin nombre real: la ficha se queda con el nick en la primera línea.
+- nick: "@mariannadipasca"
+  slug: mariannadipasca
+  role: participante
+  avatar: /assets/images/avatar/mariannadipasca.jpg
+  quote: >-
+    Oh Amanda, has sido el descubrimiento más bonito del festival! Me ha
+    encantado conocerte.
+
+- name: Miriam
+  slug: miriam-r
+  role: participante
+  quote: >-
+    Me encantó muchísimo tus canciones, tu música y tu energía, divertida y a la
+    vez profunda.
+
+- name: Laura
+  slug: laura-c
+  role: participante
+  quote: >-
+    Ayer fue un regalazo poder escucharte, cuánta belleza junta...

@@ -24,7 +24,7 @@ y, además, cantado con el cuidado y el mimo, que sólo una **artista que lleva 
 {% include block_container_end.html %}
 
 {% include block_container_start.html class_bg="bg-white" %}
-Déjame que te cuente algo que llevo años viviendo.
+Déjame que te cuente algo que seguro que has vivido más de una vez.
 
 **Visualiza tu retiro**: sesión de mañana, sesión de tarde, y a las nueve de la noche el grupo sale de la sala habiéndose movido muchísimas cosas.
 
@@ -41,7 +41,7 @@ La sobremesa une, y a mucha gente le hace bien.
 ### Pero la persona que necesita silencio para integrar lo que se le ha removido esa tarde no lo encuentra ahí, y acaba en lo social porque es lo único que hay.
 {: .fw-bold .text-center }
 
-Ambas sabemos que después de todo el día es cuando las participantes están más abiertas, más blanditas.
+Ya sabemos que después de todo el día es cuando las participantes están más abiertas, más blanditas.
 
 Es exactamente el estado en el que una canción entra sin pedir permiso.
 
@@ -62,7 +62,7 @@ Canciones tranquilas. Nadie tiene que cantar, ni levantarse, ni participar en na
 
 **Sólo escuchar**.
 
-Y estas son las canciones que suelo cantar:
+Y estas son las canciones que Alma de Tüz podría cantar en tu retiro:
 
 {% include carousel_canciones.html %}
 
@@ -80,11 +80,11 @@ Y estas son las canciones que suelo cantar:
 ## No es un concierto de relleno.
 {: .fw-bold .text-center }
 
-Es probable que conozcas **La Magara**, una canción que compuse hace casi 10 años y que ha dado la vuelta al mundo en muchos grupos de mujeres.
+Es probable que conozcas **La Magara**, una canción que Amanda compuso hace casi 10 años y que ha dado la vuelta al mundo en muchos grupos de mujeres.
 
 La puedes buscar en Spotify y ver cuánto se ha escuchado (y se sigue escuchando todavía), sin publicidad, sin campañas de marketing, sólo el **boca a boca**.
 
-Las canciones que canto están compuestas desde lo que he vivido dentro de **talleres de crecimiento personal**, muchos parecidos al tuyo. Hablan de raíces, de cuerpo, de memoria, de maternidad, de lo que duele y de lo que se suelta.
+Las canciones que canta Amanda están compuestas desde lo que ha vivido dentro de **talleres de crecimiento personal**, muchos parecidos al tuyo. Hablan de raíces, de cuerpo, de memoria, de maternidad, de lo que duele y de lo que se suelta.
 
 Es decir: **hablan de lo mismo que las participantes acaban de mover**.
 
@@ -101,13 +101,13 @@ Realmente es un **masaje sonoro para integrar lo que cada una ha trabajado antes
 ## ¿Quién canta?
 {: .fw-bold .text-center }
 
-Me llamo Amanda (hay gente que me conoce como La Magara y otras como Amanda Tüz).
+Hay gente que conoce a Amanda como La Magara y otras como Amanda Tüz.
 
-Canto y compongo. Formé un grupo que se llamó "Magara" y ahora tengo un proyecto musical en solitario que se llama "**Alma de Tüz**".
+Ella canta y compone sus propias canciones. Formó un grupo que se llamó "Magara" y ahora tiene un proyecto musical en solitario que se llama "**Alma de Tüz**".
 
-Además, soy **docente y arteterapeuta**, y llevo más de 20 años participando en talleres y retiros, mixtos y de mujeres. Unas veces facilitando, otras sentada en el círculo como una más.
+Además, es **docente y arteterapeuta**, y lleva más de 20 años participando en talleres y retiros, mixtos y de mujeres. Unas veces facilitando, otras sentada en el círculo como una más.
 
-He compuesto más de treinta canciones.
+Ha compuesto más de treinta canciones.
 
 La mayoría no salieron de una habitación con el ukelele.
 
@@ -129,15 +129,13 @@ Y, sinceramente, creo que ésto **es lo que más aporta a tu retiro**.
 ## ¿Quién hace que suene bonito?
 {: .fw-bold .text-center }
 
-Yo no llevo la producción, lo hace **Sala Oeste Producciones**: fechas, equipo, técnico de sonido y presupuesto.
+La producción está a cargo de **Sala Oeste Producciones**: fechas, equipo, técnico de sonido y presupuesto.
 
-Prefiero que sea así.
+Amanda necesita estar enfocada en coordinarse contigo (la creadora del retiro), para poder conectar con el grupo esa noche.
 
-Yo necesito estar enfocada en coordinarme contigo (la creadora del retiro), para poder conectar con el grupo esa noche.
+Del sonido y la parte técnica nos ocupamos profesionales que producimos conciertos todos los días.
 
-Del sonido y la parte técnica se ocupan profesionales que producen conciertos todos los días.
-
-Por eso el sonido de esa noche no va a ser un altavoz en una esquina.
+Por eso el sonido de esa noche no va a ser un altavoz portátil en una esquina.
 
 {% include block_container_end.html %}
 
@@ -155,7 +153,7 @@ Cuando alguien vuelve a casa y le preguntan qué tal el retiro, lo primero que c
 - **Alguien que no te rompe la atmósfera.**\\
 No entra un músico a hacer su show. Entra una artista que ha estado en otros círculos, que sabe cuándo entrar y sabe que el retiro es tuyo.
 - **Producción resuelta, sin que tú montes nada.**\\
-Conmigo viene un técnico de sonido que pasará desapercibido. Tú no tienes que gestionar el equipo de sonido, ni el montaje, ni las pruebas. Es una persona discreta que está enfocada en que no se rompa la magia y que resuelve cualquier imprevisto técnico que pueda surgir.
+En todo momento, junto a Amanda, habrá un técnico de sonido que pasará desapercibido. Tú no tienes que gestionar el equipo de sonido, ni el montaje, ni las pruebas. Es una persona discreta que está enfocada en que no se rompa la magia y que resuelve cualquier imprevisto técnico que pueda surgir.
 
 {% include block_container_end.html %}
 
@@ -166,7 +164,7 @@ Conmigo viene un técnico de sonido que pasará desapercibido. Tú no tienes que
 
 Si.
 
-La última noche es donde más lo recomiendo, pero no es el único momento posible.
+La última noche es donde más lo recomendamos, pero no es el único momento posible.
 
 También podría ser:
 
@@ -175,7 +173,7 @@ Una dinámica vivencial y participativa: el grupo explora vibración, escucha y 
 - **Círculo de integración**\\
 Concierto de cierre, para recoger lo vivido y despedir.
 
-Antes de ir hablamos tú y yo: el tono, la duración, el repertorio y en qué punto del programa entra.
+Antes de llegar, Amanda habla contigo: el tono, la duración, el repertorio y en qué punto del programa va a entrar.
 
 {% include block_container_end.html %}
 
@@ -186,7 +184,7 @@ Antes de ir hablamos tú y yo: el tono, la duración, el repertorio y en qué pu
 
 {% include carousel_testimonios.html %}
 
-He cantado en encuentros, círculos y espacios de trabajo corporal: el festival **Nosotras Fest**, el massage temples de **Gozo, corazón y tacto**, el encuentro **Círculo Rojo**, el ciclo **Orígenes**, los retiros de **VoArte**, el grupo de estudio de **Mujeres que corren con lobos** de Jaqui Zieler y muchos más.
+Amanda ha cantado en encuentros, círculos y espacios de trabajo corporal: el festival **Nosotras Fest**, el massage temples de **Gozo, corazón y tacto**, el encuentro **Círculo Rojo**, el ciclo **Orígenes**, los retiros de **VoArte**, el grupo de estudio de **Mujeres que corren con lobos** de Jaqui Zieler y muchos más.
 
 {% include block_container_end.html %}
 
@@ -231,9 +229,9 @@ El desplazamiento y el alojamiento se presupuestan según dónde estéis.
 
 No es un descuento de rebajas.
 
-Es que en las primeras fechas de la gira, Sala Oeste Producciones no cobra por el equipo y el técnico. Confían en que lo que te propongo es algo especial.
+Es que en las primeras fechas de la gira, Sala Oeste Producciones no cobra por el equipo y el técnico. Confiamos en que lo que es capaz de hacer Amanda es algo especial.
 
-Cuando se cierren las primeras fechas, el precio subirá. ¿Cuánto? No lo sé, de eso se encarga Sala Oeste.
+La gira es de 12 conciertos, sólo los cuatro primeros son a este precio, después subirá. ¿Cuánto? Lo publicaremos en esta misma página.
 
 {% include engage_button.html
   name="ver-fechas-precio"
@@ -253,9 +251,9 @@ Cuando se cierren las primeras fechas, el precio subirá. ¿Cuánto? No lo sé, 
 
 **Qué necesito de ti**: Un espacio tranquilo, un punto de corriente eléctrica de más de 2 kw y unos 6 m² de escenario (3m x 2m aprox.). Si vuestra casa de retiros ya tiene equipo de sonido profesional, lo usamos, y si no, lo llevamos nosotros.
 
-**Quién va**: Amanda y un técnico de sonido.
+**Quién va**: Amanda y un técnico de sonido profesional de Sala Oeste Producciones.
 
-**Cuánto dura**: Entre 60 y 90 minutos (de 12 a 16 canciones aprox), según el formato que acordemos.
+**Cuánto dura**: Entre 60 y 90 minutos (de 12 a 16 canciones aprox), según el formato que acuerdes con Amanda.
 
 {% include block_container_end.html %}
 
@@ -264,12 +262,12 @@ Cuando se cierren las primeras fechas, el precio subirá. ¿Cuánto? No lo sé, 
 ## Esto no le sirve a todos los retiros
 {: .fw-bold .text-center }
 
-Si lo que buscas es que la gente baile y se suelte después de la cena, hay músicos que hacen eso mucho mejor que yo.
+Si lo que buscas es que la gente baile y se suelte después de la cena, hay músicos que hacen eso mucho mejor que Amanda.
 
 Si tu retiro es de silencio y meter voz cantada te rompe la atmósfera o el propósito, tampoco.
 
 - **¿Tienen que cantar mis participantes?**\\
-No. En el concierto solo escuchan. Si quieres que canten o participen activamente, hay otro formato para eso y lo hablamos.
+No. En el concierto solo escuchan. Si quieres que canten o participen activamente, hay otro formato para eso y lo puedes hablar con Amanda.
 
 - **Mi retiro ya tiene su ritual de cierre. ¿No compite?**\\
 No, el concierto va la noche anterior, o después de la cena del último día. Tu cierre sigue siendo tuyo.
@@ -277,11 +275,11 @@ No, el concierto va la noche anterior, o después de la cena del último día. T
 - **¿Cuánta gente cabe?**\\
 Las personas que entren en la sala o en el espacio exterior donde hagas el retiro.
 
-- **¿Por qué escribo a una productora y no a ti?**\\
-Porque las fechas y el presupuesto los lleva Sala Oeste, y así lo tienes cerrado por escrito desde el principio. Del contenido del concierto hablamos tú y yo, siempre después de reservar las fechas.
+- **¿Por qué escribo a una productora y no a Amanda directamente?**\\
+Porque las fechas y el presupuesto los llevamos nosotros, Sala Oeste Producciones, y así lo tienes cerrado por escrito desde el principio. Del contenido del concierto hablas con Amanda después de reservar las fechas.
 
 - **¿Y si veo que no encaja con lo que estoy haciendo?**\\
-Si lo que te propongo no encaja en tu retiro, te lo digo. Se liberan las fechas y listo.
+Si después de hablar con Amanda véis que no encaja en tu retiro, no pasa nada, se liberan las fechas y listo.
 
 {% include block_container_end.html %}
 
@@ -306,7 +304,7 @@ Estos son todos los dias que hay disponibles. Los verdes siguen libres.
 
 {% include block_container_start.html class_bg="bg-rose" %}
 
-Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir a:
+Si el fin de semana de tu retiro sigue libre, lo siguiente es escribirnos a:
 
 **Sala Oeste Producciones**\\
 {% include engage_email.html
@@ -315,13 +313,13 @@ Si el fin de semana de tu retiro sigue libre, lo siguiente es escribir a:
 %}
 {: .text-center }
 
-Escríbeles con tres datos:\\
+Indícanos los siguientes datos:\\
 **cuándo** es tu retiro,\\
 **dónde**\\
 y **los detalles técnicos**\\
 (cuántos participantes, cómo es la sala, qué equipo de sonidos tenéis, ...)
 
-Te contestarán confirmando la disponibilidad y el presupuesto.
+Te contestaremos lo antes posible confirmando la disponibilidad y el presupuesto.
 
 {% include engage_button.html
   name="escribir-sala-oeste"
@@ -330,6 +328,6 @@ Te contestarán confirmando la disponibilidad y el presupuesto.
 %}
 {: .text-center }
 
-Si te encaja el presupuesto, entonces hablamos tú y yo (Amanda) de lo importante: el contenido del concierto y cómo integrarlo dentro de tu retiro para que aporte lo más posible.
+Si te encaja el presupuesto, entonces avisamos a Amanda para que te llame y habléis de lo importante: el contenido del concierto y cómo integrarlo dentro de tu retiro para que aporte lo más posible.
 
 {% include block_container_end.html %}

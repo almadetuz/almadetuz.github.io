@@ -70,6 +70,17 @@ $testimonials-muted: #6B6560;
   object-fit: cover;
 }
 
+// Quien no tiene foto lleva su inicial en el mismo círculo.
+.testimonial-card-initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $testimonials-border;
+  color: $testimonials-muted;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 .testimonial-card-who {
   // El nombre y el nick van uno debajo del otro, y este min-width deja que se
   // corten en vez de empujar al icono fuera de la ficha.

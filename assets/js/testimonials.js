@@ -1,6 +1,5 @@
 // Carrusel de testimonios. Todo lo hace CardCarousel; aquí sólo van los
-// selectores de la ficha y el ritmo, el mismo que el de las canciones. En
-// escritorio las tres caben en la ventana, así que ahí no se mueve nada.
+// selectores de la ficha y el ritmo, el mismo que el de las canciones.
 const TESTIMONIALS_INTERVAL = 4000;
 class Testimonials extends CardCarousel {
   constructor(root) {
