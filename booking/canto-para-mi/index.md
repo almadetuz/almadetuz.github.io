@@ -118,7 +118,7 @@ Los instrumentos cambian en función de los temas interpretados, en las siguient
 
 ### Material de sonido
 
-Sala Oeste Producciones monta el equipo técnico necesario para que la escucha sea adecuada a la sala y la cantidad de público.
+Montamos el equipo técnico necesario para que la escucha sea adecuada a la sala y la cantidad de público.
 
 En caso de que la sala disponga de equipo profesional equivalente, usaríamos el equipo instalado.
 
@@ -136,9 +136,9 @@ En caso de que la sala disponga de equipo profesional equivalente, usaríamos el
 |---|---|
 | **Escenario** | Unos 6 m² (3 m x 2 m aprox.). |
 | **Corriente** | Un punto de corriente junto al escenario. |
-| **Técnico** | Sala Oeste Producciones incluye un técnico de sonido que se coordina con el técnico de la sala. |
+| **Técnico** | Se incluye un técnico de sonido que se coordina con el técnico de la sala. |
 | **Montaje** | 1 h de montaje y 30 min de prueba de sonido antes de abrir puertas. Desmontaje 1 h. |
-| **Luces** | En caso de no disponer de luces de escenario, Sala Oeste Producciones incluye dos focos led con pie |
+| **Luces** | En caso de no disponer de luces de escenario, incluimos dos focos led con pie |
 {: .table }
 
 ### Lista de canales
@@ -179,12 +179,12 @@ Si alguna fecha os encaja, escribir a:
 Por favor, en el email especificar:
 * {: .lh-base .mt-1 } **fecha** o fechas que las que están interesados
 * {: .lh-base .mt-1 } **sala** y ciudad
-* {: .lh-base .mt-1 } **ficha técnica** de la sala para poder evaluar el equipo técnico que Sala Oeste Producciones tiene que aportar
+* {: .lh-base .mt-1 } **ficha técnica** de la sala para poder evaluar el equipo técnico que tenemos que aportar
 
 {% include engage_button.html
-  name="escribir-sala-oeste"
-  text="Escribir a Sala Oeste"
-  url="mailto:booking@salaoeste.com?subject=Fechas%20de%20Alma%20de%20T%C3%BCz%20en%20nuestra%20sala"
+  name="contratar-alma-de-tuz"
+  text="Contratar a Alma de Tüz"
+  url="mailto:booking@salaoeste.com?subject=Quiero%20contratar%20a%20Alma%20de%20T%C3%BCz%20en%20nuestra%20sala"
 %}
 {: .text-center }
 

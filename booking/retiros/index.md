@@ -101,6 +101,8 @@ Realmente es un **masaje sonoro para integrar lo que cada una ha trabajado antes
 ## ¿Quién canta?
 {: .fw-bold .text-center }
 
+![Alma de Tüz](/assets/images/booking/alma_de_tuz_artista.jpg){: .img-left }
+
 Hay gente que conoce a Amanda como La Magara y otras como Amanda Tüz.
 
 Ella canta y compone sus propias canciones. Formó un grupo que se llamó "Magara" y ahora tiene un proyecto musical en solitario que se llama "**Alma de Tüz**".
@@ -229,7 +231,7 @@ El desplazamiento y el alojamiento se presupuestan según dónde estéis.
 
 No es un descuento de rebajas.
 
-Es que en las primeras fechas de la gira, Sala Oeste Producciones no cobra por el equipo y el técnico. Confiamos en que lo que es capaz de hacer Amanda es algo especial.
+Es que en las primeras fechas de la gira, no cobramos por el equipo y el técnico. Confiamos en que lo que es capaz de hacer Amanda es algo especial.
 
 La gira es de 12 conciertos, sólo los cuatro primeros son a este precio, después subirá. ¿Cuánto? Lo publicaremos en esta misma página.
 
@@ -251,7 +253,7 @@ La gira es de 12 conciertos, sólo los cuatro primeros son a este precio, despu�
 
 **Qué necesito de ti**: Un espacio tranquilo, un punto de corriente eléctrica de más de 2 kw y unos 6 m² de escenario (3m x 2m aprox.). Si vuestra casa de retiros ya tiene equipo de sonido profesional, lo usamos, y si no, lo llevamos nosotros.
 
-**Quién va**: Amanda y un técnico de sonido profesional de Sala Oeste Producciones.
+**Quién va**: Amanda y un técnico de sonido profesional.
 
 **Cuánto dura**: Entre 60 y 90 minutos (de 12 a 16 canciones aprox), según el formato que acuerdes con Amanda.
 
@@ -276,7 +278,7 @@ No, el concierto va la noche anterior, o después de la cena del último día. T
 Las personas que entren en la sala o en el espacio exterior donde hagas el retiro.
 
 - **¿Por qué escribo a una productora y no a Amanda directamente?**\\
-Porque las fechas y el presupuesto los llevamos nosotros, Sala Oeste Producciones, y así lo tienes cerrado por escrito desde el principio. Del contenido del concierto hablas con Amanda después de reservar las fechas.
+Porque las fechas y el presupuesto los llevamos nosotros, y así lo tienes cerrado por escrito desde el principio. Del contenido del concierto hablas con Amanda después de reservar las fechas.
 
 - **¿Y si veo que no encaja con lo que estoy haciendo?**\\
 Si después de hablar con Amanda véis que no encaja en tu retiro, no pasa nada, se liberan las fechas y listo.
@@ -322,9 +324,9 @@ y **los detalles técnicos**\\
 Te contestaremos lo antes posible confirmando la disponibilidad y el presupuesto.
 
 {% include engage_button.html
-  name="escribir-sala-oeste"
-  text="Escribir a Sala Oeste"
-  url="mailto:booking@salaoeste.com?subject=Quiero%20presupuesto%20para%20un%20concierto%20en%20mi%20retiro"
+  name="contratar-alma-de-tuz"
+  text="Contratar a Alma de Tüz"
+  url="mailto:booking@salaoeste.com?subject=Quiero%20contratar%20a%20Alma%20de%20T%C3%BCz%20en%20mi%20retiro"
 %}
 {: .text-center }
 
